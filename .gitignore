@@ -1,0 +1,34 @@
+# secrets — this file exists before the first key does (Principle 9)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*
+.aws/
+
+# the learner's own work
+days/*/lab/
+
+# models, checkpoints, datasets — never in git
+*.gguf
+*.safetensors
+*.bin
+*.pt
+checkpoints/
+adapters/
+data/raw/
+data/interim/
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# tooling
+wandb/
+.langsmith/
+mlruns/

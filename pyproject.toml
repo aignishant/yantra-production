@@ -1,0 +1,32 @@
+# Yantra — the curriculum's own package metadata.
+#
+# Every dependency added here is pinned and gets a dated row in docs/PINS.md on the day it
+# arrives (plan §2, Principle 6). Nothing is added speculatively: a package with no day behind
+# it is a package nobody can explain.
+
+[project]
+name = "yantra"
+version = "0.1.0"
+description = "Production language-model engineering — one system, built across 229 days."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+# The quality tools, and only the quality tools. Day 0 installs this group and nothing else;
+# every later group is added by the day that first needs it.
+dev = [
+  "ruff",
+  "pytest",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

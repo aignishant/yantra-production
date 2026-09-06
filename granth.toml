@@ -1,0 +1,38 @@
+# Project Yantra — identity, paths, and the depth contract's knobs.
+#
+# Tracks, phases and the day map are NOT here. They live in docs/00_MASTER_PLAN.md
+# between <!-- granth:...:start --> markers, so a person reading the plan and a
+# script parsing it cannot disagree.
+
+[project]
+name          = "yantra"
+slug          = "yantra"
+plan          = "docs/00_MASTER_PLAN.md"
+plan_version  = "v1.0.0"
+day_skill     = "day-yantra"
+driver        = "python granth.py"
+day_padding   = 3          # this plan runs to 228
+
+[paths]
+days    = "days"
+docs    = "docs"
+adr     = "docs/adr"
+wiki    = "docs/wiki"
+
+[contract]
+require_sources        = true   # this curriculum leans on primary literature throughout
+require_failure_part   = true   # every day owes the reader one deliberate failure
+require_production     = true   # the section that gets dropped; dropping it halves the day
+require_line_by_line   = true   # conditional per part, enforced where code appears
+forbid_clocks          = true   # Principle 15 — never set this false
+forbid_person_names    = true   # cite by title and identifier
+min_level_climb        = true   # a day must climb foundation -> working -> production
+
+[toolchain]
+lint         = "uv run ruff check ."
+format_check = "uv run ruff format --check ."
+test         = "uv run python -m pytest -q -m 'not gpu and not live'"
+
+[ledgers]
+append_only = ["PROGRESS.md", "PINS.md", "SOURCES.md", "GLOSSARY.md", "PROVENANCE.md", "CHANGELOG_PLAN.md"]
+generated   = ["TRACEABILITY.md", "CURRICULUM_INDEX.md", "TRACKER.md", "WIKI.md"]
