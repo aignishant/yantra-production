@@ -36,6 +36,7 @@ does not — without a human deciding which of those two happened.**
 | What each day teaches | [`docs/WIKI.md`](docs/WIKI.md) |
 | Where a concept is taught | [`docs/CURRICULUM_INDEX.md`](docs/CURRICULUM_INDEX.md) |
 | What is written and what is not | [`docs/TRACKER.md`](docs/TRACKER.md) |
+| **What to run without a GPU, and how to switch later** | [`docs/HARDWARE.md`](docs/HARDWARE.md) |
 | Why something is the way it is | [`docs/adr/`](docs/adr/) |
 | Which source module a day came from | [`docs/01_ROADMAP_COVERAGE.md`](docs/01_ROADMAP_COVERAGE.md) |
 
@@ -68,9 +69,13 @@ Two things are worth correcting now, because both are expensive to change once f
 
 1. **The day map** (plan §17). 229 days at four sittings a week runs past a year. Plan §22.4 lists
    the scope levers in the order they cost least.
-2. **The budget and infrastructure policy** (plan §4). It assumes a rentable GPU from phase 6 and
-   an AWS account from phase 8. If your constraint is free tiers only, say so before day 0 — it
-   changes base-model choices in phases 6–9 and the deployment target in phases 8, 16 and 21.
+2. **The budget and infrastructure policy** (plan §4). The *hardware* half is now settled: plan
+   §4.1 makes a laptop with no GPU the default and puts the accelerated path behind one flag
+   (`YANTRA_PROFILE`, see [`docs/HARDWARE.md`](docs/HARDWARE.md) and
+   [`ADR-0005`](docs/adr/ADR-0005-the-hardware-profile.md)). The *money* half is still open: §4
+   assumes a rentable GPU from phase 6 and an AWS account from phase 8. If your constraint is free
+   tiers only, say so before day 0 — it changes base-model choices in phases 6–9 and the deployment
+   target in phases 8, 16 and 21.
 
 ## Requirements
 

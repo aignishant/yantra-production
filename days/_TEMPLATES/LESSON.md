@@ -83,7 +83,22 @@ commit: ""               # filled in by the ledger row, after the commit exists
 
 ## §6 Budget
 
-<!-- What this day spends against the constraints in the plan's §4. `0` is an answer; state it. -->
+<!-- What this day spends against the constraints in the plan's §4. `0` is an answer; state it.
+
+     If this day touches an accelerator, plan §4.1 rule 4 requires BOTH rows below, and neither is
+     optional. The laptop row names the base model and the scale it runs at; the GPU row names the
+     accelerator and roughly what it costs. If the day has no honest laptop path, say that here in
+     a `TODO(me)` rather than writing a laptop row that is really a stub (rule 6).
+
+     Every number this day measures carries the profile that produced it (rule 5) —
+     `uv run python -m yantra.hardware` prints the line to paste. -->
+
+| Resource | Today |
+| --- | --- |
+| `YANTRA_PROFILE=laptop` | <what runs, at what scale, and what is lost in capability> |
+| `YANTRA_PROFILE=gpu` | <which accelerator, roughly for what, roughly what it costs> |
+| Model calls | <per provider, RPM/RPD — `0` is an answer> |
+| Money | <`0` is an answer> |
 
 ## §7 Traps
 

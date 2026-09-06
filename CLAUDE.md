@@ -171,6 +171,34 @@ with no credentials. A gate that only passes on a rented GPU is a gate nobody ru
 
 ---
 
+## The hardware profile (plan §4.1, ADR-0005)
+
+**This curriculum's default machine is a laptop with no GPU.** The accelerated path is the
+documented alternative, and one variable selects between them:
+
+```
+YANTRA_PROFILE=laptop | gpu | auto      # in .env; laptop is the default, auto is opt-in
+```
+
+Every day that touches an accelerator imports `resolve()` from `yantra/hardware.py`. **A day that
+calls `torch.cuda.is_available()` itself has opted out of the flag** and will break the next time
+the machine changes. `docs/HARDWARE.md` is the operating manual.
+
+Three rules, binding on every day:
+
+- **Both budget rows, always.** A day that touches an accelerator states what the laptop path costs
+  in *capability* and what the GPU path costs in *money*. Neither is optional.
+- **Every measured number carries its profile**, in the document and in the `PROGRESS.md` row.
+  `uv run python -m yantra.hardware` prints the line to paste. A number without a profile is not a
+  number.
+- **The laptop path is a smaller true version, never a mock.** Same mechanism, same code path, same
+  check going red — fewer steps, smaller base, shorter sequence. A day with no honest laptop path
+  says so in a `TODO(me)`; it does not invent one.
+
+`resolve()` **raises** under `YANTRA_PROFILE=gpu` on a torch build without CUDA rather than falling
+back to CPU. Do not soften that into a warning — the silent fallback is how a laptop number gets
+recorded as a GPU number, which is the whole failure the profile exists to prevent.
+
 ## Budget rules (plan §4)
 
 - **Every hub declares a budget** in its §6: model calls per provider in RPM/RPD, GPU

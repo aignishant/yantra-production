@@ -85,8 +85,17 @@ loop can be told which half of this paper survived and which half the field corr
 ## §3 Setup
 
 ```bash
-# CPU-only torch — no GPU is needed today or for the next fourteen days
+# the profile decides which wheel (plan §4.1). Today's default is laptop, and it is set in .env.
+uv run python -m yantra.hardware        # must print device=cpu before you install anything
+
+# YANTRA_PROFILE=laptop — CPU-only torch. No GPU is needed today or for the next fourteen days.
 uv add torch --index-url https://download.pytorch.org/whl/cpu
+
+# YANTRA_PROFILE=gpu — the CUDA wheel instead. TODO(me): the index URL depends on your driver and
+# is not written here on purpose (plan §5 rule 1). Read it off
+# https://pytorch.org/get-started/locally/ on the day you switch, and add the dated PINS.md row.
+#   uv add torch --index-url <the CUDA index for your driver>
+
 uv add transformers
 
 # verify, and record both versions in docs/PINS.md
@@ -127,12 +136,15 @@ regression suite running against a non-deterministic decoder reports noise as re
 
 | Resource | Today |
 | --- | --- |
+| `YANTRA_PROFILE=laptop` | **The whole day, at full scale.** `distilgpt2` is 82M parameters; a forward pass and a fifty-token greedy loop are a CPU's normal work. Nothing is lost in capability today — this is one of the days where the two paths produce the same answer, and only the wall-clock differs. |
+| `YANTRA_PROFILE=gpu` | **Not worth it.** The model is smaller than the transfer overhead. If you have one anyway, the day runs identically; the ledger row still says which profile produced any number you write down. |
 | Model calls to a provider | **0.** Everything runs locally; no API key is needed and nothing is rate-limited. |
-| GPU hours | **0.** `distilgpt2` runs on a laptop CPU. |
+| GPU hours | **0.** |
 | Money | **0.** |
 | Downloads | torch CPU wheel (~200MB), transformers, and `distilgpt2` (~350MB), each once. |
 
-The first day that needs a GPU is day 15. Plan §4 has the full table.
+The first day where the profile changes what you can actually do is day 15, the first real
+fine-tune. Plan §4 has the full table and §4.1 the profile contract.
 
 ## §7 Traps
 

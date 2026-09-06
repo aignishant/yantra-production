@@ -124,7 +124,7 @@ this box exists in every checklist for the next 228 days.
 | Resource | Today |
 | --- | --- |
 | Model calls | **0.** No provider is contacted, no key is needed, nothing is rate-limited. |
-| GPU hours | **0.** Everything today runs on a laptop. |
+| GPU hours | **0.** Everything today runs on a laptop — and from today, so does everything else by default. `.env.example` carries `YANTRA_PROFILE=laptop`, the one flag that moves this curriculum onto an accelerator later (plan §4.1, [`docs/HARDWARE.md`](../../docs/HARDWARE.md)). |
 | Money | **0.** |
 | Downloads | The Python 3.12 toolchain and four small packages. Tens of megabytes. |
 

@@ -34,6 +34,7 @@ No box here carries a time estimate, and none ever will.
 
 - [ ] Every term defined for the first time today has a row in `docs/GLOSSARY.md`
 - [ ] Every version or limit observed today has a dated row in `docs/PINS.md`
+- [ ] Every number measured today carries the profile that produced it (`uv run python -m yantra.hardware`) — plan §4.1 rule 5
 - [ ] Every source cited today has a dated row in `docs/SOURCES.md`
 - [ ] The `docs/PROGRESS.md` row is pasted from the hub's §11
 - [ ] Committed with the message from the hub's §11

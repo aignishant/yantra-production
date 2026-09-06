@@ -163,6 +163,14 @@ thirteen elements of §20.5, in order — and note two that are specific to this
 - **§6 Budget** — model calls per provider in RPM/RPD, GPU hours, and money. `0` is an
   answer; state it. If the day rents a GPU, say which and roughly for what, and what the cheaper
   path costs in capability.
+  **If the day touches an accelerator, the budget carries BOTH profiles** (plan §4.1 rule 4): a
+  `YANTRA_PROFILE=laptop` row naming the base model and the scale it runs at and what is lost in
+  capability, and a `YANTRA_PROFILE=gpu` row naming the accelerator and roughly what it costs.
+  The laptop path is a smaller true version of the day — same mechanism, same code path, same
+  check going red — never a mock (rule 6). A day with no honest laptop path says so in a
+  `TODO(me)` instead of inventing one. Every measured number carries its profile (rule 5); the
+  day imports `resolve()` from `yantra/hardware.py` rather than calling
+  `torch.cuda.is_available()` itself. See `docs/HARDWARE.md`.
 - **§11 Ledger & commit** — the verbatim rows the learner pastes: `PROGRESS.md`, plus any `PINS.md`,
   `SOURCES.md`, `GLOSSARY.md` and `PROVENANCE.md` rows, and the commit message
   `day NNN: <title> — closes <IDs>`. **The hub ends with these.** Ritual is the point: the
