@@ -30,3 +30,7 @@ select = ["E", "F", "I", "UP", "B"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+markers = [
+  "gpu: requires a GPU",
+  "live: requires credentials or a live service",
+]

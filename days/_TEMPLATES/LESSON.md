@@ -5,7 +5,7 @@ phase_name: "<the phase theme, from the plan's §7>"
 title: "<the day's subject as a phrase — this is where the folder slug comes from>"
 ids: [XX-00, XX-01]
 kind: concept            # concept | mechanism | setup | gate
-plan_version: "v1.0.0"
+plan_version: "v1.1.0"
 parts: 0                 # must equal the number of documents in parts/
 generated: "YYYY-MM-DD"
 status: draft            # draft | written | complete

@@ -5,7 +5,7 @@ phase_name: "Foundry"
 title: "Toolchain and skeleton"
 ids: []
 kind: setup
-plan_version: "v1.0.0"
+plan_version: "v1.1.0"
 parts: 6
 generated: "2026-09-07"
 status: written
@@ -71,15 +71,15 @@ report that nothing is wrong.
 
 ## §3 Setup
 
-Versions verified on 2026-09-07; every one of them has a row in `docs/PINS.md`.
+Versions verified on 2026-09-07 on Windows; every one of them has a row in `docs/PINS.md`.
 
 ```bash
 # 1. the environment's owner — check it is present and note the version
-uv --version                      # expect 0.11.7 or newer
+uv --version                      # observed 0.12.3
 
 # 2. the interpreter uv will install and manage for this project
 uv python install 3.12
-python3 --version                 # the SYSTEM python — expect 3.12.3 here; not the one we use
+python --version                  # the SYSTEM python — observed 3.12.10; not the one we use
 
 # 3. the repository, in the order that matters (part 2.1)
 git init
@@ -88,10 +88,10 @@ git add .gitignore && git commit -m "gitignore before the first secret exists"
 
 # 4. the project, and the quality tools
 uv init --name yantra
-uv add --dev ruff pytest          # expect ruff==0.16.6 or newer
+uv add --dev ruff pytest          # observed ruff==0.16.6
 
 # 5. prove nothing is activated
-uv run python -c "import sys; print(sys.executable)"   # must end in .venv/bin/python3
+uv run python -c "import sys; print(sys.executable)"   # must end in .venv\\Scripts\\python.exe on Windows
 
 # 6. the repository's own wiring
 python granth.py doctor
@@ -149,9 +149,9 @@ The first day that spends anything is day 15, the first real fine-tune. Plan §4
 
 | What | Where it was checked | Date | What it confirmed |
 | --- | --- | --- | --- |
-| `uv` version | `uv --version` on this machine | 2026-09-07 | `uv 0.11.7 (x86_64-unknown-linux-gnu)` |
-| System Python | `python3 --version` | 2026-09-07 | `Python 3.12.3` |
-| `ruff` version | `uv add ruff` resolution output | 2026-09-07 | `ruff==0.16.6` |
+| `uv` version | `uv --version` on this machine | 2026-09-07 | `uv 0.12.3 (x86_64-pc-windows-msvc)` |
+| System Python | `python --version` | 2026-09-07 | `Python 3.12.10` |
+| `ruff` version | `uv run ruff --version` | 2026-09-07 | `ruff 0.16.6` |
 | PEP 668 refusal text | `pip install requests` against the system interpreter | 2026-09-07 | The `externally-managed-environment` error quoted verbatim in part 1.1 |
 | Tracked-file ignore behaviour | `git check-ignore -v .env` on a tracked file | 2026-09-07 | Exits 1 and prints nothing — quoted in parts 2.1 and 2.2 |
 | Repository wiring | `python granth.py doctor` | 2026-09-07 | 229 days, 400 IDs, each assigned to exactly one day |

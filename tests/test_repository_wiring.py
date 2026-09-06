@@ -5,6 +5,7 @@ map is intact, and no secret has been committed. Break either on purpose and wat
 a check nobody has seen fail has verified nothing.
 """
 
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -18,6 +19,11 @@ def test_plan_carries_its_markers() -> None:
 
 
 def test_no_env_file_is_tracked() -> None:
-    assert not (ROOT / ".env").exists() or ".env" in (
-        ROOT / ".gitignore"
-    ).read_text(encoding="utf-8")
+    result = subprocess.run(
+        ["git", "ls-files", "--error-unmatch", ".env"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode != 0, result.stdout

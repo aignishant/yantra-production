@@ -8,7 +8,7 @@
 name          = "yantra"
 slug          = "yantra"
 plan          = "docs/00_MASTER_PLAN.md"
-plan_version  = "v1.0.0"
+plan_version  = "v1.1.0"
 day_skill     = "day-yantra"
 driver        = "python granth.py"
 day_padding   = 3          # this plan runs to 228
@@ -31,7 +31,7 @@ min_level_climb        = true   # a day must climb foundation -> working -> prod
 [toolchain]
 lint         = "uv run ruff check ."
 format_check = "uv run ruff format --check ."
-test         = "uv run python -m pytest -q -m 'not gpu and not live'"
+test         = "uv run python -m pytest -q -m \"not gpu and not live\""
 
 [ledgers]
 append_only = ["PROGRESS.md", "PINS.md", "SOURCES.md", "GLOSSARY.md", "PROVENANCE.md", "CHANGELOG_PLAN.md"]

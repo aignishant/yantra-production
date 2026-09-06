@@ -107,20 +107,24 @@ lab/sources/few-shot/
 """The paper's claim and nothing else.
 Ablation: SHOTS=0 turns the idea off. SHOTS=4 turns it on. Nothing else differs.
 """
+
 import os, torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-SHOTS = int(os.environ.get("SHOTS", "4"))          # the ablation switch
+SHOTS = int(os.environ.get("SHOTS", "4"))  # the ablation switch
 
 tok = AutoTokenizer.from_pretrained("distilgpt2")
-model = AutoModelForCausalLM.from_pretrained("distilgpt2"); model.eval()
+model = AutoModelForCausalLM.from_pretrained("distilgpt2")
+model.eval()
 
 EXAMPLES = [("dog", "bark"), ("cat", "meow"), ("cow", "moo"), ("duck", "quack")]
-TESTS    = [("sheep", " baa"), ("pig", " oink"), ("lion", " roar"), ("horse", " neigh")]
+TESTS = [("sheep", " baa"), ("pig", " oink"), ("lion", " roar"), ("horse", " neigh")]
+
 
 def prompt_for(word):
     shots = "".join(f"{a} => {b}\n" for a, b in EXAMPLES[:SHOTS])
     return f"{shots}{word} =>"
+
 
 total = 0.0
 print(f"SHOTS={SHOTS}")
@@ -130,8 +134,8 @@ for word, answer in TESTS:
         probs = torch.softmax(model(ids).logits[0, -1], dim=-1)
     prob = probs[tok(answer).input_ids[0]].item()
     total += prob
-    print(f"  P({answer!r} | prompt) = {prob*100:7.4f}%")
-print(f"mean = {total/len(TESTS)*100:.4f}%")
+    print(f"  P({answer!r} | prompt) = {prob * 100:7.4f}%")
+print(f"mean = {total / len(TESTS) * 100:.4f}%")
 ```
 
 **Line by line:**

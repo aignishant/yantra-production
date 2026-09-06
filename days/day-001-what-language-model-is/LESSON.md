@@ -5,7 +5,7 @@ phase_name: "The transformer, taken apart"
 title: "What a language model actually is"
 ids: [TF-01, TF-02]
 kind: mechanism
-plan_version: "v1.0.0"
+plan_version: "v1.1.0"
 parts: 7
 generated: "2026-09-07"
 status: written

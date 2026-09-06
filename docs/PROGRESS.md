@@ -8,4 +8,5 @@ and readers can tell. The `Notes` column is where a day that went wrong says so.
 
 | Day | Title | IDs closed | Date | Checks | Notes |
 | --- | --- | --- | --- | --- | --- |
+| 0 | Toolchain and skeleton | — | 2026-09-07 | green | Setup day; closes no IDs by design (ADR-0004). |
 | — | *no days completed yet* | — | — | — | Plan v1.0.0 accepted; day map not yet corrected. See §17. |

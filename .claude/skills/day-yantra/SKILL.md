@@ -4,7 +4,7 @@ description: Generate the hub, the parts/ sub-documents, any source parts, the l
 argument-hint: [day-number]
 ---
 
-# Generate Day $ARGUMENTS of the Yantra plan (v1.0.0 — hub + `parts/` + `sources/`)
+# Generate Day $ARGUMENTS of the Yantra plan (v1.1.0 — hub + `parts/` + `sources/`)
 
 > **Read `docs/00_MASTER_PLAN.md` §20 before writing a single line.** It is the depth contract this
 > skill implements. **This skill is the procedure; §20 is the standard.** Where they appear to

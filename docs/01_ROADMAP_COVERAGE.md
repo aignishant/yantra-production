@@ -1,6 +1,6 @@
 ---
 document: roadmap-coverage
-plan_version: "v1.0.0"
+plan_version: "v1.1.0"
 amended: "TODO(me)"
 ---
 

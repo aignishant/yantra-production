@@ -1,6 +1,6 @@
 ---
 plan: yantra
-version: "v1.0.0"
+version: "v1.1.0"
 supersedes: none
 source_roadmap: "Production LLM Engineering — RAG, Agents & Fine-Tuning V1.0"
 tracks: 9
@@ -11,7 +11,7 @@ doc_architecture: "hub + parts/ + sources/ (see §20)"
 generated: "TODO(me): date this file the day you accept it"
 ---
 
-# 🔧 MASTER PLAN v1.0.0 — Project **Yantra**
+# 🔧 MASTER PLAN v1.1.0 — Project **Yantra**
 
 ## Production LLM Engineering — **fine-tuning · retrieval · agents · LLMOps**
 
@@ -32,7 +32,7 @@ generated: "TODO(me): date this file the day you accept it"
 | 1  | 🎬 The vision — one system, nine threads |
 | 2  | 🧭 Core principles — rules we never break |
 | 3  | 🏗️ The product — what Yantra actually is |
-| 4  | 💸 Budget & infrastructure policy |
+| 4  | 💸 Budget & infrastructure policy — **§4.1 is the hardware profile** |
 | 5  | ⚙️ Baseline & the verification rules |
 | 6  | 🧶 The nine tracks & the ID scheme |
 | 7–15 | The tracks, one section each |
@@ -159,8 +159,8 @@ halfway through a training run.
 
 | Resource | Where it first becomes non-optional | Substitution if you do not have it |
 | --- | --- | --- |
-| A GPU with ≥16 GB VRAM | Phase 2 (Day 15, first real fine-tune) | Colab / Kaggle free tiers carry Phases 1–4 comfortably; rent by the hour from Phase 6 |
-| A GPU with ≥24 GB VRAM | Phase 6 (Day 49, QLoRA on an 8B base) | Rent hourly. Unsloth (FT-67) exists precisely to lower this floor — the day teaches the number, not the vibe |
+| A GPU with ≥16 GB VRAM | Phase 2 (Day 15, first real fine-tune) | `YANTRA_PROFILE=laptop` runs the day at CPU scale (§4.1). Colab / Kaggle free tiers carry Phases 1–4 comfortably; rent by the hour from Phase 6 |
+| A GPU with ≥24 GB VRAM | Phase 6 (Day 49, QLoRA on an 8B base) | **No honest laptop path** (§4.1). Rent hourly. Unsloth (FT-67) exists precisely to lower this floor — the day teaches the number, not the vibe |
 | An AWS account | Phase 8 (Day 77, the first SageMaker endpoint) | Phases 1–7 need none. From Phase 8, keep a spend alarm before the first deploy, not after |
 | A managed vector DB | Phase 16 (Day 149, Qdrant) | Qdrant, Elasticsearch and Neo4j all run in Docker locally; the plan assumes local until the project phase |
 | Paid frontier API access | Phase 5 (Day 44, judge-scored synthetic data) | Free tiers with rate-limit handling. Any day that calls a model states its request budget in the hub's §6 |
@@ -175,9 +175,51 @@ halfway through a training run.
    `retry-after` and backoff from the first day it makes a call. This is not defensive
    programming; it is the same code the production services will need.
 
-> ⚠️ **Correct this section before Day 0.** If your constraint is "free tiers only", say so now —
-> it changes base model choices in Phases 6–9 and the deployment target in Phases 8, 16 and 21,
-> and changing them later means amending four phase gates.
+### 4.1 The hardware profile — the correction this section asked for
+
+v1.0.0 closed this section with a warning to correct it before Day 0. It has been corrected, and
+[`ADR-0005`](adr/ADR-0005-the-hardware-profile.md) records why. **The default hardware assumption
+of this curriculum is a laptop with no GPU.** The accelerated path is the documented alternative,
+not the baseline.
+
+One environment variable selects between them, read by exactly one module, `yantra/hardware.py`:
+
+| `YANTRA_PROFILE` | What it means | When you use it |
+| --- | --- | --- |
+| `laptop` | **The default.** No accelerator. Smaller base models, shorter sequences, fewer steps — the same mechanism at a scale a CPU finishes | Every day, unless you have rented or bought something |
+| `gpu` | A resident or rented accelerator, CUDA available | The day you have one, and every day after |
+| `auto` | Detect at import | Opt-in only, on a rented box that may be either |
+
+`auto` is never the default, because a profile resolved by detection cannot be read off the command
+line, and a measurement whose profile cannot be read is a measurement that cannot be attributed.
+
+**Switching is one variable and one re-sync.** A CPU-only wheel does not become a CUDA wheel by
+setting an environment variable, so the install moves too — and `yantra/hardware.py` **refuses to
+run** under `YANTRA_PROFILE=gpu` on a torch build with no CUDA rather than falling back to CPU. The
+refusal is the load-bearing half: a silent fallback is how a laptop number gets recorded as a GPU
+number. [`docs/HARDWARE.md`](HARDWARE.md) carries the switch procedure and the failure text.
+
+**Three further rules follow, binding on every day from 1 to 228:**
+
+4. **A day that touches an accelerator states both paths in its §6 budget** — what the laptop path
+   costs in *capability*, and what the accelerated path costs in *money*. Neither line is optional
+   and neither is a range: the laptop path names the base model and the scale it runs at.
+5. **Every measured number carries the profile that produced it**, in the document and in the
+   `PROGRESS.md` row. A number without a profile is not a number (Principle 8).
+6. **The laptop path is a smaller true version of the day, never a mocked one.** Same mechanism,
+   same code path, same check going red — fewer steps, a smaller base, a shorter sequence. A day
+   whose laptop path skips the mechanism does not have a laptop path; it has a stub, and the honest
+   form of that is a `TODO(me)` in the hub saying the day needs an accelerator.
+
+**The days that have no honest laptop path** say so in their hubs rather than pretend: Day 49
+(QLoRA on an 8B base), Day 77 (the first managed endpoint) and Day 149 (the managed vector store).
+Their parts are still readable and their mechanisms are still hand-rolled at laptop scale; it is the
+day's headline measurement that waits for the hardware.
+
+> ⚠️ **Still open:** the *free-tier* half of this section. §4's table assumes hourly GPU rental from
+> Phase 6 and an AWS account from Phase 8. If those are also out of reach, that is a second
+> amendment — it changes base-model choices in Phases 6–9 and the deployment target in Phases 8, 16
+> and 21, and changing them later means amending four phase gates.
 
 ---
 

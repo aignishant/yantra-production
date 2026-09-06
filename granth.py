@@ -18,14 +18,10 @@ import re
 import shutil
 import subprocess
 import sys
+import tomllib
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
-
-if sys.version_info < (3, 11):  # pragma: no cover
-    sys.exit("granth: needs Python 3.11 or newer (tomllib is stdlib from 3.11).")
-
-import tomllib
 
 ROOT = Path(__file__).resolve().parent
 
@@ -76,22 +72,47 @@ ORDER_EXEMPT = {"line by line"}
 CONDITIONAL = {"the source behind it", "line by line", "the source in one demo"}
 
 HUB_SECTIONS = [
-    "Where we are", "The map", "Setup", "Build brief",
-    "The check that must be able to fail", "Budget", "Traps", "Verify before you build",
-    "Say it out loud", "Done when", "Ledger & commit",
+    "Where we are",
+    "The map",
+    "Setup",
+    "Build brief",
+    "The check that must be able to fail",
+    "Budget",
+    "Traps",
+    "Verify before you build",
+    "Say it out loud",
+    "Done when",
+    "Ledger & commit",
 ]
 LEVELS = ["foundation", "working", "production"]
-NO_WALKTHROUGH_LANGS = ["", "text", "console", "output", "traceback", "mermaid", "diff",
-                        "json", "toml", "yaml", "ini", "csv"]
+NO_WALKTHROUGH_LANGS = [
+    "",
+    "text",
+    "console",
+    "output",
+    "traceback",
+    "mermaid",
+    "diff",
+    "json",
+    "toml",
+    "yaml",
+    "ini",
+    "csv",
+]
 EXEMPT_HEADINGS = r"when it breaks|check yourself|verify|budget|ledger|the map|setup"
 
 # A day is a unit of subject, not of time. A duration field silently authorises the worst edit in
 # technical writing: cutting an explanation because the day is running long.
 TIME_BANS = [
-    (r"^\s*(reading_minutes|duration|time_estimate|minutes|est_time|estimated_hours"
-     r"|estimated hours|effort|pace)\s*:", "a duration field in frontmatter"),
-    (r"\b\d+\s*[-–]?\s*\d*\s*(minutes?|mins?|hours?|hrs?)\b(?!\s*(of |the |per ))",
-     "a time estimate in the prose"),
+    (
+        r"^\s*(reading_minutes|duration|time_estimate|minutes|est_time|estimated_hours"
+        r"|estimated hours|effort|pace)\s*:",
+        "a duration field in frontmatter",
+    ),
+    (
+        r"\b\d+\s*[-–]?\s*\d*\s*(minutes?|mins?|hours?|hrs?)\b(?!\s*(of |the |per ))",
+        "a time estimate in the prose",
+    ),
     (r"\*\*(Time|Duration|Estimated hours):?\*\*", "a bolded time line"),
     (r"should take (about |around |roughly )?\w+", "a 'should take ...' pace"),
 ]
@@ -109,7 +130,9 @@ SOURCE_ID_RE = re.compile(
     r"|doi:10\.\d{4,9}/[^\s)\]|,;\"'`>*<]+"
     r"|RFC\s?\d{3,5}"
     r"|ISO[/ ]?(?:IEC[/ ]?)?\d{3,5}(?:-\d+)?(?::\d{4})?"
-    r"|spec:[a-z0-9][a-z0-9.\-/]*", re.I)
+    r"|spec:[a-z0-9][a-z0-9.\-/]*",
+    re.I,
+)
 # Only the two colon-prefixed forms: `spec:` and `iso:` collide with ordinary English, and these
 # are the forms where a malformed identifier is both likely and silent.
 SOURCE_ID_LOOSE_RE = re.compile(r"\b(?:arxiv|doi)\s*:\s*\S+", re.I)
@@ -176,9 +199,17 @@ def load_config() -> Config:
     for key, default in (("plan", "docs/00_MASTER_PLAN.md"), ("docs", "docs"), ("days", "days")):
         value = Path(paths.get(key, default))
         setattr(cfg, key, value if value.is_absolute() else ROOT / value)
-    for key in ("sources_dir", "parts_dir", "levels", "part_sections", "hub_sections",
-                "no_walkthrough_langs", "exempt_headings", "require_failure_part",
-                "require_sources"):
+    for key in (
+        "sources_dir",
+        "parts_dir",
+        "levels",
+        "part_sections",
+        "hub_sections",
+        "no_walkthrough_langs",
+        "exempt_headings",
+        "require_failure_part",
+        "require_sources",
+    ):
         setattr(cfg, key, c.get(key, getattr(cfg, key)))
     cfg.section_patterns = {**cfg.section_patterns, **c.get("section_patterns", {})}
     for key in ("lint", "format_check", "test"):
@@ -190,6 +221,7 @@ def load_config() -> Config:
 # Reading the plan and the days
 # =============================================================================================
 
+
 def marked_block(text: str, marker: str) -> str:
     """Text between `<!-- granth:<marker>:start -->` and its `:end`.
 
@@ -197,8 +229,9 @@ def marked_block(text: str, marker: str) -> str:
     reworded by accident.
     """
     name = re.escape(marker)
-    hit = re.search(rf"<!--\s*granth:{name}:start\s*-->(.*?)<!--\s*granth:{name}:end\s*-->",
-                    text, re.S)
+    hit = re.search(
+        rf"<!--\s*granth:{name}:start\s*-->(.*?)<!--\s*granth:{name}:end\s*-->", text, re.S
+    )
     return hit.group(1) if hit else ""
 
 
@@ -263,14 +296,17 @@ def read_plan(cfg: Config) -> str:
 def plan_days(cfg: Config) -> dict[int, PlanDay]:
     block = marked_block(read_plan(cfg), "day-map")
     if not block:
-        sys.exit("granth: the plan carries no <!-- granth:day-map:start --> block.\n"
-                 "        Every day document is checked against it — add the markers and re-run.")
+        sys.exit(
+            "granth: the plan carries no <!-- granth:day-map:start --> block.\n"
+            "        Every day document is checked against it — add the markers and re-run."
+        )
     days: dict[int, PlanDay] = {}
     for cells in table_rows(block):
         if len(cells) < 2 or not re.fullmatch(r"\d{1,3}", cells[0]):
             continue
-        days[int(cells[0])] = PlanDay(int(cells[0]), cells[1],
-                                      ids_in(cells[2]) if len(cells) > 2 else [])
+        days[int(cells[0])] = PlanDay(
+            int(cells[0]), cells[1], ids_in(cells[2]) if len(cells) > 2 else []
+        )
     return days
 
 
@@ -294,16 +330,28 @@ def plan_phases(cfg: Config) -> list[Phase]:
             continue
         span = re.sub(r"[`*]", "", cells[1]).strip()
         b = re.findall(r"\d+", span)
-        phases.append(Phase(re.sub(r"[`*]", "", cells[0]).strip(), span,
-                            cells[2] if len(cells) > 2 else "",
-                            cells[3] if len(cells) > 3 else "",
-                            int(b[0]) if b else None, int(b[-1]) if b else None))
+        phases.append(
+            Phase(
+                re.sub(r"[`*]", "", cells[0]).strip(),
+                span,
+                cells[2] if len(cells) > 2 else "",
+                cells[3] if len(cells) > 3 else "",
+                int(b[0]) if b else None,
+                int(b[-1]) if b else None,
+            )
+        )
     return phases
 
 
 def phase_of(day: int, phases: list[Phase]) -> Phase | None:
-    return next((p for p in phases
-                 if p.first is not None and p.last is not None and p.first <= day <= p.last), None)
+    return next(
+        (
+            p
+            for p in phases
+            if p.first is not None and p.last is not None and p.first <= day <= p.last
+        ),
+        None,
+    )
 
 
 def day_dirs(cfg: Config) -> dict[int, Path]:
@@ -360,7 +408,7 @@ def body(text: str) -> str:
     if not text.startswith("---"):
         return text
     end = text.find("\n---", 3)
-    return text if end == -1 else text[end + 4:]
+    return text if end == -1 else text[end + 4 :]
 
 
 def progress_days(cfg: Config) -> list[int]:
@@ -380,6 +428,7 @@ def progress_days(cfg: Config) -> list[int]:
 # =============================================================================================
 # The depth contract, checked by a machine
 # =============================================================================================
+
 
 @dataclass
 class Report:
@@ -454,7 +503,8 @@ def _fences(cfg: Config, text: str):
 
 def _needs_walkthrough(cfg: Config, lang: str, heading: str) -> bool:
     return lang not in cfg.no_walkthrough_langs and not re.search(
-        cfg.exempt_headings, heading, re.I)
+        cfg.exempt_headings, heading, re.I
+    )
 
 
 def unexplained_code_blocks(cfg: Config, text: str) -> list[int]:
@@ -497,8 +547,9 @@ def section_regex(cfg: Config, name: str) -> re.Pattern[str]:
     return re.compile(rf"^#{{2,4}}\s.*{pattern}", re.I | re.M)
 
 
-def check_sections(cfg: Config, content: str, meta: dict[str, str], where: str,
-                   report: Report, is_source: bool) -> None:
+def check_sections(
+    cfg: Config, content: str, meta: dict[str, str], where: str, report: Report, is_source: bool
+) -> None:
     """Required sections present, unconditional ones in the contract's order.
 
     Three are conditional — each required exactly when its trigger is present. No script can
@@ -519,16 +570,22 @@ def check_sections(cfg: Config, content: str, meta: dict[str, str], where: str,
                 report.fail(where, f"missing section '{name}'")
             continue
         if name == "the source behind it" and not required:
-            report.fail(where, "carries 'the source behind it' but declares no 'sources' — the "
-                               "section and the key are required exactly when the other is present")
+            report.fail(
+                where,
+                "carries 'the source behind it' but declares no 'sources' — the "
+                "section and the key are required exactly when the other is present",
+            )
         if name not in ORDER_EXEMPT:
             positions.append((hit.start(), name))
     found = {n for _, n in positions}
     ordered = [n for _, n in sorted(positions)]
     expected = [n for n in cfg.part_sections if n in found]
     if ordered != expected:
-        report.fail(where, "sections are out of order — the sequence is the pedagogy. "
-                           f"found {ordered}, expected {expected}")
+        report.fail(
+            where,
+            "sections are out of order — the sequence is the pedagogy. "
+            f"found {ordered}, expected {expected}",
+        )
     for token in malformed_source_ids(content):
         report.fail(where, f"{token!r} is citation-shaped but matches no accepted identifier form")
 
@@ -539,8 +596,11 @@ def check_citations(cfg: Config, meta: dict[str, str], where: str, report: Repor
     known = ledger_ids(cfg)
     for i in source_ids(meta.get("sources", "")) + source_ids(meta.get("source", "")):
         if i.lower() not in known:
-            report.fail(where, f"{i} is not in {cfg.rel(cfg.sources_ledger)} — look the record up "
-                               "live and add a dated row before citing it")
+            report.fail(
+                where,
+                f"{i} is not in {cfg.rel(cfg.sources_ledger)} — look the record up "
+                "live and add a dated row before citing it",
+            )
 
 
 @dataclass
@@ -559,9 +619,10 @@ def check_part(cfg: Config, path: Path, day: int, report: Report) -> PartResult 
     section, subtopic = int(name.group(1)), int(name.group(2))
     folder = SECTION_DIR_RE.match(path.parent.name)
     if not folder:
-        report.fail(cfg.rel(path.parent),
-                    "a section folder is NN-<kebab-slug> — a bare number is an address, "
-                    "not an answer")
+        report.fail(
+            cfg.rel(path.parent),
+            "a section folder is NN-<kebab-slug> — a bare number is an address, not an answer",
+        )
     elif int(folder.group(1)) != section:
         report.fail(where, f"sits in {path.parent.name} but its number says section {section}")
 
@@ -584,8 +645,7 @@ def check_part(cfg: Config, path: Path, day: int, report: Report) -> PartResult 
     check_no_clocks(cfg, text, where, report)
     for line in unexplained_code_blocks(cfg, content):
         report.fail(where, f"code block at line {line} has no 'Line by line' walkthrough after it")
-    return PartResult(section, subtopic,
-                      meta.get("failure", "").strip().lower() in {"true", "yes"})
+    return PartResult(section, subtopic, meta.get("failure", "").strip().lower() in {"true", "yes"})
 
 
 def check_source(cfg: Config, path: Path, day: int, report: Report) -> int | None:
@@ -608,8 +668,9 @@ def check_source(cfg: Config, path: Path, day: int, report: Report) -> int | Non
     if not declared:
         report.fail(where, "frontmatter 'source' must carry exactly one resolvable identifier")
     elif len(declared) > 1:
-        report.fail(where, f"'source' declares {len(declared)} identifiers — one document, "
-                           "one source")
+        report.fail(
+            where, f"'source' declares {len(declared)} identifiers — one document, one source"
+        )
     if meta.get("level") and meta["level"] not in cfg.levels:
         report.fail(where, f"level {meta['level']!r} is not one of {cfg.levels}")
 
@@ -637,8 +698,10 @@ def check_hub(cfg: Config, folder: Path, part_count: int, report: Report) -> Non
         if key not in meta:
             report.fail(where, f"frontmatter is missing '{key}'")
     if meta.get("plan_version") and meta["plan_version"] != cfg.plan_version:
-        report.fail(where, f"plan_version {meta['plan_version']!r} but granth.toml says "
-                           f"{cfg.plan_version!r}")
+        report.fail(
+            where,
+            f"plan_version {meta['plan_version']!r} but granth.toml says {cfg.plan_version!r}",
+        )
     if meta.get("parts", "").strip().isdigit() and int(meta["parts"]) != part_count:
         report.fail(where, f"frontmatter claims {meta['parts']} parts; {part_count} are on disk")
 
@@ -656,8 +719,9 @@ def check_hub(cfg: Config, folder: Path, part_count: int, report: Report) -> Non
         report.fail(where, "hub sections are out of order")
     # The hub orients and assembles; the parts teach.
     if re.search(r"\*\*Line by line:?\*\*", content, re.I):
-        report.fail(where, "the hub carries a 'Line by line' walkthrough — teaching belongs "
-                           "in a part")
+        report.fail(
+            where, "the hub carries a 'Line by line' walkthrough — teaching belongs in a part"
+        )
     check_no_clocks(cfg, text, where, report)
     if not (folder / "CHECKLIST.md").exists():
         report.fail(cfg.rel(folder), "no CHECKLIST.md — a day has no definition of done without it")
@@ -688,15 +752,19 @@ def check_day(cfg: Config, number: int) -> Report:
         return report
     where = cfg.rel(folder)
     if not DAY_DIR_RE.match(folder.name):
-        report.fail(where, "a day folder is day-NN-<kebab-slug> — a number alone is "
-                           "indistinguishable from every other day in a file tree or a git log")
+        report.fail(
+            where,
+            "a day folder is day-NN-<kebab-slug> — a number alone is "
+            "indistinguishable from every other day in a file tree or a git log",
+        )
     parts_dir = folder / cfg.parts_dir
     if not parts_dir.is_dir():
         report.fail(where, f"no {cfg.parts_dir}/ — a day without it is not written")
         return report
     for path in sorted(parts_dir.glob("*.md")):
-        report.fail(cfg.rel(path),
-                    f"loose in {cfg.parts_dir}/ — every part lives in its section folder")
+        report.fail(
+            cfg.rel(path), f"loose in {cfg.parts_dir}/ — every part lives in its section folder"
+        )
 
     numbers, failure_declared = [], False
     for path in sorted(parts_dir.rglob("*.md")):
@@ -721,8 +789,11 @@ def check_day(cfg: Config, number: int) -> Report:
         report.fail(where, f"source numbers {sorted(source_numbers)} — must run 01..NN, no gaps")
 
     if cfg.require_failure_part and not failure_declared:
-        report.fail(where, "no part declares 'failure: true' — every day carries at least one "
-                           "part whose subject is a deliberate failure")
+        report.fail(
+            where,
+            "no part declares 'failure: true' — every day carries at least one "
+            "part whose subject is a deliberate failure",
+        )
     check_hub(cfg, folder, report.parts, report)
 
     plan, hub = plan_days(cfg), folder / "LESSON.md"
@@ -750,14 +821,19 @@ def cmd_depth(cfg: Config, args: list[str]) -> int:
         return 0
 
     targets = [int(a) for a in args if a.isdigit()] or sorted(
-        n for n, f in day_dirs(cfg).items() if is_written(f, cfg))
+        n for n, f in day_dirs(cfg).items() if is_written(f, cfg)
+    )
     if not targets:
         print("granth: no written days yet — nothing to check.")
         return 0
     reports = [check_day(cfg, n) for n in targets]
     # A source is taught once in the whole curriculum, so this check spans days.
-    cross = [f"{i} is taught in {len(p)} places ({', '.join(p)}) — a source is taught once "
-             "and cited thereafter" for i, p in sorted(sources_taught(cfg).items()) if len(p) > 1]
+    cross = [
+        f"{i} is taught in {len(p)} places ({', '.join(p)}) — a source is taught once "
+        "and cited thereafter"
+        for i, p in sorted(sources_taught(cfg).items())
+        if len(p) > 1
+    ]
 
     failed = 0
     for r in reports:
@@ -789,7 +865,7 @@ BANNER = "> **Do not edit this file by hand.** It is regenerated by `{d} index`.
 
 def truncate(text: str, width: int) -> str:
     text = re.sub(r"\s+", " ", text).strip()
-    return text if len(text) <= width else text[:width - 1].rstrip() + "…"
+    return text if len(text) <= width else text[: width - 1].rstrip() + "…"
 
 
 def one_line_answer(text: str) -> str:
@@ -802,7 +878,7 @@ def one_line_answer(text: str) -> str:
     if not hit:
         return ""
     out: list[str] = []
-    for line in text[hit.end():].splitlines():
+    for line in text[hit.end() :].splitlines():
         s = line.strip().lstrip("> ").strip()
         if s.startswith("#") or s.startswith("```"):
             break
@@ -827,16 +903,24 @@ class DayFacts:
                 continue
             text = path.read_text(encoding="utf-8")
             meta = frontmatter(text) or {}
-            self.parts.append({"part": meta.get("part", ""),
-                               "title": meta.get("title", path.stem),
-                               "level": meta.get("level", ""),
-                               "answer": one_line_answer(body(text)),
-                               "path": f"{cfg.parts_dir}/{path.parent.name}/{path.name}"})
+            self.parts.append(
+                {
+                    "part": meta.get("part", ""),
+                    "title": meta.get("title", path.stem),
+                    "level": meta.get("level", ""),
+                    "answer": one_line_answer(body(text)),
+                    "path": f"{cfg.parts_dir}/{path.parent.name}/{path.name}",
+                }
+            )
         for path in source_files(folder, cfg):
             meta = frontmatter(path.read_text(encoding="utf-8")) or {}
-            self.sources.append({"source": meta.get("source", ""),
-                                 "title": meta.get("title", path.stem),
-                                 "path": f"{cfg.sources_dir}/{path.name}"})
+            self.sources.append(
+                {
+                    "source": meta.get("source", ""),
+                    "title": meta.get("title", path.stem),
+                    "path": f"{cfg.sources_dir}/{path.name}",
+                }
+            )
 
     @staticmethod
     def key(part: dict[str, str]) -> tuple[float, float]:
@@ -854,8 +938,11 @@ def build_all(cfg: Config) -> dict[Path, str]:
     read_plan(cfg)
     plan, phases, tracks = plan_days(cfg), plan_phases(cfg), plan_tracks(cfg)
     complete = set(progress_days(cfg))
-    facts = {n: DayFacts(cfg, n, f) for n, f in sorted(day_dirs(cfg).items())
-             if (f / "LESSON.md").exists()}
+    facts = {
+        n: DayFacts(cfg, n, f)
+        for n, f in sorted(day_dirs(cfg).items())
+        if (f / "LESSON.md").exists()
+    }
     today, d = date.today().isoformat(), cfg.driver
     head = [f"_Generated {today} by `granth.py`._", BANNER.format(d=d), ""]
 
@@ -869,41 +956,81 @@ def build_all(cfg: Config) -> dict[Path, str]:
             if number in complete and claimed:
                 mark, status = "[x]", f"closed day {number}"
             elif claimed:
-                mark, status, open_count = "[~]", f"written day {number}, not in the ledger", open_count + 1
+                mark, status, open_count = (
+                    "[~]",
+                    f"written day {number}, not in the ledger",
+                    open_count + 1,
+                )
             else:
                 mark, status, open_count = "[ ]", "open", open_count + 1
-            rows.append(f"| `{i}` | {track_of.get(i.split('-')[0], i.split('-')[0])} "
-                        f"| {ph.number if ph else '-'} | {number} | {mark} {status} |")
-    trace = "\n".join([f"# Traceability — {cfg.name}", "", *head,
-        "An ID counts as **closed** only when its day has a row in `docs/PROGRESS.md` *and* its",
-        "hub's frontmatter claims the ID. **An open ID from a completed phase is a bug**, not a",
-        "backlog item.", "", f"**{len(rows) - open_count} of {len(rows)} closed.**", "",
-        "| ID | Track | Phase | Planned day | Status |", "| --- | --- | --- | --- | --- |",
-        *rows, ""])
+            rows.append(
+                f"| `{i}` | {track_of.get(i.split('-')[0], i.split('-')[0])} "
+                f"| {ph.number if ph else '-'} | {number} | {mark} {status} |"
+            )
+    trace = "\n".join(
+        [
+            f"# Traceability — {cfg.name}",
+            "",
+            *head,
+            "An ID counts as **closed** only when its day has a row in `docs/PROGRESS.md` *and* "
+            "its hub's frontmatter claims the ID. **An open ID from a completed phase is a bug**, "
+            "not a",
+            "backlog item.",
+            "",
+            f"**{len(rows) - open_count} of {len(rows)} closed.**",
+            "",
+            "| ID | Track | Phase | Planned day | Status |",
+            "| --- | --- | --- | --- | --- |",
+            *rows,
+            "",
+        ]
+    )
 
     # --- curriculum index -------------------------------------------------------------------
     where = {i: (n, d_.title) for n, d_ in sorted(plan.items()) for i in d_.ids}
-    lines = [f"# Curriculum index — {cfg.name}", "", *head,
-             "The day map answers *what does day 43 teach?* This answers the reverse — *where do I",
-             "learn `XX-14`?* Every ID appears exactly once; a duplicate or a missing ID is a plan",
-             "bug.", ""]
+    lines = [
+        f"# Curriculum index — {cfg.name}",
+        "",
+        *head,
+        "The day map answers *what does day 43 teach?* This answers the reverse — *where do I",
+        "learn `XX-14`?* Every ID appears exactly once; a duplicate or a missing ID is a plan",
+        "bug.",
+        "",
+    ]
     seen = set()
     for track in tracks:
-        owned = sorted((i for i in where if i.startswith(f"{track.prefix}-")),
-                       key=lambda i: int(i.split("-")[1]))
+        owned = sorted(
+            (i for i in where if i.startswith(f"{track.prefix}-")),
+            key=lambda i: int(i.split("-")[1]),
+        )
         seen.update(owned)
-        lines += [f"## {track.name} (`{track.prefix}-`) — {len(owned) or 'no'} IDs", "",
-                  "| ID | Day | Day title |", "| --- | --- | --- |"]
-        lines += [f"| `{i}` | [{where[i][0]}]({day_link(cfg, where[i][0], facts)}) "
-                  f"| {truncate(where[i][1], 96)} |" for i in owned]
+        lines += [
+            f"## {track.name} (`{track.prefix}-`) — {len(owned) or 'no'} IDs",
+            "",
+            "| ID | Day | Day title |",
+            "| --- | --- | --- |",
+        ]
+        lines += [
+            f"| `{i}` | [{where[i][0]}]({day_link(cfg, where[i][0], facts)}) "
+            f"| {truncate(where[i][1], 96)} |"
+            for i in owned
+        ]
         lines.append("")
         if track.count is not None and owned and len(owned) != track.count:
-            lines += [f"> **Mismatch.** The plan's track table says {track.count} IDs; the day map "
-                      f"assigns {len(owned)}. Fix the plan, then regenerate.", ""]
+            lines += [
+                f"> **Mismatch.** The plan's track table says {track.count} IDs; the day map "
+                f"assigns {len(owned)}. Fix the plan, then regenerate.",
+                "",
+            ]
     if sorted(set(where) - seen):
-        lines += ["## Unclaimed prefixes", "",
-                  "Assigned in the day map, but the prefix has no row in the track table.", "",
-                  "| ID | Day |", "| --- | --- |"]
+        lines += [
+            "## Unclaimed prefixes",
+            "",
+            "Assigned in the day map, but the prefix has no row in the track table.",
+            "",
+            "| ID | Day |",
+            "| --- | --- |",
+        ]
         lines += [f"| `{i}` | {where[i][0]} |" for i in sorted(set(where) - seen)] + [""]
     index = "\n".join(lines)
 
@@ -911,81 +1038,146 @@ def build_all(cfg: Config) -> dict[Path, str]:
     written = [n for n, f in facts.items() if f.written]
     total = len(plan)
     pct = lambda c: f"{(100 * c / total):.1f}%" if total else "-"  # noqa: E731
-    lines = [f"# Tracker — {cfg.name}", "", *head,
-             "A day is **written** with a hub and a non-empty parts directory, and **complete**",
-             "only when it also has a ledger row. A thin day is visible from the parts column.", "",
-             "| | Count | Of plan |", "| --- | --- | --- |",
-             f"| Days in the plan | **{total}** | 100% |",
-             f"| Days written | **{len(written)}** | {pct(len(written))} |",
-             f"| Days complete | **{len(complete & set(plan))}** | {pct(len(complete & set(plan)))} |",
-             f"| Subtopic documents | **{sum(len(f.parts) for f in facts.values())}** | — |",
-             f"| Source documents | **{sum(len(f.sources) for f in facts.values())}** | — |", "",
-             "## Every day", "", "| Day | Phase | Title | Status | Parts | Sources | IDs |",
-             "| --- | --- | --- | --- | --- | --- | --- |"]
+    lines = [
+        f"# Tracker — {cfg.name}",
+        "",
+        *head,
+        "A day is **written** with a hub and a non-empty parts directory, and **complete**",
+        "only when it also has a ledger row. A thin day is visible from the parts column.",
+        "",
+        "| | Count | Of plan |",
+        "| --- | --- | --- |",
+        f"| Days in the plan | **{total}** | 100% |",
+        f"| Days written | **{len(written)}** | {pct(len(written))} |",
+        f"| Days complete | **{len(complete & set(plan))}** | {pct(len(complete & set(plan)))} |",
+        f"| Subtopic documents | **{sum(len(f.parts) for f in facts.values())}** | — |",
+        f"| Source documents | **{sum(len(f.sources) for f in facts.values())}** | — |",
+        "",
+        "## Every day",
+        "",
+        "| Day | Phase | Title | Status | Parts | Sources | IDs |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
+    ]
     for number, day in sorted(plan.items()):
         f_, ph = facts.get(number), phase_of(number, phases)
-        status = ("complete" if number in complete and f_ and f_.written
-                  else "written" if f_ and f_.written else "hub only" if f_ else "not started")
+        status = (
+            "complete"
+            if number in complete and f_ and f_.written
+            else "written"
+            if f_ and f_.written
+            else "hub only"
+            if f_
+            else "not started"
+        )
         title = truncate(f_.title if f_ and f_.title else day.title, 72)
         cell = f"[{title}]({day_link(cfg, number, facts)})" if f_ else title
-        lines.append(f"| {number} | {ph.number if ph else '-'} | {cell} | {status} "
-                     f"| {len(f_.parts) if f_ else 0} | {len(f_.sources) if f_ else 0} "
-                     f"| {', '.join(f'`{i}`' for i in day.ids) or '—'} |")
-    lines += ["", "## Phases", "", "| Phase | Days | Theme | Written | Complete | Gate |",
-              "| --- | --- | --- | --- | --- | --- |"]
+        lines.append(
+            f"| {number} | {ph.number if ph else '-'} | {cell} | {status} "
+            f"| {len(f_.parts) if f_ else 0} | {len(f_.sources) if f_ else 0} "
+            f"| {', '.join(f'`{i}`' for i in day.ids) or '—'} |"
+        )
+    lines += [
+        "",
+        "## Phases",
+        "",
+        "| Phase | Days | Theme | Written | Complete | Gate |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
     for ph in phases:
         if ph.first is None or ph.last is None:
             continue
         span = [n for n in plan if ph.first <= n <= ph.last]
-        lines.append(f"| {ph.number} | {ph.days} | {truncate(ph.theme, 48)} "
-                     f"| {len([n for n in span if n in facts and facts[n].written])}/{len(span)} "
-                     f"| {len([n for n in span if n in complete])}/{len(span)} "
-                     f"| {truncate(ph.gate, 56)} |")
+        lines.append(
+            f"| {ph.number} | {ph.days} | {truncate(ph.theme, 48)} "
+            f"| {len([n for n in span if n in facts and facts[n].written])}/{len(span)} "
+            f"| {len([n for n in span if n in complete])}/{len(span)} "
+            f"| {truncate(ph.gate, 56)} |"
+        )
     tracker = "\n".join(lines + [""])
 
     # --- wiki -------------------------------------------------------------------------------
-    lines = [f"# {cfg.name} wiki — one row per day", "", *head,
-             "For a day's parts open `wiki/day-NN.md`; open the day folder itself only to write",
-             "it. Cross-day lookups live in `wiki/ENTITIES.md`.", "",
-             "| Day | Subject | IDs closed | Parts | Sources |", "| --- | --- | --- | --- | --- |"]
+    lines = [
+        f"# {cfg.name} wiki — one row per day",
+        "",
+        *head,
+        "For a day's parts open `wiki/day-NN.md`; open the day folder itself only to write",
+        "it. Cross-day lookups live in `wiki/ENTITIES.md`.",
+        "",
+        "| Day | Subject | IDs closed | Parts | Sources |",
+        "| --- | --- | --- | --- | --- |",
+    ]
     for number, f_ in sorted(facts.items()):
         srcs = ", ".join(s["source"] for s in f_.sources if s["source"]) or "—"
-        lines.append(f"| [{number:02d}](wiki/day-{number:02d}.md) | {truncate(f_.title, 84)} "
-                     f"| {', '.join(f_.ids) or '—'} | {len(f_.parts)} | {srcs} |")
+        lines.append(
+            f"| [{number:02d}](wiki/day-{number:02d}.md) | {truncate(f_.title, 84)} "
+            f"| {', '.join(f_.ids) or '—'} | {len(f_.parts)} | {srcs} |"
+        )
     wiki = "\n".join(lines + [""])
 
-    out = {cfg.docs / "TRACEABILITY.md": trace, cfg.docs / "CURRICULUM_INDEX.md": index,
-           cfg.docs / "TRACKER.md": tracker, cfg.docs / "WIKI.md": wiki}
+    out = {
+        cfg.docs / "TRACEABILITY.md": trace,
+        cfg.docs / "CURRICULUM_INDEX.md": index,
+        cfg.docs / "TRACKER.md": tracker,
+        cfg.docs / "WIKI.md": wiki,
+    }
 
     # --- one page per day, plus the entity index ---------------------------------------------
     for number, f_ in facts.items():
         rel = f"../../days/{f_.folder.name}"
-        lines = [f"# Day {number:02d} — {f_.title}", "", *head,
-                 f"Hub: [`LESSON.md`]({rel}/LESSON.md) — IDs closed: {', '.join(f_.ids) or 'none'}",
-                 "", "| Part | Title | Level | One-line answer |", "| --- | --- | --- | --- |"]
+        lines = [
+            f"# Day {number:02d} — {f_.title}",
+            "",
+            *head,
+            f"Hub: [`LESSON.md`]({rel}/LESSON.md) — IDs closed: {', '.join(f_.ids) or 'none'}",
+            "",
+            "| Part | Title | Level | One-line answer |",
+            "| --- | --- | --- | --- |",
+        ]
         for p in sorted(f_.parts, key=DayFacts.key):
-            lines.append(f"| {p['part']} | [{truncate(p['title'], 60)}]({rel}/{p['path']}) "
-                         f"| {p['level']} | {truncate(p['answer'], 120)} |")
+            lines.append(
+                f"| {p['part']} | [{truncate(p['title'], 60)}]({rel}/{p['path']}) "
+                f"| {p['level']} | {truncate(p['answer'], 120)} |"
+            )
         if f_.sources:
-            lines += ["", "## Sources taught on this day", "", "| Identifier | Document |",
-                      "| --- | --- |"]
-            lines += [f"| {s['source']} | [{truncate(s['title'], 72)}]({rel}/{s['path']}) |"
-                      for s in f_.sources]
+            lines += [
+                "",
+                "## Sources taught on this day",
+                "",
+                "| Identifier | Document |",
+                "| --- | --- |",
+            ]
+            lines += [
+                f"| {s['source']} | [{truncate(s['title'], 72)}]({rel}/{s['path']}) |"
+                for s in f_.sources
+            ]
         out[cfg.docs / "wiki" / f"day-{number:02d}.md"] = "\n".join(lines + [""])
 
-    lines = [f"# Entities — {cfg.name}", "", *head,
-             "The answer to *which day taught X?* and *is this source already taught?* — the two",
-             "questions a long curriculum makes expensive to answer by reading.", "",
-             "## Sources", "", "| Identifier | Taught on | Document |", "| --- | --- | --- |"]
-    srows = sorted((s["source"], n, s["title"]) for n, f_ in facts.items()
-                   for s in f_.sources if s["source"])
-    lines += ([f"| {i} | [day {n}](day-{n:02d}.md) | {truncate(t, 72)} |" for i, n, t in srows]
-              or ["| — | — | no source documents yet |"])
+    lines = [
+        f"# Entities — {cfg.name}",
+        "",
+        *head,
+        "The answer to *which day taught X?* and *is this source already taught?* — the two",
+        "questions a long curriculum makes expensive to answer by reading.",
+        "",
+        "## Sources",
+        "",
+        "| Identifier | Taught on | Document |",
+        "| --- | --- | --- |",
+    ]
+    srows = sorted(
+        (s["source"], n, s["title"]) for n, f_ in facts.items() for s in f_.sources if s["source"]
+    )
+    lines += [f"| {i} | [day {n}](day-{n:02d}.md) | {truncate(t, 72)} |" for i, n, t in srows] or [
+        "| — | — | no source documents yet |"
+    ]
     lines += ["", "## Curriculum IDs", "", "| ID | Closed on |", "| --- | --- |"]
-    irows = sorted(((i, n) for n, f_ in facts.items() for i in f_.ids),
-                   key=lambda r: (r[0].split("-")[0], int(r[0].split("-")[1])))
-    lines += ([f"| `{i}` | [day {n}](day-{n:02d}.md) |" for i, n in irows]
-              or ["| — | no IDs claimed yet |"])
+    irows = sorted(
+        ((i, n) for n, f_ in facts.items() for i in f_.ids),
+        key=lambda r: (r[0].split("-")[0], int(r[0].split("-")[1])),
+    )
+    lines += [f"| `{i}` | [day {n}](day-{n:02d}.md) |" for i, n in irows] or [
+        "| — | no IDs claimed yet |"
+    ]
     out[cfg.docs / "wiki" / "ENTITIES.md"] = "\n".join(lines + [""])
     return out
 
@@ -993,8 +1185,11 @@ def build_all(cfg: Config) -> dict[Path, str]:
 def cmd_index(cfg: Config, args: list[str]) -> int:
     docs = build_all(cfg)
     if "--check" in args:
-        stale = [cfg.rel(p) for p, t in docs.items()
-                 if not p.exists() or p.read_text(encoding="utf-8") != t]
+        stale = [
+            cfg.rel(p)
+            for p, t in docs.items()
+            if not p.exists() or p.read_text(encoding="utf-8") != t
+        ]
         if stale:
             print("granth: these generated documents are stale —")
             for name in stale:
@@ -1014,6 +1209,7 @@ def cmd_index(cfg: Config, args: list[str]) -> int:
 # The day brief, and the order guard
 # =============================================================================================
 
+
 def cmd_brief(cfg: Config, args: list[str]) -> int:
     day = need_day(cfg, args, "brief")
     plan, phases = plan_days(cfg), plan_phases(cfg)
@@ -1023,8 +1219,15 @@ def cmd_brief(cfg: Config, args: list[str]) -> int:
 
     if day not in plan:
         first, last = (min(plan), max(plan)) if plan else (0, 0)
-        print("\n".join(out + [f"**STOP.** The plan has no day {day}. It runs {first} to {last}.",
-              "Adding, merging or reordering a day is a plan amendment: write the ADR first."]))
+        print(
+            "\n".join(
+                out
+                + [
+                    f"**STOP.** The plan has no day {day}. It runs {first} to {last}.",
+                    "Adding, merging or reordering a day is a plan amendment: write the ADR first.",
+                ]
+            )
+        )
         return 1
     entry, ph = plan[day], phase_of(day, phases)
 
@@ -1032,35 +1235,52 @@ def cmd_brief(cfg: Config, args: list[str]) -> int:
     if day != expected:
         status = 1
         if day in complete:
-            out += [f"**STOP.** Day {day} already has a row in the progress ledger.",
-                    f"The next unwritten day is **{expected}**."]
+            out += [
+                f"**STOP.** Day {day} already has a row in the progress ledger.",
+                f"The next unwritten day is **{expected}**.",
+            ]
         elif day < expected:
             out.append(f"**STOP.** Day {day} is behind the ledger. The next day is **{expected}**.")
         else:
             missing = ", ".join(str(n) for n in range(expected, day) if n not in complete)
-            out += [f"**STOP.** Day {day} is out of order — day **{expected}** is next.", "",
-                    f"Not yet in the ledger: {missing}.",
-                    "Never skip a day, merge two days, or reorder days without an ADR."]
+            out += [
+                f"**STOP.** Day {day} is out of order — day **{expected}** is next.",
+                "",
+                f"Not yet in the ledger: {missing}.",
+                "Never skip a day, merge two days, or reorder days without an ADR.",
+            ]
         out += ["", "---", ""]
 
     out += ["## The assignment", "", f"**Title (from the plan):** {entry.title}", ""]
-    out.append(f"**Close exactly these IDs — no more, no fewer:** {', '.join(entry.ids)}"
-               if entry.ids else
-               "**Closes no IDs.** State why in the hub, so traceability stays honest.")
+    out.append(
+        f"**Close exactly these IDs — no more, no fewer:** {', '.join(entry.ids)}"
+        if entry.ids
+        else "**Closes no IDs.** State why in the hub, so traceability stays honest."
+    )
     out.append("")
     if ph:
-        out += [f"**Phase {ph.number} — {ph.theme}**", "", f"- Days in the phase: {ph.days}",
-                f"- The gate this day feeds: {ph.gate}", ""]
+        out += [
+            f"**Phase {ph.number} — {ph.theme}**",
+            "",
+            f"- Days in the phase: {ph.days}",
+            f"- The gate this day feeds: {ph.gate}",
+            "",
+        ]
 
     claimed: set[str] = set()
     for number, folder in on_disk.items():
         hub = folder / "LESSON.md"
         if number in complete and hub.exists():
-            claimed |= set(ids_in((frontmatter(hub.read_text(encoding="utf-8")) or {}).get("ids", "")))
+            metadata = frontmatter(hub.read_text(encoding="utf-8")) or {}
+            claimed |= set(ids_in(metadata.get("ids", "")))
     debt = [(n, i) for n, p in sorted(plan.items()) if n < day for i in p.ids if i not in claimed]
     if debt:
-        out += ["## Open IDs from earlier days", "",
-                "An open ID from a day already behind you is a bug, not a backlog item.", ""]
+        out += [
+            "## Open IDs from earlier days",
+            "",
+            "An open ID from a day already behind you is a bug, not a backlog item.",
+            "",
+        ]
         out += [f"- `{i}` was assigned to day {n} and is not closed." for n, i in debt] + [""]
 
     previous = max((n for n in plan if n < day), default=None)
@@ -1073,11 +1293,21 @@ def cmd_brief(cfg: Config, args: list[str]) -> int:
             hub = folder / "LESSON.md"
             meta = frontmatter(hub.read_text(encoding="utf-8")) if hub.exists() else None
             if meta:
-                out += [f"- Hub: `{cfg.rel(hub)}`", f"- Title: {meta.get('title', '?')}",
-                        f"- Status: {meta.get('status', '?')}"]
+                out += [
+                    f"- Hub: `{cfg.rel(hub)}`",
+                    f"- Title: {meta.get('title', '?')}",
+                    f"- Status: {meta.get('status', '?')}",
+                ]
             checklist = folder / "CHECKLIST.md"
-            boxes = ([ln.strip() for ln in checklist.read_text(encoding="utf-8").splitlines()
-                      if ln.strip().startswith("- [ ]")] if checklist.exists() else [])
+            boxes = (
+                [
+                    ln.strip()
+                    for ln in checklist.read_text(encoding="utf-8").splitlines()
+                    if ln.strip().startswith("- [ ]")
+                ]
+                if checklist.exists()
+                else []
+            )
             if boxes:
                 out.append(f"- **{len(boxes)} unticked checklist box(es)** — ask before moving on:")
                 out += [f"    {b}" for b in boxes[:8]]
@@ -1086,25 +1316,37 @@ def cmd_brief(cfg: Config, args: list[str]) -> int:
             elif checklist.exists():
                 out.append("- Checklist: fully ticked.")
             if is_written(folder, cfg):
-                out.append(f"- Read its parts before writing day {day}; build on them, never "
-                           "repeat them.")
+                out.append(
+                    f"- Read its parts before writing day {day}; build on them, never repeat them."
+                )
         out.append("")
 
-    taught = sorted((meta["source"], n, meta.get("title", p.stem))
-                    for n, f_ in sorted(on_disk.items()) for p in source_files(f_, cfg)
-                    if (meta := frontmatter(p.read_text(encoding="utf-8")) or {}).get("source"))
+    taught = sorted(
+        (meta["source"], n, meta.get("title", p.stem))
+        for n, f_ in sorted(on_disk.items())
+        for p in source_files(f_, cfg)
+        if (meta := frontmatter(p.read_text(encoding="utf-8")) or {}).get("source")
+    )
     if taught:
-        out += ["## Sources already taught (cite and link these — never teach one twice)", "",
-                "| Identifier | Day | Document |", "| --- | --- | --- |"]
+        out += [
+            "## Sources already taught (cite and link these — never teach one twice)",
+            "",
+            "| Identifier | Day | Document |",
+            "| --- | --- | --- |",
+        ]
         out += [f"| {i} | {n} | {t} |" for i, n, t in taught] + [""]
 
-    out += ["## Before you write a line", "",
-            f"1. `{cfg.rel(cfg.plan)}` — the depth contract section, in full. It is the standard.",
-            "2. The style guide section of the same plan — the register and the story rules.",
-            f"3. `{cfg.rel(cfg.docs / 'GLOSSARY.md')}` — so a term defined on day 3 is defined the "
-            "same way today.",
-            "4. Verify every fact live. A version, an interface, a citation: look it up today, or",
-            "   leave a TODO carrying the exact lookup command. Never a remembered answer.", ""]
+    out += [
+        "## Before you write a line",
+        "",
+        f"1. `{cfg.rel(cfg.plan)}` — the depth contract section, in full. It is the standard.",
+        "2. The style guide section of the same plan — the register and the story rules.",
+        f"3. `{cfg.rel(cfg.docs / 'GLOSSARY.md')}` — so a term defined on day 3 is defined the "
+        "same way today.",
+        "4. Verify every fact live. A version, an interface, a citation: look it up today, or",
+        "   leave a TODO carrying the exact lookup command. Never a remembered answer.",
+        "",
+    ]
     if status == 0:
         out.append(f"**Day {day} is next. Go.**")
     print("\n".join(out))
@@ -1114,6 +1356,7 @@ def cmd_brief(cfg: Config, args: list[str]) -> int:
 # =============================================================================================
 # The rest of the driver
 # =============================================================================================
+
 
 def need_day(cfg: Config, args: list[str], command: str) -> int:
     if not args or not re.fullmatch(r"\d{1,3}", args[0]):
@@ -1138,8 +1381,10 @@ def cmd_status(cfg: Config, args: list[str]) -> int:
     written = [n for n, f in day_dirs(cfg).items() if is_written(f, cfg)]
     complete = [n for n in progress_days(cfg) if n in plan]
     nxt = (max(complete) + 1) if complete else (min(plan) if plan else 0)
-    print(f"{cfg.name} ({cfg.plan_version}): {len(complete)}/{len(plan)} days complete, "
-          f"{len(written)} written. Next: day {nxt}.")
+    print(
+        f"{cfg.name} ({cfg.plan_version}): {len(complete)}/{len(plan)} days complete, "
+        f"{len(written)} written. Next: day {nxt}."
+    )
     return 0
 
 
@@ -1192,8 +1437,9 @@ def cmd_new(cfg: Config, args: list[str]) -> int:
         if (templates / name).exists():
             shutil.copy(templates / name, folder / name)
     if (templates / "PART.md").exists():
-        shutil.copy(templates / "PART.md",
-                    folder / cfg.parts_dir / "01-rename-me" / "1.1-rename-me.md")
+        shutil.copy(
+            templates / "PART.md", folder / cfg.parts_dir / "01-rename-me" / "1.1-rename-me.md"
+        )
     print(f"-> {cfg.rel(folder)}")
     print(f"   the plan assigns: {plan[day].title}")
     print(f"   IDs to close: {', '.join(plan[day].ids) or 'none'}")
@@ -1228,8 +1474,11 @@ def cmd_done(cfg: Config, args: list[str]) -> int:
     if not checklist.exists():
         print(f"FAIL no {cfg.rel(checklist)} — a day has no definition of done without it.")
         return 1
-    boxes = [ln for ln in checklist.read_text(encoding="utf-8").splitlines()
-             if ln.strip().startswith("- [ ]")]
+    boxes = [
+        ln
+        for ln in checklist.read_text(encoding="utf-8").splitlines()
+        if ln.strip().startswith("- [ ]")
+    ]
     if boxes:
         print(f"FAIL {len(boxes)} unticked box(es) in {cfg.rel(checklist)}:")
         for line in boxes:
@@ -1266,11 +1515,16 @@ def cmd_doctor(cfg: Config, args: list[str]) -> int:
         problems.append(f"no plan at {cfg.rel(cfg.plan)}")
     else:
         text = cfg.plan.read_text(encoding="utf-8")
-        problems += [f"the plan has no <!-- granth:{m}:start --> block"
-                     for m in ("tracks", "phases", "day-map") if not marked_block(text, m)]
-    problems += [f"no {cfg.rel(cfg.docs / n)}" for n in
-                 ("PROGRESS.md", "CHANGELOG_PLAN.md", "GLOSSARY.md", "SOURCES.md")
-                 if not (cfg.docs / n).exists()]
+        problems += [
+            f"the plan has no <!-- granth:{m}:start --> block"
+            for m in ("tracks", "phases", "day-map")
+            if not marked_block(text, m)
+        ]
+    problems += [
+        f"no {cfg.rel(cfg.docs / n)}"
+        for n in ("PROGRESS.md", "CHANGELOG_PLAN.md", "GLOSSARY.md", "SOURCES.md")
+        if not (cfg.docs / n).exists()
+    ]
     if not (cfg.docs / "adr").is_dir():
         problems.append(f"no {cfg.rel(cfg.docs / 'adr')}/")
     if not cfg.days.is_dir():
@@ -1295,9 +1549,18 @@ def cmd_doctor(cfg: Config, args: list[str]) -> int:
     return 0
 
 
-COMMANDS = {"status": cmd_status, "brief": cmd_brief, "start": cmd_start, "parts": cmd_parts,
-            "new": cmd_new, "depth": cmd_depth, "index": cmd_index, "check": cmd_check,
-            "done": cmd_done, "doctor": cmd_doctor}
+COMMANDS = {
+    "status": cmd_status,
+    "brief": cmd_brief,
+    "start": cmd_start,
+    "parts": cmd_parts,
+    "new": cmd_new,
+    "depth": cmd_depth,
+    "index": cmd_index,
+    "check": cmd_check,
+    "done": cmd_done,
+    "doctor": cmd_doctor,
+}
 
 USAGE = """usage: {d} <command> [args]
 
