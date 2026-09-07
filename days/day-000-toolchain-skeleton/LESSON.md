@@ -5,7 +5,7 @@ phase_name: "Foundry"
 title: "Toolchain and skeleton"
 ids: []
 kind: setup
-plan_version: "v1.1.0"
+plan_version: "v2.0.0"
 parts: 6
 generated: "2026-09-07"
 status: written
@@ -22,7 +22,7 @@ commit: ""
 Before anything is taught, the workshop has to be set up.
 
 Not because setup is interesting, but because the three things it establishes are assumed silently
-by all 228 days after it. The environment is reproducible, so a failure on day 73 is a failure of
+by all 181 days after it. The environment is reproducible, so a failure on day 73 is a failure of
 your hyperparameters rather than of your install. The repository cannot leak a credential, because
 by phase 19 there is an agent holding real ones. And the gate refuses, so a day that was rushed
 does not get to look the same as a day that was understood.
@@ -117,7 +117,7 @@ The wiring test in `tests/test_repository_wiring.py` — the one asserting `.env
 It must fail. Then `git rm --cached .env` and watch it go green again.
 
 A check nobody has seen fail has verified nothing. That is not a slogan on day 0; it is the reason
-this box exists in every checklist for the next 228 days.
+this box exists in every checklist for the next 181 days.
 
 ## §6 Budget
 
@@ -128,7 +128,7 @@ this box exists in every checklist for the next 228 days.
 | Money | **0.** |
 | Downloads | The Python 3.12 toolchain and four small packages. Tens of megabytes. |
 
-The first day that spends anything is day 15, the first real fine-tune. Plan §4 has the table.
+The first day that spends anything is day 33, the first paid model call; day 76 is the first that wants an accelerator. Plan §4 has the table.
 
 ## §7 Traps
 
@@ -154,7 +154,7 @@ The first day that spends anything is day 15, the first real fine-tune. Plan §4
 | `ruff` version | `uv run ruff --version` | 2026-09-07 | `ruff 0.16.6` |
 | PEP 668 refusal text | `pip install requests` against the system interpreter | 2026-09-07 | The `externally-managed-environment` error quoted verbatim in part 1.1 |
 | Tracked-file ignore behaviour | `git check-ignore -v .env` on a tracked file | 2026-09-07 | Exits 1 and prints nothing — quoted in parts 2.1 and 2.2 |
-| Repository wiring | `python granth.py doctor` | 2026-09-07 | 229 days, 400 IDs, each assigned to exactly one day |
+| Repository wiring | `python granth.py doctor` | 2026-09-07 | 182 days, 373 IDs, each assigned to exactly one day |
 
 `TODO(me)`: re-run each of these on the day you actually do day 0, and correct any that have moved.
 A version copied from this table rather than observed is exactly the thing Principle 7 forbids.

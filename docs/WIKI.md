@@ -9,4 +9,4 @@ it. Cross-day lookups live in `wiki/ENTITIES.md`.
 | Day | Subject | IDs closed | Parts | Sources |
 | --- | --- | --- | --- | --- |
 | [00](wiki/day-00.md) | Toolchain and skeleton | — | 6 | — |
-| [01](wiki/day-01.md) | What a language model actually is | TF-01, TF-02 | 7 | arXiv:2005.14165 |
+| [01](wiki/day-01.md) | What a forward deployed AI engineer actually owns | FDE-01, FDE-02 | 7 | — |

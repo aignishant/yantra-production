@@ -2,7 +2,7 @@
 
 **Production LLM engineering — transformer internals, fine-tuning and alignment, vision and speech,
 retrieval, agents and protocols, and the delivery shell that ships all of it.**
-229 days · 25 phases · 400 concepts · one system.
+182 days · 29 phases · 373 concepts · one system, delivered to one client.
 
 This repository teaches production LLM engineering by building one system and refusing to let any
 part of it look finished when it is not. Every concept has an identifier, every identifier is
@@ -67,7 +67,7 @@ python granth.py done 7     # 5. finish — refuses unless ticked and the row is
 
 Two things are worth correcting now, because both are expensive to change once folders exist:
 
-1. **The day map** (plan §17). 229 days at four sittings a week runs past a year. Plan §22.4 lists
+1. **The day map** (plan §17). 182 days is six months at seven days a week. Plan §22.4 lists
    the scope levers in the order they cost least.
 2. **The budget and infrastructure policy** (plan §4). The *hardware* half is now settled: plan
    §4.1 makes a laptop with no GPU the default and puts the accelerated path behind one flag

@@ -8,10 +8,10 @@
 name          = "yantra"
 slug          = "yantra"
 plan          = "docs/00_MASTER_PLAN.md"
-plan_version  = "v1.1.0"
+plan_version  = "v2.0.0"
 day_skill     = "day-yantra"
 driver        = "python granth.py"
-day_padding   = 3          # this plan runs to 228
+day_padding   = 3          # this plan runs to 181
 
 [paths]
 days    = "days"

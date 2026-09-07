@@ -7,447 +7,440 @@ The day map answers *what does day 43 teach?* This answers the reverse — *wher
 learn `XX-14`?* Every ID appears exactly once; a duplicate or a missing ID is a plan
 bug.
 
-## Transformer Internals & Efficiency (`TF-`) — 66 IDs
+## Software & backend engineering (`SE-`) — 34 IDs
 
 | ID | Day | Day title |
 | --- | --- | --- |
-| `TF-01` | [1](../days/day-001-what-language-model-is/LESSON.md) | What a language model actually is — the modelling objective, and next-token prediction followed… |
-| `TF-02` | [1](../days/day-001-what-language-model-is/LESSON.md) | What a language model actually is — the modelling objective, and next-token prediction followed… |
-| `TF-03` | [2](../days/day-02/LESSON.md) | Text to numbers — the tokenizer boundary and the taxonomy (word, subword, character, byte) |
-| `TF-04` | [3](../days/day-03/LESSON.md) | Byte Pair Encoding, trained from scratch on your own corpus |
-| `TF-05` | [4](../days/day-04/LESSON.md) | WordPiece and SentencePiece — likelihood-driven merges and the language-agnostic case |
-| `TF-06` | [4](../days/day-04/LESSON.md) | WordPiece and SentencePiece — likelihood-driven merges and the language-agnostic case |
-| `TF-07` | [5](../days/day-05/LESSON.md) | Tokenizer pathologies — vocabulary size, digits, code, whitespace and the multilingual tax |
-| `TF-08` | [6](../days/day-06/LESSON.md) | Embeddings — discrete symbols into continuous space; the embedding matrix and weight tying |
-| `TF-09` | [6](../days/day-06/LESSON.md) | Embeddings — discrete symbols into continuous space; the embedding matrix and weight tying |
-| `TF-10` | [7](../days/day-07/LESSON.md) | Positional encoding — why order has to be injected, and the sinusoidal original |
-| `TF-11` | [8](../days/day-08/LESSON.md) | The attention mechanism from first principles — query, key, value; scaled dot-product |
-| `TF-12` | [8](../days/day-08/LESSON.md) | The attention mechanism from first principles — query, key, value; scaled dot-product |
-| `TF-13` | [9](../days/day-09/LESSON.md) | Self-attention and the causal mask — what a decoder is allowed to see |
-| `TF-14` | [9](../days/day-09/LESSON.md) | Self-attention and the causal mask — what a decoder is allowed to see |
-| `TF-15` | [10](../days/day-10/LESSON.md) | Multi-head attention — why more than one head, and what heads specialise into |
-| `TF-16` | [10](../days/day-10/LESSON.md) | Multi-head attention — why more than one head, and what heads specialise into |
-| `TF-17` | [11](../days/day-11/LESSON.md) | The transformer block — residuals, layer norm, the feed-forward network, pre-norm vs post-norm |
-| `TF-18` | [11](../days/day-11/LESSON.md) | The transformer block — residuals, layer norm, the feed-forward network, pre-norm vs post-norm |
-| `TF-19` | [11](../days/day-11/LESSON.md) | The transformer block — residuals, layer norm, the feed-forward network, pre-norm vs post-norm |
-| `TF-20` | [12](../days/day-12/LESSON.md) | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to… |
-| `TF-21` | [12](../days/day-12/LESSON.md) | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to… |
-| `TF-22` | [12](../days/day-12/LESSON.md) | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to… |
-| `TF-23` | [12](../days/day-12/LESSON.md) | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to… |
-| `TF-24` | [12](../days/day-12/LESSON.md) | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to… |
-| `TF-25` | [13](../days/day-13/LESSON.md) | Coding attention I — a single head forward, and the mask in code |
-| `TF-26` | [13](../days/day-13/LESSON.md) | Coding attention I — a single head forward, and the mask in code |
-| `TF-27` | [14](../days/day-14/LESSON.md) | Coding attention II — batched multi-head, and a block that actually trains |
-| `TF-28` | [14](../days/day-14/LESSON.md) | Coding attention II — batched multi-head, and a block that actually trains |
-| `TF-29` | [15](../days/day-15/LESSON.md) | Fine-tuning DistilBERT on custom data — the classification head and tokenizer alignment |
-| `TF-30` | [15](../days/day-15/LESSON.md) | Fine-tuning DistilBERT on custom data — the classification head and tokenizer alignment |
-| `TF-31` | [16](../days/day-16/LESSON.md) | Fine-tuning DistilGPT on custom data — causal LM collation and the label shift |
-| `TF-32` | [16](../days/day-16/LESSON.md) | Fine-tuning DistilGPT on custom data — causal LM collation and the label shift |
-| `TF-33` | [17](../days/day-17/LESSON.md) | Fine-tuning T5 on custom data — seq2seq collation, prefixes and generation config |
-| `TF-34` | [17](../days/day-17/LESSON.md) | Fine-tuning T5 on custom data — seq2seq collation, prefixes and generation config |
-| `TF-35` | [18](../days/day-18/LESSON.md) | The training loop that tells the truth — loss curves, overfitting, seeds and determinism |
-| `TF-36` | [19](../days/day-19/LESSON.md) | The naive decoding problem — quadratic recompute, measured rather than asserted |
-| `TF-37` | [19](../days/day-19/LESSON.md) | The naive decoding problem — quadratic recompute, measured rather than asserted |
-| `TF-38` | [20](../days/day-20/LESSON.md) | The KV cache — what it stores and why the second token is cheap |
-| `TF-39` | [20](../days/day-20/LESSON.md) | The KV cache — what it stores and why the second token is cheap |
-| `TF-40` | [21](../days/day-21/LESSON.md) | KV cache memory math — batch, sequence, layers, precision, and the number that ends the argument |
-| `TF-41` | [21](../days/day-21/LESSON.md) | KV cache memory math — batch, sequence, layers, precision, and the number that ends the argument |
-| `TF-42` | [22](../days/day-22/LESSON.md) | Flash Attention — IO-awareness, tiling, and why the speedup is not in the FLOPs |
-| `TF-43` | [22](../days/day-22/LESSON.md) | Flash Attention — IO-awareness, tiling, and why the speedup is not in the FLOPs |
-| `TF-44` | [23](../days/day-23/LESSON.md) | PyTorch SDPA — the unified attention API and its backend selection |
-| `TF-45` | [24](../days/day-24/LESSON.md) | Multi-Query Attention — one KV head, and what it costs in quality |
-| `TF-46` | [24](../days/day-24/LESSON.md) | Multi-Query Attention — one KV head, and what it costs in quality |
-| `TF-47` | [25](../days/day-25/LESSON.md) | Grouped-Query Attention — the compromise that shipped |
-| `TF-48` | [25](../days/day-25/LESSON.md) | Grouped-Query Attention — the compromise that shipped |
-| `TF-49` | [26](../days/day-26/LESSON.md) | Multi-Head Latent Attention — compressing the cache instead of sharing it |
-| `TF-50` | [26](../days/day-26/LESSON.md) | Multi-Head Latent Attention — compressing the cache instead of sharing it |
-| `TF-51` | [27](../days/day-27/LESSON.md) | PagedAttention, continuous batching and vLLM — the serving-side answer |
-| `TF-52` | [27](../days/day-27/LESSON.md) | PagedAttention, continuous batching and vLLM — the serving-side answer |
-| `TF-53` | [27](../days/day-27/LESSON.md) | PagedAttention, continuous batching and vLLM — the serving-side answer |
-| `TF-54` | [28](../days/day-28/LESSON.md) | RoPE — rotary embeddings, and what happens when you push past the trained context |
-| `TF-55` | [28](../days/day-28/LESSON.md) | RoPE — rotary embeddings, and what happens when you push past the trained context |
-| `TF-56` | [29](../days/day-29/LESSON.md) | Scaling laws for neural language models — the power law and what it predicts |
-| `TF-57` | [29](../days/day-29/LESSON.md) | Scaling laws for neural language models — the power law and what it predicts |
-| `TF-58` | [30](../days/day-30/LESSON.md) | Chinchilla — compute-optimal training, and the models that were trained wrong |
-| `TF-59` | [30](../days/day-30/LESSON.md) | Chinchilla — compute-optimal training, and the models that were trained wrong |
-| `TF-60` | [31](../days/day-31/LESSON.md) | The dense scaling wall and the Mixture-of-Experts idea |
-| `TF-61` | [31](../days/day-31/LESSON.md) | The dense scaling wall and the Mixture-of-Experts idea |
-| `TF-62` | [32](../days/day-32/LESSON.md) | MoE architecture — the router, the experts, and load balancing against expert collapse |
-| `TF-63` | [32](../days/day-32/LESSON.md) | MoE architecture — the router, the experts, and load balancing against expert collapse |
-| `TF-64` | [32](../days/day-32/LESSON.md) | MoE architecture — the router, the experts, and load balancing against expert collapse |
-| `TF-65` | [33](../days/day-33/LESSON.md) | Training and serving MoE; sparse vs soft variants; when dense still wins |
-| `TF-66` | [33](../days/day-33/LESSON.md) | Training and serving MoE; sparse vs soft variants; when dense still wins |
+| `SE-01` | [6](../days/day-06/LESSON.md) | Data structures as decisions — what list, dict, set and tuple actually cost at a million rows |
+| `SE-02` | [7](../days/day-07/LESSON.md) | Memory management — references, the cycle collector, and where a long-running service quietly l… |
+| `SE-03` | [8](../days/day-08/LESSON.md) | Objects that model a domain — composition, protocols, and when a class is the wrong answer |
+| `SE-04` | [9](../days/day-09/LESSON.md) | Type hints a checker can enforce — and the annotation that lies |
+| `SE-05` | [10](../days/day-10/LESSON.md) | Pydantic as the boundary — validating everything that enters the process, exactly once |
+| `SE-06` | [10](../days/day-10/LESSON.md) | Pydantic as the boundary — validating everything that enters the process, exactly once |
+| `SE-07` | [11](../days/day-11/LESSON.md) | Exceptions that carry context — the hierarchy, and never swallowing a traceback |
+| `SE-08` | [12](../days/day-12/LESSON.md) | File I/O, encodings, and the streaming read that does not eat the box |
+| `SE-09` | [13](../days/day-13/LESSON.md) | Packaging and environments — uv, the lockfile, and an install that reproduces on a stranger's m… |
+| `SE-10` | [14](../days/day-14/LESSON.md) | Project structure and structured logging — a layout that scales, and a log line an operator can… |
+| `SE-11` | [14](../days/day-14/LESSON.md) | Project structure and structured logging — a layout that scales, and a log line an operator can… |
+| `SE-12` | [14](../days/day-14/LESSON.md) | Project structure and structured logging — a layout that scales, and a log line an operator can… |
+| `SE-13` | [15](../days/day-15/LESSON.md) | The event loop from the inside — what `await` actually suspends, and what it does not |
+| `SE-14` | [15](../days/day-15/LESSON.md) | The event loop from the inside — what `await` actually suspends, and what it does not |
+| `SE-15` | [16](../days/day-16/LESSON.md) | Coroutines and tasks — fan-out, gather, and the exception that vanishes without a trace |
+| `SE-16` | [16](../days/day-16/LESSON.md) | Coroutines and tasks — fan-out, gather, and the exception that vanishes without a trace |
+| `SE-17` | [17](../days/day-17/LESSON.md) | Async context managers, and the connection that must be released even when the request dies |
+| `SE-18` | [18](../days/day-18/LESSON.md) | Concurrency vs parallelism — the GIL, and the executor bridge for the blocking SDK you cannot a… |
+| `SE-19` | [18](../days/day-18/LESSON.md) | Concurrency vs parallelism — the GIL, and the executor bridge for the blocking SDK you cannot a… |
+| `SE-20` | [19](../days/day-19/LESSON.md) | The filesystem and the process table — navigating a box you did not build |
+| `SE-21` | [20](../days/day-20/LESSON.md) | Permissions, users, and the container that runs as root because nobody said otherwise |
+| `SE-22` | [20](../days/day-20/LESSON.md) | Permissions, users, and the container that runs as root because nobody said otherwise |
+| `SE-23` | [21](../days/day-21/LESSON.md) | Shell for operators and configuration precedence — `set -euo pipefail`, and proving where the v… |
+| `SE-24` | [21](../days/day-21/LESSON.md) | Shell for operators and configuration precedence — `set -euo pipefail`, and proving where the v… |
+| `SE-25` | [22](../days/day-22/LESSON.md) | HTTP semantics an API owner cannot get wrong — methods, status codes, and idempotency |
+| `SE-26` | [23](../days/day-23/LESSON.md) | FastAPI: the first endpoint, and exactly what the framework is doing on your behalf |
+| `SE-27` | [24](../days/day-24/LESSON.md) | Request and response models — schemas at both boundaries, and the field you must never echo |
+| `SE-28` | [25](../days/day-25/LESSON.md) | Dependency injection — the seam that makes a service testable instead of mockable |
+| `SE-29` | [26](../days/day-26/LESSON.md) | Errors that surface rather than swallow — handlers, and an error body a client can act on |
+| `SE-30` | [27](../days/day-27/LESSON.md) | Streaming responses and server-sent events — the first token in 300 ms, and the disconnect |
+| `SE-31` | [28](../days/day-28/LESSON.md) | Versioning and deprecation without breaking the client who never reads email; GraphQL and when… |
+| `SE-32` | [28](../days/day-28/LESSON.md) | Versioning and deprecation without breaking the client who never reads email; GraphQL and when… |
+| `SE-33` | [29](../days/day-29/LESSON.md) | Pytest that means something, contract tests, and the OpenAPI schema as the agreement between tw… |
+| `SE-34` | [29](../days/day-29/LESSON.md) | Pytest that means something, contract tests, and the OpenAPI schema as the agreement between tw… |
 
-## Fine-Tuning, Alignment & Compression (`FT-`) — 90 IDs
+## Cloud, containers & delivery (`CLD-`) — 22 IDs
 
 | ID | Day | Day title |
 | --- | --- | --- |
-| `FT-01` | [34](../days/day-34/LESSON.md) | The two-phase lifecycle — pre-training vs post-training, and what pre-training produces |
-| `FT-02` | [34](../days/day-34/LESSON.md) | The two-phase lifecycle — pre-training vs post-training, and what pre-training produces |
-| `FT-03` | [35](../days/day-35/LESSON.md) | Why a base model is not useful out of the box — CLM, MLM and Prefix-LM recapped |
-| `FT-04` | [35](../days/day-35/LESSON.md) | Why a base model is not useful out of the box — CLM, MLM and Prefix-LM recapped |
-| `FT-05` | [36](../days/day-36/LESSON.md) | Data curation and filtering at scale — quality heuristics, dedup, contamination |
-| `FT-06` | [36](../days/day-36/LESSON.md) | Data curation and filtering at scale — quality heuristics, dedup, contamination |
-| `FT-07` | [37](../days/day-37/LESSON.md) | Continued pre-training for domain adaptation — and when to skip it for SFT |
-| `FT-08` | [37](../days/day-37/LESSON.md) | Continued pre-training for domain adaptation — and when to skip it for SFT |
-| `FT-09` | [38](../days/day-38/LESSON.md) | The compute budget problem, applied to your own run |
-| `FT-10` | [39](../days/day-39/LESSON.md) | Multi-Token Prediction — predicting more than one step ahead |
-| `FT-11` | [40](../days/day-40/LESSON.md) | Dataset formats and chat templates — instruction pairs, ChatML, LLaMA-3, Mistral |
-| `FT-12` | [40](../days/day-40/LESSON.md) | Dataset formats and chat templates — instruction pairs, ChatML, LLaMA-3, Mistral |
-| `FT-13` | [41](../days/day-41/LESSON.md) | Loss masking — what it is, and exactly what breaks without it |
-| `FT-14` | [41](../days/day-41/LESSON.md) | Loss masking — what it is, and exactly what breaks without it |
-| `FT-15` | [42](../days/day-42/LESSON.md) | Deduplication and filtering pipelines you can run |
-| `FT-16` | [42](../days/day-42/LESSON.md) | Deduplication and filtering pipelines you can run |
-| `FT-17` | [43](../days/day-43/LESSON.md) | Synthetic data I — why data is the leverage point; the taxonomy; Self-Instruct and Alpaca |
-| `FT-18` | [43](../days/day-43/LESSON.md) | Synthetic data I — why data is the leverage point; the taxonomy; Self-Instruct and Alpaca |
-| `FT-19` | [43](../days/day-43/LESSON.md) | Synthetic data I — why data is the leverage point; the taxonomy; Self-Instruct and Alpaca |
-| `FT-20` | [44](../days/day-44/LESSON.md) | Synthetic data II — preference pairs, LLM-as-Judge scoring, and distilabel/Argilla |
-| `FT-21` | [44](../days/day-44/LESSON.md) | Synthetic data II — preference pairs, LLM-as-Judge scoring, and distilabel/Argilla |
-| `FT-22` | [44](../days/day-44/LESSON.md) | Synthetic data II — preference pairs, LLM-as-Judge scoring, and distilabel/Argilla |
-| `FT-23` | [45](../days/day-45/LESSON.md) | Model collapse and data poisoning — the two ways a synthetic pipeline rots |
-| `FT-24` | [45](../days/day-45/LESSON.md) | Model collapse and data poisoning — the two ways a synthetic pipeline rots |
-| `FT-25` | [46](../days/day-46/LESSON.md) | The intrinsic dimensionality insight — why a low-rank update is enough |
-| `FT-26` | [47](../days/day-47/LESSON.md) | LoRA — the math, rank, alpha, and which modules to target |
-| `FT-27` | [47](../days/day-47/LESSON.md) | LoRA — the math, rank, alpha, and which modules to target |
-| `FT-28` | [48](../days/day-48/LESSON.md) | LoRA in practice with PEFT — adapters on disk, merged and unmerged |
-| `FT-29` | [49](../days/day-49/LESSON.md) | QLoRA — 4-bit NF4, double quantization, paged optimizers |
-| `FT-30` | [49](../days/day-49/LESSON.md) | QLoRA — 4-bit NF4, double quantization, paged optimizers |
-| `FT-31` | [49](../days/day-49/LESSON.md) | QLoRA — 4-bit NF4, double quantization, paged optimizers |
-| `FT-32` | [50](../days/day-50/LESSON.md) | DoRA — decomposing magnitude from direction |
-| `FT-33` | [51](../days/day-51/LESSON.md) | AdaLoRA and LoRA+ — adaptive rank, and separate learning rates for A and B |
-| `FT-34` | [51](../days/day-51/LESSON.md) | AdaLoRA and LoRA+ — adaptive rank, and separate learning rates for A and B |
-| `FT-35` | [52](../days/day-52/LESSON.md) | Supervised fine-tuning as stage 1 — SFTTrainer, end to end |
-| `FT-36` | [52](../days/day-52/LESSON.md) | Supervised fine-tuning as stage 1 — SFTTrainer, end to end |
-| `FT-37` | [53](../days/day-53/LESSON.md) | Instruction tuning — FLAN, Alpaca, OpenHermes and what a good instruction set looks like |
-| `FT-38` | [53](../days/day-53/LESSON.md) | Instruction tuning — FLAN, Alpaca, OpenHermes and what a good instruction set looks like |
-| `FT-39` | [54](../days/day-54/LESSON.md) | Chat and conversational fine-tuning — multi-turn data without leakage |
-| `FT-40` | [55](../days/day-55/LESSON.md) | Chain-of-thought fine-tuning — training the reasoning trace, not just the answer |
-| `FT-41` | [56](../days/day-56/LESSON.md) | Domain-specific fine-tuning — best practices and catastrophic forgetting |
-| `FT-42` | [56](../days/day-56/LESSON.md) | Domain-specific fine-tuning — best practices and catastrophic forgetting |
-| `FT-43` | [57](../days/day-57/LESSON.md) | Why SFT alone is not enough — RLHF with PPO: reward model, critic, KL penalty |
-| `FT-44` | [57](../days/day-57/LESSON.md) | Why SFT alone is not enough — RLHF with PPO: reward model, critic, KL penalty |
-| `FT-45` | [57](../days/day-57/LESSON.md) | Why SFT alone is not enough — RLHF with PPO: reward model, critic, KL penalty |
-| `FT-46` | [58](../days/day-58/LESSON.md) | DPO — direct preference optimization without a reward model; GRPO and ORPO in one page |
-| `FT-47` | [58](../days/day-58/LESSON.md) | DPO — direct preference optimization without a reward model; GRPO and ORPO in one page |
-| `FT-48` | [58](../days/day-58/LESSON.md) | DPO — direct preference optimization without a reward model; GRPO and ORPO in one page |
-| `FT-49` | [59](../days/day-59/LESSON.md) | Why evaluation belongs inside the fine-tuning loop — and the three benchmark families |
-| `FT-50` | [59](../days/day-59/LESSON.md) | Why evaluation belongs inside the fine-tuning loop — and the three benchmark families |
-| `FT-51` | [60](../days/day-60/LESSON.md) | LLM-as-judge — MT-Bench, Chatbot Arena, and calibrating a judge you can trust |
-| `FT-52` | [60](../days/day-60/LESSON.md) | LLM-as-judge — MT-Bench, Chatbot Arena, and calibrating a judge you can trust |
-| `FT-53` | [61](../days/day-61/LESSON.md) | Designing a domain evaluation that can fail |
-| `FT-54` | [62](../days/day-62/LESSON.md) | Post-training quantization I — GPTQ |
-| `FT-55` | [62](../days/day-62/LESSON.md) | Post-training quantization I — GPTQ |
-| `FT-56` | [63](../days/day-63/LESSON.md) | Post-training quantization II — AWQ, bitsandbytes NF4, FP8 |
-| `FT-57` | [63](../days/day-63/LESSON.md) | Post-training quantization II — AWQ, bitsandbytes NF4, FP8 |
-| `FT-58` | [64](../days/day-64/LESSON.md) | Merging LoRA adapters before serving — and when not to |
-| `FT-59` | [65](../days/day-65/LESSON.md) | vLLM as a serving engine — paged KV, scheduling, and the OpenAI-compatible surface |
-| `FT-60` | [65](../days/day-65/LESSON.md) | vLLM as a serving engine — paged KV, scheduling, and the OpenAI-compatible surface |
-| `FT-61` | [66](../days/day-66/LESSON.md) | SGLang, and serving many LoRA adapters from one base model |
-| `FT-62` | [66](../days/day-66/LESSON.md) | SGLang, and serving many LoRA adapters from one base model |
-| `FT-63` | [67](../days/day-67/LESSON.md) | GGUF and llama.cpp — the CPU path |
-| `FT-64` | [67](../days/day-67/LESSON.md) | GGUF and llama.cpp — the CPU path |
-| `FT-65` | [68](../days/day-68/LESSON.md) | Speculative decoding — a draft model that pays for itself |
-| `FT-66` | [69](../days/day-69/LESSON.md) | The tooling landscape — TRL, Unsloth, Axolotl, LLaMA-Factory, and managed fine-tuning |
-| `FT-67` | [69](../days/day-69/LESSON.md) | The tooling landscape — TRL, Unsloth, Axolotl, LLaMA-Factory, and managed fine-tuning |
-| `FT-68` | [69](../days/day-69/LESSON.md) | The tooling landscape — TRL, Unsloth, Axolotl, LLaMA-Factory, and managed fine-tuning |
-| `FT-69` | [78](../days/day-78/LESSON.md) | What a reasoning model is, and how it differs from a standard LLM |
-| `FT-70` | [78](../days/day-78/LESSON.md) | What a reasoning model is, and how it differs from a standard LLM |
-| `FT-71` | [79](../days/day-79/LESSON.md) | Chain-of-thought as the foundation — prompted, then trained |
-| `FT-72` | [80](../days/day-80/LESSON.md) | The reasoning training recipe — verifiable rewards and the RL loop |
-| `FT-73` | [80](../days/day-80/LESSON.md) | The reasoning training recipe — verifiable rewards and the RL loop |
-| `FT-74` | [81](../days/day-81/LESSON.md) | R1-Zero — skipping supervised fine-tuning entirely, and what it cost |
-| `FT-75` | [81](../days/day-81/LESSON.md) | R1-Zero — skipping supervised fine-tuning entirely, and what it cost |
-| `FT-76` | [82](../days/day-82/LESSON.md) | Distilling reasoning without RL |
-| `FT-77` | [83](../days/day-83/LESSON.md) | What a Small Language Model is, and why cost, latency and privacy make it the default |
-| `FT-78` | [83](../days/day-83/LESSON.md) | What a Small Language Model is, and why cost, latency and privacy make it the default |
-| `FT-79` | [84](../days/day-84/LESSON.md) | The SLM design philosophy — and pruning as the other lever |
-| `FT-80` | [84](../days/day-84/LESSON.md) | The SLM design philosophy — and pruning as the other lever |
-| `FT-81` | [85](../days/day-85/LESSON.md) | The student–teacher paradigm — and what 'knowledge' actually means here |
-| `FT-82` | [85](../days/day-85/LESSON.md) | The student–teacher paradigm — and what 'knowledge' actually means here |
-| `FT-83` | [86](../days/day-86/LESSON.md) | Hard labels, soft labels and temperature scaling |
-| `FT-84` | [86](../days/day-86/LESSON.md) | Hard labels, soft labels and temperature scaling |
-| `FT-85` | [87](../days/day-87/LESSON.md) | The KL divergence loss and attention transfer |
-| `FT-86` | [87](../days/day-87/LESSON.md) | The KL divergence loss and attention transfer |
-| `FT-87` | [88](../days/day-88/LESSON.md) | A distillation pipeline end to end — teacher data, student design, training, and choosing the s… |
-| `FT-88` | [88](../days/day-88/LESSON.md) | A distillation pipeline end to end — teacher data, student design, training, and choosing the s… |
-| `FT-89` | [88](../days/day-88/LESSON.md) | A distillation pipeline end to end — teacher data, student design, training, and choosing the s… |
-| `FT-90` | [88](../days/day-88/LESSON.md) | A distillation pipeline end to end — teacher data, student design, training, and choosing the s… |
+| `CLD-01` | [39](../days/day-39/LESSON.md) | The shared responsibility model — what the cloud is actually selling, and what stays yours |
+| `CLD-02` | [40](../days/day-40/LESSON.md) | Identity and roles — and the policy that is quietly too broad |
+| `CLD-03` | [41](../days/day-41/LESSON.md) | Least privilege in practice — scoping a role to one bucket, one prefix, one action |
+| `CLD-04` | [42](../days/day-42/LESSON.md) | The private network — subnets, route tables, and why the private one has no route out |
+| `CLD-05` | [43](../days/day-43/LESSON.md) | Security groups and network ACLs — the two firewalls everyone confuses |
+| `CLD-06` | [44](../days/day-44/LESSON.md) | Private connectivity — NAT gateways, service endpoints, and the egress line on the bill |
+| `CLD-07` | [45](../days/day-45/LESSON.md) | Object storage as the document lake, and a managed database with pooling from a service that sc… |
+| `CLD-08` | [45](../days/day-45/LESSON.md) | Object storage as the document lake, and a managed database with pooling from a service that sc… |
+| `CLD-09` | [46](../days/day-46/LESSON.md) | Secrets in the cloud, the cost model, and the budget alarm you arm before the first deploy rath… |
+| `CLD-10` | [46](../days/day-46/LESSON.md) | Secrets in the cloud, the cost model, and the budget alarm you arm before the first deploy rath… |
+| `CLD-11` | [46](../days/day-46/LESSON.md) | Secrets in the cloud, the cost model, and the budget alarm you arm before the first deploy rath… |
+| `CLD-12` | [47](../days/day-47/LESSON.md) | Images, layers and the build cache — a Dockerfile that rebuilds in seconds instead of minutes |
+| `CLD-13` | [48](../days/day-48/LESSON.md) | Multi-stage builds, and a runtime image with no compiler, no shell history and no credential in… |
+| `CLD-14` | [48](../days/day-48/LESSON.md) | Multi-stage builds, and a runtime image with no compiler, no shell history and no credential in… |
+| `CLD-15` | [49](../days/day-49/LESSON.md) | Docker Compose — the whole stack on one laptop, including the parts you do not own |
+| `CLD-16` | [50](../days/day-50/LESSON.md) | Health checks, signals and the graceful shutdown a load balancer will actually respect |
+| `CLD-17` | [50](../days/day-50/LESSON.md) | Health checks, signals and the graceful shutdown a load balancer will actually respect |
+| `CLD-18` | [51](../days/day-51/LESSON.md) | The container runtime and its load balancer — task definitions, target groups, and diagnosing t… |
+| `CLD-19` | [51](../days/day-51/LESSON.md) | The container runtime and its load balancer — task definitions, target groups, and diagnosing t… |
+| `CLD-20` | [52](../days/day-52/LESSON.md) | The pipeline that refuses to ship red — build, test, promote, and a stack you can destroy and r… |
+| `CLD-21` | [52](../days/day-52/LESSON.md) | The pipeline that refuses to ship red — build, test, promote, and a stack you can destroy and r… |
+| `CLD-22` | [52](../days/day-52/LESSON.md) | The pipeline that refuses to ship red — build, test, promote, and a stack you can destroy and r… |
 
-## Vision, Multimodal & Speech (`VIS-`) — 24 IDs
+## Prompt & context engineering (`CTX-`) — 16 IDs
 
 | ID | Day | Day title |
 | --- | --- | --- |
-| `VIS-01` | [96](../days/day-96/LESSON.md) | From CNN to Vision Transformer — the conceptual bridge |
-| `VIS-02` | [96](../days/day-96/LESSON.md) | From CNN to Vision Transformer — the conceptual bridge |
-| `VIS-03` | [97](../days/day-97/LESSON.md) | An image as a sequence of patches — patch embedding in code |
-| `VIS-04` | [97](../days/day-97/LESSON.md) | An image as a sequence of patches — patch embedding in code |
-| `VIS-05` | [98](../days/day-98/LESSON.md) | The CLS token and positional encoding for 2D inputs |
-| `VIS-06` | [98](../days/day-98/LESSON.md) | The CLS token and positional encoding for 2D inputs |
-| `VIS-07` | [99](../days/day-99/LESSON.md) | The transformer encoder running on visual tokens |
-| `VIS-08` | [100](../days/day-100/LESSON.md) | Attention maps — what a ViT actually looks at |
-| `VIS-09` | [101](../days/day-101/LESSON.md) | CNN vs ViT — inductive bias, data hunger, and the core tradeoff |
-| `VIS-10` | [102](../days/day-102/LESSON.md) | CLIP — contrastive language–image pre-training |
-| `VIS-11` | [102](../days/day-102/LESSON.md) | CLIP — contrastive language–image pre-training |
-| `VIS-12` | [103](../days/day-103/LESSON.md) | SigLIP and DINOv2 — a sigmoid loss, and self-supervised vision |
-| `VIS-13` | [103](../days/day-103/LESSON.md) | SigLIP and DINOv2 — a sigmoid loss, and self-supervised vision |
-| `VIS-14` | [104](../days/day-104/LESSON.md) | Visual Language Models — the three-component architecture |
-| `VIS-15` | [104](../days/day-104/LESSON.md) | Visual Language Models — the three-component architecture |
-| `VIS-16` | [105](../days/day-105/LESSON.md) | The aligner/projector — how visual tokens enter the LLM's embedding space |
-| `VIS-17` | [105](../days/day-105/LESSON.md) | The aligner/projector — how visual tokens enter the LLM's embedding space |
-| `VIS-18` | [105](../days/day-105/LESSON.md) | The aligner/projector — how visual tokens enter the LLM's embedding space |
-| `VIS-19` | [106](../days/day-106/LESSON.md) | Speech AI and speech-to-text foundations; the Whisper architecture |
-| `VIS-20` | [106](../days/day-106/LESSON.md) | Speech AI and speech-to-text foundations; the Whisper architecture |
-| `VIS-21` | [107](../days/day-107/LESSON.md) | Whisper in practice — the API, an STT pipeline, dataset preparation, and fine-tuning on custom… |
-| `VIS-22` | [107](../days/day-107/LESSON.md) | Whisper in practice — the API, an STT pipeline, dataset preparation, and fine-tuning on custom… |
-| `VIS-23` | [107](../days/day-107/LESSON.md) | Whisper in practice — the API, an STT pipeline, dataset preparation, and fine-tuning on custom… |
-| `VIS-24` | [107](../days/day-107/LESSON.md) | Whisper in practice — the API, an STT pipeline, dataset preparation, and fine-tuning on custom… |
+| `CTX-01` | [30](../days/day-30/LESSON.md) | Tokens and the meter — what you are actually billed for, measured rather than assumed |
+| `CTX-02` | [31](../days/day-31/LESSON.md) | The context window as a desk that gets wiped between every call — recency bias and the lost mid… |
+| `CTX-03` | [31](../days/day-31/LESSON.md) | The context window as a desk that gets wiped between every call — recency bias and the lost mid… |
+| `CTX-04` | [32](../days/day-32/LESSON.md) | Sampling — temperature, top-p, and why "set it to zero" is stability, not reproducibility |
+| `CTX-05` | [33](../days/day-33/LESSON.md) | The first raw API call, pinned to a version you chose, behind a provider layer you can swap |
+| `CTX-06` | [33](../days/day-33/LESSON.md) | The first raw API call, pinned to a version you chose, behind a provider layer you can swap |
+| `CTX-07` | [34](../days/day-34/LESSON.md) | System prompts and instruction design that survives a model swap |
+| `CTX-08` | [35](../days/day-35/LESSON.md) | Anatomy of a prompt — zero-, one- and few-shot, and the examples that teach the wrong thing |
+| `CTX-09` | [35](../days/day-35/LESSON.md) | Anatomy of a prompt — zero-, one- and few-shot, and the examples that teach the wrong thing |
+| `CTX-10` | [36](../days/day-36/LESSON.md) | Chain-of-thought, step-back, decomposition and self-refinement — and the thinking-token tax nob… |
+| `CTX-11` | [36](../days/day-36/LESSON.md) | Chain-of-thought, step-back, decomposition and self-refinement — and the thinking-token tax nob… |
+| `CTX-12` | [37](../days/day-37/LESSON.md) | Structured output — JSON schema, Pydantic and grammars, and the parse that must not fail silent… |
+| `CTX-13` | [37](../days/day-37/LESSON.md) | Structured output — JSON schema, Pydantic and grammars, and the parse that must not fail silent… |
+| `CTX-14` | [38](../days/day-38/LESSON.md) | Prompt fragility and the failure lab — a robustness test that goes red, then truncation, refusa… |
+| `CTX-15` | [38](../days/day-38/LESSON.md) | Prompt fragility and the failure lab — a robustness test that goes red, then truncation, refusa… |
+| `CTX-16` | [38](../days/day-38/LESSON.md) | Prompt fragility and the failure lab — a robustness test that goes red, then truncation, refusa… |
 
-## Embeddings & Retrieval (`RAG-`) — 46 IDs
+## Transformer internals & efficiency (`TF-`) — 43 IDs
 
 | ID | Day | Day title |
 | --- | --- | --- |
-| `RAG-01` | [115](../days/day-115/LESSON.md) | The embedding taxonomy — dense, sparse, and what each one preserves |
-| `RAG-02` | [115](../days/day-115/LESSON.md) | The embedding taxonomy — dense, sparse, and what each one preserves |
-| `RAG-03` | [115](../days/day-115/LESSON.md) | The embedding taxonomy — dense, sparse, and what each one preserves |
-| `RAG-04` | [116](../days/day-116/LESSON.md) | Quantized and binary embeddings — float32 to int8 to one bit |
-| `RAG-05` | [116](../days/day-116/LESSON.md) | Quantized and binary embeddings — float32 to int8 to one bit |
-| `RAG-06` | [117](../days/day-117/LESSON.md) | Multi-vector embeddings — one document, many vectors |
-| `RAG-07` | [118](../days/day-118/LESSON.md) | Matryoshka Representation Learning — flexible dimensions at query time |
-| `RAG-08` | [118](../days/day-118/LESSON.md) | Matryoshka Representation Learning — flexible dimensions at query time |
-| `RAG-09` | [119](../days/day-119/LESSON.md) | MRL embeddings in production — the truncation decision |
-| `RAG-10` | [120](../days/day-120/LESSON.md) | Embedding fine-tuning — strategies, hard negatives, and doing it on your own corpus |
-| `RAG-11` | [120](../days/day-120/LESSON.md) | Embedding fine-tuning — strategies, hard negatives, and doing it on your own corpus |
-| `RAG-12` | [120](../days/day-120/LESSON.md) | Embedding fine-tuning — strategies, hard negatives, and doing it on your own corpus |
-| `RAG-13` | [127](../days/day-127/LESSON.md) | Vanilla RAG, end to end and by hand |
-| `RAG-14` | [127](../days/day-127/LESSON.md) | Vanilla RAG, end to end and by hand |
-| `RAG-15` | [128](../days/day-128/LESSON.md) | Choosing an embedding model for retrieval — and measuring the choice |
-| `RAG-16` | [129](../days/day-129/LESSON.md) | Chunking strategies and what each one destroys |
-| `RAG-17` | [129](../days/day-129/LESSON.md) | Chunking strategies and what each one destroys |
-| `RAG-18` | [130](../days/day-130/LESSON.md) | BM25 and why lexical retrieval refuses to die |
-| `RAG-19` | [131](../days/day-131/LESSON.md) | SPLADE — learned sparse retrieval |
-| `RAG-20` | [132](../days/day-132/LESSON.md) | ColBERT-style late interaction and MaxSim |
-| `RAG-21` | [133](../days/day-133/LESSON.md) | Hybrid RAG and Reciprocal Rank Fusion |
-| `RAG-22` | [133](../days/day-133/LESSON.md) | Hybrid RAG and Reciprocal Rank Fusion |
-| `RAG-23` | [134](../days/day-134/LESSON.md) | Query transformations — rewriting, decomposition, HyDE |
-| `RAG-24` | [134](../days/day-134/LESSON.md) | Query transformations — rewriting, decomposition, HyDE |
-| `RAG-25` | [135](../days/day-135/LESSON.md) | Rerankers — cross-encoders and the precision they buy |
-| `RAG-26` | [135](../days/day-135/LESSON.md) | Rerankers — cross-encoders and the precision they buy |
-| `RAG-27` | [136](../days/day-136/LESSON.md) | RAG evaluation with RAGAS — faithfulness, relevancy, context precision and recall |
-| `RAG-28` | [136](../days/day-136/LESSON.md) | RAG evaluation with RAGAS — faithfulness, relevancy, context precision and recall |
-| `RAG-29` | [137](../days/day-137/LESSON.md) | Self-RAG, Corrective RAG, Adaptive RAG and Agentic RAG — the LLM deciding when to retrieve |
-| `RAG-30` | [137](../days/day-137/LESSON.md) | Self-RAG, Corrective RAG, Adaptive RAG and Agentic RAG — the LLM deciding when to retrieve |
-| `RAG-31` | [137](../days/day-137/LESSON.md) | Self-RAG, Corrective RAG, Adaptive RAG and Agentic RAG — the LLM deciding when to retrieve |
-| `RAG-32` | [137](../days/day-137/LESSON.md) | Self-RAG, Corrective RAG, Adaptive RAG and Agentic RAG — the LLM deciding when to retrieve |
-| `RAG-33` | [138](../days/day-138/LESSON.md) | Vector quantization for scale — scalar, binary and product quantization |
-| `RAG-34` | [138](../days/day-138/LESSON.md) | Vector quantization for scale — scalar, binary and product quantization |
-| `RAG-35` | [138](../days/day-138/LESSON.md) | Vector quantization for scale — scalar, binary and product quantization |
-| `RAG-36` | [139](../days/day-139/LESSON.md) | Document parsing without OCR — layout detection and structure-aware chunking |
-| `RAG-37` | [139](../days/day-139/LESSON.md) | Document parsing without OCR — layout detection and structure-aware chunking |
-| `RAG-38` | [140](../days/day-140/LESSON.md) | The ColPali paradigm — retrieving over page images |
-| `RAG-39` | [140](../days/day-140/LESSON.md) | The ColPali paradigm — retrieving over page images |
-| `RAG-40` | [141](../days/day-141/LESSON.md) | Vision-language embeddings and VL rerankers |
-| `RAG-41` | [141](../days/day-141/LESSON.md) | Vision-language embeddings and VL rerankers |
-| `RAG-42` | [142](../days/day-142/LESSON.md) | Graph RAG with Neo4j — entities, relationships and multi-hop questions |
-| `RAG-43` | [142](../days/day-142/LESSON.md) | Graph RAG with Neo4j — entities, relationships and multi-hop questions |
-| `RAG-44` | [143](../days/day-143/LESSON.md) | Vectorless retrieval — PageIndex |
-| `RAG-45` | [144](../days/day-144/LESSON.md) | Caching and semantic caching in a RAG pipeline |
-| `RAG-46` | [144](../days/day-144/LESSON.md) | Caching and semantic caching in a RAG pipeline |
+| `TF-01` | [53](../days/day-53/LESSON.md) | What a language model actually is — the modelling objective, and next-token prediction followed… |
+| `TF-02` | [53](../days/day-53/LESSON.md) | What a language model actually is — the modelling objective, and next-token prediction followed… |
+| `TF-03` | [54](../days/day-54/LESSON.md) | Text to numbers — the tokenizer boundary, the taxonomy, and Byte Pair Encoding trained from scr… |
+| `TF-04` | [54](../days/day-54/LESSON.md) | Text to numbers — the tokenizer boundary, the taxonomy, and Byte Pair Encoding trained from scr… |
+| `TF-05` | [54](../days/day-54/LESSON.md) | Text to numbers — the tokenizer boundary, the taxonomy, and Byte Pair Encoding trained from scr… |
+| `TF-06` | [55](../days/day-55/LESSON.md) | WordPiece, SentencePiece and tokenizer pathologies — vocabulary size, digits, code, whitespace… |
+| `TF-07` | [55](../days/day-55/LESSON.md) | WordPiece, SentencePiece and tokenizer pathologies — vocabulary size, digits, code, whitespace… |
+| `TF-08` | [55](../days/day-55/LESSON.md) | WordPiece, SentencePiece and tokenizer pathologies — vocabulary size, digits, code, whitespace… |
+| `TF-09` | [56](../days/day-56/LESSON.md) | Embeddings — discrete symbols into continuous space; the embedding matrix, weight tying, and wh… |
+| `TF-10` | [56](../days/day-56/LESSON.md) | Embeddings — discrete symbols into continuous space; the embedding matrix, weight tying, and wh… |
+| `TF-11` | [56](../days/day-56/LESSON.md) | Embeddings — discrete symbols into continuous space; the embedding matrix, weight tying, and wh… |
+| `TF-12` | [57](../days/day-57/LESSON.md) | The attention mechanism from first principles — query, key, value, and scaled dot-product |
+| `TF-13` | [57](../days/day-57/LESSON.md) | The attention mechanism from first principles — query, key, value, and scaled dot-product |
+| `TF-14` | [58](../days/day-58/LESSON.md) | Self-attention, the causal mask, and multi-head attention — what a decoder is allowed to see, a… |
+| `TF-15` | [58](../days/day-58/LESSON.md) | Self-attention, the causal mask, and multi-head attention — what a decoder is allowed to see, a… |
+| `TF-16` | [58](../days/day-58/LESSON.md) | Self-attention, the causal mask, and multi-head attention — what a decoder is allowed to see, a… |
+| `TF-17` | [59](../days/day-59/LESSON.md) | The transformer block — residuals, layer norm, the feed-forward network, and pre-norm vs post-n… |
+| `TF-18` | [59](../days/day-59/LESSON.md) | The transformer block — residuals, layer norm, the feed-forward network, and pre-norm vs post-n… |
+| `TF-19` | [59](../days/day-59/LESSON.md) | The transformer block — residuals, layer norm, the feed-forward network, and pre-norm vs post-n… |
+| `TF-20` | [60](../days/day-60/LESSON.md) | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to… |
+| `TF-21` | [60](../days/day-60/LESSON.md) | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to… |
+| `TF-22` | [60](../days/day-60/LESSON.md) | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to… |
+| `TF-23` | [61](../days/day-61/LESSON.md) | Coding attention — batched multi-head by hand, a block that actually trains, and a loss curve t… |
+| `TF-24` | [61](../days/day-61/LESSON.md) | Coding attention — batched multi-head by hand, a block that actually trains, and a loss curve t… |
+| `TF-25` | [61](../days/day-61/LESSON.md) | Coding attention — batched multi-head by hand, a block that actually trains, and a loss curve t… |
+| `TF-26` | [62](../days/day-62/LESSON.md) | The naive decoding problem — quadratic recompute measured rather than asserted — and the KV cac… |
+| `TF-27` | [62](../days/day-62/LESSON.md) | The naive decoding problem — quadratic recompute measured rather than asserted — and the KV cac… |
+| `TF-28` | [62](../days/day-62/LESSON.md) | The naive decoding problem — quadratic recompute measured rather than asserted — and the KV cac… |
+| `TF-29` | [63](../days/day-63/LESSON.md) | KV cache memory math, and Flash Attention — IO-awareness, tiling, and why the speedup is not in… |
+| `TF-30` | [63](../days/day-63/LESSON.md) | KV cache memory math, and Flash Attention — IO-awareness, tiling, and why the speedup is not in… |
+| `TF-31` | [63](../days/day-63/LESSON.md) | KV cache memory math, and Flash Attention — IO-awareness, tiling, and why the speedup is not in… |
+| `TF-32` | [64](../days/day-64/LESSON.md) | Multi-Query, Grouped-Query and Multi-Head Latent Attention — sharing the cache, then compressin… |
+| `TF-33` | [64](../days/day-64/LESSON.md) | Multi-Query, Grouped-Query and Multi-Head Latent Attention — sharing the cache, then compressin… |
+| `TF-34` | [64](../days/day-64/LESSON.md) | Multi-Query, Grouped-Query and Multi-Head Latent Attention — sharing the cache, then compressin… |
+| `TF-35` | [65](../days/day-65/LESSON.md) | PagedAttention, continuous batching and vLLM — the serving-side answer; and PyTorch SDPA's back… |
+| `TF-36` | [65](../days/day-65/LESSON.md) | PagedAttention, continuous batching and vLLM — the serving-side answer; and PyTorch SDPA's back… |
+| `TF-37` | [65](../days/day-65/LESSON.md) | PagedAttention, continuous batching and vLLM — the serving-side answer; and PyTorch SDPA's back… |
+| `TF-38` | [66](../days/day-66/LESSON.md) | RoPE — rotary embeddings, and what happens when you push past the trained context |
+| `TF-39` | [66](../days/day-66/LESSON.md) | RoPE — rotary embeddings, and what happens when you push past the trained context |
+| `TF-40` | [67](../days/day-67/LESSON.md) | Scaling laws, compute-optimal training, and Mixture-of-Experts — the sizing argument you make b… |
+| `TF-41` | [67](../days/day-67/LESSON.md) | Scaling laws, compute-optimal training, and Mixture-of-Experts — the sizing argument you make b… |
+| `TF-42` | [67](../days/day-67/LESSON.md) | Scaling laws, compute-optimal training, and Mixture-of-Experts — the sizing argument you make b… |
+| `TF-43` | [67](../days/day-67/LESSON.md) | Scaling laws, compute-optimal training, and Mixture-of-Experts — the sizing argument you make b… |
 
-## Agents, Protocols & Orchestration (`AGT-`) — 82 IDs
+## Fine-tuning, alignment & compression (`FT-`) — 57 IDs
 
 | ID | Day | Day title |
 | --- | --- | --- |
-| `AGT-01` | [121](../days/day-121/LESSON.md) | LangChain architecture and the model abstraction |
-| `AGT-02` | [121](../days/day-121/LESSON.md) | LangChain architecture and the model abstraction |
-| `AGT-03` | [122](../days/day-122/LESSON.md) | LCEL — composition, streaming, and the runnable interface |
-| `AGT-04` | [122](../days/day-122/LESSON.md) | LCEL — composition, streaming, and the runnable interface |
-| `AGT-05` | [123](../days/day-123/LESSON.md) | Output parsers and structured output in LangChain |
-| `AGT-06` | [124](../days/day-124/LESSON.md) | Tool calling, memory and conversation history |
-| `AGT-07` | [124](../days/day-124/LESSON.md) | Tool calling, memory and conversation history |
-| `AGT-08` | [125](../days/day-125/LESSON.md) | Document loaders, text splitters and vector stores |
-| `AGT-09` | [125](../days/day-125/LESSON.md) | Document loaders, text splitters and vector stores |
-| `AGT-10` | [126](../days/day-126/LESSON.md) | Callbacks, tracing and LangSmith; deploying a LangChain API safely |
-| `AGT-11` | [126](../days/day-126/LESSON.md) | Callbacks, tracing and LangSmith; deploying a LangChain API safely |
-| `AGT-12` | [126](../days/day-126/LESSON.md) | Callbacks, tracing and LangSmith; deploying a LangChain API safely |
-| `AGT-13` | [157](../days/day-157/LESSON.md) | Pydantic — models, fields and validators |
-| `AGT-14` | [157](../days/day-157/LESSON.md) | Pydantic — models, fields and validators |
-| `AGT-15` | [158](../days/day-158/LESSON.md) | Nested models, type coercion, custom validators and settings management |
-| `AGT-16` | [158](../days/day-158/LESSON.md) | Nested models, type coercion, custom validators and settings management |
-| `AGT-17` | [159](../days/day-159/LESSON.md) | Why function calling exists — the LLM-to-tool communication problem |
-| `AGT-18` | [160](../days/day-160/LESSON.md) | Function schema design — JSON Schema, descriptions and parameter typing |
-| `AGT-19` | [160](../days/day-160/LESSON.md) | Function schema design — JSON Schema, descriptions and parameter typing |
-| `AGT-20` | [161](../days/day-161/LESSON.md) | The function-calling request–response lifecycle |
-| `AGT-21` | [162](../days/day-162/LESSON.md) | Parallel function calling — several tool calls in one response |
-| `AGT-22` | [163](../days/day-163/LESSON.md) | Forced and constrained tool choice — required, none, and naming a tool |
-| `AGT-23` | [164](../days/day-164/LESSON.md) | Structured output vs function calling — the difference, and when each is right |
-| `AGT-24` | [165](../days/day-165/LESSON.md) | Building a tool executor loop from scratch |
-| `AGT-25` | [165](../days/day-165/LESSON.md) | Building a tool executor loop from scratch |
-| `AGT-26` | [166](../days/day-166/LESSON.md) | Function calling across providers — OpenAI, Anthropic, Google, and the universal contract |
-| `AGT-27` | [166](../days/day-166/LESSON.md) | Function calling across providers — OpenAI, Anthropic, Google, and the universal contract |
-| `AGT-28` | [167](../days/day-167/LESSON.md) | Why MCP exists — tool fragmentation; hosts, clients and servers |
-| `AGT-29` | [167](../days/day-167/LESSON.md) | Why MCP exists — tool fragmentation; hosts, clients and servers |
-| `AGT-30` | [168](../days/day-168/LESSON.md) | MCP primitives — tools, resources and prompts |
-| `AGT-31` | [168](../days/day-168/LESSON.md) | MCP primitives — tools, resources and prompts |
-| `AGT-32` | [169](../days/day-169/LESSON.md) | MCP transport — stdio and SSE; building a server from scratch |
-| `AGT-33` | [169](../days/day-169/LESSON.md) | MCP transport — stdio and SSE; building a server from scratch |
-| `AGT-34` | [169](../days/day-169/LESSON.md) | MCP transport — stdio and SSE; building a server from scratch |
-| `AGT-35` | [170](../days/day-170/LESSON.md) | Building an MCP client; authentication, authorization and trust boundaries |
-| `AGT-36` | [170](../days/day-170/LESSON.md) | Building an MCP client; authentication, authorization and trust boundaries |
-| `AGT-37` | [170](../days/day-170/LESSON.md) | Building an MCP client; authentication, authorization and trust boundaries |
-| `AGT-38` | [171](../days/day-171/LESSON.md) | LangGraph foundations and the core graph model |
-| `AGT-39` | [171](../days/day-171/LESSON.md) | LangGraph foundations and the core graph model |
-| `AGT-40` | [172](../days/day-172/LESSON.md) | State management — schemas, reducers and what belongs in state |
-| `AGT-41` | [172](../days/day-172/LESSON.md) | State management — schemas, reducers and what belongs in state |
-| `AGT-42` | [173](../days/day-173/LESSON.md) | Nodes, edges and conditional routing |
-| `AGT-43` | [173](../days/day-173/LESSON.md) | Nodes, edges and conditional routing |
-| `AGT-44` | [174](../days/day-174/LESSON.md) | Tool calling and the ReACT pattern as a graph |
-| `AGT-45` | [174](../days/day-174/LESSON.md) | Tool calling and the ReACT pattern as a graph |
-| `AGT-46` | [175](../days/day-175/LESSON.md) | Human-in-the-loop — interrupts before a write |
-| `AGT-47` | [175](../days/day-175/LESSON.md) | Human-in-the-loop — interrupts before a write |
-| `AGT-48` | [176](../days/day-176/LESSON.md) | Memory and persistence across sessions — checkpointers |
-| `AGT-49` | [176](../days/day-176/LESSON.md) | Memory and persistence across sessions — checkpointers |
-| `AGT-50` | [177](../days/day-177/LESSON.md) | Multi-agent systems — supervisor and workers, and the shared-state contract |
-| `AGT-51` | [177](../days/day-177/LESSON.md) | Multi-agent systems — supervisor and workers, and the shared-state contract |
-| `AGT-52` | [178](../days/day-178/LESSON.md) | Streaming and observability out of a running graph |
-| `AGT-53` | [179](../days/day-179/LESSON.md) | LangGraph Platform; orchestrating several MCP servers from one graph |
-| `AGT-54` | [179](../days/day-179/LESSON.md) | LangGraph Platform; orchestrating several MCP servers from one graph |
-| `AGT-55` | [180](../days/day-180/LESSON.md) | Agent observability with LangSmith and Logfire |
-| `AGT-56` | [180](../days/day-180/LESSON.md) | Agent observability with LangSmith and Logfire |
-| `AGT-57` | [181](../days/day-181/LESSON.md) | Why A2A exists — the multi-agent interoperability problem |
-| `AGT-58` | [181](../days/day-181/LESSON.md) | Why A2A exists — the multi-agent interoperability problem |
-| `AGT-59` | [182](../days/day-182/LESSON.md) | Agent Cards — capability discovery and the well-known endpoint |
-| `AGT-60` | [183](../days/day-183/LESSON.md) | The A2A task model — submitted, working, completed, failed, streaming |
-| `AGT-61` | [184](../days/day-184/LESSON.md) | A2A transport — HTTP, SSE and the JSON-RPC message structure |
-| `AGT-62` | [185](../days/day-185/LESSON.md) | Building an A2A-compliant agent server |
-| `AGT-63` | [185](../days/day-185/LESSON.md) | Building an A2A-compliant agent server |
-| `AGT-64` | [186](../days/day-186/LESSON.md) | Building an A2A client; A2A vs MCP and how they compose |
-| `AGT-65` | [186](../days/day-186/LESSON.md) | Building an A2A client; A2A vs MCP and how they compose |
-| `AGT-66` | [187](../days/day-187/LESSON.md) | Bedrock AgentCore and the agentic stack; Runtime, microVM isolation and session windows |
-| `AGT-67` | [187](../days/day-187/LESSON.md) | Bedrock AgentCore and the agentic stack; Runtime, microVM isolation and session windows |
-| `AGT-68` | [188](../days/day-188/LESSON.md) | Strands Agents; framework-agnostic deployment of a LangGraph agent to AgentCore |
-| `AGT-69` | [188](../days/day-188/LESSON.md) | Strands Agents; framework-agnostic deployment of a LangGraph agent to AgentCore |
-| `AGT-70` | [189](../days/day-189/LESSON.md) | AgentCore Memory — short-term, long-term and cross-session persistence |
-| `AGT-71` | [189](../days/day-189/LESSON.md) | AgentCore Memory — short-term, long-term and cross-session persistence |
-| `AGT-72` | [190](../days/day-190/LESSON.md) | AgentCore Gateway — exposing APIs, Lambda functions and MCP servers as tools |
-| `AGT-73` | [190](../days/day-190/LESSON.md) | AgentCore Gateway — exposing APIs, Lambda functions and MCP servers as tools |
-| `AGT-74` | [191](../days/day-191/LESSON.md) | AgentCore Identity — IAM roles per agent, OAuth, user-delegated access and secrets |
-| `AGT-75` | [192](../days/day-192/LESSON.md) | AgentCore Browser and Code Interpreter; deploying with the CLI, CodeBuild, ECR and an ARM64 run… |
-| `AGT-76` | [192](../days/day-192/LESSON.md) | AgentCore Browser and Code Interpreter; deploying with the CLI, CodeBuild, ECR and an ARM64 run… |
-| `AGT-77` | [192](../days/day-192/LESSON.md) | AgentCore Browser and Code Interpreter; deploying with the CLI, CodeBuild, ECR and an ARM64 run… |
-| `AGT-78` | [193](../days/day-193/LESSON.md) | Multi-agent orchestration at scale — supervisor patterns that survive contact |
-| `AGT-79` | [193](../days/day-193/LESSON.md) | Multi-agent orchestration at scale — supervisor patterns that survive contact |
-| `AGT-80` | [194](../days/day-194/LESSON.md) | AgentCore Observability — CloudWatch, X-Ray, OTEL and third-party monitoring |
-| `AGT-81` | [194](../days/day-194/LESSON.md) | AgentCore Observability — CloudWatch, X-Ray, OTEL and third-party monitoring |
-| `AGT-82` | [197](../days/day-197/LESSON.md) | Sandboxed tool execution — E2B, Modal, Docker |
+| `FT-01` | [68](../days/day-68/LESSON.md) | The two-phase lifecycle — pre-training vs post-training, what pre-training produces, and why a… |
+| `FT-02` | [68](../days/day-68/LESSON.md) | The two-phase lifecycle — pre-training vs post-training, what pre-training produces, and why a… |
+| `FT-03` | [68](../days/day-68/LESSON.md) | The two-phase lifecycle — pre-training vs post-training, what pre-training produces, and why a… |
+| `FT-04` | [69](../days/day-69/LESSON.md) | Data curation and filtering at scale — quality heuristics, deduplication, and benchmark contami… |
+| `FT-05` | [69](../days/day-69/LESSON.md) | Data curation and filtering at scale — quality heuristics, deduplication, and benchmark contami… |
+| `FT-06` | [70](../days/day-70/LESSON.md) | Continued pre-training for domain adaptation — and knowing when to skip it and go straight to S… |
+| `FT-07` | [70](../days/day-70/LESSON.md) | Continued pre-training for domain adaptation — and knowing when to skip it and go straight to S… |
+| `FT-08` | [71](../days/day-71/LESSON.md) | Dataset formats and chat templates — instruction pairs, the template that must match the base,… |
+| `FT-09` | [71](../days/day-71/LESSON.md) | Dataset formats and chat templates — instruction pairs, the template that must match the base,… |
+| `FT-10` | [72](../days/day-72/LESSON.md) | Loss masking — what it is, and exactly what breaks without it, run broken on purpose |
+| `FT-11` | [72](../days/day-72/LESSON.md) | Loss masking — what it is, and exactly what breaks without it, run broken on purpose |
+| `FT-12` | [73](../days/day-73/LESSON.md) | Synthetic data — the taxonomy, self-instruction, preference pairs, judge-scored generation, and… |
+| `FT-13` | [73](../days/day-73/LESSON.md) | Synthetic data — the taxonomy, self-instruction, preference pairs, judge-scored generation, and… |
+| `FT-14` | [73](../days/day-73/LESSON.md) | Synthetic data — the taxonomy, self-instruction, preference pairs, judge-scored generation, and… |
+| `FT-15` | [73](../days/day-73/LESSON.md) | Synthetic data — the taxonomy, self-instruction, preference pairs, judge-scored generation, and… |
+| `FT-16` | [74](../days/day-74/LESSON.md) | The intrinsic dimensionality insight, and LoRA — the math, rank, alpha, and which modules to ta… |
+| `FT-17` | [74](../days/day-74/LESSON.md) | The intrinsic dimensionality insight, and LoRA — the math, rank, alpha, and which modules to ta… |
+| `FT-18` | [74](../days/day-74/LESSON.md) | The intrinsic dimensionality insight, and LoRA — the math, rank, alpha, and which modules to ta… |
+| `FT-19` | [75](../days/day-75/LESSON.md) | LoRA in practice — adapters on disk, merged and unmerged, and what each costs at serving time |
+| `FT-20` | [75](../days/day-75/LESSON.md) | LoRA in practice — adapters on disk, merged and unmerged, and what each costs at serving time |
+| `FT-21` | [76](../days/day-76/LESSON.md) | QLoRA — 4-bit NF4, double quantization, and paged optimizers |
+| `FT-22` | [76](../days/day-76/LESSON.md) | QLoRA — 4-bit NF4, double quantization, and paged optimizers |
+| `FT-23` | [77](../days/day-77/LESSON.md) | DoRA, AdaLoRA and LoRA+ — decomposing magnitude from direction, adaptive rank, and separate lea… |
+| `FT-24` | [77](../days/day-77/LESSON.md) | DoRA, AdaLoRA and LoRA+ — decomposing magnitude from direction, adaptive rank, and separate lea… |
+| `FT-25` | [78](../days/day-78/LESSON.md) | Supervised fine-tuning end to end — the trainer, instruction tuning, and multi-turn data withou… |
+| `FT-26` | [78](../days/day-78/LESSON.md) | Supervised fine-tuning end to end — the trainer, instruction tuning, and multi-turn data withou… |
+| `FT-27` | [78](../days/day-78/LESSON.md) | Supervised fine-tuning end to end — the trainer, instruction tuning, and multi-turn data withou… |
+| `FT-28` | [79](../days/day-79/LESSON.md) | Chain-of-thought fine-tuning, domain adaptation, and catastrophic forgetting |
+| `FT-29` | [79](../days/day-79/LESSON.md) | Chain-of-thought fine-tuning, domain adaptation, and catastrophic forgetting |
+| `FT-30` | [80](../days/day-80/LESSON.md) | Why SFT alone is not enough — RLHF with PPO, then DPO without a reward model, with GRPO and ORP… |
+| `FT-31` | [80](../days/day-80/LESSON.md) | Why SFT alone is not enough — RLHF with PPO, then DPO without a reward model, with GRPO and ORP… |
+| `FT-32` | [80](../days/day-80/LESSON.md) | Why SFT alone is not enough — RLHF with PPO, then DPO without a reward model, with GRPO and ORP… |
+| `FT-33` | [80](../days/day-80/LESSON.md) | Why SFT alone is not enough — RLHF with PPO, then DPO without a reward model, with GRPO and ORP… |
+| `FT-34` | [81](../days/day-81/LESSON.md) | Why evaluation belongs inside the fine-tuning loop — and the three benchmark families |
+| `FT-35` | [81](../days/day-81/LESSON.md) | Why evaluation belongs inside the fine-tuning loop — and the three benchmark families |
+| `FT-36` | [82](../days/day-82/LESSON.md) | LLM-as-judge — calibrating a judge you can trust, and designing a domain evaluation that can fa… |
+| `FT-37` | [82](../days/day-82/LESSON.md) | LLM-as-judge — calibrating a judge you can trust, and designing a domain evaluation that can fa… |
+| `FT-38` | [82](../days/day-82/LESSON.md) | LLM-as-judge — calibrating a judge you can trust, and designing a domain evaluation that can fa… |
+| `FT-39` | [83](../days/day-83/LESSON.md) | Post-training quantization — GPTQ, AWQ, NF4 and FP8, with the quality delta measured rather tha… |
+| `FT-40` | [83](../days/day-83/LESSON.md) | Post-training quantization — GPTQ, AWQ, NF4 and FP8, with the quality delta measured rather tha… |
+| `FT-41` | [83](../days/day-83/LESSON.md) | Post-training quantization — GPTQ, AWQ, NF4 and FP8, with the quality delta measured rather tha… |
+| `FT-42` | [84](../days/day-84/LESSON.md) | GGUF and llama.cpp — the CPU path; and merging adapters before serving, or deliberately not |
+| `FT-43` | [84](../days/day-84/LESSON.md) | GGUF and llama.cpp — the CPU path; and merging adapters before serving, or deliberately not |
+| `FT-44` | [85](../days/day-85/LESSON.md) | vLLM and SGLang — paged KV, the OpenAI-compatible surface, and many adapters served from one ba… |
+| `FT-45` | [85](../days/day-85/LESSON.md) | vLLM and SGLang — paged KV, the OpenAI-compatible surface, and many adapters served from one ba… |
+| `FT-46` | [85](../days/day-85/LESSON.md) | vLLM and SGLang — paged KV, the OpenAI-compatible surface, and many adapters served from one ba… |
+| `FT-47` | [86](../days/day-86/LESSON.md) | What a reasoning model is — chain-of-thought prompted, then trained; verifiable rewards, and wh… |
+| `FT-48` | [86](../days/day-86/LESSON.md) | What a reasoning model is — chain-of-thought prompted, then trained; verifiable rewards, and wh… |
+| `FT-49` | [86](../days/day-86/LESSON.md) | What a reasoning model is — chain-of-thought prompted, then trained; verifiable rewards, and wh… |
+| `FT-50` | [87](../days/day-87/LESSON.md) | Small language models — why cost, latency and privacy make them the default, and pruning as the… |
+| `FT-51` | [87](../days/day-87/LESSON.md) | Small language models — why cost, latency and privacy make them the default, and pruning as the… |
+| `FT-52` | [88](../days/day-88/LESSON.md) | The student–teacher paradigm — hard labels, soft labels, temperature scaling, and the KL diverg… |
+| `FT-53` | [88](../days/day-88/LESSON.md) | The student–teacher paradigm — hard labels, soft labels, temperature scaling, and the KL diverg… |
+| `FT-54` | [88](../days/day-88/LESSON.md) | The student–teacher paradigm — hard labels, soft labels, temperature scaling, and the KL diverg… |
+| `FT-55` | [89](../days/day-89/LESSON.md) | A distillation pipeline end to end — teacher data, student design, choosing the scale, and spec… |
+| `FT-56` | [89](../days/day-89/LESSON.md) | A distillation pipeline end to end — teacher data, student design, choosing the scale, and spec… |
+| `FT-57` | [89](../days/day-89/LESSON.md) | A distillation pipeline end to end — teacher data, student design, choosing the scale, and spec… |
 
-## Prompt & Context Engineering (`CTX-`) — 14 IDs
+## Embeddings & retrieval (`RAG-`) — 43 IDs
 
 | ID | Day | Day title |
 | --- | --- | --- |
-| `CTX-01` | [108](../days/day-108/LESSON.md) | Anatomy of a prompt — instruction, context, input, output format; zero-, one- and few-shot |
-| `CTX-02` | [108](../days/day-108/LESSON.md) | Anatomy of a prompt — instruction, context, input, output format; zero-, one- and few-shot |
-| `CTX-03` | [109](../days/day-109/LESSON.md) | System prompt design and role assignment |
-| `CTX-04` | [110](../days/day-110/LESSON.md) | Chain-of-thought and step-back prompting |
-| `CTX-05` | [110](../days/day-110/LESSON.md) | Chain-of-thought and step-back prompting |
-| `CTX-06` | [111](../days/day-111/LESSON.md) | Structured generation — JSON mode, XML tags, and grammars |
-| `CTX-07` | [112](../days/day-112/LESSON.md) | Prompt sensitivity and fragility — a robustness test that goes red |
-| `CTX-08` | [112](../days/day-112/LESSON.md) | Prompt sensitivity and fragility — a robustness test that goes red |
-| `CTX-09` | [113](../days/day-113/LESSON.md) | Prompt chaining, decomposition, meta-prompting and self-refinement loops |
-| `CTX-10` | [113](../days/day-113/LESSON.md) | Prompt chaining, decomposition, meta-prompting and self-refinement loops |
-| `CTX-11` | [114](../days/day-114/LESSON.md) | The context window — anatomy, recency bias, memory architectures, and compression with LLMLingu… |
-| `CTX-12` | [114](../days/day-114/LESSON.md) | The context window — anatomy, recency bias, memory architectures, and compression with LLMLingu… |
-| `CTX-13` | [114](../days/day-114/LESSON.md) | The context window — anatomy, recency bias, memory architectures, and compression with LLMLingu… |
-| `CTX-14` | [114](../days/day-114/LESSON.md) | The context window — anatomy, recency bias, memory architectures, and compression with LLMLingu… |
+| `RAG-01` | [95](../days/day-95/LESSON.md) | Embeddings — what a vector actually encodes, the question it cannot represent, and the dense/sp… |
+| `RAG-02` | [95](../days/day-95/LESSON.md) | Embeddings — what a vector actually encodes, the question it cannot represent, and the dense/sp… |
+| `RAG-03` | [95](../days/day-95/LESSON.md) | Embeddings — what a vector actually encodes, the question it cannot represent, and the dense/sp… |
+| `RAG-04` | [96](../days/day-96/LESSON.md) | Quantized and binary embeddings, and Matryoshka representation learning — float32 to int8 to on… |
+| `RAG-05` | [96](../days/day-96/LESSON.md) | Quantized and binary embeddings, and Matryoshka representation learning — float32 to int8 to on… |
+| `RAG-06` | [96](../days/day-96/LESSON.md) | Quantized and binary embeddings, and Matryoshka representation learning — float32 to int8 to on… |
+| `RAG-07` | [97](../days/day-97/LESSON.md) | Embedding fine-tuning on your own corpus — hard negatives, and the gain measured against the of… |
+| `RAG-08` | [97](../days/day-97/LESSON.md) | Embedding fine-tuning on your own corpus — hard negatives, and the gain measured against the of… |
+| `RAG-09` | [98](../days/day-98/LESSON.md) | Chunking — fixed, recursive and semantic, and exactly what each strategy destroys |
+| `RAG-10` | [98](../days/day-98/LESSON.md) | Chunking — fixed, recursive and semantic, and exactly what each strategy destroys |
+| `RAG-11` | [99](../days/day-99/LESSON.md) | Vanilla RAG, end to end and by hand, with no framework anywhere near it |
+| `RAG-12` | [99](../days/day-99/LESSON.md) | Vanilla RAG, end to end and by hand, with no framework anywhere near it |
+| `RAG-13` | [100](../days/day-100/LESSON.md) | Vector stores — self-hosted and managed, namespaces, and metadata that filters before it ranks |
+| `RAG-14` | [100](../days/day-100/LESSON.md) | Vector stores — self-hosted and managed, namespaces, and metadata that filters before it ranks |
+| `RAG-15` | [101](../days/day-101/LESSON.md) | BM25, and the queries where vectors lose badly |
+| `RAG-16` | [102](../days/day-102/LESSON.md) | Learned sparse and late interaction — SPLADE, ColBERT and MaxSim, and why one vector per docume… |
+| `RAG-17` | [102](../days/day-102/LESSON.md) | Learned sparse and late interaction — SPLADE, ColBERT and MaxSim, and why one vector per docume… |
+| `RAG-18` | [103](../days/day-103/LESSON.md) | Hybrid retrieval and reciprocal rank fusion; query rewriting, decomposition and HyDE |
+| `RAG-19` | [103](../days/day-103/LESSON.md) | Hybrid retrieval and reciprocal rank fusion; query rewriting, decomposition and HyDE |
+| `RAG-20` | [103](../days/day-103/LESSON.md) | Hybrid retrieval and reciprocal rank fusion; query rewriting, decomposition and HyDE |
+| `RAG-21` | [104](../days/day-104/LESSON.md) | Rerankers — the cross-encoder that fixes a top-k nobody would have shipped, and citations a com… |
+| `RAG-22` | [104](../days/day-104/LESSON.md) | Rerankers — the cross-encoder that fixes a top-k nobody would have shipped, and citations a com… |
+| `RAG-23` | [104](../days/day-104/LESSON.md) | Rerankers — the cross-encoder that fixes a top-k nobody would have shipped, and citations a com… |
+| `RAG-24` | [105](../days/day-105/LESSON.md) | Retrieval evaluation — a golden set, recall@k, and the number that has to move |
+| `RAG-25` | [105](../days/day-105/LESSON.md) | Retrieval evaluation — a golden set, recall@k, and the number that has to move |
+| `RAG-26` | [106](../days/day-106/LESSON.md) | RAGAS and DeepEval — faithfulness, relevancy, context precision and recall, and what a single s… |
+| `RAG-27` | [106](../days/day-106/LESSON.md) | RAGAS and DeepEval — faithfulness, relevancy, context precision and recall, and what a single s… |
+| `RAG-28` | [107](../days/day-107/LESSON.md) | Self-RAG, Corrective RAG, Adaptive and Agentic RAG — the model deciding when to retrieve, measu… |
+| `RAG-29` | [107](../days/day-107/LESSON.md) | Self-RAG, Corrective RAG, Adaptive and Agentic RAG — the model deciding when to retrieve, measu… |
+| `RAG-30` | [107](../days/day-107/LESSON.md) | Self-RAG, Corrective RAG, Adaptive and Agentic RAG — the model deciding when to retrieve, measu… |
+| `RAG-31` | [108](../days/day-108/LESSON.md) | Vector quantization at scale — scalar, binary and product quantization — and caching, including… |
+| `RAG-32` | [108](../days/day-108/LESSON.md) | Vector quantization at scale — scalar, binary and product quantization — and caching, including… |
+| `RAG-33` | [108](../days/day-108/LESSON.md) | Vector quantization at scale — scalar, binary and product quantization — and caching, including… |
+| `RAG-34` | [109](../days/day-109/LESSON.md) | When the answer is a relationship — the question retrieval structurally cannot answer, the prop… |
+| `RAG-35` | [109](../days/day-109/LESSON.md) | When the answer is a relationship — the question retrieval structurally cannot answer, the prop… |
+| `RAG-36` | [110](../days/day-110/LESSON.md) | Designing an enterprise schema, and building the graph out of documents nobody curated — entity… |
+| `RAG-37` | [110](../days/day-110/LESSON.md) | Designing an enterprise schema, and building the graph out of documents nobody curated — entity… |
+| `RAG-38` | [111](../days/day-111/LESSON.md) | GraphRAG — retrieval that traverses instead of ranking; the hybrid router that picks and explai… |
+| `RAG-39` | [111](../days/day-111/LESSON.md) | GraphRAG — retrieval that traverses instead of ranking; the hybrid router that picks and explai… |
+| `RAG-40` | [111](../days/day-111/LESSON.md) | GraphRAG — retrieval that traverses instead of ranking; the hybrid router that picks and explai… |
+| `RAG-41` | [112](../days/day-112/LESSON.md) | The document that defeats a text pipeline — scans, merged cells, rotated tables and charts — an… |
+| `RAG-42` | [115](../days/day-115/LESSON.md) | Retrieval directly over page images — late interaction on patch vectors, table and chart extrac… |
+| `RAG-43` | [115](../days/day-115/LESSON.md) | Retrieval directly over page images — late interaction on patch vectors, table and chart extrac… |
 
-## LLMOps, Evaluation & CI/CD (`OPS-`) — 22 IDs
-
-| ID | Day | Day title |
-| --- | --- | --- |
-| `OPS-01` | [206](../days/day-206/LESSON.md) | Why ad-hoc testing fails — evaluation harness fundamentals |
-| `OPS-02` | [206](../days/day-206/LESSON.md) | Why ad-hoc testing fails — evaluation harness fundamentals |
-| `OPS-03` | [207](../days/day-207/LESSON.md) | LLM benchmarking with lm-evaluation-harness — MMLU, GSM8K, TruthfulQA |
-| `OPS-04` | [207](../days/day-207/LESSON.md) | LLM benchmarking with lm-evaluation-harness — MMLU, GSM8K, TruthfulQA |
-| `OPS-05` | [208](../days/day-208/LESSON.md) | Agent-native evaluation with Inspect AI — Task, Solver, Scorer |
-| `OPS-06` | [208](../days/day-208/LESSON.md) | Agent-native evaluation with Inspect AI — Task, Solver, Scorer |
-| `OPS-07` | [209](../days/day-209/LESSON.md) | LLM-as-Judge pipelines — model-graded scoring, calibration and bias |
-| `OPS-08` | [209](../days/day-209/LESSON.md) | LLM-as-Judge pipelines — model-graded scoring, calibration and bias |
-| `OPS-09` | [210](../days/day-210/LESSON.md) | Prompt regression and snapshot testing with PromptFoo |
-| `OPS-10` | [210](../days/day-210/LESSON.md) | Prompt regression and snapshot testing with PromptFoo |
-| `OPS-11` | [211](../days/day-211/LESSON.md) | Golden datasets — building them, versioning them, and keeping them honest |
-| `OPS-12` | [212](../days/day-212/LESSON.md) | Trace-based testing and flaky-test detection |
-| `OPS-13` | [212](../days/day-212/LESSON.md) | Trace-based testing and flaky-test detection |
-| `OPS-14` | [213](../days/day-213/LESSON.md) | Agent state, checkpointing and ReAct harness patterns — iteration guards, fallbacks, token budg… |
-| `OPS-15` | [213](../days/day-213/LESSON.md) | Agent state, checkpointing and ReAct harness patterns — iteration guards, fallbacks, token budg… |
-| `OPS-16` | [214](../days/day-214/LESSON.md) | Multi-agent execution harnesses — the supervisor–worker contract as a test |
-| `OPS-17` | [215](../days/day-215/LESSON.md) | Agent CI/CD — GitHub Actions and eval gating on pull requests |
-| `OPS-18` | [215](../days/day-215/LESSON.md) | Agent CI/CD — GitHub Actions and eval gating on pull requests |
-| `OPS-19` | [216](../days/day-216/LESSON.md) | Cost and latency regression guards |
-| `OPS-20` | [216](../days/day-216/LESSON.md) | Cost and latency regression guards |
-| `OPS-21` | [223](../days/day-223/LESSON.md) | Blue/green deployment with gradual traffic shifting |
-| `OPS-22` | [224](../days/day-224/LESSON.md) | Auto-rollback on an error-rate breach, and the LLM metrics dashboard |
-
-## Safety & Security (`SEC-`) — 12 IDs
-
-| ID | Day | Day title |
-| --- | --- | --- |
-| `SEC-01` | [145](../days/day-145/LESSON.md) | PII masking with Presidio, before retrieval |
-| `SEC-02` | [145](../days/day-145/LESSON.md) | PII masking with Presidio, before retrieval |
-| `SEC-03` | [146](../days/day-146/LESSON.md) | Input and output guardrails with NeMo Guardrails |
-| `SEC-04` | [146](../days/day-146/LESSON.md) | Input and output guardrails with NeMo Guardrails |
-| `SEC-05` | [147](../days/day-147/LESSON.md) | Prompt injection against a RAG system — the attack, then the defence |
-| `SEC-06` | [147](../days/day-147/LESSON.md) | Prompt injection against a RAG system — the attack, then the defence |
-| `SEC-07` | [191](../days/day-191/LESSON.md) | AgentCore Identity — IAM roles per agent, OAuth, user-delegated access and secrets |
-| `SEC-08` | [191](../days/day-191/LESSON.md) | AgentCore Identity — IAM roles per agent, OAuth, user-delegated access and secrets |
-| `SEC-09` | [195](../days/day-195/LESSON.md) | Cedar policies and real-time tool-call interception |
-| `SEC-10` | [195](../days/day-195/LESSON.md) | Cedar policies and real-time tool-call interception |
-| `SEC-11` | [196](../days/day-196/LESSON.md) | Agent threat modelling — blast radius before capability |
-| `SEC-12` | [197](../days/day-197/LESSON.md) | Sandboxed tool execution — E2B, Modal, Docker |
-
-## The Five Shipped Services (`PRJ-`) — 44 IDs
+## Vision & multimodal (`VIS-`) — 9 IDs
 
 | ID | Day | Day title |
 | --- | --- | --- |
-| `PRJ-01` | [70](../days/day-70/LESSON.md) | Project 01 kickoff — the medical post-training pipeline, the datasets, and their licences |
-| `PRJ-02` | [71](../days/day-71/LESSON.md) | Synthetic medical instruction data with distilabel |
-| `PRJ-03` | [72](../days/day-72/LESSON.md) | The SFT dataset — deduplication, chat format, loss masking, pushed to the Hub |
-| `PRJ-04` | [73](../days/day-73/LESSON.md) | Stage 1 — QLoRA SFT on Llama-3.1-8B-Instruct |
-| `PRJ-05` | [74](../days/day-74/LESSON.md) | Stage 2 — DPO preference alignment over one epoch |
-| `PRJ-06` | [75](../days/day-75/LESSON.md) | Evaluation — ROUGE-L, BERTScore, and a judge on medical accuracy, safety and tone |
-| `PRJ-07` | [76](../days/day-76/LESSON.md) | The multi-adapter vLLM server and FastAPI adapter routing |
-| `PRJ-08` | [77](../days/day-77/LESSON.md) | Containerise, deploy to a SageMaker endpoint, trace it — and the phase gate |
-| `PRJ-09` | [89](../days/day-89/LESSON.md) | Project 02 kickoff — teacher and student selection, GSM8K and MATH |
-| `PRJ-10` | [90](../days/day-90/LESSON.md) | Teacher logit extraction and soft-label storage at temperature |
-| `PRJ-11` | [91](../days/day-91/LESSON.md) | KL divergence and attention transfer, implemented from scratch |
-| `PRJ-12` | [92](../days/day-92/LESSON.md) | The custom training loop, and loss curves that are actually read |
-| `PRJ-13` | [93](../days/day-93/LESSON.md) | The ablation study — which loss term earned its place |
-| `PRJ-14` | [94](../days/day-94/LESSON.md) | GGUF conversion across quantisation levels |
-| `PRJ-15` | [95](../days/day-95/LESSON.md) | llama-server on CPU — tokens/sec and first-token latency against the teacher; the gate |
-| `PRJ-16` | [148](../days/day-148/LESSON.md) | Project 03 kickoff — CUAD, the legal corpus, and the retrieval contract |
-| `PRJ-17` | [149](../days/day-149/LESSON.md) | ColPali indexing into Qdrant with MaxSim scoring |
-| `PRJ-18` | [150](../days/day-150/LESSON.md) | Elasticsearch BM25 over the same corpus |
-| `PRJ-19` | [151](../days/day-151/LESSON.md) | Entity extraction with an LLM and Pydantic, into a Neo4j graph |
-| `PRJ-20` | [152](../days/day-152/LESSON.md) | Reciprocal Rank Fusion across all three retrievers |
-| `PRJ-21` | [153](../days/day-153/LESSON.md) | Cross-encoder reranking on the fused candidates |
-| `PRJ-22` | [154](../days/day-154/LESSON.md) | The adaptive query router — visual, exact-clause, relational, or all three |
-| `PRJ-23` | [155](../days/day-155/LESSON.md) | Presidio and NeMo Guardrails wired into the pipeline |
-| `PRJ-24` | [156](../days/day-156/LESSON.md) | The RAGAS faithfulness gate on golden QA pairs; FastAPI + LCEL + Docker |
-| `PRJ-25` | [198](../days/day-198/LESSON.md) | Project 04 kickoff — the supervisor graph, the sub-agents and the shared state |
-| `PRJ-26` | [199](../days/day-199/LESSON.md) | The GitHub agent as a FastMCP server |
-| `PRJ-27` | [200](../days/day-200/LESSON.md) | The CloudWatch agent as a FastMCP server |
-| `PRJ-28` | [201](../days/day-201/LESSON.md) | The Code Review and Monitoring agents |
-| `PRJ-29` | [202](../days/day-202/LESSON.md) | A2A peer delegation between the sub-agents |
-| `PRJ-30` | [203](../days/day-203/LESSON.md) | HITL interrupts and exact checkpoint resume from SQLite |
-| `PRJ-31` | [204](../days/day-204/LESSON.md) | Deploying to the cloud agent runtime — gateway, memory, identity |
-| `PRJ-32` | [205](../days/day-205/LESSON.md) | Cedar policies, observability, and the incident-to-issue demo |
-| `PRJ-33` | [217](../days/day-217/LESSON.md) | Project 05 kickoff — the monorepo, the golden test suite and the gate contract |
-| `PRJ-34` | [218](../days/day-218/LESSON.md) | Stages 1–2 — lint, unit tests, and prompt regression against the golden baseline |
-| `PRJ-35` | [219](../days/day-219/LESSON.md) | Stage 3 — the per-service evaluation score gate |
-| `PRJ-36` | [220](../days/day-220/LESSON.md) | Stage 4 — cost and performance regression guard, and the score delta posted on the PR |
-| `PRJ-37` | [221](../days/day-221/LESSON.md) | Stage 5 — multi-stage container builds and the registry push |
-| `PRJ-38` | [222](../days/day-222/LESSON.md) | Stage 6 — smoke tests on staging with golden cases |
-| `PRJ-39` | [223](../days/day-223/LESSON.md) | Blue/green deployment with gradual traffic shifting |
-| `PRJ-40` | [224](../days/day-224/LESSON.md) | Auto-rollback on an error-rate breach, and the LLM metrics dashboard |
-| `PRJ-41` | [225](../days/day-225/LESSON.md) | One request, traced through every service in the system |
-| `PRJ-42` | [226](../days/day-226/LESSON.md) | The cost model — what the whole system costs per thousand requests |
-| `PRJ-43` | [227](../days/day-227/LESSON.md) | The public repository audit, and the README a stranger reads |
-| `PRJ-44` | [228](../days/day-228/LESSON.md) | The defence — the demo, and the answers to the questions it invites |
+| `VIS-01` | [112](../days/day-112/LESSON.md) | The document that defeats a text pipeline — scans, merged cells, rotated tables and charts — an… |
+| `VIS-02` | [113](../days/day-113/LESSON.md) | From CNN to Vision Transformer — an image as a sequence of patches, the CLS token, attention ma… |
+| `VIS-03` | [113](../days/day-113/LESSON.md) | From CNN to Vision Transformer — an image as a sequence of patches, the CLS token, attention ma… |
+| `VIS-04` | [113](../days/day-113/LESSON.md) | From CNN to Vision Transformer — an image as a sequence of patches, the CLS token, attention ma… |
+| `VIS-05` | [114](../days/day-114/LESSON.md) | Contrastive and self-supervised vision encoders, and Visual Language Model architecture — the t… |
+| `VIS-06` | [114](../days/day-114/LESSON.md) | Contrastive and self-supervised vision encoders, and Visual Language Model architecture — the t… |
+| `VIS-07` | [114](../days/day-114/LESSON.md) | Contrastive and self-supervised vision encoders, and Visual Language Model architecture — the t… |
+| `VIS-08` | [115](../days/day-115/LESSON.md) | Retrieval directly over page images — late interaction on patch vectors, table and chart extrac… |
+| `VIS-09` | [115](../days/day-115/LESSON.md) | Retrieval directly over page images — late interaction on patch vectors, table and chart extrac… |
+
+## Agents, protocols & orchestration (`AGT-`) — 38 IDs
+
+| ID | Day | Day title |
+| --- | --- | --- |
+| `AGT-01` | [116](../days/day-116/LESSON.md) | Why function calling exists — the model-to-tool communication problem, and function schema desi… |
+| `AGT-02` | [116](../days/day-116/LESSON.md) | Why function calling exists — the model-to-tool communication problem, and function schema desi… |
+| `AGT-03` | [117](../days/day-117/LESSON.md) | The function-calling lifecycle — the call, the result turn, parallel calls, and forced or const… |
+| `AGT-04` | [117](../days/day-117/LESSON.md) | The function-calling lifecycle — the call, the result turn, parallel calls, and forced or const… |
+| `AGT-05` | [117](../days/day-117/LESSON.md) | The function-calling lifecycle — the call, the result turn, parallel calls, and forced or const… |
+| `AGT-06` | [118](../days/day-118/LESSON.md) | Structured output vs function calling — the difference, when each is right, and the universal c… |
+| `AGT-07` | [118](../days/day-118/LESSON.md) | Structured output vs function calling — the difference, when each is right, and the universal c… |
+| `AGT-08` | [119](../days/day-119/LESSON.md) | The think-act-observe loop, hand-rolled, with no framework anywhere near it |
+| `AGT-09` | [119](../days/day-119/LESSON.md) | The think-act-observe loop, hand-rolled, with no framework anywhere near it |
+| `AGT-10` | [120](../days/day-120/LESSON.md) | Where the hand-rolled loop breaks — state, retries, and resuming after a crash |
+| `AGT-11` | [121](../days/day-121/LESSON.md) | Tool design — schemas, descriptions, and the tool an agent confidently misuses |
+| `AGT-12` | [121](../days/day-121/LESSON.md) | Tool design — schemas, descriptions, and the tool an agent confidently misuses |
+| `AGT-13` | [122](../days/day-122/LESSON.md) | Why MCP exists — tool fragmentation, hosts, clients and servers, and the primitives |
+| `AGT-14` | [122](../days/day-122/LESSON.md) | Why MCP exists — tool fragmentation, hosts, clients and servers, and the primitives |
+| `AGT-15` | [123](../days/day-123/LESSON.md) | MCP transports — stdio and streamable HTTP — and building a server from scratch, scoped to one… |
+| `AGT-16` | [123](../days/day-123/LESSON.md) | MCP transports — stdio and streamable HTTP — and building a server from scratch, scoped to one… |
+| `AGT-17` | [123](../days/day-123/LESSON.md) | MCP transports — stdio and streamable HTTP — and building a server from scratch, scoped to one… |
+| `AGT-18` | [124](../days/day-124/LESSON.md) | Building an MCP client; the connection that drops mid-call; and authentication, authorization a… |
+| `AGT-19` | [124](../days/day-124/LESSON.md) | Building an MCP client; the connection that drops mid-call; and authentication, authorization a… |
+| `AGT-20` | [125](../days/day-125/LESSON.md) | LangChain and LCEL — the model abstraction, composition, streaming, and an honest account of wh… |
+| `AGT-21` | [125](../days/day-125/LESSON.md) | LangChain and LCEL — the model abstraction, composition, streaming, and an honest account of wh… |
+| `AGT-22` | [126](../days/day-126/LESSON.md) | LangGraph foundations — state, nodes, edges, and the routing decision made explicit |
+| `AGT-23` | [126](../days/day-126/LESSON.md) | LangGraph foundations — state, nodes, edges, and the routing decision made explicit |
+| `AGT-24` | [126](../days/day-126/LESSON.md) | LangGraph foundations — state, nodes, edges, and the routing decision made explicit |
+| `AGT-25` | [127](../days/day-127/LESSON.md) | Tool nodes and the ReAct agent, assembled deliberately rather than imported |
+| `AGT-26` | [127](../days/day-127/LESSON.md) | Tool nodes and the ReAct agent, assembled deliberately rather than imported |
+| `AGT-27` | [128](../days/day-128/LESSON.md) | Checkpointers — durable state, and the run that survives a `kill -9` with no duplicated side ef… |
+| `AGT-28` | [128](../days/day-128/LESSON.md) | Checkpointers — durable state, and the run that survives a `kill -9` with no duplicated side ef… |
+| `AGT-29` | [129](../days/day-129/LESSON.md) | Memory — the thread, long-term stores, namespaces, and the honest question of what is worth rem… |
+| `AGT-30` | [129](../days/day-129/LESSON.md) | Memory — the thread, long-term stores, namespaces, and the honest question of what is worth rem… |
+| `AGT-31` | [130](../days/day-130/LESSON.md) | Context engineering for agents — selection, compaction, and the prompt that grew to eighty thou… |
+| `AGT-32` | [130](../days/day-130/LESSON.md) | Context engineering for agents — selection, compaction, and the prompt that grew to eighty thou… |
+| `AGT-33` | [131](../days/day-131/LESSON.md) | Supervisors, handoffs and parallel subgraphs — delegating without passing the whole context, a… |
+| `AGT-34` | [131](../days/day-131/LESSON.md) | Supervisors, handoffs and parallel subgraphs — delegating without passing the whole context, a… |
+| `AGT-35` | [131](../days/day-131/LESSON.md) | Supervisors, handoffs and parallel subgraphs — delegating without passing the whole context, a… |
+| `AGT-36` | [132](../days/day-132/LESSON.md) | Human-in-the-loop — interrupts as a first-class state, an approval surface a busy professional… |
+| `AGT-37` | [132](../days/day-132/LESSON.md) | Human-in-the-loop — interrupts as a first-class state, an approval surface a busy professional… |
+| `AGT-38` | [132](../days/day-132/LESSON.md) | Human-in-the-loop — interrupts as a first-class state, an approval surface a busy professional… |
+
+## Enterprise integration & identity (`ENT-`) — 18 IDs
+
+| ID | Day | Day title |
+| --- | --- | --- |
+| `ENT-01` | [133](../days/day-133/LESSON.md) | The integration inventory — finding out what the client actually runs, not what they say they r… |
+| `ENT-02` | [134](../days/day-134/LESSON.md) | SQL as a tool — text-to-SQL, allowlists, a read-only role, a planner that refuses, and the quer… |
+| `ENT-03` | [134](../days/day-134/LESSON.md) | SQL as a tool — text-to-SQL, allowlists, a read-only role, a planner that refuses, and the quer… |
+| `ENT-04` | [135](../days/day-135/LESSON.md) | SQL Server and Oracle — dialects, drivers, and the DBA whose job is to say no |
+| `ENT-05` | [136](../days/day-136/LESSON.md) | SOAP, XML and file drops — WSDL, envelopes, a 2003 API that still runs payroll, and the SFTP ba… |
+| `ENT-06` | [136](../days/day-136/LESSON.md) | SOAP, XML and file drops — WSDL, envelopes, a 2003 API that still runs payroll, and the SFTP ba… |
+| `ENT-07` | [137](../days/day-137/LESSON.md) | Slack and Jira as the interface — events, blocks, transitions, a bot that does not become noise… |
+| `ENT-08` | [137](../days/day-137/LESSON.md) | Slack and Jira as the interface — events, blocks, transitions, a bot that does not become noise… |
+| `ENT-09` | [138](../days/day-138/LESSON.md) | Webhooks, retries and idempotency keys — surviving delivery you do not control, and the upstrea… |
+| `ENT-10` | [138](../days/day-138/LESSON.md) | Webhooks, retries and idempotency keys — surviving delivery you do not control, and the upstrea… |
+| `ENT-11` | [139](../days/day-139/LESSON.md) | Authentication and authorisation — the distinction that leaks data the moment it blurs |
+| `ENT-12` | [140](../days/day-140/LESSON.md) | OAuth 2.0 — the flows, the tokens, and the one you should actually be using |
+| `ENT-13` | [140](../days/day-140/LESSON.md) | OAuth 2.0 — the flows, the tokens, and the one you should actually be using |
+| `ENT-14` | [141](../days/day-141/LESSON.md) | OIDC, SSO and SAML — logging in with the client's identity provider rather than your own |
+| `ENT-15` | [141](../days/day-141/LESSON.md) | OIDC, SSO and SAML — logging in with the client's identity provider rather than your own |
+| `ENT-16` | [142](../days/day-142/LESSON.md) | RBAC — roles, scopes, and a permission model that survives a reorganisation |
+| `ENT-17` | [143](../days/day-143/LESSON.md) | Document-level access control inside retrieval itself, and the audit log that proves who saw wh… |
+| `ENT-18` | [143](../days/day-143/LESSON.md) | Document-level access control inside retrieval itself, and the audit log that proves who saw wh… |
+
+## Security & governance (`SEC-`) — 15 IDs
+
+| ID | Day | Day title |
+| --- | --- | --- |
+| `SEC-01` | [124](../days/day-124/LESSON.md) | Building an MCP client; the connection that drops mid-call; and authentication, authorization a… |
+| `SEC-02` | [134](../days/day-134/LESSON.md) | SQL as a tool — text-to-SQL, allowlists, a read-only role, a planner that refuses, and the quer… |
+| `SEC-03` | [144](../days/day-144/LESSON.md) | The threat model — what an AI system adds to an attack surface that already existed |
+| `SEC-04` | [145](../days/day-145/LESSON.md) | Prompt injection, direct and indirect — the document that is also an instruction |
+| `SEC-05` | [145](../days/day-145/LESSON.md) | Prompt injection, direct and indirect — the document that is also an instruction |
+| `SEC-06` | [146](../days/day-146/LESSON.md) | Data exfiltration through a helpful assistant, and jailbreaks a longer system prompt does not s… |
+| `SEC-07` | [146](../days/day-146/LESSON.md) | Data exfiltration through a helpful assistant, and jailbreaks a longer system prompt does not s… |
+| `SEC-08` | [147](../days/day-147/LESSON.md) | PII — detection before the model ever sees it, masking, tokenisation, and the redaction that ha… |
+| `SEC-09` | [147](../days/day-147/LESSON.md) | PII — detection before the model ever sees it, masking, tokenisation, and the redaction that ha… |
+| `SEC-10` | [148](../days/day-148/LESSON.md) | Guardrails as configuration — rails, provider-side filters, defence in depth, and an honest acc… |
+| `SEC-11` | [148](../days/day-148/LESSON.md) | Guardrails as configuration — rails, provider-side filters, defence in depth, and an honest acc… |
+| `SEC-12` | [149](../days/day-149/LESSON.md) | The red-team day — break your own system on purpose, then put every attempt into CI so it stays… |
+| `SEC-13` | [149](../days/day-149/LESSON.md) | The red-team day — break your own system on purpose, then put every attempt into CI so it stays… |
+| `SEC-14` | [170](../days/day-170/LESSON.md) | Trust boundaries and policy — deciding what each agent may touch, and proving it cannot touch t… |
+| `SEC-15` | [172](../days/day-172/LESSON.md) | Parallel audit execution with a join that must not silently lose a finding, and sandboxed tool… |
+
+## Observability, evaluation & LLMOps (`OPS-`) — 25 IDs
+
+| ID | Day | Day title |
+| --- | --- | --- |
+| `OPS-01` | [150](../days/day-150/LESSON.md) | Tracing an LLM system — spans, and the trace tree that finally explains a bad answer |
+| `OPS-02` | [150](../days/day-150/LESSON.md) | Tracing an LLM system — spans, and the trace tree that finally explains a bad answer |
+| `OPS-03` | [151](../days/day-151/LESSON.md) | Structured logs and correlation IDs across a multi-step agent run |
+| `OPS-04` | [152](../days/day-152/LESSON.md) | Token accounting — attributing cost to a user, a tenant and a feature — and latency budgets tha… |
+| `OPS-05` | [152](../days/day-152/LESSON.md) | Token accounting — attributing cost to a user, a tenant and a feature — and latency budgets tha… |
+| `OPS-06` | [153](../days/day-153/LESSON.md) | The LLM gateway — routing, fallbacks, and provider abstraction that survives an outage |
+| `OPS-07` | [153](../days/day-153/LESSON.md) | The LLM gateway — routing, fallbacks, and provider abstraction that survives an outage |
+| `OPS-08` | [154](../days/day-154/LESSON.md) | Rate limits, retries and backoff that is honest about failing; and online evals that catch the… |
+| `OPS-09` | [154](../days/day-154/LESSON.md) | Rate limits, retries and backoff that is honest about failing; and online evals that catch the… |
+| `OPS-10` | [155](../days/day-155/LESSON.md) | Why ad-hoc testing fails — evaluation harness fundamentals, and benchmarking with a standard ha… |
+| `OPS-11` | [155](../days/day-155/LESSON.md) | Why ad-hoc testing fails — evaluation harness fundamentals, and benchmarking with a standard ha… |
+| `OPS-12` | [156](../days/day-156/LESSON.md) | Agent-native evaluation — task, solver and scorer, and evaluating a trajectory rather than a st… |
+| `OPS-13` | [156](../days/day-156/LESSON.md) | Agent-native evaluation — task, solver and scorer, and evaluating a trajectory rather than a st… |
+| `OPS-14` | [157](../days/day-157/LESSON.md) | LLM-as-judge pipelines at scale — model-graded scoring, calibration, and the biases a judge bri… |
+| `OPS-15` | [157](../days/day-157/LESSON.md) | LLM-as-judge pipelines at scale — model-graded scoring, calibration, and the biases a judge bri… |
+| `OPS-16` | [158](../days/day-158/LESSON.md) | Prompt regression and snapshot testing; golden datasets — building them, versioning them, and k… |
+| `OPS-17` | [158](../days/day-158/LESSON.md) | Prompt regression and snapshot testing; golden datasets — building them, versioning them, and k… |
+| `OPS-18` | [158](../days/day-158/LESSON.md) | Prompt regression and snapshot testing; golden datasets — building them, versioning them, and k… |
+| `OPS-19` | [159](../days/day-159/LESSON.md) | Trace-based testing and flaky-test detection; harness patterns — iteration guards, fallbacks an… |
+| `OPS-20` | [159](../days/day-159/LESSON.md) | Trace-based testing and flaky-test detection; harness patterns — iteration guards, fallbacks an… |
+| `OPS-21` | [160](../days/day-160/LESSON.md) | Agent CI/CD — eval gating on a pull request, with cost and latency regression guards and the de… |
+| `OPS-22` | [160](../days/day-160/LESSON.md) | Agent CI/CD — eval gating on a pull request, with cost and latency regression guards and the de… |
+| `OPS-23` | [160](../days/day-160/LESSON.md) | Agent CI/CD — eval gating on a pull request, with cost and latency regression guards and the de… |
+| `OPS-24` | [177](../days/day-177/LESSON.md) | Blue/green deployment with gradual traffic shifting, and an auto-rollback on an error-rate brea… |
+| `OPS-25` | [177](../days/day-177/LESSON.md) | Blue/green deployment with gradual traffic shifting, and an auto-rollback on an error-rate brea… |
+
+## FDE consulting craft (`FDE-`) — 17 IDs
+
+| ID | Day | Day title |
+| --- | --- | --- |
+| `FDE-01` | [1](../days/day-001-what-an-fde-owns/LESSON.md) | What a forward deployed AI engineer actually owns — the last mile between a model demo and a sy… |
+| `FDE-02` | [1](../days/day-001-what-an-fde-owns/LESSON.md) | What a forward deployed AI engineer actually owns — the last mile between a model demo and a sy… |
+| `FDE-03` | [2](../days/day-02/LESSON.md) | The demo-to-production gap — why the vendor chatbot passed on sample documents and died on real… |
+| `FDE-04` | [3](../days/day-03/LESSON.md) | Discovery — shadowing the work, mapping the process as it is rather than as the org chart says,… |
+| `FDE-05` | [3](../days/day-03/LESSON.md) | Discovery — shadowing the work, mapping the process as it is rather than as the org chart says,… |
+| `FDE-06` | [4](../days/day-04/LESSON.md) | Auditing the data before promising anything — five hundred records, and the versioned synthetic… |
+| `FDE-07` | [5](../days/day-05/LESSON.md) | The scoped SOW and the stage gates — POC, pilot, production, and the one sentence that stops sc… |
+| `FDE-08` | [5](../days/day-05/LESSON.md) | The scoped SOW and the stage gates — POC, pilot, production, and the one sentence that stops sc… |
+| `FDE-09` | [161](../days/day-161/LESSON.md) | Kickoff — the engagement brief, the data classification, the architecture diagram a CIO signs a… |
+| `FDE-10` | [167](../days/day-167/LESSON.md) | Deployed to a private endpoint behind a scanned image; the faithfulness gate on golden QA pairs… |
+| `FDE-11` | [168](../days/day-168/LESSON.md) | Kickoff — the compliance process mapped before a single agent is drawn, and the supervisor topo… |
+| `FDE-12` | [178](../days/day-178/LESSON.md) | Change management for the users who never asked for any of this, and training and runbooks that… |
+| `FDE-13` | [178](../days/day-178/LESSON.md) | Change management for the users who never asked for any of this, and training and runbooks that… |
+| `FDE-14` | [179](../days/day-179/LESSON.md) | The handoff to the client's own team, and the ROI presentation — model metrics translated into… |
+| `FDE-15` | [179](../days/day-179/LESSON.md) | The handoff to the client's own team, and the ROI presentation — model metrics translated into… |
+| `FDE-16` | [181](../days/day-181/LESSON.md) | The defence — the public repository a stranger can clone and run, the case-study write-up, and… |
+| `FDE-17` | [181](../days/day-181/LESSON.md) | The defence — the public repository a stranger can clone and run, the case-study write-up, and… |
+
+## The delivered system (`PRJ-`) — 36 IDs
+
+| ID | Day | Day title |
+| --- | --- | --- |
+| `PRJ-01` | [90](../days/day-90/LESSON.md) | Kickoff — the claims-domain post-training pipeline, the datasets, and their licences checked be… |
+| `PRJ-02` | [91](../days/day-91/LESSON.md) | The SFT dataset — synthetic generation, deduplication, chat formatting, loss masking, and the v… |
+| `PRJ-03` | [92](../days/day-92/LESSON.md) | Stage 1 QLoRA supervised fine-tuning, then Stage 2 DPO preference alignment over one epoch |
+| `PRJ-04` | [92](../days/day-92/LESSON.md) | Stage 1 QLoRA supervised fine-tuning, then Stage 2 DPO preference alignment over one epoch |
+| `PRJ-05` | [93](../days/day-93/LESSON.md) | Evaluation — surface metrics, a calibrated judge on accuracy, safety and tone, and the distille… |
+| `PRJ-06` | [93](../days/day-93/LESSON.md) | Evaluation — surface metrics, a calibrated judge on accuracy, safety and tone, and the distille… |
+| `PRJ-07` | [94](../days/day-94/LESSON.md) | The multi-adapter server, containerised, deployed and traced — and the phase gate |
+| `PRJ-08` | [161](../days/day-161/LESSON.md) | Kickoff — the engagement brief, the data classification, the architecture diagram a CIO signs a… |
+| `PRJ-09` | [162](../days/day-162/LESSON.md) | Hybrid retrieval over the client corpus, wired end to end for the first time |
+| `PRJ-10` | [163](../days/day-163/LESSON.md) | The graph and the page-image index — the relational question and the scanned bundle, both answe… |
+| `PRJ-11` | [164](../days/day-164/LESSON.md) | The adaptive router across all three retrievers, with cross-encoder reranking on the fused cand… |
+| `PRJ-12` | [164](../days/day-164/LESSON.md) | The adaptive router across all three retrievers, with cross-encoder reranking on the fused cand… |
+| `PRJ-13` | [165](../days/day-165/LESSON.md) | Secure text-to-SQL against the claims database, and OAuth with RBAC across the whole surface ra… |
+| `PRJ-14` | [165](../days/day-165/LESSON.md) | Secure text-to-SQL against the claims database, and OAuth with RBAC across the whole surface ra… |
+| `PRJ-15` | [166](../days/day-166/LESSON.md) | PII masking and rails placed in the request path, with the latency cost measured and stated |
+| `PRJ-16` | [167](../days/day-167/LESSON.md) | Deployed to a private endpoint behind a scanned image; the faithfulness gate on golden QA pairs… |
+| `PRJ-17` | [167](../days/day-167/LESSON.md) | Deployed to a private endpoint behind a scanned image; the faithfulness gate on golden QA pairs… |
+| `PRJ-18` | [168](../days/day-168/LESSON.md) | Kickoff — the compliance process mapped before a single agent is drawn, and the supervisor topo… |
+| `PRJ-19` | [169](../days/day-169/LESSON.md) | The specialist agents behind MCP servers, scoped to exactly what the audit needs and nothing mo… |
+| `PRJ-20` | [169](../days/day-169/LESSON.md) | The specialist agents behind MCP servers, scoped to exactly what the audit needs and nothing mo… |
+| `PRJ-21` | [170](../days/day-170/LESSON.md) | Trust boundaries and policy — deciding what each agent may touch, and proving it cannot touch t… |
+| `PRJ-22` | [171](../days/day-171/LESSON.md) | Human approval on every write, and exact checkpoint resume after the process is killed mid-run |
+| `PRJ-23` | [171](../days/day-171/LESSON.md) | Human approval on every write, and exact checkpoint resume after the process is killed mid-run |
+| `PRJ-24` | [172](../days/day-172/LESSON.md) | Parallel audit execution with a join that must not silently lose a finding, and sandboxed tool… |
+| `PRJ-25` | [173](../days/day-173/LESSON.md) | The traceability dashboard — every finding back to its evidence — the per-audit unit economics,… |
+| `PRJ-26` | [173](../days/day-173/LESSON.md) | The traceability dashboard — every finding back to its evidence — the per-audit unit economics,… |
+| `PRJ-27` | [174](../days/day-174/LESSON.md) | The monorepo, the golden suite and the gate contract — lint, unit tests, and prompt regression… |
+| `PRJ-28` | [174](../days/day-174/LESSON.md) | The monorepo, the golden suite and the gate contract — lint, unit tests, and prompt regression… |
+| `PRJ-29` | [175](../days/day-175/LESSON.md) | The per-service evaluation score gate, and the score delta posted on the pull request |
+| `PRJ-30` | [175](../days/day-175/LESSON.md) | The per-service evaluation score gate, and the score delta posted on the pull request |
+| `PRJ-31` | [176](../days/day-176/LESSON.md) | Multi-stage container builds, the registry push, and smoke tests on staging with golden cases |
+| `PRJ-32` | [176](../days/day-176/LESSON.md) | Multi-stage container builds, the registry push, and smoke tests on staging with golden cases |
+| `PRJ-33` | [177](../days/day-177/LESSON.md) | Blue/green deployment with gradual traffic shifting, and an auto-rollback on an error-rate brea… |
+| `PRJ-34` | [180](../days/day-180/LESSON.md) | One request traced through every service in the system, and the cost model per thousand requests |
+| `PRJ-35` | [180](../days/day-180/LESSON.md) | One request traced through every service in the system, and the cost model per thousand requests |
+| `PRJ-36` | [181](../days/day-181/LESSON.md) | The defence — the public repository a stranger can clone and run, the case-study write-up, and… |

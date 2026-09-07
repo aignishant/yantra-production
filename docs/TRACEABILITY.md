@@ -6,407 +6,380 @@ _Generated 2026-09-07 by `granth.py`._
 An ID counts as **closed** only when its day has a row in `docs/PROGRESS.md` *and* its hub's frontmatter claims the ID. **An open ID from a completed phase is a bug**, not a
 backlog item.
 
-**0 of 400 closed.**
+**0 of 373 closed.**
 
 | ID | Track | Phase | Planned day | Status |
 | --- | --- | --- | --- | --- |
-| `TF-01` | Transformer Internals & Efficiency | 1 | 1 | [~] written day 1, not in the ledger |
-| `TF-02` | Transformer Internals & Efficiency | 1 | 1 | [~] written day 1, not in the ledger |
-| `TF-03` | Transformer Internals & Efficiency | 1 | 2 | [ ] open |
-| `TF-04` | Transformer Internals & Efficiency | 1 | 3 | [ ] open |
-| `TF-05` | Transformer Internals & Efficiency | 1 | 4 | [ ] open |
-| `TF-06` | Transformer Internals & Efficiency | 1 | 4 | [ ] open |
-| `TF-07` | Transformer Internals & Efficiency | 1 | 5 | [ ] open |
-| `TF-08` | Transformer Internals & Efficiency | 1 | 6 | [ ] open |
-| `TF-09` | Transformer Internals & Efficiency | 1 | 6 | [ ] open |
-| `TF-10` | Transformer Internals & Efficiency | 1 | 7 | [ ] open |
-| `TF-11` | Transformer Internals & Efficiency | 1 | 8 | [ ] open |
-| `TF-12` | Transformer Internals & Efficiency | 1 | 8 | [ ] open |
-| `TF-13` | Transformer Internals & Efficiency | 1 | 9 | [ ] open |
-| `TF-14` | Transformer Internals & Efficiency | 1 | 9 | [ ] open |
-| `TF-15` | Transformer Internals & Efficiency | 1 | 10 | [ ] open |
-| `TF-16` | Transformer Internals & Efficiency | 1 | 10 | [ ] open |
-| `TF-17` | Transformer Internals & Efficiency | 1 | 11 | [ ] open |
-| `TF-18` | Transformer Internals & Efficiency | 1 | 11 | [ ] open |
-| `TF-19` | Transformer Internals & Efficiency | 1 | 11 | [ ] open |
-| `TF-20` | Transformer Internals & Efficiency | 1 | 12 | [ ] open |
-| `TF-21` | Transformer Internals & Efficiency | 1 | 12 | [ ] open |
-| `TF-22` | Transformer Internals & Efficiency | 1 | 12 | [ ] open |
-| `TF-23` | Transformer Internals & Efficiency | 1 | 12 | [ ] open |
-| `TF-24` | Transformer Internals & Efficiency | 1 | 12 | [ ] open |
-| `TF-25` | Transformer Internals & Efficiency | 2 | 13 | [ ] open |
-| `TF-26` | Transformer Internals & Efficiency | 2 | 13 | [ ] open |
-| `TF-27` | Transformer Internals & Efficiency | 2 | 14 | [ ] open |
-| `TF-28` | Transformer Internals & Efficiency | 2 | 14 | [ ] open |
-| `TF-29` | Transformer Internals & Efficiency | 2 | 15 | [ ] open |
-| `TF-30` | Transformer Internals & Efficiency | 2 | 15 | [ ] open |
-| `TF-31` | Transformer Internals & Efficiency | 2 | 16 | [ ] open |
-| `TF-32` | Transformer Internals & Efficiency | 2 | 16 | [ ] open |
-| `TF-33` | Transformer Internals & Efficiency | 2 | 17 | [ ] open |
-| `TF-34` | Transformer Internals & Efficiency | 2 | 17 | [ ] open |
-| `TF-35` | Transformer Internals & Efficiency | 2 | 18 | [ ] open |
-| `TF-36` | Transformer Internals & Efficiency | 3 | 19 | [ ] open |
-| `TF-37` | Transformer Internals & Efficiency | 3 | 19 | [ ] open |
-| `TF-38` | Transformer Internals & Efficiency | 3 | 20 | [ ] open |
-| `TF-39` | Transformer Internals & Efficiency | 3 | 20 | [ ] open |
-| `TF-40` | Transformer Internals & Efficiency | 3 | 21 | [ ] open |
-| `TF-41` | Transformer Internals & Efficiency | 3 | 21 | [ ] open |
-| `TF-42` | Transformer Internals & Efficiency | 3 | 22 | [ ] open |
-| `TF-43` | Transformer Internals & Efficiency | 3 | 22 | [ ] open |
-| `TF-44` | Transformer Internals & Efficiency | 3 | 23 | [ ] open |
-| `TF-45` | Transformer Internals & Efficiency | 3 | 24 | [ ] open |
-| `TF-46` | Transformer Internals & Efficiency | 3 | 24 | [ ] open |
-| `TF-47` | Transformer Internals & Efficiency | 3 | 25 | [ ] open |
-| `TF-48` | Transformer Internals & Efficiency | 3 | 25 | [ ] open |
-| `TF-49` | Transformer Internals & Efficiency | 3 | 26 | [ ] open |
-| `TF-50` | Transformer Internals & Efficiency | 3 | 26 | [ ] open |
-| `TF-51` | Transformer Internals & Efficiency | 3 | 27 | [ ] open |
-| `TF-52` | Transformer Internals & Efficiency | 3 | 27 | [ ] open |
-| `TF-53` | Transformer Internals & Efficiency | 3 | 27 | [ ] open |
-| `TF-54` | Transformer Internals & Efficiency | 4 | 28 | [ ] open |
-| `TF-55` | Transformer Internals & Efficiency | 4 | 28 | [ ] open |
-| `TF-56` | Transformer Internals & Efficiency | 4 | 29 | [ ] open |
-| `TF-57` | Transformer Internals & Efficiency | 4 | 29 | [ ] open |
-| `TF-58` | Transformer Internals & Efficiency | 4 | 30 | [ ] open |
-| `TF-59` | Transformer Internals & Efficiency | 4 | 30 | [ ] open |
-| `TF-60` | Transformer Internals & Efficiency | 4 | 31 | [ ] open |
-| `TF-61` | Transformer Internals & Efficiency | 4 | 31 | [ ] open |
-| `TF-62` | Transformer Internals & Efficiency | 4 | 32 | [ ] open |
-| `TF-63` | Transformer Internals & Efficiency | 4 | 32 | [ ] open |
-| `TF-64` | Transformer Internals & Efficiency | 4 | 32 | [ ] open |
-| `TF-65` | Transformer Internals & Efficiency | 4 | 33 | [ ] open |
-| `TF-66` | Transformer Internals & Efficiency | 4 | 33 | [ ] open |
-| `FT-01` | Fine-Tuning, Alignment & Compression | 5 | 34 | [ ] open |
-| `FT-02` | Fine-Tuning, Alignment & Compression | 5 | 34 | [ ] open |
-| `FT-03` | Fine-Tuning, Alignment & Compression | 5 | 35 | [ ] open |
-| `FT-04` | Fine-Tuning, Alignment & Compression | 5 | 35 | [ ] open |
-| `FT-05` | Fine-Tuning, Alignment & Compression | 5 | 36 | [ ] open |
-| `FT-06` | Fine-Tuning, Alignment & Compression | 5 | 36 | [ ] open |
-| `FT-07` | Fine-Tuning, Alignment & Compression | 5 | 37 | [ ] open |
-| `FT-08` | Fine-Tuning, Alignment & Compression | 5 | 37 | [ ] open |
-| `FT-09` | Fine-Tuning, Alignment & Compression | 5 | 38 | [ ] open |
-| `FT-10` | Fine-Tuning, Alignment & Compression | 5 | 39 | [ ] open |
-| `FT-11` | Fine-Tuning, Alignment & Compression | 5 | 40 | [ ] open |
-| `FT-12` | Fine-Tuning, Alignment & Compression | 5 | 40 | [ ] open |
-| `FT-13` | Fine-Tuning, Alignment & Compression | 5 | 41 | [ ] open |
-| `FT-14` | Fine-Tuning, Alignment & Compression | 5 | 41 | [ ] open |
-| `FT-15` | Fine-Tuning, Alignment & Compression | 5 | 42 | [ ] open |
-| `FT-16` | Fine-Tuning, Alignment & Compression | 5 | 42 | [ ] open |
-| `FT-17` | Fine-Tuning, Alignment & Compression | 5 | 43 | [ ] open |
-| `FT-18` | Fine-Tuning, Alignment & Compression | 5 | 43 | [ ] open |
-| `FT-19` | Fine-Tuning, Alignment & Compression | 5 | 43 | [ ] open |
-| `FT-20` | Fine-Tuning, Alignment & Compression | 5 | 44 | [ ] open |
-| `FT-21` | Fine-Tuning, Alignment & Compression | 5 | 44 | [ ] open |
-| `FT-22` | Fine-Tuning, Alignment & Compression | 5 | 44 | [ ] open |
-| `FT-23` | Fine-Tuning, Alignment & Compression | 5 | 45 | [ ] open |
-| `FT-24` | Fine-Tuning, Alignment & Compression | 5 | 45 | [ ] open |
-| `FT-25` | Fine-Tuning, Alignment & Compression | 6 | 46 | [ ] open |
-| `FT-26` | Fine-Tuning, Alignment & Compression | 6 | 47 | [ ] open |
-| `FT-27` | Fine-Tuning, Alignment & Compression | 6 | 47 | [ ] open |
-| `FT-28` | Fine-Tuning, Alignment & Compression | 6 | 48 | [ ] open |
-| `FT-29` | Fine-Tuning, Alignment & Compression | 6 | 49 | [ ] open |
-| `FT-30` | Fine-Tuning, Alignment & Compression | 6 | 49 | [ ] open |
-| `FT-31` | Fine-Tuning, Alignment & Compression | 6 | 49 | [ ] open |
-| `FT-32` | Fine-Tuning, Alignment & Compression | 6 | 50 | [ ] open |
-| `FT-33` | Fine-Tuning, Alignment & Compression | 6 | 51 | [ ] open |
-| `FT-34` | Fine-Tuning, Alignment & Compression | 6 | 51 | [ ] open |
-| `FT-35` | Fine-Tuning, Alignment & Compression | 6 | 52 | [ ] open |
-| `FT-36` | Fine-Tuning, Alignment & Compression | 6 | 52 | [ ] open |
-| `FT-37` | Fine-Tuning, Alignment & Compression | 6 | 53 | [ ] open |
-| `FT-38` | Fine-Tuning, Alignment & Compression | 6 | 53 | [ ] open |
-| `FT-39` | Fine-Tuning, Alignment & Compression | 6 | 54 | [ ] open |
-| `FT-40` | Fine-Tuning, Alignment & Compression | 6 | 55 | [ ] open |
-| `FT-41` | Fine-Tuning, Alignment & Compression | 6 | 56 | [ ] open |
-| `FT-42` | Fine-Tuning, Alignment & Compression | 6 | 56 | [ ] open |
-| `FT-43` | Fine-Tuning, Alignment & Compression | 6 | 57 | [ ] open |
-| `FT-44` | Fine-Tuning, Alignment & Compression | 6 | 57 | [ ] open |
-| `FT-45` | Fine-Tuning, Alignment & Compression | 6 | 57 | [ ] open |
-| `FT-46` | Fine-Tuning, Alignment & Compression | 6 | 58 | [ ] open |
-| `FT-47` | Fine-Tuning, Alignment & Compression | 6 | 58 | [ ] open |
-| `FT-48` | Fine-Tuning, Alignment & Compression | 6 | 58 | [ ] open |
-| `FT-49` | Fine-Tuning, Alignment & Compression | 7 | 59 | [ ] open |
-| `FT-50` | Fine-Tuning, Alignment & Compression | 7 | 59 | [ ] open |
-| `FT-51` | Fine-Tuning, Alignment & Compression | 7 | 60 | [ ] open |
-| `FT-52` | Fine-Tuning, Alignment & Compression | 7 | 60 | [ ] open |
-| `FT-53` | Fine-Tuning, Alignment & Compression | 7 | 61 | [ ] open |
-| `FT-54` | Fine-Tuning, Alignment & Compression | 7 | 62 | [ ] open |
-| `FT-55` | Fine-Tuning, Alignment & Compression | 7 | 62 | [ ] open |
-| `FT-56` | Fine-Tuning, Alignment & Compression | 7 | 63 | [ ] open |
-| `FT-57` | Fine-Tuning, Alignment & Compression | 7 | 63 | [ ] open |
-| `FT-58` | Fine-Tuning, Alignment & Compression | 7 | 64 | [ ] open |
-| `FT-59` | Fine-Tuning, Alignment & Compression | 7 | 65 | [ ] open |
-| `FT-60` | Fine-Tuning, Alignment & Compression | 7 | 65 | [ ] open |
-| `FT-61` | Fine-Tuning, Alignment & Compression | 7 | 66 | [ ] open |
-| `FT-62` | Fine-Tuning, Alignment & Compression | 7 | 66 | [ ] open |
-| `FT-63` | Fine-Tuning, Alignment & Compression | 7 | 67 | [ ] open |
-| `FT-64` | Fine-Tuning, Alignment & Compression | 7 | 67 | [ ] open |
-| `FT-65` | Fine-Tuning, Alignment & Compression | 7 | 68 | [ ] open |
-| `FT-66` | Fine-Tuning, Alignment & Compression | 7 | 69 | [ ] open |
-| `FT-67` | Fine-Tuning, Alignment & Compression | 7 | 69 | [ ] open |
-| `FT-68` | Fine-Tuning, Alignment & Compression | 7 | 69 | [ ] open |
-| `PRJ-01` | The Five Shipped Services | 8 | 70 | [ ] open |
-| `PRJ-02` | The Five Shipped Services | 8 | 71 | [ ] open |
-| `PRJ-03` | The Five Shipped Services | 8 | 72 | [ ] open |
-| `PRJ-04` | The Five Shipped Services | 8 | 73 | [ ] open |
-| `PRJ-05` | The Five Shipped Services | 8 | 74 | [ ] open |
-| `PRJ-06` | The Five Shipped Services | 8 | 75 | [ ] open |
-| `PRJ-07` | The Five Shipped Services | 8 | 76 | [ ] open |
-| `PRJ-08` | The Five Shipped Services | 8 | 77 | [ ] open |
-| `FT-69` | Fine-Tuning, Alignment & Compression | 9 | 78 | [ ] open |
-| `FT-70` | Fine-Tuning, Alignment & Compression | 9 | 78 | [ ] open |
-| `FT-71` | Fine-Tuning, Alignment & Compression | 9 | 79 | [ ] open |
-| `FT-72` | Fine-Tuning, Alignment & Compression | 9 | 80 | [ ] open |
-| `FT-73` | Fine-Tuning, Alignment & Compression | 9 | 80 | [ ] open |
-| `FT-74` | Fine-Tuning, Alignment & Compression | 9 | 81 | [ ] open |
-| `FT-75` | Fine-Tuning, Alignment & Compression | 9 | 81 | [ ] open |
-| `FT-76` | Fine-Tuning, Alignment & Compression | 9 | 82 | [ ] open |
-| `FT-77` | Fine-Tuning, Alignment & Compression | 9 | 83 | [ ] open |
-| `FT-78` | Fine-Tuning, Alignment & Compression | 9 | 83 | [ ] open |
-| `FT-79` | Fine-Tuning, Alignment & Compression | 9 | 84 | [ ] open |
-| `FT-80` | Fine-Tuning, Alignment & Compression | 9 | 84 | [ ] open |
-| `FT-81` | Fine-Tuning, Alignment & Compression | 9 | 85 | [ ] open |
-| `FT-82` | Fine-Tuning, Alignment & Compression | 9 | 85 | [ ] open |
-| `FT-83` | Fine-Tuning, Alignment & Compression | 9 | 86 | [ ] open |
-| `FT-84` | Fine-Tuning, Alignment & Compression | 9 | 86 | [ ] open |
-| `FT-85` | Fine-Tuning, Alignment & Compression | 9 | 87 | [ ] open |
-| `FT-86` | Fine-Tuning, Alignment & Compression | 9 | 87 | [ ] open |
-| `FT-87` | Fine-Tuning, Alignment & Compression | 9 | 88 | [ ] open |
-| `FT-88` | Fine-Tuning, Alignment & Compression | 9 | 88 | [ ] open |
-| `FT-89` | Fine-Tuning, Alignment & Compression | 9 | 88 | [ ] open |
-| `FT-90` | Fine-Tuning, Alignment & Compression | 9 | 88 | [ ] open |
-| `PRJ-09` | The Five Shipped Services | 10 | 89 | [ ] open |
-| `PRJ-10` | The Five Shipped Services | 10 | 90 | [ ] open |
-| `PRJ-11` | The Five Shipped Services | 10 | 91 | [ ] open |
-| `PRJ-12` | The Five Shipped Services | 10 | 92 | [ ] open |
-| `PRJ-13` | The Five Shipped Services | 10 | 93 | [ ] open |
-| `PRJ-14` | The Five Shipped Services | 10 | 94 | [ ] open |
-| `PRJ-15` | The Five Shipped Services | 10 | 95 | [ ] open |
-| `VIS-01` | Vision, Multimodal & Speech | 11 | 96 | [ ] open |
-| `VIS-02` | Vision, Multimodal & Speech | 11 | 96 | [ ] open |
-| `VIS-03` | Vision, Multimodal & Speech | 11 | 97 | [ ] open |
-| `VIS-04` | Vision, Multimodal & Speech | 11 | 97 | [ ] open |
-| `VIS-05` | Vision, Multimodal & Speech | 11 | 98 | [ ] open |
-| `VIS-06` | Vision, Multimodal & Speech | 11 | 98 | [ ] open |
-| `VIS-07` | Vision, Multimodal & Speech | 11 | 99 | [ ] open |
-| `VIS-08` | Vision, Multimodal & Speech | 11 | 100 | [ ] open |
-| `VIS-09` | Vision, Multimodal & Speech | 11 | 101 | [ ] open |
-| `VIS-10` | Vision, Multimodal & Speech | 11 | 102 | [ ] open |
-| `VIS-11` | Vision, Multimodal & Speech | 11 | 102 | [ ] open |
-| `VIS-12` | Vision, Multimodal & Speech | 11 | 103 | [ ] open |
-| `VIS-13` | Vision, Multimodal & Speech | 11 | 103 | [ ] open |
-| `VIS-14` | Vision, Multimodal & Speech | 11 | 104 | [ ] open |
-| `VIS-15` | Vision, Multimodal & Speech | 11 | 104 | [ ] open |
-| `VIS-16` | Vision, Multimodal & Speech | 11 | 105 | [ ] open |
-| `VIS-17` | Vision, Multimodal & Speech | 11 | 105 | [ ] open |
-| `VIS-18` | Vision, Multimodal & Speech | 11 | 105 | [ ] open |
-| `VIS-19` | Vision, Multimodal & Speech | 11 | 106 | [ ] open |
-| `VIS-20` | Vision, Multimodal & Speech | 11 | 106 | [ ] open |
-| `VIS-21` | Vision, Multimodal & Speech | 11 | 107 | [ ] open |
-| `VIS-22` | Vision, Multimodal & Speech | 11 | 107 | [ ] open |
-| `VIS-23` | Vision, Multimodal & Speech | 11 | 107 | [ ] open |
-| `VIS-24` | Vision, Multimodal & Speech | 11 | 107 | [ ] open |
-| `CTX-01` | Prompt & Context Engineering | 12 | 108 | [ ] open |
-| `CTX-02` | Prompt & Context Engineering | 12 | 108 | [ ] open |
-| `CTX-03` | Prompt & Context Engineering | 12 | 109 | [ ] open |
-| `CTX-04` | Prompt & Context Engineering | 12 | 110 | [ ] open |
-| `CTX-05` | Prompt & Context Engineering | 12 | 110 | [ ] open |
-| `CTX-06` | Prompt & Context Engineering | 12 | 111 | [ ] open |
-| `CTX-07` | Prompt & Context Engineering | 12 | 112 | [ ] open |
-| `CTX-08` | Prompt & Context Engineering | 12 | 112 | [ ] open |
-| `CTX-09` | Prompt & Context Engineering | 12 | 113 | [ ] open |
-| `CTX-10` | Prompt & Context Engineering | 12 | 113 | [ ] open |
-| `CTX-11` | Prompt & Context Engineering | 12 | 114 | [ ] open |
-| `CTX-12` | Prompt & Context Engineering | 12 | 114 | [ ] open |
-| `CTX-13` | Prompt & Context Engineering | 12 | 114 | [ ] open |
-| `CTX-14` | Prompt & Context Engineering | 12 | 114 | [ ] open |
-| `RAG-01` | Embeddings & Retrieval | 13 | 115 | [ ] open |
-| `RAG-02` | Embeddings & Retrieval | 13 | 115 | [ ] open |
-| `RAG-03` | Embeddings & Retrieval | 13 | 115 | [ ] open |
-| `RAG-04` | Embeddings & Retrieval | 13 | 116 | [ ] open |
-| `RAG-05` | Embeddings & Retrieval | 13 | 116 | [ ] open |
-| `RAG-06` | Embeddings & Retrieval | 13 | 117 | [ ] open |
-| `RAG-07` | Embeddings & Retrieval | 13 | 118 | [ ] open |
-| `RAG-08` | Embeddings & Retrieval | 13 | 118 | [ ] open |
-| `RAG-09` | Embeddings & Retrieval | 13 | 119 | [ ] open |
-| `RAG-10` | Embeddings & Retrieval | 13 | 120 | [ ] open |
-| `RAG-11` | Embeddings & Retrieval | 13 | 120 | [ ] open |
-| `RAG-12` | Embeddings & Retrieval | 13 | 120 | [ ] open |
-| `AGT-01` | Agents, Protocols & Orchestration | 13 | 121 | [ ] open |
-| `AGT-02` | Agents, Protocols & Orchestration | 13 | 121 | [ ] open |
-| `AGT-03` | Agents, Protocols & Orchestration | 13 | 122 | [ ] open |
-| `AGT-04` | Agents, Protocols & Orchestration | 13 | 122 | [ ] open |
-| `AGT-05` | Agents, Protocols & Orchestration | 13 | 123 | [ ] open |
-| `AGT-06` | Agents, Protocols & Orchestration | 13 | 124 | [ ] open |
-| `AGT-07` | Agents, Protocols & Orchestration | 13 | 124 | [ ] open |
-| `AGT-08` | Agents, Protocols & Orchestration | 13 | 125 | [ ] open |
-| `AGT-09` | Agents, Protocols & Orchestration | 13 | 125 | [ ] open |
-| `AGT-10` | Agents, Protocols & Orchestration | 13 | 126 | [ ] open |
-| `AGT-11` | Agents, Protocols & Orchestration | 13 | 126 | [ ] open |
-| `AGT-12` | Agents, Protocols & Orchestration | 13 | 126 | [ ] open |
-| `RAG-13` | Embeddings & Retrieval | 14 | 127 | [ ] open |
-| `RAG-14` | Embeddings & Retrieval | 14 | 127 | [ ] open |
-| `RAG-15` | Embeddings & Retrieval | 14 | 128 | [ ] open |
-| `RAG-16` | Embeddings & Retrieval | 14 | 129 | [ ] open |
-| `RAG-17` | Embeddings & Retrieval | 14 | 129 | [ ] open |
-| `RAG-18` | Embeddings & Retrieval | 14 | 130 | [ ] open |
-| `RAG-19` | Embeddings & Retrieval | 14 | 131 | [ ] open |
-| `RAG-20` | Embeddings & Retrieval | 14 | 132 | [ ] open |
-| `RAG-21` | Embeddings & Retrieval | 14 | 133 | [ ] open |
-| `RAG-22` | Embeddings & Retrieval | 14 | 133 | [ ] open |
-| `RAG-23` | Embeddings & Retrieval | 14 | 134 | [ ] open |
-| `RAG-24` | Embeddings & Retrieval | 14 | 134 | [ ] open |
-| `RAG-25` | Embeddings & Retrieval | 14 | 135 | [ ] open |
-| `RAG-26` | Embeddings & Retrieval | 14 | 135 | [ ] open |
-| `RAG-27` | Embeddings & Retrieval | 14 | 136 | [ ] open |
-| `RAG-28` | Embeddings & Retrieval | 14 | 136 | [ ] open |
-| `RAG-29` | Embeddings & Retrieval | 14 | 137 | [ ] open |
-| `RAG-30` | Embeddings & Retrieval | 14 | 137 | [ ] open |
-| `RAG-31` | Embeddings & Retrieval | 14 | 137 | [ ] open |
-| `RAG-32` | Embeddings & Retrieval | 14 | 137 | [ ] open |
-| `RAG-33` | Embeddings & Retrieval | 15 | 138 | [ ] open |
-| `RAG-34` | Embeddings & Retrieval | 15 | 138 | [ ] open |
-| `RAG-35` | Embeddings & Retrieval | 15 | 138 | [ ] open |
-| `RAG-36` | Embeddings & Retrieval | 15 | 139 | [ ] open |
-| `RAG-37` | Embeddings & Retrieval | 15 | 139 | [ ] open |
-| `RAG-38` | Embeddings & Retrieval | 15 | 140 | [ ] open |
-| `RAG-39` | Embeddings & Retrieval | 15 | 140 | [ ] open |
-| `RAG-40` | Embeddings & Retrieval | 15 | 141 | [ ] open |
-| `RAG-41` | Embeddings & Retrieval | 15 | 141 | [ ] open |
-| `RAG-42` | Embeddings & Retrieval | 15 | 142 | [ ] open |
-| `RAG-43` | Embeddings & Retrieval | 15 | 142 | [ ] open |
-| `RAG-44` | Embeddings & Retrieval | 15 | 143 | [ ] open |
-| `RAG-45` | Embeddings & Retrieval | 15 | 144 | [ ] open |
-| `RAG-46` | Embeddings & Retrieval | 15 | 144 | [ ] open |
-| `SEC-01` | Safety & Security | 15 | 145 | [ ] open |
-| `SEC-02` | Safety & Security | 15 | 145 | [ ] open |
-| `SEC-03` | Safety & Security | 15 | 146 | [ ] open |
-| `SEC-04` | Safety & Security | 15 | 146 | [ ] open |
-| `SEC-05` | Safety & Security | 15 | 147 | [ ] open |
-| `SEC-06` | Safety & Security | 15 | 147 | [ ] open |
-| `PRJ-16` | The Five Shipped Services | 16 | 148 | [ ] open |
-| `PRJ-17` | The Five Shipped Services | 16 | 149 | [ ] open |
-| `PRJ-18` | The Five Shipped Services | 16 | 150 | [ ] open |
-| `PRJ-19` | The Five Shipped Services | 16 | 151 | [ ] open |
-| `PRJ-20` | The Five Shipped Services | 16 | 152 | [ ] open |
-| `PRJ-21` | The Five Shipped Services | 16 | 153 | [ ] open |
-| `PRJ-22` | The Five Shipped Services | 16 | 154 | [ ] open |
-| `PRJ-23` | The Five Shipped Services | 16 | 155 | [ ] open |
-| `PRJ-24` | The Five Shipped Services | 16 | 156 | [ ] open |
-| `AGT-13` | Agents, Protocols & Orchestration | 17 | 157 | [ ] open |
-| `AGT-14` | Agents, Protocols & Orchestration | 17 | 157 | [ ] open |
-| `AGT-15` | Agents, Protocols & Orchestration | 17 | 158 | [ ] open |
-| `AGT-16` | Agents, Protocols & Orchestration | 17 | 158 | [ ] open |
-| `AGT-17` | Agents, Protocols & Orchestration | 17 | 159 | [ ] open |
-| `AGT-18` | Agents, Protocols & Orchestration | 17 | 160 | [ ] open |
-| `AGT-19` | Agents, Protocols & Orchestration | 17 | 160 | [ ] open |
-| `AGT-20` | Agents, Protocols & Orchestration | 17 | 161 | [ ] open |
-| `AGT-21` | Agents, Protocols & Orchestration | 17 | 162 | [ ] open |
-| `AGT-22` | Agents, Protocols & Orchestration | 17 | 163 | [ ] open |
-| `AGT-23` | Agents, Protocols & Orchestration | 17 | 164 | [ ] open |
-| `AGT-24` | Agents, Protocols & Orchestration | 17 | 165 | [ ] open |
-| `AGT-25` | Agents, Protocols & Orchestration | 17 | 165 | [ ] open |
-| `AGT-26` | Agents, Protocols & Orchestration | 17 | 166 | [ ] open |
-| `AGT-27` | Agents, Protocols & Orchestration | 17 | 166 | [ ] open |
-| `AGT-28` | Agents, Protocols & Orchestration | 17 | 167 | [ ] open |
-| `AGT-29` | Agents, Protocols & Orchestration | 17 | 167 | [ ] open |
-| `AGT-30` | Agents, Protocols & Orchestration | 17 | 168 | [ ] open |
-| `AGT-31` | Agents, Protocols & Orchestration | 17 | 168 | [ ] open |
-| `AGT-32` | Agents, Protocols & Orchestration | 17 | 169 | [ ] open |
-| `AGT-33` | Agents, Protocols & Orchestration | 17 | 169 | [ ] open |
-| `AGT-34` | Agents, Protocols & Orchestration | 17 | 169 | [ ] open |
-| `AGT-35` | Agents, Protocols & Orchestration | 17 | 170 | [ ] open |
-| `AGT-36` | Agents, Protocols & Orchestration | 17 | 170 | [ ] open |
-| `AGT-37` | Agents, Protocols & Orchestration | 17 | 170 | [ ] open |
-| `AGT-38` | Agents, Protocols & Orchestration | 18 | 171 | [ ] open |
-| `AGT-39` | Agents, Protocols & Orchestration | 18 | 171 | [ ] open |
-| `AGT-40` | Agents, Protocols & Orchestration | 18 | 172 | [ ] open |
-| `AGT-41` | Agents, Protocols & Orchestration | 18 | 172 | [ ] open |
-| `AGT-42` | Agents, Protocols & Orchestration | 18 | 173 | [ ] open |
-| `AGT-43` | Agents, Protocols & Orchestration | 18 | 173 | [ ] open |
-| `AGT-44` | Agents, Protocols & Orchestration | 18 | 174 | [ ] open |
-| `AGT-45` | Agents, Protocols & Orchestration | 18 | 174 | [ ] open |
-| `AGT-46` | Agents, Protocols & Orchestration | 18 | 175 | [ ] open |
-| `AGT-47` | Agents, Protocols & Orchestration | 18 | 175 | [ ] open |
-| `AGT-48` | Agents, Protocols & Orchestration | 18 | 176 | [ ] open |
-| `AGT-49` | Agents, Protocols & Orchestration | 18 | 176 | [ ] open |
-| `AGT-50` | Agents, Protocols & Orchestration | 18 | 177 | [ ] open |
-| `AGT-51` | Agents, Protocols & Orchestration | 18 | 177 | [ ] open |
-| `AGT-52` | Agents, Protocols & Orchestration | 18 | 178 | [ ] open |
-| `AGT-53` | Agents, Protocols & Orchestration | 18 | 179 | [ ] open |
-| `AGT-54` | Agents, Protocols & Orchestration | 18 | 179 | [ ] open |
-| `AGT-55` | Agents, Protocols & Orchestration | 19 | 180 | [ ] open |
-| `AGT-56` | Agents, Protocols & Orchestration | 19 | 180 | [ ] open |
-| `AGT-57` | Agents, Protocols & Orchestration | 19 | 181 | [ ] open |
-| `AGT-58` | Agents, Protocols & Orchestration | 19 | 181 | [ ] open |
-| `AGT-59` | Agents, Protocols & Orchestration | 19 | 182 | [ ] open |
-| `AGT-60` | Agents, Protocols & Orchestration | 19 | 183 | [ ] open |
-| `AGT-61` | Agents, Protocols & Orchestration | 19 | 184 | [ ] open |
-| `AGT-62` | Agents, Protocols & Orchestration | 19 | 185 | [ ] open |
-| `AGT-63` | Agents, Protocols & Orchestration | 19 | 185 | [ ] open |
-| `AGT-64` | Agents, Protocols & Orchestration | 19 | 186 | [ ] open |
-| `AGT-65` | Agents, Protocols & Orchestration | 19 | 186 | [ ] open |
-| `AGT-66` | Agents, Protocols & Orchestration | 19 | 187 | [ ] open |
-| `AGT-67` | Agents, Protocols & Orchestration | 19 | 187 | [ ] open |
-| `AGT-68` | Agents, Protocols & Orchestration | 19 | 188 | [ ] open |
-| `AGT-69` | Agents, Protocols & Orchestration | 19 | 188 | [ ] open |
-| `AGT-70` | Agents, Protocols & Orchestration | 19 | 189 | [ ] open |
-| `AGT-71` | Agents, Protocols & Orchestration | 19 | 189 | [ ] open |
-| `AGT-72` | Agents, Protocols & Orchestration | 19 | 190 | [ ] open |
-| `AGT-73` | Agents, Protocols & Orchestration | 19 | 190 | [ ] open |
-| `AGT-74` | Agents, Protocols & Orchestration | 19 | 191 | [ ] open |
-| `SEC-07` | Safety & Security | 19 | 191 | [ ] open |
-| `SEC-08` | Safety & Security | 19 | 191 | [ ] open |
-| `AGT-75` | Agents, Protocols & Orchestration | 19 | 192 | [ ] open |
-| `AGT-76` | Agents, Protocols & Orchestration | 19 | 192 | [ ] open |
-| `AGT-77` | Agents, Protocols & Orchestration | 19 | 192 | [ ] open |
-| `AGT-78` | Agents, Protocols & Orchestration | 20 | 193 | [ ] open |
-| `AGT-79` | Agents, Protocols & Orchestration | 20 | 193 | [ ] open |
-| `AGT-80` | Agents, Protocols & Orchestration | 20 | 194 | [ ] open |
-| `AGT-81` | Agents, Protocols & Orchestration | 20 | 194 | [ ] open |
-| `SEC-09` | Safety & Security | 20 | 195 | [ ] open |
-| `SEC-10` | Safety & Security | 20 | 195 | [ ] open |
-| `SEC-11` | Safety & Security | 20 | 196 | [ ] open |
-| `SEC-12` | Safety & Security | 20 | 197 | [ ] open |
-| `AGT-82` | Agents, Protocols & Orchestration | 20 | 197 | [ ] open |
-| `PRJ-25` | The Five Shipped Services | 21 | 198 | [ ] open |
-| `PRJ-26` | The Five Shipped Services | 21 | 199 | [ ] open |
-| `PRJ-27` | The Five Shipped Services | 21 | 200 | [ ] open |
-| `PRJ-28` | The Five Shipped Services | 21 | 201 | [ ] open |
-| `PRJ-29` | The Five Shipped Services | 21 | 202 | [ ] open |
-| `PRJ-30` | The Five Shipped Services | 21 | 203 | [ ] open |
-| `PRJ-31` | The Five Shipped Services | 21 | 204 | [ ] open |
-| `PRJ-32` | The Five Shipped Services | 21 | 205 | [ ] open |
-| `OPS-01` | LLMOps, Evaluation & CI/CD | 22 | 206 | [ ] open |
-| `OPS-02` | LLMOps, Evaluation & CI/CD | 22 | 206 | [ ] open |
-| `OPS-03` | LLMOps, Evaluation & CI/CD | 22 | 207 | [ ] open |
-| `OPS-04` | LLMOps, Evaluation & CI/CD | 22 | 207 | [ ] open |
-| `OPS-05` | LLMOps, Evaluation & CI/CD | 22 | 208 | [ ] open |
-| `OPS-06` | LLMOps, Evaluation & CI/CD | 22 | 208 | [ ] open |
-| `OPS-07` | LLMOps, Evaluation & CI/CD | 22 | 209 | [ ] open |
-| `OPS-08` | LLMOps, Evaluation & CI/CD | 22 | 209 | [ ] open |
-| `OPS-09` | LLMOps, Evaluation & CI/CD | 22 | 210 | [ ] open |
-| `OPS-10` | LLMOps, Evaluation & CI/CD | 22 | 210 | [ ] open |
-| `OPS-11` | LLMOps, Evaluation & CI/CD | 22 | 211 | [ ] open |
-| `OPS-12` | LLMOps, Evaluation & CI/CD | 22 | 212 | [ ] open |
-| `OPS-13` | LLMOps, Evaluation & CI/CD | 22 | 212 | [ ] open |
-| `OPS-14` | LLMOps, Evaluation & CI/CD | 22 | 213 | [ ] open |
-| `OPS-15` | LLMOps, Evaluation & CI/CD | 22 | 213 | [ ] open |
-| `OPS-16` | LLMOps, Evaluation & CI/CD | 22 | 214 | [ ] open |
-| `OPS-17` | LLMOps, Evaluation & CI/CD | 22 | 215 | [ ] open |
-| `OPS-18` | LLMOps, Evaluation & CI/CD | 22 | 215 | [ ] open |
-| `OPS-19` | LLMOps, Evaluation & CI/CD | 22 | 216 | [ ] open |
-| `OPS-20` | LLMOps, Evaluation & CI/CD | 22 | 216 | [ ] open |
-| `PRJ-33` | The Five Shipped Services | 23 | 217 | [ ] open |
-| `PRJ-34` | The Five Shipped Services | 23 | 218 | [ ] open |
-| `PRJ-35` | The Five Shipped Services | 23 | 219 | [ ] open |
-| `PRJ-36` | The Five Shipped Services | 23 | 220 | [ ] open |
-| `PRJ-37` | The Five Shipped Services | 23 | 221 | [ ] open |
-| `PRJ-38` | The Five Shipped Services | 23 | 222 | [ ] open |
-| `PRJ-39` | The Five Shipped Services | 23 | 223 | [ ] open |
-| `OPS-21` | LLMOps, Evaluation & CI/CD | 23 | 223 | [ ] open |
-| `PRJ-40` | The Five Shipped Services | 23 | 224 | [ ] open |
-| `OPS-22` | LLMOps, Evaluation & CI/CD | 23 | 224 | [ ] open |
-| `PRJ-41` | The Five Shipped Services | 24 | 225 | [ ] open |
-| `PRJ-42` | The Five Shipped Services | 24 | 226 | [ ] open |
-| `PRJ-43` | The Five Shipped Services | 24 | 227 | [ ] open |
-| `PRJ-44` | The Five Shipped Services | 24 | 228 | [ ] open |
+| `FDE-01` | FDE consulting craft | 1 | 1 | [~] written day 1, not in the ledger |
+| `FDE-02` | FDE consulting craft | 1 | 1 | [~] written day 1, not in the ledger |
+| `FDE-03` | FDE consulting craft | 1 | 2 | [ ] open |
+| `FDE-04` | FDE consulting craft | 1 | 3 | [ ] open |
+| `FDE-05` | FDE consulting craft | 1 | 3 | [ ] open |
+| `FDE-06` | FDE consulting craft | 1 | 4 | [ ] open |
+| `FDE-07` | FDE consulting craft | 1 | 5 | [ ] open |
+| `FDE-08` | FDE consulting craft | 1 | 5 | [ ] open |
+| `SE-01` | Software & backend engineering | 2 | 6 | [ ] open |
+| `SE-02` | Software & backend engineering | 2 | 7 | [ ] open |
+| `SE-03` | Software & backend engineering | 2 | 8 | [ ] open |
+| `SE-04` | Software & backend engineering | 2 | 9 | [ ] open |
+| `SE-05` | Software & backend engineering | 2 | 10 | [ ] open |
+| `SE-06` | Software & backend engineering | 2 | 10 | [ ] open |
+| `SE-07` | Software & backend engineering | 2 | 11 | [ ] open |
+| `SE-08` | Software & backend engineering | 2 | 12 | [ ] open |
+| `SE-09` | Software & backend engineering | 2 | 13 | [ ] open |
+| `SE-10` | Software & backend engineering | 2 | 14 | [ ] open |
+| `SE-11` | Software & backend engineering | 2 | 14 | [ ] open |
+| `SE-12` | Software & backend engineering | 2 | 14 | [ ] open |
+| `SE-13` | Software & backend engineering | 3 | 15 | [ ] open |
+| `SE-14` | Software & backend engineering | 3 | 15 | [ ] open |
+| `SE-15` | Software & backend engineering | 3 | 16 | [ ] open |
+| `SE-16` | Software & backend engineering | 3 | 16 | [ ] open |
+| `SE-17` | Software & backend engineering | 3 | 17 | [ ] open |
+| `SE-18` | Software & backend engineering | 3 | 18 | [ ] open |
+| `SE-19` | Software & backend engineering | 3 | 18 | [ ] open |
+| `SE-20` | Software & backend engineering | 3 | 19 | [ ] open |
+| `SE-21` | Software & backend engineering | 3 | 20 | [ ] open |
+| `SE-22` | Software & backend engineering | 3 | 20 | [ ] open |
+| `SE-23` | Software & backend engineering | 3 | 21 | [ ] open |
+| `SE-24` | Software & backend engineering | 3 | 21 | [ ] open |
+| `SE-25` | Software & backend engineering | 4 | 22 | [ ] open |
+| `SE-26` | Software & backend engineering | 4 | 23 | [ ] open |
+| `SE-27` | Software & backend engineering | 4 | 24 | [ ] open |
+| `SE-28` | Software & backend engineering | 4 | 25 | [ ] open |
+| `SE-29` | Software & backend engineering | 4 | 26 | [ ] open |
+| `SE-30` | Software & backend engineering | 4 | 27 | [ ] open |
+| `SE-31` | Software & backend engineering | 4 | 28 | [ ] open |
+| `SE-32` | Software & backend engineering | 4 | 28 | [ ] open |
+| `SE-33` | Software & backend engineering | 4 | 29 | [ ] open |
+| `SE-34` | Software & backend engineering | 4 | 29 | [ ] open |
+| `CTX-01` | Prompt & context engineering | 5 | 30 | [ ] open |
+| `CTX-02` | Prompt & context engineering | 5 | 31 | [ ] open |
+| `CTX-03` | Prompt & context engineering | 5 | 31 | [ ] open |
+| `CTX-04` | Prompt & context engineering | 5 | 32 | [ ] open |
+| `CTX-05` | Prompt & context engineering | 5 | 33 | [ ] open |
+| `CTX-06` | Prompt & context engineering | 5 | 33 | [ ] open |
+| `CTX-07` | Prompt & context engineering | 5 | 34 | [ ] open |
+| `CTX-08` | Prompt & context engineering | 5 | 35 | [ ] open |
+| `CTX-09` | Prompt & context engineering | 5 | 35 | [ ] open |
+| `CTX-10` | Prompt & context engineering | 5 | 36 | [ ] open |
+| `CTX-11` | Prompt & context engineering | 5 | 36 | [ ] open |
+| `CTX-12` | Prompt & context engineering | 5 | 37 | [ ] open |
+| `CTX-13` | Prompt & context engineering | 5 | 37 | [ ] open |
+| `CTX-14` | Prompt & context engineering | 5 | 38 | [ ] open |
+| `CTX-15` | Prompt & context engineering | 5 | 38 | [ ] open |
+| `CTX-16` | Prompt & context engineering | 5 | 38 | [ ] open |
+| `CLD-01` | Cloud, containers & delivery | 6 | 39 | [ ] open |
+| `CLD-02` | Cloud, containers & delivery | 6 | 40 | [ ] open |
+| `CLD-03` | Cloud, containers & delivery | 6 | 41 | [ ] open |
+| `CLD-04` | Cloud, containers & delivery | 6 | 42 | [ ] open |
+| `CLD-05` | Cloud, containers & delivery | 6 | 43 | [ ] open |
+| `CLD-06` | Cloud, containers & delivery | 6 | 44 | [ ] open |
+| `CLD-07` | Cloud, containers & delivery | 6 | 45 | [ ] open |
+| `CLD-08` | Cloud, containers & delivery | 6 | 45 | [ ] open |
+| `CLD-09` | Cloud, containers & delivery | 6 | 46 | [ ] open |
+| `CLD-10` | Cloud, containers & delivery | 6 | 46 | [ ] open |
+| `CLD-11` | Cloud, containers & delivery | 6 | 46 | [ ] open |
+| `CLD-12` | Cloud, containers & delivery | 7 | 47 | [ ] open |
+| `CLD-13` | Cloud, containers & delivery | 7 | 48 | [ ] open |
+| `CLD-14` | Cloud, containers & delivery | 7 | 48 | [ ] open |
+| `CLD-15` | Cloud, containers & delivery | 7 | 49 | [ ] open |
+| `CLD-16` | Cloud, containers & delivery | 7 | 50 | [ ] open |
+| `CLD-17` | Cloud, containers & delivery | 7 | 50 | [ ] open |
+| `CLD-18` | Cloud, containers & delivery | 7 | 51 | [ ] open |
+| `CLD-19` | Cloud, containers & delivery | 7 | 51 | [ ] open |
+| `CLD-20` | Cloud, containers & delivery | 7 | 52 | [ ] open |
+| `CLD-21` | Cloud, containers & delivery | 7 | 52 | [ ] open |
+| `CLD-22` | Cloud, containers & delivery | 7 | 52 | [ ] open |
+| `TF-01` | Transformer internals & efficiency | 8 | 53 | [ ] open |
+| `TF-02` | Transformer internals & efficiency | 8 | 53 | [ ] open |
+| `TF-03` | Transformer internals & efficiency | 8 | 54 | [ ] open |
+| `TF-04` | Transformer internals & efficiency | 8 | 54 | [ ] open |
+| `TF-05` | Transformer internals & efficiency | 8 | 54 | [ ] open |
+| `TF-06` | Transformer internals & efficiency | 8 | 55 | [ ] open |
+| `TF-07` | Transformer internals & efficiency | 8 | 55 | [ ] open |
+| `TF-08` | Transformer internals & efficiency | 8 | 55 | [ ] open |
+| `TF-09` | Transformer internals & efficiency | 8 | 56 | [ ] open |
+| `TF-10` | Transformer internals & efficiency | 8 | 56 | [ ] open |
+| `TF-11` | Transformer internals & efficiency | 8 | 56 | [ ] open |
+| `TF-12` | Transformer internals & efficiency | 8 | 57 | [ ] open |
+| `TF-13` | Transformer internals & efficiency | 8 | 57 | [ ] open |
+| `TF-14` | Transformer internals & efficiency | 8 | 58 | [ ] open |
+| `TF-15` | Transformer internals & efficiency | 8 | 58 | [ ] open |
+| `TF-16` | Transformer internals & efficiency | 8 | 58 | [ ] open |
+| `TF-17` | Transformer internals & efficiency | 8 | 59 | [ ] open |
+| `TF-18` | Transformer internals & efficiency | 8 | 59 | [ ] open |
+| `TF-19` | Transformer internals & efficiency | 8 | 59 | [ ] open |
+| `TF-20` | Transformer internals & efficiency | 8 | 60 | [ ] open |
+| `TF-21` | Transformer internals & efficiency | 8 | 60 | [ ] open |
+| `TF-22` | Transformer internals & efficiency | 8 | 60 | [ ] open |
+| `TF-23` | Transformer internals & efficiency | 8 | 61 | [ ] open |
+| `TF-24` | Transformer internals & efficiency | 8 | 61 | [ ] open |
+| `TF-25` | Transformer internals & efficiency | 8 | 61 | [ ] open |
+| `TF-26` | Transformer internals & efficiency | 9 | 62 | [ ] open |
+| `TF-27` | Transformer internals & efficiency | 9 | 62 | [ ] open |
+| `TF-28` | Transformer internals & efficiency | 9 | 62 | [ ] open |
+| `TF-29` | Transformer internals & efficiency | 9 | 63 | [ ] open |
+| `TF-30` | Transformer internals & efficiency | 9 | 63 | [ ] open |
+| `TF-31` | Transformer internals & efficiency | 9 | 63 | [ ] open |
+| `TF-32` | Transformer internals & efficiency | 9 | 64 | [ ] open |
+| `TF-33` | Transformer internals & efficiency | 9 | 64 | [ ] open |
+| `TF-34` | Transformer internals & efficiency | 9 | 64 | [ ] open |
+| `TF-35` | Transformer internals & efficiency | 9 | 65 | [ ] open |
+| `TF-36` | Transformer internals & efficiency | 9 | 65 | [ ] open |
+| `TF-37` | Transformer internals & efficiency | 9 | 65 | [ ] open |
+| `TF-38` | Transformer internals & efficiency | 9 | 66 | [ ] open |
+| `TF-39` | Transformer internals & efficiency | 9 | 66 | [ ] open |
+| `TF-40` | Transformer internals & efficiency | 9 | 67 | [ ] open |
+| `TF-41` | Transformer internals & efficiency | 9 | 67 | [ ] open |
+| `TF-42` | Transformer internals & efficiency | 9 | 67 | [ ] open |
+| `TF-43` | Transformer internals & efficiency | 9 | 67 | [ ] open |
+| `FT-01` | Fine-tuning, alignment & compression | 10 | 68 | [ ] open |
+| `FT-02` | Fine-tuning, alignment & compression | 10 | 68 | [ ] open |
+| `FT-03` | Fine-tuning, alignment & compression | 10 | 68 | [ ] open |
+| `FT-04` | Fine-tuning, alignment & compression | 10 | 69 | [ ] open |
+| `FT-05` | Fine-tuning, alignment & compression | 10 | 69 | [ ] open |
+| `FT-06` | Fine-tuning, alignment & compression | 10 | 70 | [ ] open |
+| `FT-07` | Fine-tuning, alignment & compression | 10 | 70 | [ ] open |
+| `FT-08` | Fine-tuning, alignment & compression | 10 | 71 | [ ] open |
+| `FT-09` | Fine-tuning, alignment & compression | 10 | 71 | [ ] open |
+| `FT-10` | Fine-tuning, alignment & compression | 10 | 72 | [ ] open |
+| `FT-11` | Fine-tuning, alignment & compression | 10 | 72 | [ ] open |
+| `FT-12` | Fine-tuning, alignment & compression | 10 | 73 | [ ] open |
+| `FT-13` | Fine-tuning, alignment & compression | 10 | 73 | [ ] open |
+| `FT-14` | Fine-tuning, alignment & compression | 10 | 73 | [ ] open |
+| `FT-15` | Fine-tuning, alignment & compression | 10 | 73 | [ ] open |
+| `FT-16` | Fine-tuning, alignment & compression | 11 | 74 | [ ] open |
+| `FT-17` | Fine-tuning, alignment & compression | 11 | 74 | [ ] open |
+| `FT-18` | Fine-tuning, alignment & compression | 11 | 74 | [ ] open |
+| `FT-19` | Fine-tuning, alignment & compression | 11 | 75 | [ ] open |
+| `FT-20` | Fine-tuning, alignment & compression | 11 | 75 | [ ] open |
+| `FT-21` | Fine-tuning, alignment & compression | 11 | 76 | [ ] open |
+| `FT-22` | Fine-tuning, alignment & compression | 11 | 76 | [ ] open |
+| `FT-23` | Fine-tuning, alignment & compression | 11 | 77 | [ ] open |
+| `FT-24` | Fine-tuning, alignment & compression | 11 | 77 | [ ] open |
+| `FT-25` | Fine-tuning, alignment & compression | 11 | 78 | [ ] open |
+| `FT-26` | Fine-tuning, alignment & compression | 11 | 78 | [ ] open |
+| `FT-27` | Fine-tuning, alignment & compression | 11 | 78 | [ ] open |
+| `FT-28` | Fine-tuning, alignment & compression | 11 | 79 | [ ] open |
+| `FT-29` | Fine-tuning, alignment & compression | 11 | 79 | [ ] open |
+| `FT-30` | Fine-tuning, alignment & compression | 11 | 80 | [ ] open |
+| `FT-31` | Fine-tuning, alignment & compression | 11 | 80 | [ ] open |
+| `FT-32` | Fine-tuning, alignment & compression | 11 | 80 | [ ] open |
+| `FT-33` | Fine-tuning, alignment & compression | 11 | 80 | [ ] open |
+| `FT-34` | Fine-tuning, alignment & compression | 12 | 81 | [ ] open |
+| `FT-35` | Fine-tuning, alignment & compression | 12 | 81 | [ ] open |
+| `FT-36` | Fine-tuning, alignment & compression | 12 | 82 | [ ] open |
+| `FT-37` | Fine-tuning, alignment & compression | 12 | 82 | [ ] open |
+| `FT-38` | Fine-tuning, alignment & compression | 12 | 82 | [ ] open |
+| `FT-39` | Fine-tuning, alignment & compression | 12 | 83 | [ ] open |
+| `FT-40` | Fine-tuning, alignment & compression | 12 | 83 | [ ] open |
+| `FT-41` | Fine-tuning, alignment & compression | 12 | 83 | [ ] open |
+| `FT-42` | Fine-tuning, alignment & compression | 12 | 84 | [ ] open |
+| `FT-43` | Fine-tuning, alignment & compression | 12 | 84 | [ ] open |
+| `FT-44` | Fine-tuning, alignment & compression | 12 | 85 | [ ] open |
+| `FT-45` | Fine-tuning, alignment & compression | 12 | 85 | [ ] open |
+| `FT-46` | Fine-tuning, alignment & compression | 12 | 85 | [ ] open |
+| `FT-47` | Fine-tuning, alignment & compression | 13 | 86 | [ ] open |
+| `FT-48` | Fine-tuning, alignment & compression | 13 | 86 | [ ] open |
+| `FT-49` | Fine-tuning, alignment & compression | 13 | 86 | [ ] open |
+| `FT-50` | Fine-tuning, alignment & compression | 13 | 87 | [ ] open |
+| `FT-51` | Fine-tuning, alignment & compression | 13 | 87 | [ ] open |
+| `FT-52` | Fine-tuning, alignment & compression | 13 | 88 | [ ] open |
+| `FT-53` | Fine-tuning, alignment & compression | 13 | 88 | [ ] open |
+| `FT-54` | Fine-tuning, alignment & compression | 13 | 88 | [ ] open |
+| `FT-55` | Fine-tuning, alignment & compression | 13 | 89 | [ ] open |
+| `FT-56` | Fine-tuning, alignment & compression | 13 | 89 | [ ] open |
+| `FT-57` | Fine-tuning, alignment & compression | 13 | 89 | [ ] open |
+| `PRJ-01` | The delivered system | 14 | 90 | [ ] open |
+| `PRJ-02` | The delivered system | 14 | 91 | [ ] open |
+| `PRJ-03` | The delivered system | 14 | 92 | [ ] open |
+| `PRJ-04` | The delivered system | 14 | 92 | [ ] open |
+| `PRJ-05` | The delivered system | 14 | 93 | [ ] open |
+| `PRJ-06` | The delivered system | 14 | 93 | [ ] open |
+| `PRJ-07` | The delivered system | 14 | 94 | [ ] open |
+| `RAG-01` | Embeddings & retrieval | 15 | 95 | [ ] open |
+| `RAG-02` | Embeddings & retrieval | 15 | 95 | [ ] open |
+| `RAG-03` | Embeddings & retrieval | 15 | 95 | [ ] open |
+| `RAG-04` | Embeddings & retrieval | 15 | 96 | [ ] open |
+| `RAG-05` | Embeddings & retrieval | 15 | 96 | [ ] open |
+| `RAG-06` | Embeddings & retrieval | 15 | 96 | [ ] open |
+| `RAG-07` | Embeddings & retrieval | 15 | 97 | [ ] open |
+| `RAG-08` | Embeddings & retrieval | 15 | 97 | [ ] open |
+| `RAG-09` | Embeddings & retrieval | 15 | 98 | [ ] open |
+| `RAG-10` | Embeddings & retrieval | 15 | 98 | [ ] open |
+| `RAG-11` | Embeddings & retrieval | 15 | 99 | [ ] open |
+| `RAG-12` | Embeddings & retrieval | 15 | 99 | [ ] open |
+| `RAG-13` | Embeddings & retrieval | 15 | 100 | [ ] open |
+| `RAG-14` | Embeddings & retrieval | 15 | 100 | [ ] open |
+| `RAG-15` | Embeddings & retrieval | 15 | 101 | [ ] open |
+| `RAG-16` | Embeddings & retrieval | 15 | 102 | [ ] open |
+| `RAG-17` | Embeddings & retrieval | 15 | 102 | [ ] open |
+| `RAG-18` | Embeddings & retrieval | 15 | 103 | [ ] open |
+| `RAG-19` | Embeddings & retrieval | 15 | 103 | [ ] open |
+| `RAG-20` | Embeddings & retrieval | 15 | 103 | [ ] open |
+| `RAG-21` | Embeddings & retrieval | 15 | 104 | [ ] open |
+| `RAG-22` | Embeddings & retrieval | 15 | 104 | [ ] open |
+| `RAG-23` | Embeddings & retrieval | 15 | 104 | [ ] open |
+| `RAG-24` | Embeddings & retrieval | 16 | 105 | [ ] open |
+| `RAG-25` | Embeddings & retrieval | 16 | 105 | [ ] open |
+| `RAG-26` | Embeddings & retrieval | 16 | 106 | [ ] open |
+| `RAG-27` | Embeddings & retrieval | 16 | 106 | [ ] open |
+| `RAG-28` | Embeddings & retrieval | 16 | 107 | [ ] open |
+| `RAG-29` | Embeddings & retrieval | 16 | 107 | [ ] open |
+| `RAG-30` | Embeddings & retrieval | 16 | 107 | [ ] open |
+| `RAG-31` | Embeddings & retrieval | 16 | 108 | [ ] open |
+| `RAG-32` | Embeddings & retrieval | 16 | 108 | [ ] open |
+| `RAG-33` | Embeddings & retrieval | 16 | 108 | [ ] open |
+| `RAG-34` | Embeddings & retrieval | 17 | 109 | [ ] open |
+| `RAG-35` | Embeddings & retrieval | 17 | 109 | [ ] open |
+| `RAG-36` | Embeddings & retrieval | 17 | 110 | [ ] open |
+| `RAG-37` | Embeddings & retrieval | 17 | 110 | [ ] open |
+| `RAG-38` | Embeddings & retrieval | 17 | 111 | [ ] open |
+| `RAG-39` | Embeddings & retrieval | 17 | 111 | [ ] open |
+| `RAG-40` | Embeddings & retrieval | 17 | 111 | [ ] open |
+| `RAG-41` | Embeddings & retrieval | 17 | 112 | [ ] open |
+| `VIS-01` | Vision & multimodal | 17 | 112 | [ ] open |
+| `VIS-02` | Vision & multimodal | 17 | 113 | [ ] open |
+| `VIS-03` | Vision & multimodal | 17 | 113 | [ ] open |
+| `VIS-04` | Vision & multimodal | 17 | 113 | [ ] open |
+| `VIS-05` | Vision & multimodal | 17 | 114 | [ ] open |
+| `VIS-06` | Vision & multimodal | 17 | 114 | [ ] open |
+| `VIS-07` | Vision & multimodal | 17 | 114 | [ ] open |
+| `VIS-08` | Vision & multimodal | 17 | 115 | [ ] open |
+| `VIS-09` | Vision & multimodal | 17 | 115 | [ ] open |
+| `RAG-42` | Embeddings & retrieval | 17 | 115 | [ ] open |
+| `RAG-43` | Embeddings & retrieval | 17 | 115 | [ ] open |
+| `AGT-01` | Agents, protocols & orchestration | 18 | 116 | [ ] open |
+| `AGT-02` | Agents, protocols & orchestration | 18 | 116 | [ ] open |
+| `AGT-03` | Agents, protocols & orchestration | 18 | 117 | [ ] open |
+| `AGT-04` | Agents, protocols & orchestration | 18 | 117 | [ ] open |
+| `AGT-05` | Agents, protocols & orchestration | 18 | 117 | [ ] open |
+| `AGT-06` | Agents, protocols & orchestration | 18 | 118 | [ ] open |
+| `AGT-07` | Agents, protocols & orchestration | 18 | 118 | [ ] open |
+| `AGT-08` | Agents, protocols & orchestration | 18 | 119 | [ ] open |
+| `AGT-09` | Agents, protocols & orchestration | 18 | 119 | [ ] open |
+| `AGT-10` | Agents, protocols & orchestration | 18 | 120 | [ ] open |
+| `AGT-11` | Agents, protocols & orchestration | 18 | 121 | [ ] open |
+| `AGT-12` | Agents, protocols & orchestration | 18 | 121 | [ ] open |
+| `AGT-13` | Agents, protocols & orchestration | 18 | 122 | [ ] open |
+| `AGT-14` | Agents, protocols & orchestration | 18 | 122 | [ ] open |
+| `AGT-15` | Agents, protocols & orchestration | 18 | 123 | [ ] open |
+| `AGT-16` | Agents, protocols & orchestration | 18 | 123 | [ ] open |
+| `AGT-17` | Agents, protocols & orchestration | 18 | 123 | [ ] open |
+| `AGT-18` | Agents, protocols & orchestration | 18 | 124 | [ ] open |
+| `AGT-19` | Agents, protocols & orchestration | 18 | 124 | [ ] open |
+| `SEC-01` | Security & governance | 18 | 124 | [ ] open |
+| `AGT-20` | Agents, protocols & orchestration | 19 | 125 | [ ] open |
+| `AGT-21` | Agents, protocols & orchestration | 19 | 125 | [ ] open |
+| `AGT-22` | Agents, protocols & orchestration | 19 | 126 | [ ] open |
+| `AGT-23` | Agents, protocols & orchestration | 19 | 126 | [ ] open |
+| `AGT-24` | Agents, protocols & orchestration | 19 | 126 | [ ] open |
+| `AGT-25` | Agents, protocols & orchestration | 19 | 127 | [ ] open |
+| `AGT-26` | Agents, protocols & orchestration | 19 | 127 | [ ] open |
+| `AGT-27` | Agents, protocols & orchestration | 19 | 128 | [ ] open |
+| `AGT-28` | Agents, protocols & orchestration | 19 | 128 | [ ] open |
+| `AGT-29` | Agents, protocols & orchestration | 19 | 129 | [ ] open |
+| `AGT-30` | Agents, protocols & orchestration | 19 | 129 | [ ] open |
+| `AGT-31` | Agents, protocols & orchestration | 19 | 130 | [ ] open |
+| `AGT-32` | Agents, protocols & orchestration | 19 | 130 | [ ] open |
+| `AGT-33` | Agents, protocols & orchestration | 19 | 131 | [ ] open |
+| `AGT-34` | Agents, protocols & orchestration | 19 | 131 | [ ] open |
+| `AGT-35` | Agents, protocols & orchestration | 19 | 131 | [ ] open |
+| `AGT-36` | Agents, protocols & orchestration | 19 | 132 | [ ] open |
+| `AGT-37` | Agents, protocols & orchestration | 19 | 132 | [ ] open |
+| `AGT-38` | Agents, protocols & orchestration | 19 | 132 | [ ] open |
+| `ENT-01` | Enterprise integration & identity | 20 | 133 | [ ] open |
+| `ENT-02` | Enterprise integration & identity | 20 | 134 | [ ] open |
+| `ENT-03` | Enterprise integration & identity | 20 | 134 | [ ] open |
+| `SEC-02` | Security & governance | 20 | 134 | [ ] open |
+| `ENT-04` | Enterprise integration & identity | 20 | 135 | [ ] open |
+| `ENT-05` | Enterprise integration & identity | 20 | 136 | [ ] open |
+| `ENT-06` | Enterprise integration & identity | 20 | 136 | [ ] open |
+| `ENT-07` | Enterprise integration & identity | 20 | 137 | [ ] open |
+| `ENT-08` | Enterprise integration & identity | 20 | 137 | [ ] open |
+| `ENT-09` | Enterprise integration & identity | 20 | 138 | [ ] open |
+| `ENT-10` | Enterprise integration & identity | 20 | 138 | [ ] open |
+| `ENT-11` | Enterprise integration & identity | 21 | 139 | [ ] open |
+| `ENT-12` | Enterprise integration & identity | 21 | 140 | [ ] open |
+| `ENT-13` | Enterprise integration & identity | 21 | 140 | [ ] open |
+| `ENT-14` | Enterprise integration & identity | 21 | 141 | [ ] open |
+| `ENT-15` | Enterprise integration & identity | 21 | 141 | [ ] open |
+| `ENT-16` | Enterprise integration & identity | 21 | 142 | [ ] open |
+| `ENT-17` | Enterprise integration & identity | 21 | 143 | [ ] open |
+| `ENT-18` | Enterprise integration & identity | 21 | 143 | [ ] open |
+| `SEC-03` | Security & governance | 22 | 144 | [ ] open |
+| `SEC-04` | Security & governance | 22 | 145 | [ ] open |
+| `SEC-05` | Security & governance | 22 | 145 | [ ] open |
+| `SEC-06` | Security & governance | 22 | 146 | [ ] open |
+| `SEC-07` | Security & governance | 22 | 146 | [ ] open |
+| `SEC-08` | Security & governance | 22 | 147 | [ ] open |
+| `SEC-09` | Security & governance | 22 | 147 | [ ] open |
+| `SEC-10` | Security & governance | 22 | 148 | [ ] open |
+| `SEC-11` | Security & governance | 22 | 148 | [ ] open |
+| `SEC-12` | Security & governance | 22 | 149 | [ ] open |
+| `SEC-13` | Security & governance | 22 | 149 | [ ] open |
+| `OPS-01` | Observability, evaluation & LLMOps | 23 | 150 | [ ] open |
+| `OPS-02` | Observability, evaluation & LLMOps | 23 | 150 | [ ] open |
+| `OPS-03` | Observability, evaluation & LLMOps | 23 | 151 | [ ] open |
+| `OPS-04` | Observability, evaluation & LLMOps | 23 | 152 | [ ] open |
+| `OPS-05` | Observability, evaluation & LLMOps | 23 | 152 | [ ] open |
+| `OPS-06` | Observability, evaluation & LLMOps | 23 | 153 | [ ] open |
+| `OPS-07` | Observability, evaluation & LLMOps | 23 | 153 | [ ] open |
+| `OPS-08` | Observability, evaluation & LLMOps | 23 | 154 | [ ] open |
+| `OPS-09` | Observability, evaluation & LLMOps | 23 | 154 | [ ] open |
+| `OPS-10` | Observability, evaluation & LLMOps | 24 | 155 | [ ] open |
+| `OPS-11` | Observability, evaluation & LLMOps | 24 | 155 | [ ] open |
+| `OPS-12` | Observability, evaluation & LLMOps | 24 | 156 | [ ] open |
+| `OPS-13` | Observability, evaluation & LLMOps | 24 | 156 | [ ] open |
+| `OPS-14` | Observability, evaluation & LLMOps | 24 | 157 | [ ] open |
+| `OPS-15` | Observability, evaluation & LLMOps | 24 | 157 | [ ] open |
+| `OPS-16` | Observability, evaluation & LLMOps | 24 | 158 | [ ] open |
+| `OPS-17` | Observability, evaluation & LLMOps | 24 | 158 | [ ] open |
+| `OPS-18` | Observability, evaluation & LLMOps | 24 | 158 | [ ] open |
+| `OPS-19` | Observability, evaluation & LLMOps | 24 | 159 | [ ] open |
+| `OPS-20` | Observability, evaluation & LLMOps | 24 | 159 | [ ] open |
+| `OPS-21` | Observability, evaluation & LLMOps | 24 | 160 | [ ] open |
+| `OPS-22` | Observability, evaluation & LLMOps | 24 | 160 | [ ] open |
+| `OPS-23` | Observability, evaluation & LLMOps | 24 | 160 | [ ] open |
+| `PRJ-08` | The delivered system | 25 | 161 | [ ] open |
+| `FDE-09` | FDE consulting craft | 25 | 161 | [ ] open |
+| `PRJ-09` | The delivered system | 25 | 162 | [ ] open |
+| `PRJ-10` | The delivered system | 25 | 163 | [ ] open |
+| `PRJ-11` | The delivered system | 25 | 164 | [ ] open |
+| `PRJ-12` | The delivered system | 25 | 164 | [ ] open |
+| `PRJ-13` | The delivered system | 25 | 165 | [ ] open |
+| `PRJ-14` | The delivered system | 25 | 165 | [ ] open |
+| `PRJ-15` | The delivered system | 25 | 166 | [ ] open |
+| `PRJ-16` | The delivered system | 25 | 167 | [ ] open |
+| `PRJ-17` | The delivered system | 25 | 167 | [ ] open |
+| `FDE-10` | FDE consulting craft | 25 | 167 | [ ] open |
+| `PRJ-18` | The delivered system | 26 | 168 | [ ] open |
+| `FDE-11` | FDE consulting craft | 26 | 168 | [ ] open |
+| `PRJ-19` | The delivered system | 26 | 169 | [ ] open |
+| `PRJ-20` | The delivered system | 26 | 169 | [ ] open |
+| `PRJ-21` | The delivered system | 26 | 170 | [ ] open |
+| `SEC-14` | Security & governance | 26 | 170 | [ ] open |
+| `PRJ-22` | The delivered system | 26 | 171 | [ ] open |
+| `PRJ-23` | The delivered system | 26 | 171 | [ ] open |
+| `PRJ-24` | The delivered system | 26 | 172 | [ ] open |
+| `SEC-15` | Security & governance | 26 | 172 | [ ] open |
+| `PRJ-25` | The delivered system | 26 | 173 | [ ] open |
+| `PRJ-26` | The delivered system | 26 | 173 | [ ] open |
+| `PRJ-27` | The delivered system | 27 | 174 | [ ] open |
+| `PRJ-28` | The delivered system | 27 | 174 | [ ] open |
+| `PRJ-29` | The delivered system | 27 | 175 | [ ] open |
+| `PRJ-30` | The delivered system | 27 | 175 | [ ] open |
+| `PRJ-31` | The delivered system | 27 | 176 | [ ] open |
+| `PRJ-32` | The delivered system | 27 | 176 | [ ] open |
+| `PRJ-33` | The delivered system | 27 | 177 | [ ] open |
+| `OPS-24` | Observability, evaluation & LLMOps | 27 | 177 | [ ] open |
+| `OPS-25` | Observability, evaluation & LLMOps | 27 | 177 | [ ] open |
+| `FDE-12` | FDE consulting craft | 28 | 178 | [ ] open |
+| `FDE-13` | FDE consulting craft | 28 | 178 | [ ] open |
+| `FDE-14` | FDE consulting craft | 28 | 179 | [ ] open |
+| `FDE-15` | FDE consulting craft | 28 | 179 | [ ] open |
+| `PRJ-34` | The delivered system | 28 | 180 | [ ] open |
+| `PRJ-35` | The delivered system | 28 | 180 | [ ] open |
+| `PRJ-36` | The delivered system | 28 | 181 | [ ] open |
+| `FDE-16` | FDE consulting craft | 28 | 181 | [ ] open |
+| `FDE-17` | FDE consulting craft | 28 | 181 | [ ] open |

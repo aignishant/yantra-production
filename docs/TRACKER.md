@@ -8,272 +8,229 @@ only when it also has a ledger row. A thin day is visible from the parts column.
 
 | | Count | Of plan |
 | --- | --- | --- |
-| Days in the plan | **229** | 100% |
-| Days written | **2** | 0.9% |
-| Days complete | **1** | 0.4% |
+| Days in the plan | **182** | 100% |
+| Days written | **2** | 1.1% |
+| Days complete | **1** | 0.5% |
 | Subtopic documents | **13** | — |
-| Source documents | **1** | — |
+| Source documents | **0** | — |
 
 ## Every day
 
 | Day | Phase | Title | Status | Parts | Sources | IDs |
 | --- | --- | --- | --- | --- | --- | --- |
 | 0 | 0 | [Toolchain and skeleton](../days/day-000-toolchain-skeleton/LESSON.md) | complete | 6 | 0 | — |
-| 1 | 1 | [What a language model actually is](../days/day-001-what-language-model-is/LESSON.md) | written | 7 | 1 | `TF-01`, `TF-02` |
-| 2 | 1 | Text to numbers — the tokenizer boundary and the taxonomy (word, subwor… | not started | 0 | 0 | `TF-03` |
-| 3 | 1 | Byte Pair Encoding, trained from scratch on your own corpus | not started | 0 | 0 | `TF-04` |
-| 4 | 1 | WordPiece and SentencePiece — likelihood-driven merges and the language… | not started | 0 | 0 | `TF-05`, `TF-06` |
-| 5 | 1 | Tokenizer pathologies — vocabulary size, digits, code, whitespace and t… | not started | 0 | 0 | `TF-07` |
-| 6 | 1 | Embeddings — discrete symbols into continuous space; the embedding matr… | not started | 0 | 0 | `TF-08`, `TF-09` |
-| 7 | 1 | Positional encoding — why order has to be injected, and the sinusoidal… | not started | 0 | 0 | `TF-10` |
-| 8 | 1 | The attention mechanism from first principles — query, key, value; scal… | not started | 0 | 0 | `TF-11`, `TF-12` |
-| 9 | 1 | Self-attention and the causal mask — what a decoder is allowed to see | not started | 0 | 0 | `TF-13`, `TF-14` |
-| 10 | 1 | Multi-head attention — why more than one head, and what heads specialis… | not started | 0 | 0 | `TF-15`, `TF-16` |
-| 11 | 1 | The transformer block — residuals, layer norm, the feed-forward network… | not started | 0 | 0 | `TF-17`, `TF-18`, `TF-19` |
-| 12 | 1 | Three architectures — encoder-only, decoder-only, encoder–decoder, cros… | not started | 0 | 0 | `TF-20`, `TF-21`, `TF-22`, `TF-23`, `TF-24` |
-| 13 | 2 | Coding attention I — a single head forward, and the mask in code | not started | 0 | 0 | `TF-25`, `TF-26` |
-| 14 | 2 | Coding attention II — batched multi-head, and a block that actually tra… | not started | 0 | 0 | `TF-27`, `TF-28` |
-| 15 | 2 | Fine-tuning DistilBERT on custom data — the classification head and tok… | not started | 0 | 0 | `TF-29`, `TF-30` |
-| 16 | 2 | Fine-tuning DistilGPT on custom data — causal LM collation and the labe… | not started | 0 | 0 | `TF-31`, `TF-32` |
-| 17 | 2 | Fine-tuning T5 on custom data — seq2seq collation, prefixes and generat… | not started | 0 | 0 | `TF-33`, `TF-34` |
-| 18 | 2 | The training loop that tells the truth — loss curves, overfitting, seed… | not started | 0 | 0 | `TF-35` |
-| 19 | 3 | The naive decoding problem — quadratic recompute, measured rather than… | not started | 0 | 0 | `TF-36`, `TF-37` |
-| 20 | 3 | The KV cache — what it stores and why the second token is cheap | not started | 0 | 0 | `TF-38`, `TF-39` |
-| 21 | 3 | KV cache memory math — batch, sequence, layers, precision, and the numb… | not started | 0 | 0 | `TF-40`, `TF-41` |
-| 22 | 3 | Flash Attention — IO-awareness, tiling, and why the speedup is not in t… | not started | 0 | 0 | `TF-42`, `TF-43` |
-| 23 | 3 | PyTorch SDPA — the unified attention API and its backend selection | not started | 0 | 0 | `TF-44` |
-| 24 | 3 | Multi-Query Attention — one KV head, and what it costs in quality | not started | 0 | 0 | `TF-45`, `TF-46` |
-| 25 | 3 | Grouped-Query Attention — the compromise that shipped | not started | 0 | 0 | `TF-47`, `TF-48` |
-| 26 | 3 | Multi-Head Latent Attention — compressing the cache instead of sharing… | not started | 0 | 0 | `TF-49`, `TF-50` |
-| 27 | 3 | PagedAttention, continuous batching and vLLM — the serving-side answer | not started | 0 | 0 | `TF-51`, `TF-52`, `TF-53` |
-| 28 | 4 | RoPE — rotary embeddings, and what happens when you push past the train… | not started | 0 | 0 | `TF-54`, `TF-55` |
-| 29 | 4 | Scaling laws for neural language models — the power law and what it pre… | not started | 0 | 0 | `TF-56`, `TF-57` |
-| 30 | 4 | Chinchilla — compute-optimal training, and the models that were trained… | not started | 0 | 0 | `TF-58`, `TF-59` |
-| 31 | 4 | The dense scaling wall and the Mixture-of-Experts idea | not started | 0 | 0 | `TF-60`, `TF-61` |
-| 32 | 4 | MoE architecture — the router, the experts, and load balancing against… | not started | 0 | 0 | `TF-62`, `TF-63`, `TF-64` |
-| 33 | 4 | Training and serving MoE; sparse vs soft variants; when dense still wins | not started | 0 | 0 | `TF-65`, `TF-66` |
-| 34 | 5 | The two-phase lifecycle — pre-training vs post-training, and what pre-t… | not started | 0 | 0 | `FT-01`, `FT-02` |
-| 35 | 5 | Why a base model is not useful out of the box — CLM, MLM and Prefix-LM… | not started | 0 | 0 | `FT-03`, `FT-04` |
-| 36 | 5 | Data curation and filtering at scale — quality heuristics, dedup, conta… | not started | 0 | 0 | `FT-05`, `FT-06` |
-| 37 | 5 | Continued pre-training for domain adaptation — and when to skip it for… | not started | 0 | 0 | `FT-07`, `FT-08` |
-| 38 | 5 | The compute budget problem, applied to your own run | not started | 0 | 0 | `FT-09` |
-| 39 | 5 | Multi-Token Prediction — predicting more than one step ahead | not started | 0 | 0 | `FT-10` |
-| 40 | 5 | Dataset formats and chat templates — instruction pairs, ChatML, LLaMA-3… | not started | 0 | 0 | `FT-11`, `FT-12` |
-| 41 | 5 | Loss masking — what it is, and exactly what breaks without it | not started | 0 | 0 | `FT-13`, `FT-14` |
-| 42 | 5 | Deduplication and filtering pipelines you can run | not started | 0 | 0 | `FT-15`, `FT-16` |
-| 43 | 5 | Synthetic data I — why data is the leverage point; the taxonomy; Self-I… | not started | 0 | 0 | `FT-17`, `FT-18`, `FT-19` |
-| 44 | 5 | Synthetic data II — preference pairs, LLM-as-Judge scoring, and distila… | not started | 0 | 0 | `FT-20`, `FT-21`, `FT-22` |
-| 45 | 5 | Model collapse and data poisoning — the two ways a synthetic pipeline r… | not started | 0 | 0 | `FT-23`, `FT-24` |
-| 46 | 6 | The intrinsic dimensionality insight — why a low-rank update is enough | not started | 0 | 0 | `FT-25` |
-| 47 | 6 | LoRA — the math, rank, alpha, and which modules to target | not started | 0 | 0 | `FT-26`, `FT-27` |
-| 48 | 6 | LoRA in practice with PEFT — adapters on disk, merged and unmerged | not started | 0 | 0 | `FT-28` |
-| 49 | 6 | QLoRA — 4-bit NF4, double quantization, paged optimizers | not started | 0 | 0 | `FT-29`, `FT-30`, `FT-31` |
-| 50 | 6 | DoRA — decomposing magnitude from direction | not started | 0 | 0 | `FT-32` |
-| 51 | 6 | AdaLoRA and LoRA+ — adaptive rank, and separate learning rates for A an… | not started | 0 | 0 | `FT-33`, `FT-34` |
-| 52 | 6 | Supervised fine-tuning as stage 1 — SFTTrainer, end to end | not started | 0 | 0 | `FT-35`, `FT-36` |
-| 53 | 6 | Instruction tuning — FLAN, Alpaca, OpenHermes and what a good instructi… | not started | 0 | 0 | `FT-37`, `FT-38` |
-| 54 | 6 | Chat and conversational fine-tuning — multi-turn data without leakage | not started | 0 | 0 | `FT-39` |
-| 55 | 6 | Chain-of-thought fine-tuning — training the reasoning trace, not just t… | not started | 0 | 0 | `FT-40` |
-| 56 | 6 | Domain-specific fine-tuning — best practices and catastrophic forgetting | not started | 0 | 0 | `FT-41`, `FT-42` |
-| 57 | 6 | Why SFT alone is not enough — RLHF with PPO: reward model, critic, KL p… | not started | 0 | 0 | `FT-43`, `FT-44`, `FT-45` |
-| 58 | 6 | DPO — direct preference optimization without a reward model; GRPO and O… | not started | 0 | 0 | `FT-46`, `FT-47`, `FT-48` |
-| 59 | 7 | Why evaluation belongs inside the fine-tuning loop — and the three benc… | not started | 0 | 0 | `FT-49`, `FT-50` |
-| 60 | 7 | LLM-as-judge — MT-Bench, Chatbot Arena, and calibrating a judge you can… | not started | 0 | 0 | `FT-51`, `FT-52` |
-| 61 | 7 | Designing a domain evaluation that can fail | not started | 0 | 0 | `FT-53` |
-| 62 | 7 | Post-training quantization I — GPTQ | not started | 0 | 0 | `FT-54`, `FT-55` |
-| 63 | 7 | Post-training quantization II — AWQ, bitsandbytes NF4, FP8 | not started | 0 | 0 | `FT-56`, `FT-57` |
-| 64 | 7 | Merging LoRA adapters before serving — and when not to | not started | 0 | 0 | `FT-58` |
-| 65 | 7 | vLLM as a serving engine — paged KV, scheduling, and the OpenAI-compati… | not started | 0 | 0 | `FT-59`, `FT-60` |
-| 66 | 7 | SGLang, and serving many LoRA adapters from one base model | not started | 0 | 0 | `FT-61`, `FT-62` |
-| 67 | 7 | GGUF and llama.cpp — the CPU path | not started | 0 | 0 | `FT-63`, `FT-64` |
-| 68 | 7 | Speculative decoding — a draft model that pays for itself | not started | 0 | 0 | `FT-65` |
-| 69 | 7 | The tooling landscape — TRL, Unsloth, Axolotl, LLaMA-Factory, and manag… | not started | 0 | 0 | `FT-66`, `FT-67`, `FT-68` |
-| 70 | 8 | Project 01 kickoff — the medical post-training pipeline, the datasets,… | not started | 0 | 0 | `PRJ-01` |
-| 71 | 8 | Synthetic medical instruction data with distilabel | not started | 0 | 0 | `PRJ-02` |
-| 72 | 8 | The SFT dataset — deduplication, chat format, loss masking, pushed to t… | not started | 0 | 0 | `PRJ-03` |
-| 73 | 8 | Stage 1 — QLoRA SFT on Llama-3.1-8B-Instruct | not started | 0 | 0 | `PRJ-04` |
-| 74 | 8 | Stage 2 — DPO preference alignment over one epoch | not started | 0 | 0 | `PRJ-05` |
-| 75 | 8 | Evaluation — ROUGE-L, BERTScore, and a judge on medical accuracy, safet… | not started | 0 | 0 | `PRJ-06` |
-| 76 | 8 | The multi-adapter vLLM server and FastAPI adapter routing | not started | 0 | 0 | `PRJ-07` |
-| 77 | 8 | Containerise, deploy to a SageMaker endpoint, trace it — and the phase… | not started | 0 | 0 | `PRJ-08` |
-| 78 | 9 | What a reasoning model is, and how it differs from a standard LLM | not started | 0 | 0 | `FT-69`, `FT-70` |
-| 79 | 9 | Chain-of-thought as the foundation — prompted, then trained | not started | 0 | 0 | `FT-71` |
-| 80 | 9 | The reasoning training recipe — verifiable rewards and the RL loop | not started | 0 | 0 | `FT-72`, `FT-73` |
-| 81 | 9 | R1-Zero — skipping supervised fine-tuning entirely, and what it cost | not started | 0 | 0 | `FT-74`, `FT-75` |
-| 82 | 9 | Distilling reasoning without RL | not started | 0 | 0 | `FT-76` |
-| 83 | 9 | What a Small Language Model is, and why cost, latency and privacy make… | not started | 0 | 0 | `FT-77`, `FT-78` |
-| 84 | 9 | The SLM design philosophy — and pruning as the other lever | not started | 0 | 0 | `FT-79`, `FT-80` |
-| 85 | 9 | The student–teacher paradigm — and what 'knowledge' actually means here | not started | 0 | 0 | `FT-81`, `FT-82` |
-| 86 | 9 | Hard labels, soft labels and temperature scaling | not started | 0 | 0 | `FT-83`, `FT-84` |
-| 87 | 9 | The KL divergence loss and attention transfer | not started | 0 | 0 | `FT-85`, `FT-86` |
-| 88 | 9 | A distillation pipeline end to end — teacher data, student design, trai… | not started | 0 | 0 | `FT-87`, `FT-88`, `FT-89`, `FT-90` |
-| 89 | 10 | Project 02 kickoff — teacher and student selection, GSM8K and MATH | not started | 0 | 0 | `PRJ-09` |
-| 90 | 10 | Teacher logit extraction and soft-label storage at temperature | not started | 0 | 0 | `PRJ-10` |
-| 91 | 10 | KL divergence and attention transfer, implemented from scratch | not started | 0 | 0 | `PRJ-11` |
-| 92 | 10 | The custom training loop, and loss curves that are actually read | not started | 0 | 0 | `PRJ-12` |
-| 93 | 10 | The ablation study — which loss term earned its place | not started | 0 | 0 | `PRJ-13` |
-| 94 | 10 | GGUF conversion across quantisation levels | not started | 0 | 0 | `PRJ-14` |
-| 95 | 10 | llama-server on CPU — tokens/sec and first-token latency against the te… | not started | 0 | 0 | `PRJ-15` |
-| 96 | 11 | From CNN to Vision Transformer — the conceptual bridge | not started | 0 | 0 | `VIS-01`, `VIS-02` |
-| 97 | 11 | An image as a sequence of patches — patch embedding in code | not started | 0 | 0 | `VIS-03`, `VIS-04` |
-| 98 | 11 | The CLS token and positional encoding for 2D inputs | not started | 0 | 0 | `VIS-05`, `VIS-06` |
-| 99 | 11 | The transformer encoder running on visual tokens | not started | 0 | 0 | `VIS-07` |
-| 100 | 11 | Attention maps — what a ViT actually looks at | not started | 0 | 0 | `VIS-08` |
-| 101 | 11 | CNN vs ViT — inductive bias, data hunger, and the core tradeoff | not started | 0 | 0 | `VIS-09` |
-| 102 | 11 | CLIP — contrastive language–image pre-training | not started | 0 | 0 | `VIS-10`, `VIS-11` |
-| 103 | 11 | SigLIP and DINOv2 — a sigmoid loss, and self-supervised vision | not started | 0 | 0 | `VIS-12`, `VIS-13` |
-| 104 | 11 | Visual Language Models — the three-component architecture | not started | 0 | 0 | `VIS-14`, `VIS-15` |
-| 105 | 11 | The aligner/projector — how visual tokens enter the LLM's embedding spa… | not started | 0 | 0 | `VIS-16`, `VIS-17`, `VIS-18` |
-| 106 | 11 | Speech AI and speech-to-text foundations; the Whisper architecture | not started | 0 | 0 | `VIS-19`, `VIS-20` |
-| 107 | 11 | Whisper in practice — the API, an STT pipeline, dataset preparation, an… | not started | 0 | 0 | `VIS-21`, `VIS-22`, `VIS-23`, `VIS-24` |
-| 108 | 12 | Anatomy of a prompt — instruction, context, input, output format; zero-… | not started | 0 | 0 | `CTX-01`, `CTX-02` |
-| 109 | 12 | System prompt design and role assignment | not started | 0 | 0 | `CTX-03` |
-| 110 | 12 | Chain-of-thought and step-back prompting | not started | 0 | 0 | `CTX-04`, `CTX-05` |
-| 111 | 12 | Structured generation — JSON mode, XML tags, and grammars | not started | 0 | 0 | `CTX-06` |
-| 112 | 12 | Prompt sensitivity and fragility — a robustness test that goes red | not started | 0 | 0 | `CTX-07`, `CTX-08` |
-| 113 | 12 | Prompt chaining, decomposition, meta-prompting and self-refinement loops | not started | 0 | 0 | `CTX-09`, `CTX-10` |
-| 114 | 12 | The context window — anatomy, recency bias, memory architectures, and c… | not started | 0 | 0 | `CTX-11`, `CTX-12`, `CTX-13`, `CTX-14` |
-| 115 | 13 | The embedding taxonomy — dense, sparse, and what each one preserves | not started | 0 | 0 | `RAG-01`, `RAG-02`, `RAG-03` |
-| 116 | 13 | Quantized and binary embeddings — float32 to int8 to one bit | not started | 0 | 0 | `RAG-04`, `RAG-05` |
-| 117 | 13 | Multi-vector embeddings — one document, many vectors | not started | 0 | 0 | `RAG-06` |
-| 118 | 13 | Matryoshka Representation Learning — flexible dimensions at query time | not started | 0 | 0 | `RAG-07`, `RAG-08` |
-| 119 | 13 | MRL embeddings in production — the truncation decision | not started | 0 | 0 | `RAG-09` |
-| 120 | 13 | Embedding fine-tuning — strategies, hard negatives, and doing it on you… | not started | 0 | 0 | `RAG-10`, `RAG-11`, `RAG-12` |
-| 121 | 13 | LangChain architecture and the model abstraction | not started | 0 | 0 | `AGT-01`, `AGT-02` |
-| 122 | 13 | LCEL — composition, streaming, and the runnable interface | not started | 0 | 0 | `AGT-03`, `AGT-04` |
-| 123 | 13 | Output parsers and structured output in LangChain | not started | 0 | 0 | `AGT-05` |
-| 124 | 13 | Tool calling, memory and conversation history | not started | 0 | 0 | `AGT-06`, `AGT-07` |
-| 125 | 13 | Document loaders, text splitters and vector stores | not started | 0 | 0 | `AGT-08`, `AGT-09` |
-| 126 | 13 | Callbacks, tracing and LangSmith; deploying a LangChain API safely | not started | 0 | 0 | `AGT-10`, `AGT-11`, `AGT-12` |
-| 127 | 14 | Vanilla RAG, end to end and by hand | not started | 0 | 0 | `RAG-13`, `RAG-14` |
-| 128 | 14 | Choosing an embedding model for retrieval — and measuring the choice | not started | 0 | 0 | `RAG-15` |
-| 129 | 14 | Chunking strategies and what each one destroys | not started | 0 | 0 | `RAG-16`, `RAG-17` |
-| 130 | 14 | BM25 and why lexical retrieval refuses to die | not started | 0 | 0 | `RAG-18` |
-| 131 | 14 | SPLADE — learned sparse retrieval | not started | 0 | 0 | `RAG-19` |
-| 132 | 14 | ColBERT-style late interaction and MaxSim | not started | 0 | 0 | `RAG-20` |
-| 133 | 14 | Hybrid RAG and Reciprocal Rank Fusion | not started | 0 | 0 | `RAG-21`, `RAG-22` |
-| 134 | 14 | Query transformations — rewriting, decomposition, HyDE | not started | 0 | 0 | `RAG-23`, `RAG-24` |
-| 135 | 14 | Rerankers — cross-encoders and the precision they buy | not started | 0 | 0 | `RAG-25`, `RAG-26` |
-| 136 | 14 | RAG evaluation with RAGAS — faithfulness, relevancy, context precision… | not started | 0 | 0 | `RAG-27`, `RAG-28` |
-| 137 | 14 | Self-RAG, Corrective RAG, Adaptive RAG and Agentic RAG — the LLM decidi… | not started | 0 | 0 | `RAG-29`, `RAG-30`, `RAG-31`, `RAG-32` |
-| 138 | 15 | Vector quantization for scale — scalar, binary and product quantization | not started | 0 | 0 | `RAG-33`, `RAG-34`, `RAG-35` |
-| 139 | 15 | Document parsing without OCR — layout detection and structure-aware chu… | not started | 0 | 0 | `RAG-36`, `RAG-37` |
-| 140 | 15 | The ColPali paradigm — retrieving over page images | not started | 0 | 0 | `RAG-38`, `RAG-39` |
-| 141 | 15 | Vision-language embeddings and VL rerankers | not started | 0 | 0 | `RAG-40`, `RAG-41` |
-| 142 | 15 | Graph RAG with Neo4j — entities, relationships and multi-hop questions | not started | 0 | 0 | `RAG-42`, `RAG-43` |
-| 143 | 15 | Vectorless retrieval — PageIndex | not started | 0 | 0 | `RAG-44` |
-| 144 | 15 | Caching and semantic caching in a RAG pipeline | not started | 0 | 0 | `RAG-45`, `RAG-46` |
-| 145 | 15 | PII masking with Presidio, before retrieval | not started | 0 | 0 | `SEC-01`, `SEC-02` |
-| 146 | 15 | Input and output guardrails with NeMo Guardrails | not started | 0 | 0 | `SEC-03`, `SEC-04` |
-| 147 | 15 | Prompt injection against a RAG system — the attack, then the defence | not started | 0 | 0 | `SEC-05`, `SEC-06` |
-| 148 | 16 | Project 03 kickoff — CUAD, the legal corpus, and the retrieval contract | not started | 0 | 0 | `PRJ-16` |
-| 149 | 16 | ColPali indexing into Qdrant with MaxSim scoring | not started | 0 | 0 | `PRJ-17` |
-| 150 | 16 | Elasticsearch BM25 over the same corpus | not started | 0 | 0 | `PRJ-18` |
-| 151 | 16 | Entity extraction with an LLM and Pydantic, into a Neo4j graph | not started | 0 | 0 | `PRJ-19` |
-| 152 | 16 | Reciprocal Rank Fusion across all three retrievers | not started | 0 | 0 | `PRJ-20` |
-| 153 | 16 | Cross-encoder reranking on the fused candidates | not started | 0 | 0 | `PRJ-21` |
-| 154 | 16 | The adaptive query router — visual, exact-clause, relational, or all th… | not started | 0 | 0 | `PRJ-22` |
-| 155 | 16 | Presidio and NeMo Guardrails wired into the pipeline | not started | 0 | 0 | `PRJ-23` |
-| 156 | 16 | The RAGAS faithfulness gate on golden QA pairs; FastAPI + LCEL + Docker | not started | 0 | 0 | `PRJ-24` |
-| 157 | 17 | Pydantic — models, fields and validators | not started | 0 | 0 | `AGT-13`, `AGT-14` |
-| 158 | 17 | Nested models, type coercion, custom validators and settings management | not started | 0 | 0 | `AGT-15`, `AGT-16` |
-| 159 | 17 | Why function calling exists — the LLM-to-tool communication problem | not started | 0 | 0 | `AGT-17` |
-| 160 | 17 | Function schema design — JSON Schema, descriptions and parameter typing | not started | 0 | 0 | `AGT-18`, `AGT-19` |
-| 161 | 17 | The function-calling request–response lifecycle | not started | 0 | 0 | `AGT-20` |
-| 162 | 17 | Parallel function calling — several tool calls in one response | not started | 0 | 0 | `AGT-21` |
-| 163 | 17 | Forced and constrained tool choice — required, none, and naming a tool | not started | 0 | 0 | `AGT-22` |
-| 164 | 17 | Structured output vs function calling — the difference, and when each i… | not started | 0 | 0 | `AGT-23` |
-| 165 | 17 | Building a tool executor loop from scratch | not started | 0 | 0 | `AGT-24`, `AGT-25` |
-| 166 | 17 | Function calling across providers — OpenAI, Anthropic, Google, and the… | not started | 0 | 0 | `AGT-26`, `AGT-27` |
-| 167 | 17 | Why MCP exists — tool fragmentation; hosts, clients and servers | not started | 0 | 0 | `AGT-28`, `AGT-29` |
-| 168 | 17 | MCP primitives — tools, resources and prompts | not started | 0 | 0 | `AGT-30`, `AGT-31` |
-| 169 | 17 | MCP transport — stdio and SSE; building a server from scratch | not started | 0 | 0 | `AGT-32`, `AGT-33`, `AGT-34` |
-| 170 | 17 | Building an MCP client; authentication, authorization and trust boundar… | not started | 0 | 0 | `AGT-35`, `AGT-36`, `AGT-37` |
-| 171 | 18 | LangGraph foundations and the core graph model | not started | 0 | 0 | `AGT-38`, `AGT-39` |
-| 172 | 18 | State management — schemas, reducers and what belongs in state | not started | 0 | 0 | `AGT-40`, `AGT-41` |
-| 173 | 18 | Nodes, edges and conditional routing | not started | 0 | 0 | `AGT-42`, `AGT-43` |
-| 174 | 18 | Tool calling and the ReACT pattern as a graph | not started | 0 | 0 | `AGT-44`, `AGT-45` |
-| 175 | 18 | Human-in-the-loop — interrupts before a write | not started | 0 | 0 | `AGT-46`, `AGT-47` |
-| 176 | 18 | Memory and persistence across sessions — checkpointers | not started | 0 | 0 | `AGT-48`, `AGT-49` |
-| 177 | 18 | Multi-agent systems — supervisor and workers, and the shared-state cont… | not started | 0 | 0 | `AGT-50`, `AGT-51` |
-| 178 | 18 | Streaming and observability out of a running graph | not started | 0 | 0 | `AGT-52` |
-| 179 | 18 | LangGraph Platform; orchestrating several MCP servers from one graph | not started | 0 | 0 | `AGT-53`, `AGT-54` |
-| 180 | 19 | Agent observability with LangSmith and Logfire | not started | 0 | 0 | `AGT-55`, `AGT-56` |
-| 181 | 19 | Why A2A exists — the multi-agent interoperability problem | not started | 0 | 0 | `AGT-57`, `AGT-58` |
-| 182 | 19 | Agent Cards — capability discovery and the well-known endpoint | not started | 0 | 0 | `AGT-59` |
-| 183 | 19 | The A2A task model — submitted, working, completed, failed, streaming | not started | 0 | 0 | `AGT-60` |
-| 184 | 19 | A2A transport — HTTP, SSE and the JSON-RPC message structure | not started | 0 | 0 | `AGT-61` |
-| 185 | 19 | Building an A2A-compliant agent server | not started | 0 | 0 | `AGT-62`, `AGT-63` |
-| 186 | 19 | Building an A2A client; A2A vs MCP and how they compose | not started | 0 | 0 | `AGT-64`, `AGT-65` |
-| 187 | 19 | Bedrock AgentCore and the agentic stack; Runtime, microVM isolation and… | not started | 0 | 0 | `AGT-66`, `AGT-67` |
-| 188 | 19 | Strands Agents; framework-agnostic deployment of a LangGraph agent to A… | not started | 0 | 0 | `AGT-68`, `AGT-69` |
-| 189 | 19 | AgentCore Memory — short-term, long-term and cross-session persistence | not started | 0 | 0 | `AGT-70`, `AGT-71` |
-| 190 | 19 | AgentCore Gateway — exposing APIs, Lambda functions and MCP servers as… | not started | 0 | 0 | `AGT-72`, `AGT-73` |
-| 191 | 19 | AgentCore Identity — IAM roles per agent, OAuth, user-delegated access… | not started | 0 | 0 | `AGT-74`, `SEC-07`, `SEC-08` |
-| 192 | 19 | AgentCore Browser and Code Interpreter; deploying with the CLI, CodeBui… | not started | 0 | 0 | `AGT-75`, `AGT-76`, `AGT-77` |
-| 193 | 20 | Multi-agent orchestration at scale — supervisor patterns that survive c… | not started | 0 | 0 | `AGT-78`, `AGT-79` |
-| 194 | 20 | AgentCore Observability — CloudWatch, X-Ray, OTEL and third-party monit… | not started | 0 | 0 | `AGT-80`, `AGT-81` |
-| 195 | 20 | Cedar policies and real-time tool-call interception | not started | 0 | 0 | `SEC-09`, `SEC-10` |
-| 196 | 20 | Agent threat modelling — blast radius before capability | not started | 0 | 0 | `SEC-11` |
-| 197 | 20 | Sandboxed tool execution — E2B, Modal, Docker | not started | 0 | 0 | `SEC-12`, `AGT-82` |
-| 198 | 21 | Project 04 kickoff — the supervisor graph, the sub-agents and the share… | not started | 0 | 0 | `PRJ-25` |
-| 199 | 21 | The GitHub agent as a FastMCP server | not started | 0 | 0 | `PRJ-26` |
-| 200 | 21 | The CloudWatch agent as a FastMCP server | not started | 0 | 0 | `PRJ-27` |
-| 201 | 21 | The Code Review and Monitoring agents | not started | 0 | 0 | `PRJ-28` |
-| 202 | 21 | A2A peer delegation between the sub-agents | not started | 0 | 0 | `PRJ-29` |
-| 203 | 21 | HITL interrupts and exact checkpoint resume from SQLite | not started | 0 | 0 | `PRJ-30` |
-| 204 | 21 | Deploying to the cloud agent runtime — gateway, memory, identity | not started | 0 | 0 | `PRJ-31` |
-| 205 | 21 | Cedar policies, observability, and the incident-to-issue demo | not started | 0 | 0 | `PRJ-32` |
-| 206 | 22 | Why ad-hoc testing fails — evaluation harness fundamentals | not started | 0 | 0 | `OPS-01`, `OPS-02` |
-| 207 | 22 | LLM benchmarking with lm-evaluation-harness — MMLU, GSM8K, TruthfulQA | not started | 0 | 0 | `OPS-03`, `OPS-04` |
-| 208 | 22 | Agent-native evaluation with Inspect AI — Task, Solver, Scorer | not started | 0 | 0 | `OPS-05`, `OPS-06` |
-| 209 | 22 | LLM-as-Judge pipelines — model-graded scoring, calibration and bias | not started | 0 | 0 | `OPS-07`, `OPS-08` |
-| 210 | 22 | Prompt regression and snapshot testing with PromptFoo | not started | 0 | 0 | `OPS-09`, `OPS-10` |
-| 211 | 22 | Golden datasets — building them, versioning them, and keeping them hone… | not started | 0 | 0 | `OPS-11` |
-| 212 | 22 | Trace-based testing and flaky-test detection | not started | 0 | 0 | `OPS-12`, `OPS-13` |
-| 213 | 22 | Agent state, checkpointing and ReAct harness patterns — iteration guard… | not started | 0 | 0 | `OPS-14`, `OPS-15` |
-| 214 | 22 | Multi-agent execution harnesses — the supervisor–worker contract as a t… | not started | 0 | 0 | `OPS-16` |
-| 215 | 22 | Agent CI/CD — GitHub Actions and eval gating on pull requests | not started | 0 | 0 | `OPS-17`, `OPS-18` |
-| 216 | 22 | Cost and latency regression guards | not started | 0 | 0 | `OPS-19`, `OPS-20` |
-| 217 | 23 | Project 05 kickoff — the monorepo, the golden test suite and the gate c… | not started | 0 | 0 | `PRJ-33` |
-| 218 | 23 | Stages 1–2 — lint, unit tests, and prompt regression against the golden… | not started | 0 | 0 | `PRJ-34` |
-| 219 | 23 | Stage 3 — the per-service evaluation score gate | not started | 0 | 0 | `PRJ-35` |
-| 220 | 23 | Stage 4 — cost and performance regression guard, and the score delta po… | not started | 0 | 0 | `PRJ-36` |
-| 221 | 23 | Stage 5 — multi-stage container builds and the registry push | not started | 0 | 0 | `PRJ-37` |
-| 222 | 23 | Stage 6 — smoke tests on staging with golden cases | not started | 0 | 0 | `PRJ-38` |
-| 223 | 23 | Blue/green deployment with gradual traffic shifting | not started | 0 | 0 | `PRJ-39`, `OPS-21` |
-| 224 | 23 | Auto-rollback on an error-rate breach, and the LLM metrics dashboard | not started | 0 | 0 | `PRJ-40`, `OPS-22` |
-| 225 | 24 | One request, traced through every service in the system | not started | 0 | 0 | `PRJ-41` |
-| 226 | 24 | The cost model — what the whole system costs per thousand requests | not started | 0 | 0 | `PRJ-42` |
-| 227 | 24 | The public repository audit, and the README a stranger reads | not started | 0 | 0 | `PRJ-43` |
-| 228 | 24 | The defence — the demo, and the answers to the questions it invites | not started | 0 | 0 | `PRJ-44` |
+| 1 | 1 | [What a forward deployed AI engineer actually owns](../days/day-001-what-an-fde-owns/LESSON.md) | written | 7 | 0 | `FDE-01`, `FDE-02` |
+| 2 | 1 | The demo-to-production gap — why the vendor chatbot passed on sample do… | not started | 0 | 0 | `FDE-03` |
+| 3 | 1 | Discovery — shadowing the work, mapping the process as it is rather tha… | not started | 0 | 0 | `FDE-04`, `FDE-05` |
+| 4 | 1 | Auditing the data before promising anything — five hundred records, and… | not started | 0 | 0 | `FDE-06` |
+| 5 | 1 | The scoped SOW and the stage gates — POC, pilot, production, and the on… | not started | 0 | 0 | `FDE-07`, `FDE-08` |
+| 6 | 2 | Data structures as decisions — what list, dict, set and tuple actually… | not started | 0 | 0 | `SE-01` |
+| 7 | 2 | Memory management — references, the cycle collector, and where a long-r… | not started | 0 | 0 | `SE-02` |
+| 8 | 2 | Objects that model a domain — composition, protocols, and when a class… | not started | 0 | 0 | `SE-03` |
+| 9 | 2 | Type hints a checker can enforce — and the annotation that lies | not started | 0 | 0 | `SE-04` |
+| 10 | 2 | Pydantic as the boundary — validating everything that enters the proces… | not started | 0 | 0 | `SE-05`, `SE-06` |
+| 11 | 2 | Exceptions that carry context — the hierarchy, and never swallowing a t… | not started | 0 | 0 | `SE-07` |
+| 12 | 2 | File I/O, encodings, and the streaming read that does not eat the box | not started | 0 | 0 | `SE-08` |
+| 13 | 2 | Packaging and environments — uv, the lockfile, and an install that repr… | not started | 0 | 0 | `SE-09` |
+| 14 | 2 | Project structure and structured logging — a layout that scales, and a… | not started | 0 | 0 | `SE-10`, `SE-11`, `SE-12` |
+| 15 | 3 | The event loop from the inside — what `await` actually suspends, and wh… | not started | 0 | 0 | `SE-13`, `SE-14` |
+| 16 | 3 | Coroutines and tasks — fan-out, gather, and the exception that vanishes… | not started | 0 | 0 | `SE-15`, `SE-16` |
+| 17 | 3 | Async context managers, and the connection that must be released even w… | not started | 0 | 0 | `SE-17` |
+| 18 | 3 | Concurrency vs parallelism — the GIL, and the executor bridge for the b… | not started | 0 | 0 | `SE-18`, `SE-19` |
+| 19 | 3 | The filesystem and the process table — navigating a box you did not bui… | not started | 0 | 0 | `SE-20` |
+| 20 | 3 | Permissions, users, and the container that runs as root because nobody… | not started | 0 | 0 | `SE-21`, `SE-22` |
+| 21 | 3 | Shell for operators and configuration precedence — `set -euo pipefail`,… | not started | 0 | 0 | `SE-23`, `SE-24` |
+| 22 | 4 | HTTP semantics an API owner cannot get wrong — methods, status codes, a… | not started | 0 | 0 | `SE-25` |
+| 23 | 4 | FastAPI: the first endpoint, and exactly what the framework is doing on… | not started | 0 | 0 | `SE-26` |
+| 24 | 4 | Request and response models — schemas at both boundaries, and the field… | not started | 0 | 0 | `SE-27` |
+| 25 | 4 | Dependency injection — the seam that makes a service testable instead o… | not started | 0 | 0 | `SE-28` |
+| 26 | 4 | Errors that surface rather than swallow — handlers, and an error body a… | not started | 0 | 0 | `SE-29` |
+| 27 | 4 | Streaming responses and server-sent events — the first token in 300 ms,… | not started | 0 | 0 | `SE-30` |
+| 28 | 4 | Versioning and deprecation without breaking the client who never reads… | not started | 0 | 0 | `SE-31`, `SE-32` |
+| 29 | 4 | Pytest that means something, contract tests, and the OpenAPI schema as… | not started | 0 | 0 | `SE-33`, `SE-34` |
+| 30 | 5 | Tokens and the meter — what you are actually billed for, measured rathe… | not started | 0 | 0 | `CTX-01` |
+| 31 | 5 | The context window as a desk that gets wiped between every call — recen… | not started | 0 | 0 | `CTX-02`, `CTX-03` |
+| 32 | 5 | Sampling — temperature, top-p, and why "set it to zero" is stability, n… | not started | 0 | 0 | `CTX-04` |
+| 33 | 5 | The first raw API call, pinned to a version you chose, behind a provide… | not started | 0 | 0 | `CTX-05`, `CTX-06` |
+| 34 | 5 | System prompts and instruction design that survives a model swap | not started | 0 | 0 | `CTX-07` |
+| 35 | 5 | Anatomy of a prompt — zero-, one- and few-shot, and the examples that t… | not started | 0 | 0 | `CTX-08`, `CTX-09` |
+| 36 | 5 | Chain-of-thought, step-back, decomposition and self-refinement — and th… | not started | 0 | 0 | `CTX-10`, `CTX-11` |
+| 37 | 5 | Structured output — JSON schema, Pydantic and grammars, and the parse t… | not started | 0 | 0 | `CTX-12`, `CTX-13` |
+| 38 | 5 | Prompt fragility and the failure lab — a robustness test that goes red,… | not started | 0 | 0 | `CTX-14`, `CTX-15`, `CTX-16` |
+| 39 | 6 | The shared responsibility model — what the cloud is actually selling, a… | not started | 0 | 0 | `CLD-01` |
+| 40 | 6 | Identity and roles — and the policy that is quietly too broad | not started | 0 | 0 | `CLD-02` |
+| 41 | 6 | Least privilege in practice — scoping a role to one bucket, one prefix,… | not started | 0 | 0 | `CLD-03` |
+| 42 | 6 | The private network — subnets, route tables, and why the private one ha… | not started | 0 | 0 | `CLD-04` |
+| 43 | 6 | Security groups and network ACLs — the two firewalls everyone confuses | not started | 0 | 0 | `CLD-05` |
+| 44 | 6 | Private connectivity — NAT gateways, service endpoints, and the egress… | not started | 0 | 0 | `CLD-06` |
+| 45 | 6 | Object storage as the document lake, and a managed database with poolin… | not started | 0 | 0 | `CLD-07`, `CLD-08` |
+| 46 | 6 | Secrets in the cloud, the cost model, and the budget alarm you arm befo… | not started | 0 | 0 | `CLD-09`, `CLD-10`, `CLD-11` |
+| 47 | 7 | Images, layers and the build cache — a Dockerfile that rebuilds in seco… | not started | 0 | 0 | `CLD-12` |
+| 48 | 7 | Multi-stage builds, and a runtime image with no compiler, no shell hist… | not started | 0 | 0 | `CLD-13`, `CLD-14` |
+| 49 | 7 | Docker Compose — the whole stack on one laptop, including the parts you… | not started | 0 | 0 | `CLD-15` |
+| 50 | 7 | Health checks, signals and the graceful shutdown a load balancer will a… | not started | 0 | 0 | `CLD-16`, `CLD-17` |
+| 51 | 7 | The container runtime and its load balancer — task definitions, target… | not started | 0 | 0 | `CLD-18`, `CLD-19` |
+| 52 | 7 | The pipeline that refuses to ship red — build, test, promote, and a sta… | not started | 0 | 0 | `CLD-20`, `CLD-21`, `CLD-22` |
+| 53 | 8 | What a language model actually is — the modelling objective, and next-t… | not started | 0 | 0 | `TF-01`, `TF-02` |
+| 54 | 8 | Text to numbers — the tokenizer boundary, the taxonomy, and Byte Pair E… | not started | 0 | 0 | `TF-03`, `TF-04`, `TF-05` |
+| 55 | 8 | WordPiece, SentencePiece and tokenizer pathologies — vocabulary size, d… | not started | 0 | 0 | `TF-06`, `TF-07`, `TF-08` |
+| 56 | 8 | Embeddings — discrete symbols into continuous space; the embedding matr… | not started | 0 | 0 | `TF-09`, `TF-10`, `TF-11` |
+| 57 | 8 | The attention mechanism from first principles — query, key, value, and… | not started | 0 | 0 | `TF-12`, `TF-13` |
+| 58 | 8 | Self-attention, the causal mask, and multi-head attention — what a deco… | not started | 0 | 0 | `TF-14`, `TF-15`, `TF-16` |
+| 59 | 8 | The transformer block — residuals, layer norm, the feed-forward network… | not started | 0 | 0 | `TF-17`, `TF-18`, `TF-19` |
+| 60 | 8 | Three architectures — encoder-only, decoder-only, encoder–decoder, cros… | not started | 0 | 0 | `TF-20`, `TF-21`, `TF-22` |
+| 61 | 8 | Coding attention — batched multi-head by hand, a block that actually tr… | not started | 0 | 0 | `TF-23`, `TF-24`, `TF-25` |
+| 62 | 9 | The naive decoding problem — quadratic recompute measured rather than a… | not started | 0 | 0 | `TF-26`, `TF-27`, `TF-28` |
+| 63 | 9 | KV cache memory math, and Flash Attention — IO-awareness, tiling, and w… | not started | 0 | 0 | `TF-29`, `TF-30`, `TF-31` |
+| 64 | 9 | Multi-Query, Grouped-Query and Multi-Head Latent Attention — sharing th… | not started | 0 | 0 | `TF-32`, `TF-33`, `TF-34` |
+| 65 | 9 | PagedAttention, continuous batching and vLLM — the serving-side answer;… | not started | 0 | 0 | `TF-35`, `TF-36`, `TF-37` |
+| 66 | 9 | RoPE — rotary embeddings, and what happens when you push past the train… | not started | 0 | 0 | `TF-38`, `TF-39` |
+| 67 | 9 | Scaling laws, compute-optimal training, and Mixture-of-Experts — the si… | not started | 0 | 0 | `TF-40`, `TF-41`, `TF-42`, `TF-43` |
+| 68 | 10 | The two-phase lifecycle — pre-training vs post-training, what pre-train… | not started | 0 | 0 | `FT-01`, `FT-02`, `FT-03` |
+| 69 | 10 | Data curation and filtering at scale — quality heuristics, deduplicatio… | not started | 0 | 0 | `FT-04`, `FT-05` |
+| 70 | 10 | Continued pre-training for domain adaptation — and knowing when to skip… | not started | 0 | 0 | `FT-06`, `FT-07` |
+| 71 | 10 | Dataset formats and chat templates — instruction pairs, the template th… | not started | 0 | 0 | `FT-08`, `FT-09` |
+| 72 | 10 | Loss masking — what it is, and exactly what breaks without it, run brok… | not started | 0 | 0 | `FT-10`, `FT-11` |
+| 73 | 10 | Synthetic data — the taxonomy, self-instruction, preference pairs, judg… | not started | 0 | 0 | `FT-12`, `FT-13`, `FT-14`, `FT-15` |
+| 74 | 11 | The intrinsic dimensionality insight, and LoRA — the math, rank, alpha,… | not started | 0 | 0 | `FT-16`, `FT-17`, `FT-18` |
+| 75 | 11 | LoRA in practice — adapters on disk, merged and unmerged, and what each… | not started | 0 | 0 | `FT-19`, `FT-20` |
+| 76 | 11 | QLoRA — 4-bit NF4, double quantization, and paged optimizers | not started | 0 | 0 | `FT-21`, `FT-22` |
+| 77 | 11 | DoRA, AdaLoRA and LoRA+ — decomposing magnitude from direction, adaptiv… | not started | 0 | 0 | `FT-23`, `FT-24` |
+| 78 | 11 | Supervised fine-tuning end to end — the trainer, instruction tuning, an… | not started | 0 | 0 | `FT-25`, `FT-26`, `FT-27` |
+| 79 | 11 | Chain-of-thought fine-tuning, domain adaptation, and catastrophic forge… | not started | 0 | 0 | `FT-28`, `FT-29` |
+| 80 | 11 | Why SFT alone is not enough — RLHF with PPO, then DPO without a reward… | not started | 0 | 0 | `FT-30`, `FT-31`, `FT-32`, `FT-33` |
+| 81 | 12 | Why evaluation belongs inside the fine-tuning loop — and the three benc… | not started | 0 | 0 | `FT-34`, `FT-35` |
+| 82 | 12 | LLM-as-judge — calibrating a judge you can trust, and designing a domai… | not started | 0 | 0 | `FT-36`, `FT-37`, `FT-38` |
+| 83 | 12 | Post-training quantization — GPTQ, AWQ, NF4 and FP8, with the quality d… | not started | 0 | 0 | `FT-39`, `FT-40`, `FT-41` |
+| 84 | 12 | GGUF and llama.cpp — the CPU path; and merging adapters before serving,… | not started | 0 | 0 | `FT-42`, `FT-43` |
+| 85 | 12 | vLLM and SGLang — paged KV, the OpenAI-compatible surface, and many ada… | not started | 0 | 0 | `FT-44`, `FT-45`, `FT-46` |
+| 86 | 13 | What a reasoning model is — chain-of-thought prompted, then trained; ve… | not started | 0 | 0 | `FT-47`, `FT-48`, `FT-49` |
+| 87 | 13 | Small language models — why cost, latency and privacy make them the def… | not started | 0 | 0 | `FT-50`, `FT-51` |
+| 88 | 13 | The student–teacher paradigm — hard labels, soft labels, temperature sc… | not started | 0 | 0 | `FT-52`, `FT-53`, `FT-54` |
+| 89 | 13 | A distillation pipeline end to end — teacher data, student design, choo… | not started | 0 | 0 | `FT-55`, `FT-56`, `FT-57` |
+| 90 | 14 | Kickoff — the claims-domain post-training pipeline, the datasets, and t… | not started | 0 | 0 | `PRJ-01` |
+| 91 | 14 | The SFT dataset — synthetic generation, deduplication, chat formatting,… | not started | 0 | 0 | `PRJ-02` |
+| 92 | 14 | Stage 1 QLoRA supervised fine-tuning, then Stage 2 DPO preference align… | not started | 0 | 0 | `PRJ-03`, `PRJ-04` |
+| 93 | 14 | Evaluation — surface metrics, a calibrated judge on accuracy, safety an… | not started | 0 | 0 | `PRJ-05`, `PRJ-06` |
+| 94 | 14 | The multi-adapter server, containerised, deployed and traced — and the… | not started | 0 | 0 | `PRJ-07` |
+| 95 | 15 | Embeddings — what a vector actually encodes, the question it cannot rep… | not started | 0 | 0 | `RAG-01`, `RAG-02`, `RAG-03` |
+| 96 | 15 | Quantized and binary embeddings, and Matryoshka representation learning… | not started | 0 | 0 | `RAG-04`, `RAG-05`, `RAG-06` |
+| 97 | 15 | Embedding fine-tuning on your own corpus — hard negatives, and the gain… | not started | 0 | 0 | `RAG-07`, `RAG-08` |
+| 98 | 15 | Chunking — fixed, recursive and semantic, and exactly what each strateg… | not started | 0 | 0 | `RAG-09`, `RAG-10` |
+| 99 | 15 | Vanilla RAG, end to end and by hand, with no framework anywhere near it | not started | 0 | 0 | `RAG-11`, `RAG-12` |
+| 100 | 15 | Vector stores — self-hosted and managed, namespaces, and metadata that… | not started | 0 | 0 | `RAG-13`, `RAG-14` |
+| 101 | 15 | BM25, and the queries where vectors lose badly | not started | 0 | 0 | `RAG-15` |
+| 102 | 15 | Learned sparse and late interaction — SPLADE, ColBERT and MaxSim, and w… | not started | 0 | 0 | `RAG-16`, `RAG-17` |
+| 103 | 15 | Hybrid retrieval and reciprocal rank fusion; query rewriting, decomposi… | not started | 0 | 0 | `RAG-18`, `RAG-19`, `RAG-20` |
+| 104 | 15 | Rerankers — the cross-encoder that fixes a top-k nobody would have ship… | not started | 0 | 0 | `RAG-21`, `RAG-22`, `RAG-23` |
+| 105 | 16 | Retrieval evaluation — a golden set, recall@k, and the number that has… | not started | 0 | 0 | `RAG-24`, `RAG-25` |
+| 106 | 16 | RAGAS and DeepEval — faithfulness, relevancy, context precision and rec… | not started | 0 | 0 | `RAG-26`, `RAG-27` |
+| 107 | 16 | Self-RAG, Corrective RAG, Adaptive and Agentic RAG — the model deciding… | not started | 0 | 0 | `RAG-28`, `RAG-29`, `RAG-30` |
+| 108 | 16 | Vector quantization at scale — scalar, binary and product quantization… | not started | 0 | 0 | `RAG-31`, `RAG-32`, `RAG-33` |
+| 109 | 17 | When the answer is a relationship — the question retrieval structurally… | not started | 0 | 0 | `RAG-34`, `RAG-35` |
+| 110 | 17 | Designing an enterprise schema, and building the graph out of documents… | not started | 0 | 0 | `RAG-36`, `RAG-37` |
+| 111 | 17 | GraphRAG — retrieval that traverses instead of ranking; the hybrid rout… | not started | 0 | 0 | `RAG-38`, `RAG-39`, `RAG-40` |
+| 112 | 17 | The document that defeats a text pipeline — scans, merged cells, rotate… | not started | 0 | 0 | `RAG-41`, `VIS-01` |
+| 113 | 17 | From CNN to Vision Transformer — an image as a sequence of patches, the… | not started | 0 | 0 | `VIS-02`, `VIS-03`, `VIS-04` |
+| 114 | 17 | Contrastive and self-supervised vision encoders, and Visual Language Mo… | not started | 0 | 0 | `VIS-05`, `VIS-06`, `VIS-07` |
+| 115 | 17 | Retrieval directly over page images — late interaction on patch vectors… | not started | 0 | 0 | `VIS-08`, `VIS-09`, `RAG-42`, `RAG-43` |
+| 116 | 18 | Why function calling exists — the model-to-tool communication problem,… | not started | 0 | 0 | `AGT-01`, `AGT-02` |
+| 117 | 18 | The function-calling lifecycle — the call, the result turn, parallel ca… | not started | 0 | 0 | `AGT-03`, `AGT-04`, `AGT-05` |
+| 118 | 18 | Structured output vs function calling — the difference, when each is ri… | not started | 0 | 0 | `AGT-06`, `AGT-07` |
+| 119 | 18 | The think-act-observe loop, hand-rolled, with no framework anywhere nea… | not started | 0 | 0 | `AGT-08`, `AGT-09` |
+| 120 | 18 | Where the hand-rolled loop breaks — state, retries, and resuming after… | not started | 0 | 0 | `AGT-10` |
+| 121 | 18 | Tool design — schemas, descriptions, and the tool an agent confidently… | not started | 0 | 0 | `AGT-11`, `AGT-12` |
+| 122 | 18 | Why MCP exists — tool fragmentation, hosts, clients and servers, and th… | not started | 0 | 0 | `AGT-13`, `AGT-14` |
+| 123 | 18 | MCP transports — stdio and streamable HTTP — and building a server from… | not started | 0 | 0 | `AGT-15`, `AGT-16`, `AGT-17` |
+| 124 | 18 | Building an MCP client; the connection that drops mid-call; and authent… | not started | 0 | 0 | `AGT-18`, `AGT-19`, `SEC-01` |
+| 125 | 19 | LangChain and LCEL — the model abstraction, composition, streaming, and… | not started | 0 | 0 | `AGT-20`, `AGT-21` |
+| 126 | 19 | LangGraph foundations — state, nodes, edges, and the routing decision m… | not started | 0 | 0 | `AGT-22`, `AGT-23`, `AGT-24` |
+| 127 | 19 | Tool nodes and the ReAct agent, assembled deliberately rather than impo… | not started | 0 | 0 | `AGT-25`, `AGT-26` |
+| 128 | 19 | Checkpointers — durable state, and the run that survives a `kill -9` wi… | not started | 0 | 0 | `AGT-27`, `AGT-28` |
+| 129 | 19 | Memory — the thread, long-term stores, namespaces, and the honest quest… | not started | 0 | 0 | `AGT-29`, `AGT-30` |
+| 130 | 19 | Context engineering for agents — selection, compaction, and the prompt… | not started | 0 | 0 | `AGT-31`, `AGT-32` |
+| 131 | 19 | Supervisors, handoffs and parallel subgraphs — delegating without passi… | not started | 0 | 0 | `AGT-33`, `AGT-34`, `AGT-35` |
+| 132 | 19 | Human-in-the-loop — interrupts as a first-class state, an approval surf… | not started | 0 | 0 | `AGT-36`, `AGT-37`, `AGT-38` |
+| 133 | 20 | The integration inventory — finding out what the client actually runs,… | not started | 0 | 0 | `ENT-01` |
+| 134 | 20 | SQL as a tool — text-to-SQL, allowlists, a read-only role, a planner th… | not started | 0 | 0 | `ENT-02`, `ENT-03`, `SEC-02` |
+| 135 | 20 | SQL Server and Oracle — dialects, drivers, and the DBA whose job is to… | not started | 0 | 0 | `ENT-04` |
+| 136 | 20 | SOAP, XML and file drops — WSDL, envelopes, a 2003 API that still runs… | not started | 0 | 0 | `ENT-05`, `ENT-06` |
+| 137 | 20 | Slack and Jira as the interface — events, blocks, transitions, a bot th… | not started | 0 | 0 | `ENT-07`, `ENT-08` |
+| 138 | 20 | Webhooks, retries and idempotency keys — surviving delivery you do not… | not started | 0 | 0 | `ENT-09`, `ENT-10` |
+| 139 | 21 | Authentication and authorisation — the distinction that leaks data the… | not started | 0 | 0 | `ENT-11` |
+| 140 | 21 | OAuth 2.0 — the flows, the tokens, and the one you should actually be u… | not started | 0 | 0 | `ENT-12`, `ENT-13` |
+| 141 | 21 | OIDC, SSO and SAML — logging in with the client's identity provider rat… | not started | 0 | 0 | `ENT-14`, `ENT-15` |
+| 142 | 21 | RBAC — roles, scopes, and a permission model that survives a reorganisa… | not started | 0 | 0 | `ENT-16` |
+| 143 | 21 | Document-level access control inside retrieval itself, and the audit lo… | not started | 0 | 0 | `ENT-17`, `ENT-18` |
+| 144 | 22 | The threat model — what an AI system adds to an attack surface that alr… | not started | 0 | 0 | `SEC-03` |
+| 145 | 22 | Prompt injection, direct and indirect — the document that is also an in… | not started | 0 | 0 | `SEC-04`, `SEC-05` |
+| 146 | 22 | Data exfiltration through a helpful assistant, and jailbreaks a longer… | not started | 0 | 0 | `SEC-06`, `SEC-07` |
+| 147 | 22 | PII — detection before the model ever sees it, masking, tokenisation, a… | not started | 0 | 0 | `SEC-08`, `SEC-09` |
+| 148 | 22 | Guardrails as configuration — rails, provider-side filters, defence in… | not started | 0 | 0 | `SEC-10`, `SEC-11` |
+| 149 | 22 | The red-team day — break your own system on purpose, then put every att… | not started | 0 | 0 | `SEC-12`, `SEC-13` |
+| 150 | 23 | Tracing an LLM system — spans, and the trace tree that finally explains… | not started | 0 | 0 | `OPS-01`, `OPS-02` |
+| 151 | 23 | Structured logs and correlation IDs across a multi-step agent run | not started | 0 | 0 | `OPS-03` |
+| 152 | 23 | Token accounting — attributing cost to a user, a tenant and a feature —… | not started | 0 | 0 | `OPS-04`, `OPS-05` |
+| 153 | 23 | The LLM gateway — routing, fallbacks, and provider abstraction that sur… | not started | 0 | 0 | `OPS-06`, `OPS-07` |
+| 154 | 23 | Rate limits, retries and backoff that is honest about failing; and onli… | not started | 0 | 0 | `OPS-08`, `OPS-09` |
+| 155 | 24 | Why ad-hoc testing fails — evaluation harness fundamentals, and benchma… | not started | 0 | 0 | `OPS-10`, `OPS-11` |
+| 156 | 24 | Agent-native evaluation — task, solver and scorer, and evaluating a tra… | not started | 0 | 0 | `OPS-12`, `OPS-13` |
+| 157 | 24 | LLM-as-judge pipelines at scale — model-graded scoring, calibration, an… | not started | 0 | 0 | `OPS-14`, `OPS-15` |
+| 158 | 24 | Prompt regression and snapshot testing; golden datasets — building them… | not started | 0 | 0 | `OPS-16`, `OPS-17`, `OPS-18` |
+| 159 | 24 | Trace-based testing and flaky-test detection; harness patterns — iterat… | not started | 0 | 0 | `OPS-19`, `OPS-20` |
+| 160 | 24 | Agent CI/CD — eval gating on a pull request, with cost and latency regr… | not started | 0 | 0 | `OPS-21`, `OPS-22`, `OPS-23` |
+| 161 | 25 | Kickoff — the engagement brief, the data classification, the architectu… | not started | 0 | 0 | `PRJ-08`, `FDE-09` |
+| 162 | 25 | Hybrid retrieval over the client corpus, wired end to end for the first… | not started | 0 | 0 | `PRJ-09` |
+| 163 | 25 | The graph and the page-image index — the relational question and the sc… | not started | 0 | 0 | `PRJ-10` |
+| 164 | 25 | The adaptive router across all three retrievers, with cross-encoder rer… | not started | 0 | 0 | `PRJ-11`, `PRJ-12` |
+| 165 | 25 | Secure text-to-SQL against the claims database, and OAuth with RBAC acr… | not started | 0 | 0 | `PRJ-13`, `PRJ-14` |
+| 166 | 25 | PII masking and rails placed in the request path, with the latency cost… | not started | 0 | 0 | `PRJ-15` |
+| 167 | 25 | Deployed to a private endpoint behind a scanned image; the faithfulness… | not started | 0 | 0 | `PRJ-16`, `PRJ-17`, `FDE-10` |
+| 168 | 26 | Kickoff — the compliance process mapped before a single agent is drawn,… | not started | 0 | 0 | `PRJ-18`, `FDE-11` |
+| 169 | 26 | The specialist agents behind MCP servers, scoped to exactly what the au… | not started | 0 | 0 | `PRJ-19`, `PRJ-20` |
+| 170 | 26 | Trust boundaries and policy — deciding what each agent may touch, and p… | not started | 0 | 0 | `PRJ-21`, `SEC-14` |
+| 171 | 26 | Human approval on every write, and exact checkpoint resume after the pr… | not started | 0 | 0 | `PRJ-22`, `PRJ-23` |
+| 172 | 26 | Parallel audit execution with a join that must not silently lose a find… | not started | 0 | 0 | `PRJ-24`, `SEC-15` |
+| 173 | 26 | The traceability dashboard — every finding back to its evidence — the p… | not started | 0 | 0 | `PRJ-25`, `PRJ-26` |
+| 174 | 27 | The monorepo, the golden suite and the gate contract — lint, unit tests… | not started | 0 | 0 | `PRJ-27`, `PRJ-28` |
+| 175 | 27 | The per-service evaluation score gate, and the score delta posted on th… | not started | 0 | 0 | `PRJ-29`, `PRJ-30` |
+| 176 | 27 | Multi-stage container builds, the registry push, and smoke tests on sta… | not started | 0 | 0 | `PRJ-31`, `PRJ-32` |
+| 177 | 27 | Blue/green deployment with gradual traffic shifting, and an auto-rollba… | not started | 0 | 0 | `PRJ-33`, `OPS-24`, `OPS-25` |
+| 178 | 28 | Change management for the users who never asked for any of this, and tr… | not started | 0 | 0 | `FDE-12`, `FDE-13` |
+| 179 | 28 | The handoff to the client's own team, and the ROI presentation — model… | not started | 0 | 0 | `FDE-14`, `FDE-15` |
+| 180 | 28 | One request traced through every service in the system, and the cost mo… | not started | 0 | 0 | `PRJ-34`, `PRJ-35` |
+| 181 | 28 | The defence — the public repository a stranger can clone and run, the c… | not started | 0 | 0 | `PRJ-36`, `FDE-16`, `FDE-17` |
 
 ## Phases
 
 | Phase | Days | Theme | Written | Complete | Gate |
 | --- | --- | --- | --- | --- | --- |
 | 0 | 0 | Foundry | 1/1 | 1/1 | `granth.py check` green; one commit; no secret in git |
-| 1 | 1–12 | The transformer, taken apart | 1/12 | 0/12 | A decoder block you wrote passes a shape-and-gradient t… |
-| 2 | 13–18 | Attention in code, and three fine-tunes | 0/6 | 0/6 | Three fine-tuned checkpoints, three honest loss curves |
-| 3 | 19–27 | Inference optimization & attention variants | 0/9 | 0/9 | Measured tokens/sec before and after the cache, on your… |
-| 4 | 28–33 | Positional schemes, scaling laws & MoE | 0/6 | 0/6 | A compute-optimal size argument you can defend with num… |
-| 5 | 34–45 | The post-training lifecycle & data | 0/12 | 0/12 | A domain SFT dataset on the Hub, deduplicated and loss-… |
-| 6 | 46–58 | PEFT, SFT & preference alignment | 0/13 | 0/13 | One base model, two adapters, a measured preference win |
-| 7 | 59–69 | Eval, quantization & multi-adapter serving | 0/11 | 0/11 | A quantized checkpoint served with two hot-swappable ad… |
-| 8 | 70–77 | Project 01 · MedScript AI | 0/8 | 0/8 | Live endpoint; SFT vs SFT+DPO comparison report |
-| 9 | 78–88 | Reasoning, SLMs & knowledge distillation | 0/11 | 0/11 | A student that closes most of the gap at a fraction of… |
-| 10 | 89–95 | Project 02 · EdgeReason | 0/7 | 0/7 | GGUF model on llama-server; ablation table; latency ben… |
-| 11 | 96–107 | Vision transformers, VLMs & speech | 0/12 | 0/12 | A fine-tuned Whisper and a VLM you can explain end to e… |
-| 12 | 108–114 | Prompt & context engineering | 0/7 | 0/7 | A prompt suite with a robustness test that can go red |
-| 13 | 115–126 | Embeddings & LangChain orchestration | 0/12 | 0/12 | An MRL-backed retrieval API traced in LangSmith |
-| 14 | 127–137 | RAG foundations & advanced retrieval | 0/11 | 0/11 | Hybrid retrieval beating dense-only on your own eval set |
-| 15 | 138–147 | Multimodal, graph & secured RAG | 0/10 | 0/10 | A RAGAS faithfulness gate you cannot pass by luck |
-| 16 | 148–156 | Project 03 · LexisGraph | 0/9 | 0/9 | Adaptive router across ColPali, BM25 and Neo4j; RAGAS g… |
-| 17 | 157–170 | Agent foundations, function calling & MCP | 0/14 | 0/14 | An MCP server and client you wrote, talking to each oth… |
-| 18 | 171–179 | LangGraph: stateful & multi-agent workflows | 0/9 | 0/9 | A graph that survives a kill -9 and resumes at the inte… |
-| 19 | 180–192 | Production agents: A2A, AgentCore & observabili… | 0/13 | 0/13 | Two agents discovering and delegating to each other ove… |
-| 20 | 193–197 | Agent supervision, policy & guardrails | 0/5 | 0/5 | A destructive tool call blocked by policy, in a trace |
-| 21 | 198–205 | Project 04 · AutoOps | 0/8 | 0/8 | Incident to reviewed GitHub issue, with a human approva… |
-| 22 | 206–216 | Harness engineering, evals & agent CI/CD | 0/11 | 0/11 | A pull request blocked by a failing eval, with the delt… |
-| 23 | 217–224 | Project 05 · ShipLLM | 0/8 | 0/8 | Blue/green deploy with an auto-rollback you triggered o… |
-| 24 | 225–228 | Capstone | 0/4 | 0/4 | One request traced through every service; the cost mode… |
+| 1 | 1–5 | The engagement — before any code | 1/5 | 0/5 | A scoped SOW for one real process, with a baselined KPI… |
+| 2 | 6–14 | Python for production | 0/9 | 0/9 | A packaged, typed, logging service module installs clea… |
+| 3 | 15–21 | Async, concurrency & Linux | 0/7 | 0/7 | A blocking third-party call runs inside the loop withou… |
+| 4 | 22–29 | Modern API development | 0/8 | 0/8 | The service streams, versions, and fails with a machine… |
+| 5 | 30–38 | The model as a dependency | 0/9 | 0/9 | Structured output parses on 200 consecutive real inputs… |
+| 6 | 39–46 | Cloud fundamentals & networking | 0/8 | 0/8 | A private subnet reaches the model provider and nothing… |
+| 7 | 47–52 | Containers & CI/CD | 0/6 | 0/6 | A tagged image ships to a container runtime through a p… |
+| 8 | 53–61 | The transformer, taken apart | 0/9 | 0/9 | A decoder block you wrote passes a shape-and-gradient t… |
+| 9 | 62–67 | Inference optimization & scale | 0/6 | 0/6 | Measured tokens/sec before and after the cache, on your… |
+| 10 | 68–73 | Post-training: the lifecycle and the data | 0/6 | 0/6 | A domain SFT dataset, deduplicated and loss-masked, wit… |
+| 11 | 74–80 | PEFT, SFT & preference alignment | 0/7 | 0/7 | One base model, two adapters, a measured preference win |
+| 12 | 81–85 | Evaluation, quantization & serving | 0/5 | 0/5 | A quantized checkpoint served with two hot-swappable ad… |
+| 13 | 86–89 | Reasoning, small models & distillation | 0/4 | 0/4 | A student that closes most of the gap at a fraction of… |
+| 14 | 90–94 | `yantra-model` — the domain model, shipped | 0/5 | 0/5 | Live endpoint; base vs SFT vs SFT+DPO report; the GGUF… |
+| 15 | 95–104 | Embeddings & retrieval | 0/10 | 0/10 | Hybrid + rerank beats the vector-only baseline on a gol… |
+| 16 | 105–108 | Retrieval evaluation & adaptive RAG | 0/4 | 0/4 | A faithfulness gate you cannot pass by luck |
+| 17 | 109–115 | Graph & multimodal retrieval | 0/7 | 0/7 | A relationship question the vector index cannot answer,… |
+| 18 | 116–124 | Agents — tools, the loop & MCP | 0/9 | 0/9 | An MCP server and client you wrote, talking to each oth… |
+| 19 | 125–132 | LangGraph — state, memory & multi-agent | 0/8 | 0/8 | A graph that survives a `kill -9` and resumes at the in… |
+| 20 | 133–138 | Enterprise integration | 0/6 | 0/6 | A round trip through a SOAP endpoint and a Jira write,… |
+| 21 | 139–143 | Identity & access | 0/5 | 0/5 | Two users with different roles ask the same question an… |
+| 22 | 144–149 | Security & guardrails | 0/6 | 0/6 | A documented red-team suite runs in CI; every attempt i… |
+| 23 | 150–154 | Observability & the gateway | 0/5 | 0/5 | One trace explains a bad answer end to end, and cost is… |
+| 24 | 155–160 | LLMOps — harness, evals & CI gating | 0/6 | 0/6 | A pull request blocked by a failing eval, with the scor… |
+| 25 | 161–167 | `yantra-platform` — the retrieval platform, del… | 0/7 | 0/7 | Deployed in a private subnet, RAGAS gate green, UAT sig… |
+| 26 | 168–173 | `yantra-agents` — the multi-agent system, deliv… | 0/6 | 0/6 | Findings traceable to evidence, a destructive call bloc… |
+| 27 | 174–177 | `yantra-ship` — the LLMOps shell and the deploy | 0/4 | 0/4 | Blue/green deploy with an auto-rollback you triggered o… |
+| 28 | 178–181 | Handover, ROI & the defence | 0/4 | 0/4 | A stranger clones the repository and reaches a working… |

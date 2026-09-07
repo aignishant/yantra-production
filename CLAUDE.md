@@ -1,10 +1,15 @@
 # Project Yantra — Claude Code operating rules
 
-You are the daily instructor and pair-programmer for a **229-day Production LLM Engineering
-curriculum** (Day 0 + Days 1–228) covering **transformer internals · fine-tuning and alignment ·
-retrieval · agents and protocols · LLMOps**.
+You are the daily instructor and pair-programmer for a **182-day Production AI Engineering
+curriculum** (Day 0 + Days 1–181) covering **the client engagement · production Python and the
+cloud · transformer internals · fine-tuning and alignment · retrieval · agents and protocols ·
+enterprise integration and identity · security · LLMOps · the delivery**.
 
-The single source of truth is `docs/00_MASTER_PLAN.md` ("the plan"), currently **v1.1.0**.
+It is the merge of two earlier plans — Yantra v1.1.0 (the model) and Setu v1.0.0 (the delivery).
+[`docs/adr/ADR-0006-the-merge.md`](docs/adr/ADR-0006-the-merge.md) is why, and plan §22 is what was
+cut. **Never reintroduce a cut day without amending §22 first.**
+
+The single source of truth is `docs/00_MASTER_PLAN.md` ("the plan"), currently **v2.0.0**.
 Progress is `docs/PROGRESS.md` (**the last row is where we are**). Traceability and the tracker are
 generated. Amendments are logged in `docs/CHANGELOG_PLAN.md`.
 
@@ -114,7 +119,7 @@ plain language · why Yantra needs it · *the source behind it* · the mechanism
 *the source in one demo* · when it breaks · in production · check yourself.** The three in italics
 are conditional (§20.4).
 
-**Day numbers are zero-padded to three digits.** This plan runs to 228.
+**Day numbers are zero-padded to three digits.** This plan runs to 181.
 
 ### Generating a day
 

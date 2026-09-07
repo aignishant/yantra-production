@@ -1,23 +1,26 @@
 ---
 plan: yantra
-version: "v1.1.0"
-supersedes: none
-source_roadmap: "Production LLM Engineering — RAG, Agents & Fine-Tuning V1.0"
-tracks: 9
-ids: 400
-days: 229
-phases: 25
+version: "v2.0.0"
+supersedes: "Yantra v1.1.0 (229 days) · Setu v1.0.0 (180 days)"
+source_roadmaps:
+  - "Production LLM Engineering — RAG, Agents & Fine-Tuning V1.0"
+  - "Becoming an AI Forward Deployed Engineer V1.0"
+tracks: 13
+ids: 373
+days: 182
+phases: 29
 doc_architecture: "hub + parts/ + sources/ (see §20)"
-generated: "TODO(me): date this file the day you accept it"
+generated: "2026-09-07"
 ---
 
-# 🔧 MASTER PLAN v1.1.0 — Project **Yantra**
+# 🔧 MASTER PLAN v2.0.0 — Project **Yantra**
 
-## Production LLM Engineering — **fine-tuning · retrieval · agents · LLMOps**
+## Production AI Engineering, delivered — **the model · the platform · the system · the handover**
 
 > **Yantra** (यन्त्र) is an instrument assembled from parts that only work together. That is what
-> this curriculum builds: not five demos, but one system whose fine-tuned model, distilled model,
-> retrieval service and agent fleet all ship through the same gate.
+> this curriculum builds: not a shelf of demos, but one system whose fine-tuned model, retrieval
+> platform, agent fleet and delivery pipeline all ship through the same gate, to a named client,
+> against a baselined number.
 >
 > 📌 **Purpose:** the single source of truth. Every other document in this repository points back
 > here. Where anything disagrees with this file, this file is wrong or the other document is —
@@ -29,77 +32,89 @@ generated: "TODO(me): date this file the day you accept it"
 
 | §  | Section |
 | --- | --- |
-| 1  | 🎬 The vision — one system, nine threads |
+| 1  | 🎬 The vision — one system, thirteen threads |
 | 2  | 🧭 Core principles — rules we never break |
 | 3  | 🏗️ The product — what Yantra actually is |
-| 4  | 💸 Budget & infrastructure policy — **§4.1 is the hardware profile** |
+| 4  | 💸 Budget & infrastructure policy — **§4.1 the hardware profile · §4.2 the two lanes** |
 | 5  | ⚙️ Baseline & the verification rules |
-| 6  | 🧶 The nine tracks & the ID scheme |
-| 7–15 | The tracks, one section each |
-| 16 | 🗺️ The 25 phases |
-| 17 | 🗓️ The 229-day map |
+| 6  | 🧶 The thirteen tracks & the ID scheme |
+| 7–15 | The tracks, grouped by the thread they carry |
+| 16 | 🗺️ The 29 phases |
+| 17 | 🗓️ The 182-day map |
 | 18 | 🚦 Phase gates & the freshness check |
 | 19 | 📒 Ledgers & traceability |
 | **20** | **📐 The depth contract — how a day is written** |
 | 21 | ✍️ The style guide |
-| 22 | 🔀 Deviations from the source roadmap |
+| 22 | 🔀 The merge — what was joined, what was cut, and why |
 
 ---
 
-## 1 · 🎬 The vision — one system, nine threads
+## 1 · 🎬 The vision — one system, thirteen threads
 
-By Day 228 you will have **fine-tuned, distilled, retrieved, orchestrated, secured, evaluated and
-deployed** a production LLM system, and you will be able to defend every decision inside it. The
-goal is a demonstrably competent and hireable production LLM engineer, with a public repository as
-the proof.
+By Day 181 there is **one AI platform, delivered to one client, end to end** — discovered, scoped,
+modelled, built, secured, deployed, evaluated, handed over and defended — and you can explain every
+decision inside it, say what it costs, name what breaks it, and show the check that catches the
+breakage.
 
-Three commitments shape everything below.
+This plan is the join of two earlier ones. **Yantra v1.1.0** taught the model: tokenizers,
+attention, the KV cache, PEFT, preference alignment, quantization, distillation. **Setu v1.0.0**
+taught the delivery: the engagement, production Python, the cloud, identity, integration,
+guardrails, the handover. Run separately they cost 409 days and taught the same retrieval, agent,
+security and observability material twice. Joined, they cost **182** — and the join is the point,
+because neither half is defensible alone.
 
-1. **One system, not five demos.** The source roadmap ships five projects. This plan treats the
-   fifth — the eval-gated CI/CD shell — as the thing the other four live inside. A fine-tuned
-   medical model that is not behind the gate is homework; the same model deployed blue/green with
-   an auto-rollback alarm is a service. Every concept lands as a change to Yantra.
-2. **The repository is the memory, not the chat.** Ledgers and day documents mean any capable
-   agent — this session, a different model next year, or a person — can pick up exactly where the
-   last one stopped, and can see what went wrong as well as what worked.
-3. **Reality outranks the plan.** Serving engines, adapter formats, agent protocols and provider
-   free tiers all move faster than this document. The freshness check (§18) and the amend-first
-   rule (Principle 12) exist because that will keep happening.
+- A retrieval engineer who cannot fine-tune ships an API wrapper and calls it a platform.
+- A model engineer who cannot deploy, secure and hand over ships a notebook and calls it a product.
+
+Three things this plan is trying to prevent:
+
+1. **The tutorial ceiling.** Following steps produces something that runs and understanding that
+   evaporates the moment the inputs change. Every subtopic ends at the real-system version, not the
+   toy one (Principle 16).
+2. **The forgotten middle.** In a curriculum this long, Day 6 is forgotten by Day 140. Every term
+   is defined on first use — *including terms from earlier days, with a link back* — and
+   `docs/GLOSSARY.md` is a ledger rather than an afterthought.
+3. **The unverifiable claim.** Notes written from memory rot silently. Every version, interface,
+   citation and measurement is produced or looked up on the day it is used (Principles 7 and 8).
 
 ### 1.1 Stated non-goals — decisions, not blind spots
 
 | Excluded | Why |
 | --- | --- |
-| Pre-training a foundation model from scratch | The compute is not available and the skill does not transfer. TF-56..59 teach the scaling laws that decide the size; FT-07 teaches continued pre-training, which is the part you will actually do. |
-| Building a vector database, a serving engine or an inference kernel | You will read PagedAttention and Flash Attention closely enough to explain them (TF-42, TF-51) and then use the implementations, because that is what production does. |
-| Training a frontier reasoning model with RL at scale | FT-72..76 teaches the recipe and R1-Zero's result; the run itself is a compute problem, not a curriculum problem. |
-| A front-end for any of the five services | Every service ends at an HTTP API with a traced call. A UI teaches nothing this plan is about. |
-| Multi-cloud portability | One cloud, done properly, beats three done shallowly. The deployment track is AWS because the source roadmap's agent runtime is. |
+| Pre-training a foundation model from scratch | The compute is not available and the skill does not transfer. `TF-40..43` teach the scaling laws that decide the size; `FT-06` teaches continued pre-training, which is the part you will actually do. |
+| Building a vector database, a serving engine or an inference kernel | You will read PagedAttention and Flash Attention closely enough to explain them (`TF-30`, `TF-35`) and then use the implementations, because that is what production does. |
+| Training a frontier reasoning model with RL at scale | `FT-47..49` teach the recipe and what skipping supervised fine-tuning cost. The run itself is a compute problem, not a curriculum problem. |
+| Speech and speech-to-text | Cut in the merge, recorded in [`ADR-0006`](adr/ADR-0006-the-merge.md). It fed no part of the delivered system, and v1.1.0 had already named it the first thing to cut. |
+| A front end for any service | Every service ends at an HTTP API, a Slack surface and an approval screen. A polished web client is real work and is deliberately not this work. |
+| Multi-cloud portability | One cloud done properly beats three done shallowly. AWS, because both source roadmaps deploy there. Azure and GCP appear only where a client would force the comparison. |
+| A managed agent runtime as a taught product | Parked. Containment is taught through the mechanism — containers, policy, sandboxes, identity — rather than through one vendor's runtime, which dates faster than anything else here. |
 
 ---
 
 ## 2 · 🧭 Core principles — rules we never break
 
 1. **Doc-first.** The day document is written before any code; the code follows the doc.
-2. **One day, one commit.** Traceable, append-only history.
+2. **One day, one commit.** Traceable, append-only history. The repository is the memory.
 3. **Simple language and a concrete example, always.** A concept that cannot be explained plainly
    with an example is a concept that is not yet understood. §21 enforces this.
 4. **Build first, adopt after.** Hand-roll the mechanism once — attention, the KV cache, the tool
-   executor loop, KL divergence, the RRF fusion — *then* reach for the framework, so the framework
-   is a convenience and never a mystery. This is why Day 13 writes attention before Day 27 uses
-   vLLM, and why Day 165 writes an executor loop before Day 171 uses LangGraph.
-5. **Every concept is load-bearing.** If removing it would not break Yantra, it does not get a day.
+   executor loop, the KL divergence loss, RRF fusion — *then* reach for the framework, so the
+   framework is a convenience and never a mystery. This is why Day 61 writes attention before
+   Day 65 uses vLLM, and why Day 119 writes an executor loop before Day 126 uses LangGraph.
+5. **Every concept is load-bearing.** If removing it would not break the delivered system, it does
+   not get a day. "Is this load-bearing?" has a mechanical answer here: delete it and see whether
+   the artifact still works.
 6. **Verify the whole system after every step.** Each day ends with the full check suite green, not
    just today's snippet.
-7. **Never invent a fact.** Versions, model strings, API surfaces, benchmark numbers and citations
-   are looked up **live on the day they are used**, with a dated ledger row. A lookup that fails
-   leaves a `TODO` containing the exact command — never a guess. A remembered citation is an
-   invented citation.
+7. **Never invent a fact.** Versions, model strings, API surfaces, limits and citations are looked
+   up **live on the day they are used**, with a dated ledger row. A lookup that fails leaves a
+   `TODO` containing the exact command — never a guess. A remembered citation is an invented
+   citation.
 8. **Measure, then claim.** No day asserts a speedup, a quality gain or a cost saving it has not
-   measured on its own machine. "Roughly 2× faster" with no benchmark is a rumour with a number
-   attached.
+   measured on its own machine, with the command shown. "Roughly 2× faster" with no benchmark is a
+   rumour with a number attached.
 9. **Secrets never touch git.** `.env` and `.gitignore` exist before the first key does. The
-   repository goes public at the capstone, so the discipline is real.
+   repository goes public at the defence, so the discipline is real.
 10. **Fail honestly.** Errors surface, escalate and are logged. Never fabricate an output to cover
     a failed run — this applies to the writer of the day as much as to the agents being built.
 11. **Evals are tests.** A behaviour change without a green evalset does not merge. Every day ends
@@ -107,9 +122,9 @@ Three commitments shape everything below.
 12. **If reality changes, the plan is amended first.** A renamed API, a superseded spec, a provider
     that dropped its free tier → amend the plan and log it in `docs/CHANGELOG_PLAN.md`, *then*
     continue. Days are never silently patched.
-13. **Blast radius before capability.** Every new power — code execution, browsing, a write to a
-    production system, a payment — arrives together with its containment story. This is why SEC IDs
-    sit inside the agent phases rather than in a chapter at the end.
+13. **Blast radius before capability.** Every new power — code execution, a database write, a Jira
+    transition, a payment — arrives together with its containment story. This is why `SEC` IDs sit
+    inside the phases that create the exposure rather than in a chapter at the end.
 14. **Depth over density.** A day is a hub plus one document per subtopic (§20), never one long
     page. A wall of text is not depth; it is depth's disguise.
 15. **A day is a unit of subject, not a unit of time.** No document carries a duration, an
@@ -120,6 +135,8 @@ Three commitments shape everything below.
     has never met the idea can stand, defines its jargon on first use — including jargon from
     earlier days, with a link back — and ends where a professional stands: what breaks at scale,
     what a senior reviewer says, what an interviewer probes.
+17. **Two lanes, one contract.** Any day that spends money is written for both the $0 lane and the
+    managed lane, and `In production` covers both. §4.2.
 
 > Principles 14–16 are made concrete by **§20, the depth contract**, and are enforced mechanically
 > by the depth checker and by reading.
@@ -128,22 +145,31 @@ Three commitments shape everything below.
 
 ## 3 · 🏗️ The product — what Yantra actually is
 
-One repository, one CI pipeline, four services behind it.
+**One client, fixed on Day 3, and never a framing device.** A mid-size general insurer drowning in
+claims paperwork: forty-two thousand claims a month, 7.5 days to settle one, four hundred policy
+documents, three regional centres that triage inconsistently, and a failed vendor chatbot already
+in the room. Every later day builds against *its* documents, *its* permissions model and *its* KPI.
+The corpus is synthetic, generated on Day 4 and version-controlled, so a scan-quality problem is
+reproducible instead of anecdotal. **No real client data, ever.**
 
-| Service | What it is | Phase it is born in | The track that feeds it |
+One repository, one CI pipeline, four things shipped through it.
+
+| Service | What it is | Phase | The tracks that feed it |
 | --- | --- | --- | --- |
-| `yantra-med` | A domain-adapted clinical assistant: QLoRA SFT then DPO on Llama-3.1-8B-Instruct, served by vLLM with hot-swappable adapters per request | 8 | `FT` |
-| `yantra-edge` | A distilled reasoning model quantized to GGUF, answering on CPU at a fraction of the teacher's serving cost | 10 | `FT` |
-| `yantra-lex` | A legal document intelligence service: ColPali page-image retrieval, Neo4j graph, BM25, RRF fusion, cross-encoder reranking, RAGAS-gated | 16 | `RAG`, `VIS`, `SEC` |
-| `yantra-ops` | A DevOps multi-agent system: a LangGraph supervisor delegating to MCP-backed sub-agents, with A2A peer delegation and human approval on every write | 21 | `AGT`, `SEC` |
+| `yantra-model` | A domain-adapted claims model: QLoRA SFT then DPO, judged against a calibrated evaluator, distilled to a GGUF student, served with hot-swappable adapters | 14 | `TF`, `FT` |
+| `yantra-platform` | The retrieval platform: hybrid dense + BM25 + late-interaction search, a Neo4j graph, page-image retrieval over scans, an adaptive router, reranking, RAGAS-gated, RBAC-scoped, guardrailed, deployed to a private subnet | 25 | `RAG`, `VIS`, `ENT`, `SEC` |
+| `yantra-agents` | A multi-agent compliance and operations system: a supervisor delegating to MCP-backed specialists, human approval on every write, trust boundaries that are enforced rather than documented | 26 | `AGT`, `SEC` |
+| `yantra-ship` | The LLMOps shell over all three: golden suites, eval-gated CI, cost and latency regression guards, blue/green deploys with auto-rollback | 27 | `OPS` |
 
-And the shell they all live in:
+And the half that is not code, delivered alongside it: the discovery notes, the baselined KPI, the
+scoped SOW, the data classification, the architecture diagram a CIO signs, the evaluation report,
+the UAT runbook, the ROI deck, the runbooks, the handover, and the case study a hiring panel reads
+to the end. That is the `FDE` track, and it is why this is a delivery rather than a build.
 
-| `yantra-ship` | The LLMOps layer: golden test suites, eval-gated CI stages, cost and latency regression guards, multi-stage container builds, blue/green deploys with auto-rollback | 23 | `OPS` |
-
-**The system-level test is one sentence, and it is what the capstone defends:** a prompt change in
-any one of the four services must be blocked by the pipeline when it makes that service worse, and
-must reach a live endpoint when it does not — without a human deciding which of those two happened.
+**The system-level test is one sentence, and it is what the defence defends:** a prompt, model or
+retrieval change in any service must be blocked by the pipeline when it makes that service worse,
+and must reach a live endpoint when it does not — without a human deciding which of those two
+happened.
 
 Everything in this plan is either a component of that sentence or the understanding required to
 build the component. §1.1 lists what that excludes.
@@ -152,35 +178,37 @@ build the component. §1.1 lists what that excludes.
 
 ## 4 · 💸 Budget & infrastructure policy
 
-This is the section most likely to be wrong for **your** situation, and it is the one to correct
-first. The source roadmap assumes access to a mid-tier GPU and an AWS account. This plan states
-what each phase actually needs so the cost is visible before it is incurred, never discovered
-halfway through a training run.
+The two source plans each solved half of this, and the merge keeps both halves because they answer
+different questions. **§4.1, the hardware profile,** answers *what machine is this training day run
+on.* **§4.2, the two lanes,** answers *who is paying for the infrastructure this day needs.* A day
+can need an answer to one, both, or neither, and its hub says which.
 
 | Resource | Where it first becomes non-optional | Substitution if you do not have it |
 | --- | --- | --- |
-| A GPU with ≥16 GB VRAM | Phase 2 (Day 15, first real fine-tune) | `YANTRA_PROFILE=laptop` runs the day at CPU scale (§4.1). Colab / Kaggle free tiers carry Phases 1–4 comfortably; rent by the hour from Phase 6 |
-| A GPU with ≥24 GB VRAM | Phase 6 (Day 49, QLoRA on an 8B base) | **No honest laptop path** (§4.1). Rent hourly. Unsloth (FT-67) exists precisely to lower this floor — the day teaches the number, not the vibe |
-| An AWS account | Phase 8 (Day 77, the first SageMaker endpoint) | Phases 1–7 need none. From Phase 8, keep a spend alarm before the first deploy, not after |
-| A managed vector DB | Phase 16 (Day 149, Qdrant) | Qdrant, Elasticsearch and Neo4j all run in Docker locally; the plan assumes local until the project phase |
-| Paid frontier API access | Phase 5 (Day 44, judge-scored synthetic data) | Free tiers with rate-limit handling. Any day that calls a model states its request budget in the hub's §6 |
+| A GPU with ≥16 GB VRAM | Phase 11 (Day 76, QLoRA on a real base) | `YANTRA_PROFILE=laptop` runs the day at CPU scale (§4.1). Free notebook tiers carry Phases 8–10 comfortably; rent by the hour from Phase 11 |
+| A GPU with ≥24 GB VRAM | Phase 14 (Day 92, the two-stage run on an 8B base) | **No honest laptop path** (§4.1). Rent hourly; the day teaches the number, not the vibe |
+| A cloud account | Phase 6 (Day 39) | LocalStack carries the identity, storage and networking days in Lane A (§4.2). Fargate, RDS and a real VPC are Lane B. Arm a spend alarm before the first deploy, not after |
+| A managed vector store | Phase 25 (Day 162) | Qdrant, Elasticsearch and Neo4j all run in Docker; the plan assumes local until the project phase |
+| Paid frontier API access | Phase 5 (Day 33) | Free tiers with rate-limit handling. Any day that calls a model states its request budget in the hub |
 
-**Three rules follow from this table and are binding:**
+**Four rules follow from this table and are binding:**
 
 1. **Every hub declares a request budget** (§20.5, hub section 6): model calls, per provider, in
    requests per minute and per day. `0` is a valid answer and must be stated.
-2. **Every day that spends money says so, in the hub, before the first command.** A day that will
-   rent a GPU says which GPU, for roughly what, and what the cheaper path costs in capability.
+2. **Every day that spends money says so, in the hub, before the first command** — which resource,
+   for roughly what, and what the cheaper path costs in capability.
 3. **Rate-limit handling is curriculum, not friction.** Every call path handles HTTP 429 with
-   `retry-after` and backoff from the first day it makes a call. This is not defensive
-   programming; it is the same code the production services will need.
+   `retry-after` and backoff from the first call it makes. This is not defensive programming; it is
+   the same code the production services will need.
+4. **Licences before downloads.** Any day introducing a dataset or a pre-trained checkpoint states
+   its licence and whether it permits this use, with the row in `docs/PROVENANCE.md` **before** the
+   download.
 
-### 4.1 The hardware profile — the correction this section asked for
+### 4.1 The hardware profile
 
-v1.0.0 closed this section with a warning to correct it before Day 0. It has been corrected, and
-[`ADR-0005`](adr/ADR-0005-the-hardware-profile.md) records why. **The default hardware assumption
-of this curriculum is a laptop with no GPU.** The accelerated path is the documented alternative,
-not the baseline.
+**The default hardware assumption of this curriculum is a laptop with no GPU.** The accelerated
+path is the documented alternative, not the baseline.
+[`ADR-0005`](adr/ADR-0005-the-hardware-profile.md) records why.
 
 One environment variable selects between them, read by exactly one module, `yantra/hardware.py`:
 
@@ -199,27 +227,48 @@ run** under `YANTRA_PROFILE=gpu` on a torch build with no CUDA rather than falli
 refusal is the load-bearing half: a silent fallback is how a laptop number gets recorded as a GPU
 number. [`docs/HARDWARE.md`](HARDWARE.md) carries the switch procedure and the failure text.
 
-**Three further rules follow, binding on every day from 1 to 228:**
+**Three further rules follow, binding on every day from 1 to 181:**
 
-4. **A day that touches an accelerator states both paths in its §6 budget** — what the laptop path
+5. **A day that touches an accelerator states both paths in its §6 budget** — what the laptop path
    costs in *capability*, and what the accelerated path costs in *money*. Neither line is optional
    and neither is a range: the laptop path names the base model and the scale it runs at.
-5. **Every measured number carries the profile that produced it**, in the document and in the
+6. **Every measured number carries the profile that produced it**, in the document and in the
    `PROGRESS.md` row. A number without a profile is not a number (Principle 8).
-6. **The laptop path is a smaller true version of the day, never a mocked one.** Same mechanism,
+7. **The laptop path is a smaller true version of the day, never a mocked one.** Same mechanism,
    same code path, same check going red — fewer steps, a smaller base, a shorter sequence. A day
    whose laptop path skips the mechanism does not have a laptop path; it has a stub, and the honest
    form of that is a `TODO(me)` in the hub saying the day needs an accelerator.
 
-**The days that have no honest laptop path** say so in their hubs rather than pretend: Day 49
-(QLoRA on an 8B base), Day 77 (the first managed endpoint) and Day 149 (the managed vector store).
-Their parts are still readable and their mechanisms are still hand-rolled at laptop scale; it is the
-day's headline measurement that waits for the hardware.
+**The days with no honest laptop path** say so in their hubs rather than pretend: Day 76 (QLoRA on
+a real base), Day 92 (the two-stage project run) and Day 162 (the managed vector store). Their
+parts are still readable and their mechanisms still hand-rolled at laptop scale; it is the day's
+headline measurement that waits for the hardware.
 
-> ⚠️ **Still open:** the *free-tier* half of this section. §4's table assumes hourly GPU rental from
-> Phase 6 and an AWS account from Phase 8. If those are also out of reach, that is a second
-> amendment — it changes base-model choices in Phases 6–9 and the deployment target in Phases 8, 16
-> and 21, and changing them later means amending four phase gates.
+### 4.2 The two lanes
+
+Every day that touches paid infrastructure is written twice: **Lane A ($0)** and **Lane B
+(managed)**. The lanes are not an appendix — they are part of the depth contract, and
+`In production` must cover both.
+
+| | Lane A — $0 | Lane B — managed |
+| --- | --- | --- |
+| Models | Free-tier provider quotas; open weights locally via Ollama, llama.cpp or vLLM | Paid provider APIs, a managed model service |
+| Vectors | Qdrant in Docker; pgvector on local Postgres | A managed index |
+| Graph | Neo4j Community in Docker | Neo4j Aura |
+| Compute | Docker Compose on a laptop; LocalStack for cloud surfaces | ECS Fargate, RDS, a real VPC |
+| Tracing | Langfuse self-hosted | LangSmith, Langfuse Cloud |
+| CI | GitHub Actions free tier | the same, with paid runners |
+
+Lane A exists because most people learning this cannot expense a cloud bill, and because an
+engineer who has only ever run managed services cannot answer the question every client eventually
+asks: *what does this cost us, and what happens if we bring it in-house?* Lane B exists because the
+job is deploying into a client's real tenant, and LocalStack has never once billed anyone by
+surprise.
+
+**Where the lanes genuinely diverge, say so.** A NAT gateway bill, a Fargate cold start and a
+managed index's p99 have no honest Lane A equivalent. On those days Lane A is explicitly an
+*approximation*, the document names the behaviour it is not reproducing, and the ID still closes —
+parking a thing in the open is the opposite of a gap.
 
 ---
 
@@ -229,24 +278,31 @@ This curriculum sits on a stack that moves. Rather than pin versions in a docume
 read for a year, the plan pins **the verification behaviour** and puts the versions in a dated
 ledger.
 
+| What | Pinned to | Verified how | Re-checked |
+| --- | --- | --- | --- |
+| Python | 3.12, owned by `uv`; `tomllib` from stdlib | `uv run python --version` | every phase gate |
+| Every runtime dependency | the lockfile, and a dated row in `docs/PINS.md` naming the day that added it | `uv lock --check`, plus the version command recorded in the pin row | every phase gate, and on any day that adds one |
+
 **The rules, in force from Day 0:**
 
 1. **Never invent a version.** Any day that installs something states the version it verified and
-   how it verified it, or leaves a `TODO` containing the exact lookup command. The row lands in
-   `docs/PINS.md` the same day, with the date observed.
-2. **Never invent an API surface.** Any part that uses a library symbol names the documentation
-   page checked *that day*, inline, next to the code: *"Verified against `<url>` on YYYY-MM-DD."*
-   This binds hardest on the fast-moving surfaces — the serving engines, LangGraph, the agent
-   runtime, and the two agent protocols.
+   how, or leaves a `TODO` containing the exact lookup command. The row lands in `docs/PINS.md`
+   the same day, with the date observed.
+2. **Never invent an API surface.** Any part that uses a library symbol, a flag, an endpoint or a
+   field names the documentation page checked *that day*, inline, next to the code: *"Verified
+   against `<url>` on YYYY-MM-DD."* This binds hardest on the fast-moving surfaces — the serving
+   engines, LangGraph, MCP, the cloud console. If the live documentation disagrees with this plan,
+   **stop and propose an amendment**; do not adapt silently.
 3. **Never invent a citation.** A paper is looked up live, its title copied from the record rather
    than from memory, and the identifier lands in `docs/SOURCES.md` with the date it was checked.
    **Cite by title and identifier, never by author.** A wrong version number fails loudly the next
    time someone installs; a plausible identifier attached to the wrong title survives for years.
 4. **Never invent a benchmark number.** Every latency, throughput, memory or quality figure in a
-   day is one you measured, with the command that produced it shown. A number you read somewhere
-   is a citation, and gets cited.
-5. **The four moving surfaces get re-checked at every phase gate** (§18): serving engines and
-   quantization formats; the agent protocols; the cloud agent runtime; and provider free tiers.
+   day is one you measured, with the command that produced it shown and the machine named. A number
+   you read somewhere is a citation, and gets cited.
+5. **The five moving surfaces get re-checked at every phase gate** (§18): serving engines and
+   quantization formats; MCP and the agent frameworks; the cloud surfaces; provider free tiers and
+   model identifiers; and the guardrail and evaluation libraries.
 
 **What this replaces.** It replaces a version table that would be wrong within a month. `PINS.md`
 is the version table, it is dated, and it is append-only — so when something breaks you can see
@@ -254,244 +310,255 @@ what was true when the day was written.
 
 ---
 
-## 6 · 🧶 The nine tracks & the ID scheme
+## 6 · 🧶 The thirteen tracks & the ID scheme
 
 Every concept in this plan has an ID. A day **closes** an ID when the concept is built into — or
-demonstrably exercised against — Yantra and the day's checks are green. `docs/TRACEABILITY.md` is
-regenerated from the day hubs; **any open ID from a completed phase is a bug**, not a backlog item.
+demonstrably exercised against — the delivered system and the day's checks are green.
+`docs/TRACEABILITY.md` is regenerated from the day hubs; **any open ID from a completed phase is a
+bug**, not a backlog item.
 
 <!-- granth:tracks:start -->
 | Track | Prefix | Count | Thread |
 | --- | --- | --- | --- |
-| Transformer Internals & Efficiency | `TF` | 66 | Architecture from tokens to experts: attention, positional schemes, the KV cache, attention variants, scaling laws, MoE. |
-| Fine-Tuning, Alignment & Compression | `FT` | 90 | The whole post-training pipeline: CPT, data, PEFT, SFT, preference alignment, evaluation, quantization, reasoning, distillation. |
-| Vision, Multimodal & Speech | `VIS` | 24 | ViTs, contrastive and self-supervised vision encoders, VLM architecture, speech-to-text and Whisper fine-tuning. |
-| Embeddings & Retrieval | `RAG` | 46 | The embedding taxonomy, MRL, chunking, lexical and learned-sparse retrieval, fusion, reranking, multimodal and graph retrieval, caching. |
-| Agents, Protocols & Orchestration | `AGT` | 82 | LangChain and LCEL, Pydantic and function calling, MCP, LangGraph, A2A, AgentCore, observability. |
-| Prompt & Context Engineering | `CTX` | 14 | Prompt anatomy and robustness, structured generation, context window management, memory architectures, compression. |
-| LLMOps, Evaluation & CI/CD | `OPS` | 22 | Evaluation harnesses, benchmarking, judges, prompt regression, trace testing, eval-gated pipelines, cost and latency guards. |
-| Safety & Security | `SEC` | 12 | PII masking, input/output guardrails, prompt injection defence, identity and secrets, policy-based access control, sandboxing. |
-| The Five Shipped Services | `PRJ` | 44 | MedScript AI, EdgeReason, LexisGraph, AutoOps and ShipLLM — the milestones that put every other track into a running system. |
+| Software & backend engineering | `SE` | 34 | Python that survives a long-running process, async, Linux, FastAPI, testing, packaging, and the repository discipline every later track assumes. |
+| Cloud, containers & delivery | `CLD` | 22 | Identity and networking, object storage and managed databases, secrets, Docker, Fargate, CI/CD, infrastructure as code, and the cost model you show the client. |
+| Prompt & context engineering | `CTX` | 16 | The model as a pinned dependency: tokens, the meter, sampling, prompt anatomy, structured output, robustness, and the failure lab. |
+| Transformer internals & efficiency | `TF` | 43 | Architecture from tokens to experts: tokenizers, embeddings, attention, the block, the KV cache, attention variants, RoPE, scaling laws, MoE. |
+| Fine-tuning, alignment & compression | `FT` | 57 | The post-training pipeline in the order a practitioner runs it: lifecycle, data, PEFT, SFT, preference alignment, evaluation, quantization, serving, distillation. |
+| Embeddings & retrieval | `RAG` | 43 | The embedding taxonomy, MRL, chunking, the three retrieval families, fusion, reranking, evaluation, adaptive retrieval, graph retrieval, caching. |
+| Vision & multimodal | `VIS` | 9 | OCR and its failure modes, ViT, contrastive and self-supervised encoders, VLM architecture, and retrieval directly over page images. |
+| Agents, protocols & orchestration | `AGT` | 38 | Function calling, the hand-rolled loop, tool design, MCP as a real boundary, LCEL, LangGraph, state, memory, supervisors and human-in-the-loop. |
+| Enterprise integration & identity | `ENT` | 18 | The systems a client already runs — SQL, Oracle, SOAP, SFTP, Slack, Jira — and the OAuth, SSO, RBAC and audit trail that let AI touch them. |
+| Security & governance | `SEC` | 15 | The threat model AI adds, injection and exfiltration, PII handling, guardrails as defence in depth, policy, sandboxing, and breaking your own system on purpose. |
+| Observability, evaluation & LLMOps | `OPS` | 25 | Tracing, structured logs, token accounting, latency budgets, the gateway, evaluation harnesses, judges, golden sets, eval-gated CI, and deployment strategy. |
+| FDE consulting craft | `FDE` | 17 | Discovery, the KPI, the SOW, stage gates, change management, handover, ROI, and the interview loop — the half of the job that is not code. |
+| The delivered system | `PRJ` | 36 | `yantra-model`, `yantra-platform`, `yantra-agents` and `yantra-ship` — the milestones that put every other track into a running system. |
 
-**Total: 400 concept IDs across 229 days (1.75 per day).**
+**Total: 373 concept IDs across 182 days (2.05 per day).**
 <!-- granth:tracks:end -->
 
 > 🅿️ Some IDs are **parked**: you learn the map, you do not build the thing. A parked ID is marked
-> 🅿️ in the day hub and closes normally. Parking is a decision that gets written down, not a way
-> of quietly skipping something.
+> 🅿️ in the day hub and closes normally. Parking is a decision that gets written down, not a way of
+> quietly skipping something.
 
 The per-ID meaning lives in the day map (§17): **each day's row is the authoritative statement of
 what its IDs mean.** Sections 7–15 give each track's arc and call out the decisions inside it.
 
 ---
 
-## 7 · 🧮 Track A — Transformer Internals & Efficiency (`TF-01..66`)
+## 7 · 🐍 Track SE — Software & backend engineering (`SE-01..34`)
 
-**Arc.** Tokens before embeddings, embeddings before attention, attention before architectures, and
-architectures before anything is fine-tuned. Then the same machine again from the serving side:
-what it costs to run, and every trick the field invented to make it cost less.
+**Arc.** The language under pressure (`SE-01..12`) → concurrency and the box it runs on
+(`SE-13..24`) → the service boundary (`SE-25..34`).
 
-The track splits at Day 19. Everything before it answers *how does a transformer work*; everything
-after answers *why does it cost that much, and what did we change*. That boundary matters because
-the second half is only teachable once the first half is in your hands: MQA is a sentence if you
-have not written multi-head attention, and a decision with a measured price if you have.
+This track is first for one reason: **everything after it writes Python that has to survive.** A
+retrieval pipeline that leaks memory over a week, an agent whose exception vanishes inside a
+`gather`, a container that runs as root — those are not AI problems, and they are what actually
+takes an AI system down.
 
 **Three decisions worth naming:**
 
-- **Tokenization gets five days** (TF-03..07), which is more than most treatments give it, because
-  tokenizer choices surface later as unexplained failures — a fine-tune that will not learn digits,
-  a RAG chunk boundary that splits a clause, a multilingual cost that nobody budgeted.
-- **Attention is written by hand before it is optimized** (Principle 4). Days 13–14 produce a block
-  that trains. Days 19–27 then make it fast, and every optimization is measured against the
-  hand-rolled baseline rather than against a claim.
-- **MoE closes the track rather than opening the fine-tuning one** (TF-60..66), because its subject
-  is a scaling decision, and scaling laws (TF-56..59) are the two days before it.
+- **Memory and the event loop get full days** (`SE-02`, `SE-13..19`) rather than a paragraph. The
+  two most expensive bugs in a long-running AI service are a reference nobody released and a
+  blocking SDK call inside the loop, and both are invisible in a test that runs once.
+- **Pydantic is taught as a boundary, not a schema library** (`SE-05`, `SE-06`). It arrives on
+  Day 10 and is then load-bearing on every structured-output day, every tool schema and every API
+  model for the rest of the plan.
+- **Tests come before the framework that needs them** (`SE-33`, `SE-34`). The contract test written
+  on Day 29 is the same shape as the eval gate on Day 160.
 
 ---
 
-## 8 · 🎯 Track B — Fine-Tuning, Alignment & Compression (`FT-01..90`)
+## 8 · ☁️ Track CLD — Cloud, containers & delivery (`CLD-01..22`)
 
-The largest track, and the spine of Phases 5–10. It runs the whole post-training pipeline in the
+**Arc.** Identity and the network (`CLD-01..06`) → state and money (`CLD-07..11`) → images,
+runtime and the pipeline (`CLD-12..22`).
+
+**Two decisions worth naming:**
+
+- **Networking before compute.** The VPC, the two firewalls and the egress path come before
+  Fargate, because the failure everyone hits — *the service starts and cannot reach the model
+  provider* — is a routing failure, and it is unreadable to anyone who met the private subnet after
+  the container.
+- **The budget alarm is armed on Day 46, before the first deploy on Day 51.** A cost model
+  presented to a client after the first invoice is not a cost model; it is an apology.
+
+---
+
+## 9 · 💬 Track CTX — Prompt & context engineering (`CTX-01..16`)
+
+The model as a **pinned dependency with a price and a rate limit**, met before it is opened up.
+
+**This ordering is deliberate and it is the single biggest structural decision in the merge.**
+Days 30–38 use the model as a black box — tokens, the meter, sampling, prompt anatomy, structured
+output, the failure lab — and only then, from Day 53, does the plan take it apart. Every question
+the black-box days raise (*why does it cost that? why did that number change? why did the JSON come
+back truncated?*) is answered by a mechanism in Track TF. Teaching internals first inverts that and
+produces a reader who can derive attention but cannot get a parse to hold.
+
+**Arc.** The meter and the window (`CTX-01..04`) → the call and the provider layer (`CTX-05..07`)
+→ prompt anatomy and reasoning (`CTX-08..11`) → structured output and robustness
+(`CTX-12..16`).
+
+Day 38 builds a prompt robustness test that goes red. That test is not a teaching exercise — it
+becomes the golden baseline the CI gate checks against on Day 174.
+
+---
+
+## 10 · 🧮 Track TF — Transformer internals & efficiency (`TF-01..43`)
+
+**Arc.** Tokens before embeddings, embeddings before attention, attention before architectures
+(`TF-01..25`) → then the same machine from the serving side: what it costs to run, and every trick
+the field invented to make it cost less (`TF-26..43`).
+
+The track splits at Day 62. Everything before it answers *how does a transformer work*; everything
+after answers *why does it cost that much, and what did we change*. That boundary matters because
+the second half is only teachable once the first half is in your hands: grouped-query attention is
+a sentence if you have not written multi-head attention, and a decision with a measured price if
+you have.
+
+**Three decisions worth naming:**
+
+- **Tokenization gets three days** (`TF-03..08`), more than most treatments give it, because
+  tokenizer choices surface later as unexplained failures — a fine-tune that will not learn digits,
+  a chunk boundary that splits a clause, a multilingual cost nobody budgeted.
+- **Attention is written by hand before it is optimized** (Principle 4). Day 61 produces a block
+  that trains. Days 62–67 make it fast, and every optimization is measured against the hand-rolled
+  baseline rather than against a claim.
+- **Scaling laws and MoE close the track** (`TF-40..43`) rather than opening the fine-tuning one,
+  because their subject is a sizing decision — the one you make *before* you spend money on
+  Day 76.
+
+---
+
+## 11 · 🎯 Track FT — Fine-tuning, alignment & compression (`FT-01..57`)
+
+The largest track and the spine of Phases 10–14. It runs the whole post-training pipeline in the
 order a practitioner runs it: understand the lifecycle, build the data, adapt the model, align it,
-evaluate it, shrink it, serve it — then do the same thing again in the other direction, compressing
-a large model into a small one.
+evaluate it, shrink it, serve it — then the same thing in the other direction, compressing a large
+model into a small one.
 
-**Arc.** Lifecycle and data (FT-01..24) → parameter-efficient adaptation and alignment (FT-25..48)
-→ evaluation, quantization and serving (FT-49..68) → reasoning, small models and distillation
-(FT-69..90).
+**Arc.** Lifecycle and data (`FT-01..15`) → parameter-efficient adaptation and alignment
+(`FT-16..33`) → evaluation, quantization and serving (`FT-34..46`) → reasoning, small models and
+distillation (`FT-47..57`).
 
 **Four decisions worth naming:**
 
-- **Data comes before method** — twelve days of lifecycle, formats, loss masking and synthetic
-  generation (Days 34–45) before the first LoRA. This inverts the usual order deliberately. A
-  QLoRA run on a bad dataset teaches you how to run QLoRA; the failure it produces teaches nothing,
-  because you cannot tell the method from the data.
-- **Loss masking gets its own day** (FT-13, FT-14, Day 41) with a deliberate broken run. It is the
-  single most common silent fine-tuning bug, it produces a model that trains without error and
-  answers badly, and it is invisible in a loss curve.
-- **Evaluation is inside the track, not after it** (FT-49..53). A fine-tune you cannot measure is a
-  fine-tune you cannot defend, and the judge you build on Day 60 is the same judge the CI gate uses
-  on Day 219.
+- **Data comes before method** — six days of lifecycle, formats, loss masking and synthetic
+  generation before the first LoRA. This inverts the usual order deliberately. A QLoRA run on a bad
+  dataset teaches you how to run QLoRA; the failure it produces teaches nothing, because you cannot
+  tell the method from the data.
+- **Loss masking gets its own day** (`FT-10`, `FT-11`, Day 72) with a deliberately broken run. It
+  is the single most common silent fine-tuning bug, it produces a model that trains without error
+  and answers badly, and it is invisible in a loss curve.
+- **Evaluation is inside the track, not after it** (`FT-34..38`). A fine-tune you cannot measure is
+  a fine-tune you cannot defend, and the judge built on Day 82 is the same judge the CI gate uses
+  on Day 175.
 - **Distillation is taught as the mirror of fine-tuning**, not as an appendix. The student–teacher
-  paradigm (FT-81) is the same optimization problem seen from the other side, and Days 85–88 build
-  the loss from scratch so that Project 02 is an application rather than a first encounter.
+  paradigm is the same optimization problem seen from the other side, and Day 88 builds the loss
+  from scratch so that the project phase is an application rather than a first encounter.
 
 ---
 
-## 9 · 👁️ Track C — Vision, Multimodal & Speech (`VIS-01..24`)
+## 12 · 🔍 Tracks RAG & VIS — Retrieval, graph & multimodal (`RAG-01..43`, `VIS-01..09`)
 
-**Arc.** CNN to ViT (VIS-01..09) → pre-trained vision encoders (VIS-10..13) → VLM architecture
-(VIS-14..18) → speech and Whisper (VIS-19..24).
+**Arc.** The embedding taxonomy and MRL (`RAG-01..08`) → chunking and RAG by hand (`RAG-09..12`)
+→ the three retrieval families and fusion (`RAG-13..23`) → evaluation and adaptive retrieval
+(`RAG-24..33`) → the graph (`RAG-34..40`) → the page that is an image (`RAG-41..43`,
+`VIS-01..09`).
 
-This track exists in this plan for one concrete reason: **Project 03 retrieves over page images**.
-ColPali (RAG-38) is a vision-language model doing retrieval, and a reader who has not built a patch
-embedding cannot debug it when the retrieval quality drops on scanned pages. So the track is placed
-immediately before the retrieval phases, not filed as optional enrichment.
+**Four decisions worth naming:**
 
-Speech (VIS-19..24) is the one part of the track that does not feed a Yantra service. It is kept
-because the source roadmap teaches it, because Whisper fine-tuning is the cleanest small example of
-the encoder–decoder fine-tune from Day 17 applied to a real domain, and because it is a genuinely
-common production ask. It is the first candidate to cut if the plan needs compressing (§22).
-
----
-
-## 10 · 🔍 Track D — Embeddings & Retrieval (`RAG-01..46`)
-
-**Arc.** The embedding taxonomy and Matryoshka representations (RAG-01..12) → RAG from scratch,
-chunking, and the three retrieval families (RAG-13..20) → fusion, transformation, reranking and
-evaluation (RAG-21..32) → quantization at scale, multimodal, graph, vectorless and cached
-(RAG-33..46).
-
-**Three decisions worth naming:**
-
-- **Embeddings are taught before RAG, not inside it** (Days 115–120). Retrieval quality is an
+- **Embeddings are taught before RAG, not inside it** (Days 95–97). Retrieval quality is an
   embedding property first and a pipeline property second, and a reader who meets embeddings as
   "the thing before the vector store" never goes back to fine-tune one.
-- **BM25 gets a full day** (RAG-18, Day 130) and is measured against dense retrieval on your own
-  corpus. The hybrid result on Day 133 is only interesting if the lexical baseline was real.
-- **Evaluation arrives before the clever variants** (RAG-27..28 on Day 136, before Self-RAG and
-  Corrective RAG on Day 137). Adaptive retrieval strategies are indistinguishable from each other
-  without a metric, and the RAGAS gate is what makes Project 03's router a decision rather than a
-  preference.
+- **BM25 gets a full day** (`RAG-15`, Day 101) and is measured against dense retrieval on your own
+  corpus. The hybrid result on Day 103 is only interesting if the lexical baseline was real.
+- **Evaluation arrives before the clever variants** (`RAG-24..27` on Days 105–106, before Self-RAG
+  and Corrective RAG on Day 107). Adaptive retrieval strategies are indistinguishable from each
+  other without a metric.
+- **The vision track exists for exactly one reason** — the client's claim bundles are scans, and
+  page-image retrieval is a vision-language model doing retrieval. A reader who has not built a
+  patch embedding cannot debug it when quality drops on rotated pages. Nine IDs, placed immediately
+  before they are needed, and not one more.
 
 ---
 
-## 11 · 🤖 Track E — Agents, Protocols & Orchestration (`AGT-01..82`)
+## 13 · 🤖 Track AGT — Agents, protocols & orchestration (`AGT-01..38`)
 
-The second-largest track. It carries LangChain as the orchestration layer, the whole function-calling
-and MCP foundation, LangGraph, and the production agent stack — A2A, the cloud agent runtime,
-memory, identity and observability.
-
-**Arc.** LangChain and LCEL (AGT-01..12) → Pydantic, function calling and the executor loop
-(AGT-13..27) → MCP (AGT-28..37) → LangGraph (AGT-38..54) → observability, A2A, AgentCore
-(AGT-55..82).
+**Arc.** Function calling and schema design (`AGT-01..07`) → the hand-rolled loop and where it
+breaks (`AGT-08..12`) → MCP as a real boundary (`AGT-13..19`) → LCEL and LangGraph
+(`AGT-20..30`) → context, supervisors and human-in-the-loop (`AGT-31..38`).
 
 **Three decisions worth naming:**
 
-- **LangChain is taught with the embeddings track** (Days 121–126, Phase 13) rather than in the
-  agent phases. Its load-bearing use in Yantra is `yantra-lex`'s serving layer — LCEL chains and
-  LangSmith tracing — and teaching it there means the RAG phases can use it instead of hand-rolling
-  a serving layer twice.
-- **The tool executor loop is hand-rolled before LangGraph** (AGT-24..25 on Day 165, LangGraph from
-  Day 171). Principle 4 again, and it is the difference between an engineer who can debug a stuck
-  ReACT loop and one who can only restart it.
-- **MCP and A2A are taught as answers to different questions**, and the day that compares them
-  (AGT-65, Day 186) is the point of both. MCP is the boundary between an agent and its tools; A2A
-  is the boundary between an agent and another agent. Conflating them produces architectures that
-  cannot be secured, which is why SEC-07..08 sit inside this track's phase rather than beside it.
+- **The loop is hand-rolled on Day 119 and breaks on Day 120, and LangGraph does not appear until
+  Day 126.** Principle 4, and it is the difference between an engineer who can debug a stuck ReAct
+  loop and one who can only restart it.
+- **MCP is taught as a boundary, not an import.** The point of `AGT-13..19` is that a tool
+  boundary you can authenticate, authorize and audit is a different object from a Python function
+  you called, and Day 124 makes the trust boundary explicit before any agent gets a credential.
+- **Human-in-the-loop is a design day, not a feature day** (`AGT-36..38`). An approval surface a
+  busy professional rubber-stamps is worse than no approval, because it launders the risk. That is
+  taught where the approval gate is built, not in the security phase.
 
 ---
 
-## 12 · 💬 Track F — Prompt & Context Engineering (`CTX-01..14`)
+## 14 · 🛡️ Tracks ENT & SEC — Enterprise integration, identity & security (`ENT-01..18`, `SEC-01..15`)
 
-The smallest track, and deliberately placed early — Phase 12, before retrieval and before agents.
+**`ENT` is the track that makes this a job rather than a project.** The client already runs SQL
+Server, an Oracle box, a SOAP endpoint from 2003, an SFTP drop, Slack and Jira. An AI system that
+cannot reach them is a demo, and the reason most pilots die is not model quality — it is that
+nobody could get the data out or the answer back in.
 
-**This is a reordering of the source roadmap and it is on purpose.** The roadmap puts prompt and
-context engineering in modules 22–23, after the agent modules. Read in that order, every RAG day
-and every agent day has to gesture at prompt structure and context-window management without having
-taught them. Moving them to Phase 12 means the retrieval phases can talk about *context
-construction* using a vocabulary the reader owns, and the agent phases can talk about memory
-architectures rather than introducing them.
-
-The cost of the move is recorded in `docs/adr/ADR-0002` and in §22.
-
-**Arc.** Prompt anatomy and shot count (CTX-01..03) → reasoning and structured generation
-(CTX-04..06) → robustness, chaining and self-refinement (CTX-07..10) → the context window, memory
-architectures and compression (CTX-11..14).
-
-Day 112 (CTX-07, CTX-08) builds a prompt robustness test that can go red. That test is not a
-teaching exercise — it becomes the golden baseline PromptFoo checks against on Day 218.
-
----
-
-## 13 · 📦 Track G — LLMOps, Evaluation & CI/CD (`OPS-01..22`)
-
-**Arc.** Harness fundamentals and benchmarking (OPS-01..04) → agent-native evaluation and judges
-(OPS-05..08) → prompt regression, golden datasets and trace testing (OPS-09..13) → harness patterns
-and agent CI/CD (OPS-14..20) → deployment strategy (OPS-21..22).
-
-This track is concentrated in Phase 22 rather than spread thin, for one reason: **an evaluation
-harness is only teachable against systems that exist.** By Day 206 there are four services with
-real failure modes, real cost profiles and real prompts worth regression-testing. Teaching harness
-engineering on a toy in Phase 3 would produce a chapter nobody could apply.
-
-Two IDs live outside the phase — OPS-21 and OPS-22, on Days 223–224 — because blue/green deployment
-and auto-rollback are only meaningful with something deployed to roll back.
-
----
-
-## 14 · 🛡️ Track H — Safety & Security (`SEC-01..12`)
-
-Twelve IDs, and **none of them are in a security phase**. Six sit in the RAG phases (SEC-01..06,
-Days 145–147) and six in the agent phases (SEC-07..12, Days 191–197).
-
-That placement is Principle 13 expressed as a plan structure. A security chapter at the end teaches
-security as a review step; security IDs inside the phase that creates the exposure teach it as part
-of building the thing. PII masking is taught where documents are indexed. Guardrails are taught
-where a retrieval pipeline starts answering. Identity, policy and sandboxing are taught where an
-agent first gets a credential and a write.
+**`SEC` has fifteen IDs and none of them are in a security phase.** They sit inside the phases that
+create the exposure:
 
 | IDs | Subject | Sits inside |
 | --- | --- | --- |
-| `SEC-01..02` | PII detection and masking before retrieval | Phase 15, with the RAG indexing days |
-| `SEC-03..04` | Input and output guardrails | Phase 15, with the RAG serving days |
-| `SEC-05..06` | Prompt injection: the attack, then the defence | Phase 15, immediately before Project 03 |
-| `SEC-07..08` | Agent identity, delegated access, secrets | Phase 19, with AgentCore Identity |
-| `SEC-09..10` | Policy-based access control and tool-call interception | Phase 20, before the agent gets write access |
-| `SEC-11..12` | Threat modelling and sandboxed execution | Phase 20, immediately before Project 04 |
+| `SEC-01` | MCP trust boundaries and authorization | Phase 18, where an agent first gets a tool |
+| `SEC-02` | The query you must never let reach the database | Phase 20, with text-to-SQL |
+| `SEC-03..07` | Threat model, injection, exfiltration, jailbreaks | Phase 22, before anything is exposed |
+| `SEC-08..11` | PII, masking, and guardrails as defence in depth | Phase 22, with the request path |
+| `SEC-12..13` | The red team, and the attempts put into CI | Phase 22, as the phase gate |
+| `SEC-14..15` | Policy enforcement and sandboxed execution | Phase 26, before the agent gets write access |
 
 **Every SEC day carries the attack before the defence.** A guardrail you have not got past is a
 guardrail you cannot evaluate.
 
 ---
 
-## 15 · 🚢 Track I — The Five Shipped Services (`PRJ-01..44`)
+## 15 · 📦 Tracks OPS, FDE & PRJ — Operations, craft & the delivered system (`OPS-01..25`, `FDE-01..17`, `PRJ-01..36`)
 
-Forty-four IDs across five project phases. A `PRJ` ID is not a concept — it is a **milestone in a
-running service**, and it closes when that milestone is deployed and traced, not when it is
-understood.
+**`OPS` is concentrated in Phases 23–24 for one reason: an evaluation harness is only teachable
+against systems that exist.** By Day 150 there is a fine-tuned model and a retrieval platform with
+real failure modes, real cost profiles and real prompts worth regression-testing. Teaching harness
+engineering on a toy in Phase 4 would produce a chapter nobody could apply. Two IDs live outside
+the phase — `OPS-24` and `OPS-25` on Day 177 — because blue/green and auto-rollback are only
+meaningful with something deployed to roll back.
 
-| Project | IDs | Phase | Days | The thing that must be true at the gate |
+**`FDE` brackets the plan.** Eight IDs at the start (Days 1–5), because you cannot decide what is
+load-bearing without a client, a process and a baselined number; nine at the end (Days 161–181),
+because discovery, ROI and handover are only teachable once there is something to hand over.
+
+**`PRJ` is not a set of concepts — it is a set of milestones in a running system**, and one closes
+when the milestone is deployed and traced, not when it is understood.
+
+| Deliverable | IDs | Phase | Days | The thing that must be true at the gate |
 | --- | --- | --- | --- | --- |
-| 01 · MedScript AI | `PRJ-01..08` | 8 | 70–77 | A live endpoint serving two adapters, and a report comparing base vs SFT vs SFT+DPO |
-| 02 · EdgeReason | `PRJ-09..15` | 10 | 89–95 | A GGUF student on `llama-server`, with an ablation table and a latency benchmark against the teacher |
-| 03 · LexisGraph | `PRJ-16..24` | 16 | 148–156 | An adaptive router across three retrievers, passing a RAGAS faithfulness gate on golden QA pairs |
-| 04 · AutoOps | `PRJ-25..32` | 21 | 198–205 | Incident → reviewed GitHub issue → human approval, end to end, with policies enforced |
-| 05 · ShipLLM | `PRJ-33..40` | 23 | 217–224 | A prompt change blocked by an eval gate, and a deployment rolled back automatically |
-| Capstone | `PRJ-41..44` | 24 | 225–228 | One request traced through every service; the cost model; the public repository |
+| `yantra-model` | `PRJ-01..07` | 14 | 90–94 | A live endpoint serving two adapters, and a report comparing base vs SFT vs SFT+DPO with the judge's calibration shown |
+| `yantra-platform` | `PRJ-08..17` | 25 | 161–167 | An adaptive router across three retrievers behind a private endpoint, passing a RAGAS gate, answering differently for two users with different roles |
+| `yantra-agents` | `PRJ-18..26` | 26 | 168–173 | Findings traceable to evidence, human approval on every write, a blocked destructive call in a trace, per-audit cost known |
+| `yantra-ship` | `PRJ-27..33` | 27 | 174–177 | A pull request blocked by a failing eval, and a deployment rolled back automatically |
+| The defence | `PRJ-34..36` | 28 | 180–181 | One request traced through every service; the cost model; a stranger clones the repository and reaches a working system without asking you anything |
 
-**A project phase is written to the same depth contract as every other phase.** It is not a
-"now build it" week. Each day still has parts, still opens where a reader can stand, still ends in
+**A project phase is written to the same depth contract as every other phase.** It is not a "now
+build it" week. Each day still has parts, still opens where a reader can stand, still ends in
 production, and still carries a deliberate failure. The difference is that its subject is a
 component of a running system rather than an idea.
 
-**The capstone (`PRJ-41..44`) is not a fifth project.** It is the defence: the whole-system trace,
-the cost model, the public audit, and the interview answers. It is the day the repository stops
-being a curriculum and becomes evidence.
-
 ---
-
-## 16 · 🗺️ The 25 phases
+## 16 · 🗺️ The 29 phases
 
 A phase is a block of days that share a subject and end in one thing that must be true. The gate is
 not a quiz — it is an artifact or a measurement, and it is either there or it is not.
@@ -500,30 +567,34 @@ not a quiz — it is an artifact or a measurement, and it is either there or it 
 | Phase | Days | Theme | Gate |
 | --- | --- | --- | --- |
 | **0** | 0 | Foundry | `granth.py check` green; one commit; no secret in git |
-| **1** | 1–12 | The transformer, taken apart | A decoder block you wrote passes a shape-and-gradient test |
-| **2** | 13–18 | Attention in code, and three fine-tunes | Three fine-tuned checkpoints, three honest loss curves |
-| **3** | 19–27 | Inference optimization & attention variants | Measured tokens/sec before and after the cache, on your own machine |
-| **4** | 28–33 | Positional schemes, scaling laws & MoE | A compute-optimal size argument you can defend with numbers |
-| **5** | 34–45 | The post-training lifecycle & data | A domain SFT dataset on the Hub, deduplicated and loss-masked |
-| **6** | 46–58 | PEFT, SFT & preference alignment | One base model, two adapters, a measured preference win |
-| **7** | 59–69 | Eval, quantization & multi-adapter serving | A quantized checkpoint served with two hot-swappable adapters |
-| **8** | 70–77 | Project 01 · MedScript AI | Live endpoint; SFT vs SFT+DPO comparison report |
-| **9** | 78–88 | Reasoning, SLMs & knowledge distillation | A student that closes most of the gap at a fraction of the cost |
-| **10** | 89–95 | Project 02 · EdgeReason | GGUF model on llama-server; ablation table; latency benchmark |
-| **11** | 96–107 | Vision transformers, VLMs & speech | A fine-tuned Whisper and a VLM you can explain end to end |
-| **12** | 108–114 | Prompt & context engineering | A prompt suite with a robustness test that can go red |
-| **13** | 115–126 | Embeddings & LangChain orchestration | An MRL-backed retrieval API traced in LangSmith |
-| **14** | 127–137 | RAG foundations & advanced retrieval | Hybrid retrieval beating dense-only on your own eval set |
-| **15** | 138–147 | Multimodal, graph & secured RAG | A RAGAS faithfulness gate you cannot pass by luck |
-| **16** | 148–156 | Project 03 · LexisGraph | Adaptive router across ColPali, BM25 and Neo4j; RAGAS gate green |
-| **17** | 157–170 | Agent foundations, function calling & MCP | An MCP server and client you wrote, talking to each other |
-| **18** | 171–179 | LangGraph: stateful & multi-agent workflows | A graph that survives a kill -9 and resumes at the interrupt |
-| **19** | 180–192 | Production agents: A2A, AgentCore & observability | Two agents discovering and delegating to each other over A2A |
-| **20** | 193–197 | Agent supervision, policy & guardrails | A destructive tool call blocked by policy, in a trace |
-| **21** | 198–205 | Project 04 · AutoOps | Incident to reviewed GitHub issue, with a human approval, in one run |
-| **22** | 206–216 | Harness engineering, evals & agent CI/CD | A pull request blocked by a failing eval, with the delta commented |
-| **23** | 217–224 | Project 05 · ShipLLM | Blue/green deploy with an auto-rollback you triggered on purpose |
-| **24** | 225–228 | Capstone | One request traced through every service; the cost model; the public repo |
+| **1** | 1–5 | The engagement — before any code | A scoped SOW for one real process, with a baselined KPI, a named owner and a stated exit condition |
+| **2** | 6–14 | Python for production | A packaged, typed, logging service module installs clean from the lockfile on a bare box |
+| **3** | 15–21 | Async, concurrency & Linux | A blocking third-party call runs inside the loop without stalling it, proved under load |
+| **4** | 22–29 | Modern API development | The service streams, versions, and fails with a machine-readable body; tests go red first |
+| **5** | 30–38 | The model as a dependency | Structured output parses on 200 consecutive real inputs, or fails loudly and is counted |
+| **6** | 39–46 | Cloud fundamentals & networking | A private subnet reaches the model provider and nothing reaches it; budget alarm armed |
+| **7** | 47–52 | Containers & CI/CD | A tagged image ships to a container runtime through a pipeline that refuses a red test |
+| **8** | 53–61 | The transformer, taken apart | A decoder block you wrote passes a shape-and-gradient test and trains |
+| **9** | 62–67 | Inference optimization & scale | Measured tokens/sec before and after the cache, on your own machine, with the profile named |
+| **10** | 68–73 | Post-training: the lifecycle and the data | A domain SFT dataset, deduplicated and loss-masked, with the broken run kept beside it |
+| **11** | 74–80 | PEFT, SFT & preference alignment | One base model, two adapters, a measured preference win |
+| **12** | 81–85 | Evaluation, quantization & serving | A quantized checkpoint served with two hot-swappable adapters, and a judge you calibrated |
+| **13** | 86–89 | Reasoning, small models & distillation | A student that closes most of the gap at a fraction of the cost |
+| **14** | 90–94 | `yantra-model` — the domain model, shipped | Live endpoint; base vs SFT vs SFT+DPO report; the GGUF student benchmarked against the teacher |
+| **15** | 95–104 | Embeddings & retrieval | Hybrid + rerank beats the vector-only baseline on a golden set, with the number recorded |
+| **16** | 105–108 | Retrieval evaluation & adaptive RAG | A faithfulness gate you cannot pass by luck |
+| **17** | 109–115 | Graph & multimodal retrieval | A relationship question the vector index cannot answer, and a scanned page it could not read, both answered and cited |
+| **18** | 116–124 | Agents — tools, the loop & MCP | An MCP server and client you wrote, talking to each other across an authenticated boundary |
+| **19** | 125–132 | LangGraph — state, memory & multi-agent | A graph that survives a `kill -9` and resumes at the interrupt with no duplicated side effect |
+| **20** | 133–138 | Enterprise integration | A round trip through a SOAP endpoint and a Jira write, both idempotent under retry |
+| **21** | 139–143 | Identity & access | Two users with different roles ask the same question and get correctly different answers |
+| **22** | 144–149 | Security & guardrails | A documented red-team suite runs in CI; every attempt is contained and logged |
+| **23** | 150–154 | Observability & the gateway | One trace explains a bad answer end to end, and cost is attributable per tenant |
+| **24** | 155–160 | LLMOps — harness, evals & CI gating | A pull request blocked by a failing eval, with the score delta commented on it |
+| **25** | 161–167 | `yantra-platform` — the retrieval platform, delivered | Deployed in a private subnet, RAGAS gate green, UAT signed off against the Phase 1 baseline |
+| **26** | 168–173 | `yantra-agents` — the multi-agent system, delivered | Findings traceable to evidence, a destructive call blocked by policy in a trace, per-audit cost known |
+| **27** | 174–177 | `yantra-ship` — the LLMOps shell and the deploy | Blue/green deploy with an auto-rollback you triggered on purpose |
+| **28** | 178–181 | Handover, ROI & the defence | A stranger clones the repository and reaches a working system without asking you anything |
 <!-- granth:phases:end -->
 
 **Every phase gate also includes the freshness check (§18.2).** Phase 0 has nothing pinned yet, so
@@ -531,7 +602,7 @@ its freshness check is empty — but it still has a gate.
 
 ---
 
-## 17 · 🗓️ The 229-day map
+## 17 · 🗓️ The 182-day map
 
 > The authoritative day → ID assignment. A day closes **exactly** these IDs — no more, no fewer.
 > Day 0 closes none by design: it is the machine, the skeleton and the driver, which are
@@ -550,406 +621,385 @@ its freshness check is empty — but it still has a gate.
 | --- | --- | --- |
 | 0 | Toolchain and skeleton — one owner for the environment, a repo that cannot leak a key, and a first run of the gate that refuses a half-finished day | — |
 
-### Phase 1 — The transformer, taken apart (Days 1–12)
+### Phase 1 — The engagement (Days 1–5)
 
-*tokenization, embeddings, attention, the three architectures*
-
-| Day | Title | IDs closed |
-| --- | --- | --- |
-| 1 | What a language model actually is — the modelling objective, and next-token prediction followed end to end | TF-01, TF-02 |
-| 2 | Text to numbers — the tokenizer boundary and the taxonomy (word, subword, character, byte) | TF-03 |
-| 3 | Byte Pair Encoding, trained from scratch on your own corpus | TF-04 |
-| 4 | WordPiece and SentencePiece — likelihood-driven merges and the language-agnostic case | TF-05, TF-06 |
-| 5 | Tokenizer pathologies — vocabulary size, digits, code, whitespace and the multilingual tax | TF-07 |
-| 6 | Embeddings — discrete symbols into continuous space; the embedding matrix and weight tying | TF-08, TF-09 |
-| 7 | Positional encoding — why order has to be injected, and the sinusoidal original | TF-10 |
-| 8 | The attention mechanism from first principles — query, key, value; scaled dot-product | TF-11, TF-12 |
-| 9 | Self-attention and the causal mask — what a decoder is allowed to see | TF-13, TF-14 |
-| 10 | Multi-head attention — why more than one head, and what heads specialise into | TF-15, TF-16 |
-| 11 | The transformer block — residuals, layer norm, the feed-forward network, pre-norm vs post-norm | TF-17, TF-18, TF-19 |
-| 12 | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to choose | TF-20, TF-21, TF-22, TF-23, TF-24 |
-
-### Phase 2 — Attention in code, and three fine-tunes (Days 13–18)
-
-*hand-rolled attention; DistilBERT, DistilGPT, T5*
+*the client, the process, the number, the scope*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 13 | Coding attention I — a single head forward, and the mask in code | TF-25, TF-26 |
-| 14 | Coding attention II — batched multi-head, and a block that actually trains | TF-27, TF-28 |
-| 15 | Fine-tuning DistilBERT on custom data — the classification head and tokenizer alignment | TF-29, TF-30 |
-| 16 | Fine-tuning DistilGPT on custom data — causal LM collation and the label shift | TF-31, TF-32 |
-| 17 | Fine-tuning T5 on custom data — seq2seq collation, prefixes and generation config | TF-33, TF-34 |
-| 18 | The training loop that tells the truth — loss curves, overfitting, seeds and determinism | TF-35 |
+| 1 | What a forward deployed AI engineer actually owns — the last mile between a model demo and a system a business runs on Monday | FDE-01, FDE-02 |
+| 2 | The demo-to-production gap — why the vendor chatbot passed on sample documents and died on real scans | FDE-03 |
+| 3 | Discovery — shadowing the work, mapping the process as it is rather than as the org chart says, and finding the KPI that pays | FDE-04, FDE-05 |
+| 4 | Auditing the data before promising anything — five hundred records, and the versioned synthetic corpus every later day is built against | FDE-06 |
+| 5 | The scoped SOW and the stage gates — POC, pilot, production, and the one sentence that stops scope creep six weeks later | FDE-07, FDE-08 |
 
-### Phase 3 — Inference optimization & attention variants (Days 19–27)
+### Phase 2 — Python for production (Days 6–14)
 
-*KV cache, Flash, MQA/GQA/MLA, PagedAttention*
-
-| Day | Title | IDs closed |
-| --- | --- | --- |
-| 19 | The naive decoding problem — quadratic recompute, measured rather than asserted | TF-36, TF-37 |
-| 20 | The KV cache — what it stores and why the second token is cheap | TF-38, TF-39 |
-| 21 | KV cache memory math — batch, sequence, layers, precision, and the number that ends the argument | TF-40, TF-41 |
-| 22 | Flash Attention — IO-awareness, tiling, and why the speedup is not in the FLOPs | TF-42, TF-43 |
-| 23 | PyTorch SDPA — the unified attention API and its backend selection | TF-44 |
-| 24 | Multi-Query Attention — one KV head, and what it costs in quality | TF-45, TF-46 |
-| 25 | Grouped-Query Attention — the compromise that shipped | TF-47, TF-48 |
-| 26 | Multi-Head Latent Attention — compressing the cache instead of sharing it | TF-49, TF-50 |
-| 27 | PagedAttention, continuous batching and vLLM — the serving-side answer | TF-51, TF-52, TF-53 |
-
-### Phase 4 — Positional schemes, scaling laws & MoE (Days 28–33)
-
-*RoPE, Chinchilla, sparse experts*
+*the language under pressure*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 28 | RoPE — rotary embeddings, and what happens when you push past the trained context | TF-54, TF-55 |
-| 29 | Scaling laws for neural language models — the power law and what it predicts | TF-56, TF-57 |
-| 30 | Chinchilla — compute-optimal training, and the models that were trained wrong | TF-58, TF-59 |
-| 31 | The dense scaling wall and the Mixture-of-Experts idea | TF-60, TF-61 |
-| 32 | MoE architecture — the router, the experts, and load balancing against expert collapse | TF-62, TF-63, TF-64 |
-| 33 | Training and serving MoE; sparse vs soft variants; when dense still wins | TF-65, TF-66 |
+| 6 | Data structures as decisions — what list, dict, set and tuple actually cost at a million rows | SE-01 |
+| 7 | Memory management — references, the cycle collector, and where a long-running service quietly leaks | SE-02 |
+| 8 | Objects that model a domain — composition, protocols, and when a class is the wrong answer | SE-03 |
+| 9 | Type hints a checker can enforce — and the annotation that lies | SE-04 |
+| 10 | Pydantic as the boundary — validating everything that enters the process, exactly once | SE-05, SE-06 |
+| 11 | Exceptions that carry context — the hierarchy, and never swallowing a traceback | SE-07 |
+| 12 | File I/O, encodings, and the streaming read that does not eat the box | SE-08 |
+| 13 | Packaging and environments — uv, the lockfile, and an install that reproduces on a stranger's machine | SE-09 |
+| 14 | Project structure and structured logging — a layout that scales, and a log line an operator can grep at 3 a.m. | SE-10, SE-11, SE-12 |
 
-### Phase 5 — The post-training lifecycle & data (Days 34–45)
+### Phase 3 — Async, concurrency & Linux (Days 15–21)
+
+*the loop, the GIL, and the box you did not build*
+
+| Day | Title | IDs closed |
+| --- | --- | --- |
+| 15 | The event loop from the inside — what `await` actually suspends, and what it does not | SE-13, SE-14 |
+| 16 | Coroutines and tasks — fan-out, gather, and the exception that vanishes without a trace | SE-15, SE-16 |
+| 17 | Async context managers, and the connection that must be released even when the request dies | SE-17 |
+| 18 | Concurrency vs parallelism — the GIL, and the executor bridge for the blocking SDK you cannot avoid | SE-18, SE-19 |
+| 19 | The filesystem and the process table — navigating a box you did not build | SE-20 |
+| 20 | Permissions, users, and the container that runs as root because nobody said otherwise | SE-21, SE-22 |
+| 21 | Shell for operators and configuration precedence — `set -euo pipefail`, and proving where the value actually came from | SE-23, SE-24 |
+
+### Phase 4 — Modern API development (Days 22–29)
+
+*the service boundary*
+
+| Day | Title | IDs closed |
+| --- | --- | --- |
+| 22 | HTTP semantics an API owner cannot get wrong — methods, status codes, and idempotency | SE-25 |
+| 23 | FastAPI: the first endpoint, and exactly what the framework is doing on your behalf | SE-26 |
+| 24 | Request and response models — schemas at both boundaries, and the field you must never echo | SE-27 |
+| 25 | Dependency injection — the seam that makes a service testable instead of mockable | SE-28 |
+| 26 | Errors that surface rather than swallow — handlers, and an error body a client can act on | SE-29 |
+| 27 | Streaming responses and server-sent events — the first token in 300 ms, and the disconnect | SE-30 |
+| 28 | Versioning and deprecation without breaking the client who never reads email; GraphQL and when it is genuinely the right answer | SE-31, SE-32 |
+| 29 | Pytest that means something, contract tests, and the OpenAPI schema as the agreement between two teams | SE-33, SE-34 |
+
+### Phase 5 — The model as a dependency (Days 30–38)
+
+*tokens, the meter, the prompt, the parse*
+
+| Day | Title | IDs closed |
+| --- | --- | --- |
+| 30 | Tokens and the meter — what you are actually billed for, measured rather than assumed | CTX-01 |
+| 31 | The context window as a desk that gets wiped between every call — recency bias and the lost middle | CTX-02, CTX-03 |
+| 32 | Sampling — temperature, top-p, and why "set it to zero" is stability, not reproducibility | CTX-04 |
+| 33 | The first raw API call, pinned to a version you chose, behind a provider layer you can swap | CTX-05, CTX-06 |
+| 34 | System prompts and instruction design that survives a model swap | CTX-07 |
+| 35 | Anatomy of a prompt — zero-, one- and few-shot, and the examples that teach the wrong thing | CTX-08, CTX-09 |
+| 36 | Chain-of-thought, step-back, decomposition and self-refinement — and the thinking-token tax nobody budgets for | CTX-10, CTX-11 |
+| 37 | Structured output — JSON schema, Pydantic and grammars, and the parse that must not fail silently | CTX-12, CTX-13 |
+| 38 | Prompt fragility and the failure lab — a robustness test that goes red, then truncation, refusal, rate limit and malformed JSON at 3 a.m. | CTX-14, CTX-15, CTX-16 |
+
+### Phase 6 — Cloud fundamentals & networking (Days 39–46)
+
+*identity, the network, state, and the bill*
+
+| Day | Title | IDs closed |
+| --- | --- | --- |
+| 39 | The shared responsibility model — what the cloud is actually selling, and what stays yours | CLD-01 |
+| 40 | Identity and roles — and the policy that is quietly too broad | CLD-02 |
+| 41 | Least privilege in practice — scoping a role to one bucket, one prefix, one action | CLD-03 |
+| 42 | The private network — subnets, route tables, and why the private one has no route out | CLD-04 |
+| 43 | Security groups and network ACLs — the two firewalls everyone confuses | CLD-05 |
+| 44 | Private connectivity — NAT gateways, service endpoints, and the egress line on the bill | CLD-06 |
+| 45 | Object storage as the document lake, and a managed database with pooling from a service that scales horizontally | CLD-07, CLD-08 |
+| 46 | Secrets in the cloud, the cost model, and the budget alarm you arm before the first deploy rather than after the first invoice | CLD-09, CLD-10, CLD-11 |
+
+### Phase 7 — Containers & CI/CD (Days 47–52)
+
+*the image, the runtime, the pipeline*
+
+| Day | Title | IDs closed |
+| --- | --- | --- |
+| 47 | Images, layers and the build cache — a Dockerfile that rebuilds in seconds instead of minutes | CLD-12 |
+| 48 | Multi-stage builds, and a runtime image with no compiler, no shell history and no credential in a layer | CLD-13, CLD-14 |
+| 49 | Docker Compose — the whole stack on one laptop, including the parts you do not own | CLD-15 |
+| 50 | Health checks, signals and the graceful shutdown a load balancer will actually respect | CLD-16, CLD-17 |
+| 51 | The container runtime and its load balancer — task definitions, target groups, and diagnosing the task that keeps restarting | CLD-18, CLD-19 |
+| 52 | The pipeline that refuses to ship red — build, test, promote, and a stack you can destroy and recreate without a runbook of clicks | CLD-20, CLD-21, CLD-22 |
+
+### Phase 8 — The transformer, taken apart (Days 53–61)
+
+*tokens, embeddings, attention, the block*
+
+| Day | Title | IDs closed |
+| --- | --- | --- |
+| 53 | What a language model actually is — the modelling objective, and next-token prediction followed end to end | TF-01, TF-02 |
+| 54 | Text to numbers — the tokenizer boundary, the taxonomy, and Byte Pair Encoding trained from scratch on your own corpus | TF-03, TF-04, TF-05 |
+| 55 | WordPiece, SentencePiece and tokenizer pathologies — vocabulary size, digits, code, whitespace and the multilingual tax | TF-06, TF-07, TF-08 |
+| 56 | Embeddings — discrete symbols into continuous space; the embedding matrix, weight tying, and why order has to be injected | TF-09, TF-10, TF-11 |
+| 57 | The attention mechanism from first principles — query, key, value, and scaled dot-product | TF-12, TF-13 |
+| 58 | Self-attention, the causal mask, and multi-head attention — what a decoder is allowed to see, and what heads specialise into | TF-14, TF-15, TF-16 |
+| 59 | The transformer block — residuals, layer norm, the feed-forward network, and pre-norm vs post-norm | TF-17, TF-18, TF-19 |
+| 60 | Three architectures — encoder-only, decoder-only, encoder–decoder, cross-attention, and how to choose | TF-20, TF-21, TF-22 |
+| 61 | Coding attention — batched multi-head by hand, a block that actually trains, and a loss curve that tells the truth | TF-23, TF-24, TF-25 |
+
+### Phase 9 — Inference optimization & scale (Days 62–67)
+
+*the KV cache, Flash, the variants, the sizing argument*
+
+| Day | Title | IDs closed |
+| --- | --- | --- |
+| 62 | The naive decoding problem — quadratic recompute measured rather than asserted — and the KV cache that fixes it | TF-26, TF-27, TF-28 |
+| 63 | KV cache memory math, and Flash Attention — IO-awareness, tiling, and why the speedup is not in the FLOPs | TF-29, TF-30, TF-31 |
+| 64 | Multi-Query, Grouped-Query and Multi-Head Latent Attention — sharing the cache, then compressing it | TF-32, TF-33, TF-34 |
+| 65 | PagedAttention, continuous batching and vLLM — the serving-side answer; and PyTorch SDPA's backend selection | TF-35, TF-36, TF-37 |
+| 66 | RoPE — rotary embeddings, and what happens when you push past the trained context | TF-38, TF-39 |
+| 67 | Scaling laws, compute-optimal training, and Mixture-of-Experts — the sizing argument you make before you spend money | TF-40, TF-41, TF-42, TF-43 |
+
+### Phase 10 — Post-training: the lifecycle and the data (Days 68–73)
 
 *CPT, formats, loss masking, synthetic data*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 34 | The two-phase lifecycle — pre-training vs post-training, and what pre-training produces | FT-01, FT-02 |
-| 35 | Why a base model is not useful out of the box — CLM, MLM and Prefix-LM recapped | FT-03, FT-04 |
-| 36 | Data curation and filtering at scale — quality heuristics, dedup, contamination | FT-05, FT-06 |
-| 37 | Continued pre-training for domain adaptation — and when to skip it for SFT | FT-07, FT-08 |
-| 38 | The compute budget problem, applied to your own run | FT-09 |
-| 39 | Multi-Token Prediction — predicting more than one step ahead | FT-10 |
-| 40 | Dataset formats and chat templates — instruction pairs, ChatML, LLaMA-3, Mistral | FT-11, FT-12 |
-| 41 | Loss masking — what it is, and exactly what breaks without it | FT-13, FT-14 |
-| 42 | Deduplication and filtering pipelines you can run | FT-15, FT-16 |
-| 43 | Synthetic data I — why data is the leverage point; the taxonomy; Self-Instruct and Alpaca | FT-17, FT-18, FT-19 |
-| 44 | Synthetic data II — preference pairs, LLM-as-Judge scoring, and distilabel/Argilla | FT-20, FT-21, FT-22 |
-| 45 | Model collapse and data poisoning — the two ways a synthetic pipeline rots | FT-23, FT-24 |
+| 68 | The two-phase lifecycle — pre-training vs post-training, what pre-training produces, and why a base model is not useful out of the box | FT-01, FT-02, FT-03 |
+| 69 | Data curation and filtering at scale — quality heuristics, deduplication, and benchmark contamination | FT-04, FT-05 |
+| 70 | Continued pre-training for domain adaptation — and knowing when to skip it and go straight to SFT | FT-06, FT-07 |
+| 71 | Dataset formats and chat templates — instruction pairs, the template that must match the base, and the mismatch that silently degrades everything | FT-08, FT-09 |
+| 72 | Loss masking — what it is, and exactly what breaks without it, run broken on purpose | FT-10, FT-11 |
+| 73 | Synthetic data — the taxonomy, self-instruction, preference pairs, judge-scored generation, and the two ways a synthetic pipeline rots | FT-12, FT-13, FT-14, FT-15 |
 
-### Phase 6 — PEFT, SFT & preference alignment (Days 46–58)
+### Phase 11 — PEFT, SFT & preference alignment (Days 74–80)
 
-*LoRA, QLoRA, DoRA, SFT, RLHF, DPO*
+*LoRA, QLoRA, SFT, DPO*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 46 | The intrinsic dimensionality insight — why a low-rank update is enough | FT-25 |
-| 47 | LoRA — the math, rank, alpha, and which modules to target | FT-26, FT-27 |
-| 48 | LoRA in practice with PEFT — adapters on disk, merged and unmerged | FT-28 |
-| 49 | QLoRA — 4-bit NF4, double quantization, paged optimizers | FT-29, FT-30, FT-31 |
-| 50 | DoRA — decomposing magnitude from direction | FT-32 |
-| 51 | AdaLoRA and LoRA+ — adaptive rank, and separate learning rates for A and B | FT-33, FT-34 |
-| 52 | Supervised fine-tuning as stage 1 — SFTTrainer, end to end | FT-35, FT-36 |
-| 53 | Instruction tuning — FLAN, Alpaca, OpenHermes and what a good instruction set looks like | FT-37, FT-38 |
-| 54 | Chat and conversational fine-tuning — multi-turn data without leakage | FT-39 |
-| 55 | Chain-of-thought fine-tuning — training the reasoning trace, not just the answer | FT-40 |
-| 56 | Domain-specific fine-tuning — best practices and catastrophic forgetting | FT-41, FT-42 |
-| 57 | Why SFT alone is not enough — RLHF with PPO: reward model, critic, KL penalty | FT-43, FT-44, FT-45 |
-| 58 | DPO — direct preference optimization without a reward model; GRPO and ORPO in one page | FT-46, FT-47, FT-48 |
+| 74 | The intrinsic dimensionality insight, and LoRA — the math, rank, alpha, and which modules to target | FT-16, FT-17, FT-18 |
+| 75 | LoRA in practice — adapters on disk, merged and unmerged, and what each costs at serving time | FT-19, FT-20 |
+| 76 | QLoRA — 4-bit NF4, double quantization, and paged optimizers | FT-21, FT-22 |
+| 77 | DoRA, AdaLoRA and LoRA+ — decomposing magnitude from direction, adaptive rank, and separate learning rates | FT-23, FT-24 |
+| 78 | Supervised fine-tuning end to end — the trainer, instruction tuning, and multi-turn data without leakage | FT-25, FT-26, FT-27 |
+| 79 | Chain-of-thought fine-tuning, domain adaptation, and catastrophic forgetting | FT-28, FT-29 |
+| 80 | Why SFT alone is not enough — RLHF with PPO, then DPO without a reward model, with GRPO and ORPO in one page | FT-30, FT-31, FT-32, FT-33 |
 
-### Phase 7 — Eval, quantization & multi-adapter serving (Days 59–69)
+### Phase 12 — Evaluation, quantization & serving (Days 81–85)
 
-*judges, GPTQ/AWQ/GGUF, vLLM, SGLang*
+*judges, GPTQ/AWQ/GGUF, vLLM*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 59 | Why evaluation belongs inside the fine-tuning loop — and the three benchmark families | FT-49, FT-50 |
-| 60 | LLM-as-judge — MT-Bench, Chatbot Arena, and calibrating a judge you can trust | FT-51, FT-52 |
-| 61 | Designing a domain evaluation that can fail | FT-53 |
-| 62 | Post-training quantization I — GPTQ | FT-54, FT-55 |
-| 63 | Post-training quantization II — AWQ, bitsandbytes NF4, FP8 | FT-56, FT-57 |
-| 64 | Merging LoRA adapters before serving — and when not to | FT-58 |
-| 65 | vLLM as a serving engine — paged KV, scheduling, and the OpenAI-compatible surface | FT-59, FT-60 |
-| 66 | SGLang, and serving many LoRA adapters from one base model | FT-61, FT-62 |
-| 67 | GGUF and llama.cpp — the CPU path | FT-63, FT-64 |
-| 68 | Speculative decoding — a draft model that pays for itself | FT-65 |
-| 69 | The tooling landscape — TRL, Unsloth, Axolotl, LLaMA-Factory, and managed fine-tuning | FT-66, FT-67, FT-68 |
+| 81 | Why evaluation belongs inside the fine-tuning loop — and the three benchmark families | FT-34, FT-35 |
+| 82 | LLM-as-judge — calibrating a judge you can trust, and designing a domain evaluation that can fail | FT-36, FT-37, FT-38 |
+| 83 | Post-training quantization — GPTQ, AWQ, NF4 and FP8, with the quality delta measured rather than assumed | FT-39, FT-40, FT-41 |
+| 84 | GGUF and llama.cpp — the CPU path; and merging adapters before serving, or deliberately not | FT-42, FT-43 |
+| 85 | vLLM and SGLang — paged KV, the OpenAI-compatible surface, and many adapters served from one base | FT-44, FT-45, FT-46 |
 
-### Phase 8 — Project 01 · MedScript AI (Days 70–77)
+### Phase 13 — Reasoning, small models & distillation (Days 86–89)
 
-*the medical post-training pipeline, shipped*
+*CoT trained, student–teacher, KL*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 70 | Project 01 kickoff — the medical post-training pipeline, the datasets, and their licences | PRJ-01 |
-| 71 | Synthetic medical instruction data with distilabel | PRJ-02 |
-| 72 | The SFT dataset — deduplication, chat format, loss masking, pushed to the Hub | PRJ-03 |
-| 73 | Stage 1 — QLoRA SFT on Llama-3.1-8B-Instruct | PRJ-04 |
-| 74 | Stage 2 — DPO preference alignment over one epoch | PRJ-05 |
-| 75 | Evaluation — ROUGE-L, BERTScore, and a judge on medical accuracy, safety and tone | PRJ-06 |
-| 76 | The multi-adapter vLLM server and FastAPI adapter routing | PRJ-07 |
-| 77 | Containerise, deploy to a SageMaker endpoint, trace it — and the phase gate | PRJ-08 |
+| 86 | What a reasoning model is — chain-of-thought prompted, then trained; verifiable rewards, and what skipping supervised fine-tuning cost | FT-47, FT-48, FT-49 |
+| 87 | Small language models — why cost, latency and privacy make them the default, and pruning as the other lever | FT-50, FT-51 |
+| 88 | The student–teacher paradigm — hard labels, soft labels, temperature scaling, and the KL divergence loss written from scratch | FT-52, FT-53, FT-54 |
+| 89 | A distillation pipeline end to end — teacher data, student design, choosing the scale, and speculative decoding as the cheaper cousin | FT-55, FT-56, FT-57 |
 
-### Phase 9 — Reasoning, SLMs & knowledge distillation (Days 78–88)
+### Phase 14 — `yantra-model` — the domain model, shipped (Days 90–94)
 
-*CoT, R1-Zero, student-teacher, KL*
+*the claims post-training pipeline, delivered*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 78 | What a reasoning model is, and how it differs from a standard LLM | FT-69, FT-70 |
-| 79 | Chain-of-thought as the foundation — prompted, then trained | FT-71 |
-| 80 | The reasoning training recipe — verifiable rewards and the RL loop | FT-72, FT-73 |
-| 81 | R1-Zero — skipping supervised fine-tuning entirely, and what it cost | FT-74, FT-75 |
-| 82 | Distilling reasoning without RL | FT-76 |
-| 83 | What a Small Language Model is, and why cost, latency and privacy make it the default | FT-77, FT-78 |
-| 84 | The SLM design philosophy — and pruning as the other lever | FT-79, FT-80 |
-| 85 | The student–teacher paradigm — and what 'knowledge' actually means here | FT-81, FT-82 |
-| 86 | Hard labels, soft labels and temperature scaling | FT-83, FT-84 |
-| 87 | The KL divergence loss and attention transfer | FT-85, FT-86 |
-| 88 | A distillation pipeline end to end — teacher data, student design, training, and choosing the scale | FT-87, FT-88, FT-89, FT-90 |
+| 90 | Kickoff — the claims-domain post-training pipeline, the datasets, and their licences checked before a single download | PRJ-01 |
+| 91 | The SFT dataset — synthetic generation, deduplication, chat formatting, loss masking, and the versioned artifact | PRJ-02 |
+| 92 | Stage 1 QLoRA supervised fine-tuning, then Stage 2 DPO preference alignment over one epoch | PRJ-03, PRJ-04 |
+| 93 | Evaluation — surface metrics, a calibrated judge on accuracy, safety and tone, and the distilled GGUF student benchmarked against its teacher | PRJ-05, PRJ-06 |
+| 94 | The multi-adapter server, containerised, deployed and traced — and the phase gate | PRJ-07 |
 
-### Phase 10 — Project 02 · EdgeReason (Days 89–95)
+### Phase 15 — Embeddings & retrieval (Days 95–104)
 
-*distillation to CPU inference, shipped*
+*the taxonomy, chunking, the three families, fusion*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 89 | Project 02 kickoff — teacher and student selection, GSM8K and MATH | PRJ-09 |
-| 90 | Teacher logit extraction and soft-label storage at temperature | PRJ-10 |
-| 91 | KL divergence and attention transfer, implemented from scratch | PRJ-11 |
-| 92 | The custom training loop, and loss curves that are actually read | PRJ-12 |
-| 93 | The ablation study — which loss term earned its place | PRJ-13 |
-| 94 | GGUF conversion across quantisation levels | PRJ-14 |
-| 95 | llama-server on CPU — tokens/sec and first-token latency against the teacher; the gate | PRJ-15 |
+| 95 | Embeddings — what a vector actually encodes, the question it cannot represent, and the dense/sparse/multi-vector taxonomy | RAG-01, RAG-02, RAG-03 |
+| 96 | Quantized and binary embeddings, and Matryoshka representation learning — float32 to int8 to one bit, and flexible dimensions at query time | RAG-04, RAG-05, RAG-06 |
+| 97 | Embedding fine-tuning on your own corpus — hard negatives, and the gain measured against the off-the-shelf baseline | RAG-07, RAG-08 |
+| 98 | Chunking — fixed, recursive and semantic, and exactly what each strategy destroys | RAG-09, RAG-10 |
+| 99 | Vanilla RAG, end to end and by hand, with no framework anywhere near it | RAG-11, RAG-12 |
+| 100 | Vector stores — self-hosted and managed, namespaces, and metadata that filters before it ranks | RAG-13, RAG-14 |
+| 101 | BM25, and the queries where vectors lose badly | RAG-15 |
+| 102 | Learned sparse and late interaction — SPLADE, ColBERT and MaxSim, and why one vector per document is not always enough | RAG-16, RAG-17 |
+| 103 | Hybrid retrieval and reciprocal rank fusion; query rewriting, decomposition and HyDE | RAG-18, RAG-19, RAG-20 |
+| 104 | Rerankers — the cross-encoder that fixes a top-k nobody would have shipped, and citations a compliance officer can audit line by line | RAG-21, RAG-22, RAG-23 |
 
-### Phase 11 — Vision transformers, VLMs & speech (Days 96–107)
+### Phase 16 — Retrieval evaluation & adaptive RAG (Days 105–108)
 
-*ViT, CLIP/SigLIP/DINOv2, VLMs, Whisper*
-
-| Day | Title | IDs closed |
-| --- | --- | --- |
-| 96 | From CNN to Vision Transformer — the conceptual bridge | VIS-01, VIS-02 |
-| 97 | An image as a sequence of patches — patch embedding in code | VIS-03, VIS-04 |
-| 98 | The CLS token and positional encoding for 2D inputs | VIS-05, VIS-06 |
-| 99 | The transformer encoder running on visual tokens | VIS-07 |
-| 100 | Attention maps — what a ViT actually looks at | VIS-08 |
-| 101 | CNN vs ViT — inductive bias, data hunger, and the core tradeoff | VIS-09 |
-| 102 | CLIP — contrastive language–image pre-training | VIS-10, VIS-11 |
-| 103 | SigLIP and DINOv2 — a sigmoid loss, and self-supervised vision | VIS-12, VIS-13 |
-| 104 | Visual Language Models — the three-component architecture | VIS-14, VIS-15 |
-| 105 | The aligner/projector — how visual tokens enter the LLM's embedding space | VIS-16, VIS-17, VIS-18 |
-| 106 | Speech AI and speech-to-text foundations; the Whisper architecture | VIS-19, VIS-20 |
-| 107 | Whisper in practice — the API, an STT pipeline, dataset preparation, and fine-tuning on custom audio | VIS-21, VIS-22, VIS-23, VIS-24 |
-
-### Phase 12 — Prompt & context engineering (Days 108–114)
-
-*prompt anatomy, CoT, compression, memory*
+*the golden set, the gate, the router, the cache*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 108 | Anatomy of a prompt — instruction, context, input, output format; zero-, one- and few-shot | CTX-01, CTX-02 |
-| 109 | System prompt design and role assignment | CTX-03 |
-| 110 | Chain-of-thought and step-back prompting | CTX-04, CTX-05 |
-| 111 | Structured generation — JSON mode, XML tags, and grammars | CTX-06 |
-| 112 | Prompt sensitivity and fragility — a robustness test that goes red | CTX-07, CTX-08 |
-| 113 | Prompt chaining, decomposition, meta-prompting and self-refinement loops | CTX-09, CTX-10 |
-| 114 | The context window — anatomy, recency bias, memory architectures, and compression with LLMLingua and RECOMP | CTX-11, CTX-12, CTX-13, CTX-14 |
+| 105 | Retrieval evaluation — a golden set, recall@k, and the number that has to move | RAG-24, RAG-25 |
+| 106 | RAGAS and DeepEval — faithfulness, relevancy, context precision and recall, and what a single score hides | RAG-26, RAG-27 |
+| 107 | Self-RAG, Corrective RAG, Adaptive and Agentic RAG — the model deciding when to retrieve, measured against the fixed pipeline | RAG-28, RAG-29, RAG-30 |
+| 108 | Vector quantization at scale — scalar, binary and product quantization — and caching, including the semantic cache that returns the wrong answer fast | RAG-31, RAG-32, RAG-33 |
 
-### Phase 13 — Embeddings & LangChain orchestration (Days 115–126)
+### Phase 17 — Graph & multimodal retrieval (Days 109–115)
 
-*taxonomy, MRL, LCEL, LangSmith*
+*the relationship, and the page that is an image*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 115 | The embedding taxonomy — dense, sparse, and what each one preserves | RAG-01, RAG-02, RAG-03 |
-| 116 | Quantized and binary embeddings — float32 to int8 to one bit | RAG-04, RAG-05 |
-| 117 | Multi-vector embeddings — one document, many vectors | RAG-06 |
-| 118 | Matryoshka Representation Learning — flexible dimensions at query time | RAG-07, RAG-08 |
-| 119 | MRL embeddings in production — the truncation decision | RAG-09 |
-| 120 | Embedding fine-tuning — strategies, hard negatives, and doing it on your own corpus | RAG-10, RAG-11, RAG-12 |
-| 121 | LangChain architecture and the model abstraction | AGT-01, AGT-02 |
-| 122 | LCEL — composition, streaming, and the runnable interface | AGT-03, AGT-04 |
-| 123 | Output parsers and structured output in LangChain | AGT-05 |
-| 124 | Tool calling, memory and conversation history | AGT-06, AGT-07 |
-| 125 | Document loaders, text splitters and vector stores | AGT-08, AGT-09 |
-| 126 | Callbacks, tracing and LangSmith; deploying a LangChain API safely | AGT-10, AGT-11, AGT-12 |
+| 109 | When the answer is a relationship — the question retrieval structurally cannot answer, the property-graph model, and Cypher | RAG-34, RAG-35 |
+| 110 | Designing an enterprise schema, and building the graph out of documents nobody curated — entity extraction and resolution | RAG-36, RAG-37 |
+| 111 | GraphRAG — retrieval that traverses instead of ranking; the hybrid router that picks and explains why; and the relationship that went stale in silence | RAG-38, RAG-39, RAG-40 |
+| 112 | The document that defeats a text pipeline — scans, merged cells, rotated tables and charts — and what OCR costs at forty thousand pages a month | RAG-41, VIS-01 |
+| 113 | From CNN to Vision Transformer — an image as a sequence of patches, the CLS token, attention maps, and the data-hunger tradeoff | VIS-02, VIS-03, VIS-04 |
+| 114 | Contrastive and self-supervised vision encoders, and Visual Language Model architecture — the three components and the projector into the language model's embedding space | VIS-05, VIS-06, VIS-07 |
+| 115 | Retrieval directly over page images — late interaction on patch vectors, table and chart extraction into a schema you can query, routing to the cheap path, and the page that fails every single time | VIS-08, VIS-09, RAG-42, RAG-43 |
 
-### Phase 14 — RAG foundations & advanced retrieval (Days 127–137)
+### Phase 18 — Agents — tools, the loop & MCP (Days 116–124)
 
-*chunking, BM25, SPLADE, ColBERT, rerankers*
+*function calling, the hand-rolled loop, the boundary*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 127 | Vanilla RAG, end to end and by hand | RAG-13, RAG-14 |
-| 128 | Choosing an embedding model for retrieval — and measuring the choice | RAG-15 |
-| 129 | Chunking strategies and what each one destroys | RAG-16, RAG-17 |
-| 130 | BM25 and why lexical retrieval refuses to die | RAG-18 |
-| 131 | SPLADE — learned sparse retrieval | RAG-19 |
-| 132 | ColBERT-style late interaction and MaxSim | RAG-20 |
-| 133 | Hybrid RAG and Reciprocal Rank Fusion | RAG-21, RAG-22 |
-| 134 | Query transformations — rewriting, decomposition, HyDE | RAG-23, RAG-24 |
-| 135 | Rerankers — cross-encoders and the precision they buy | RAG-25, RAG-26 |
-| 136 | RAG evaluation with RAGAS — faithfulness, relevancy, context precision and recall | RAG-27, RAG-28 |
-| 137 | Self-RAG, Corrective RAG, Adaptive RAG and Agentic RAG — the LLM deciding when to retrieve | RAG-29, RAG-30, RAG-31, RAG-32 |
+| 116 | Why function calling exists — the model-to-tool communication problem, and function schema design | AGT-01, AGT-02 |
+| 117 | The function-calling lifecycle — the call, the result turn, parallel calls, and forced or constrained tool choice | AGT-03, AGT-04, AGT-05 |
+| 118 | Structured output vs function calling — the difference, when each is right, and the universal contract across providers | AGT-06, AGT-07 |
+| 119 | The think-act-observe loop, hand-rolled, with no framework anywhere near it | AGT-08, AGT-09 |
+| 120 | Where the hand-rolled loop breaks — state, retries, and resuming after a crash | AGT-10 |
+| 121 | Tool design — schemas, descriptions, and the tool an agent confidently misuses | AGT-11, AGT-12 |
+| 122 | Why MCP exists — tool fragmentation, hosts, clients and servers, and the primitives | AGT-13, AGT-14 |
+| 123 | MCP transports — stdio and streamable HTTP — and building a server from scratch, scoped to one job | AGT-15, AGT-16, AGT-17 |
+| 124 | Building an MCP client; the connection that drops mid-call; and authentication, authorization and trust boundaries | AGT-18, AGT-19, SEC-01 |
 
-### Phase 15 — Multimodal, graph & secured RAG (Days 138–147)
+### Phase 19 — LangGraph — state, memory & multi-agent (Days 125–132)
 
-*quantization, ColPali, Neo4j, guardrails*
+*the graph, the checkpoint, the supervisor, the approval*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 138 | Vector quantization for scale — scalar, binary and product quantization | RAG-33, RAG-34, RAG-35 |
-| 139 | Document parsing without OCR — layout detection and structure-aware chunking | RAG-36, RAG-37 |
-| 140 | The ColPali paradigm — retrieving over page images | RAG-38, RAG-39 |
-| 141 | Vision-language embeddings and VL rerankers | RAG-40, RAG-41 |
-| 142 | Graph RAG with Neo4j — entities, relationships and multi-hop questions | RAG-42, RAG-43 |
-| 143 | Vectorless retrieval — PageIndex | RAG-44 |
-| 144 | Caching and semantic caching in a RAG pipeline | RAG-45, RAG-46 |
-| 145 | PII masking with Presidio, before retrieval | SEC-01, SEC-02 |
-| 146 | Input and output guardrails with NeMo Guardrails | SEC-03, SEC-04 |
-| 147 | Prompt injection against a RAG system — the attack, then the defence | SEC-05, SEC-06 |
+| 125 | LangChain and LCEL — the model abstraction, composition, streaming, and an honest account of when not to use it | AGT-20, AGT-21 |
+| 126 | LangGraph foundations — state, nodes, edges, and the routing decision made explicit | AGT-22, AGT-23, AGT-24 |
+| 127 | Tool nodes and the ReAct agent, assembled deliberately rather than imported | AGT-25, AGT-26 |
+| 128 | Checkpointers — durable state, and the run that survives a `kill -9` with no duplicated side effect | AGT-27, AGT-28 |
+| 129 | Memory — the thread, long-term stores, namespaces, and the honest question of what is worth remembering | AGT-29, AGT-30 |
+| 130 | Context engineering for agents — selection, compaction, and the prompt that grew to eighty thousand tokens | AGT-31, AGT-32 |
+| 131 | Supervisors, handoffs and parallel subgraphs — delegating without passing the whole context, a join that does not drop a finding, and agent-to-agent protocols when the other agent is not yours | AGT-33, AGT-34, AGT-35 |
+| 132 | Human-in-the-loop — interrupts as a first-class state, an approval surface a busy professional will use rather than rubber-stamp, and a kill switch someone can find | AGT-36, AGT-37, AGT-38 |
 
-### Phase 16 — Project 03 · LexisGraph (Days 148–156)
+### Phase 20 — Enterprise integration (Days 133–138)
 
-*enterprise legal RAG, shipped*
+*the systems the client already runs*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 148 | Project 03 kickoff — CUAD, the legal corpus, and the retrieval contract | PRJ-16 |
-| 149 | ColPali indexing into Qdrant with MaxSim scoring | PRJ-17 |
-| 150 | Elasticsearch BM25 over the same corpus | PRJ-18 |
-| 151 | Entity extraction with an LLM and Pydantic, into a Neo4j graph | PRJ-19 |
-| 152 | Reciprocal Rank Fusion across all three retrievers | PRJ-20 |
-| 153 | Cross-encoder reranking on the fused candidates | PRJ-21 |
-| 154 | The adaptive query router — visual, exact-clause, relational, or all three | PRJ-22 |
-| 155 | Presidio and NeMo Guardrails wired into the pipeline | PRJ-23 |
-| 156 | The RAGAS faithfulness gate on golden QA pairs; FastAPI + LCEL + Docker | PRJ-24 |
+| 133 | The integration inventory — finding out what the client actually runs, not what they say they run | ENT-01 |
+| 134 | SQL as a tool — text-to-SQL, allowlists, a read-only role, a planner that refuses, and the query you must never let reach the database | ENT-02, ENT-03, SEC-02 |
+| 135 | SQL Server and Oracle — dialects, drivers, and the DBA whose job is to say no | ENT-04 |
+| 136 | SOAP, XML and file drops — WSDL, envelopes, a 2003 API that still runs payroll, and the SFTP batch that is genuinely the integration | ENT-05, ENT-06 |
+| 137 | Slack and Jira as the interface — events, blocks, transitions, a bot that does not become noise, and writing back without corrupting someone's board | ENT-07, ENT-08 |
+| 138 | Webhooks, retries and idempotency keys — surviving delivery you do not control, and the upstream that changed its schema at midnight | ENT-09, ENT-10 |
 
-### Phase 17 — Agent foundations, function calling & MCP (Days 157–170)
+### Phase 21 — Identity & access (Days 139–143)
 
-*Pydantic, schemas, executor loop, MCP*
+*who is asking, and what they may see*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 157 | Pydantic — models, fields and validators | AGT-13, AGT-14 |
-| 158 | Nested models, type coercion, custom validators and settings management | AGT-15, AGT-16 |
-| 159 | Why function calling exists — the LLM-to-tool communication problem | AGT-17 |
-| 160 | Function schema design — JSON Schema, descriptions and parameter typing | AGT-18, AGT-19 |
-| 161 | The function-calling request–response lifecycle | AGT-20 |
-| 162 | Parallel function calling — several tool calls in one response | AGT-21 |
-| 163 | Forced and constrained tool choice — required, none, and naming a tool | AGT-22 |
-| 164 | Structured output vs function calling — the difference, and when each is right | AGT-23 |
-| 165 | Building a tool executor loop from scratch | AGT-24, AGT-25 |
-| 166 | Function calling across providers — OpenAI, Anthropic, Google, and the universal contract | AGT-26, AGT-27 |
-| 167 | Why MCP exists — tool fragmentation; hosts, clients and servers | AGT-28, AGT-29 |
-| 168 | MCP primitives — tools, resources and prompts | AGT-30, AGT-31 |
-| 169 | MCP transport — stdio and SSE; building a server from scratch | AGT-32, AGT-33, AGT-34 |
-| 170 | Building an MCP client; authentication, authorization and trust boundaries | AGT-35, AGT-36, AGT-37 |
+| 139 | Authentication and authorisation — the distinction that leaks data the moment it blurs | ENT-11 |
+| 140 | OAuth 2.0 — the flows, the tokens, and the one you should actually be using | ENT-12, ENT-13 |
+| 141 | OIDC, SSO and SAML — logging in with the client's identity provider rather than your own | ENT-14, ENT-15 |
+| 142 | RBAC — roles, scopes, and a permission model that survives a reorganisation | ENT-16 |
+| 143 | Document-level access control inside retrieval itself, and the audit log that proves who saw what to someone who assumes you are wrong | ENT-17, ENT-18 |
 
-### Phase 18 — LangGraph: stateful & multi-agent workflows (Days 171–179)
+### Phase 22 — Security & guardrails (Days 144–149)
 
-*state, routing, ReACT, HITL, persistence*
+*the attack first, then the defence*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 171 | LangGraph foundations and the core graph model | AGT-38, AGT-39 |
-| 172 | State management — schemas, reducers and what belongs in state | AGT-40, AGT-41 |
-| 173 | Nodes, edges and conditional routing | AGT-42, AGT-43 |
-| 174 | Tool calling and the ReACT pattern as a graph | AGT-44, AGT-45 |
-| 175 | Human-in-the-loop — interrupts before a write | AGT-46, AGT-47 |
-| 176 | Memory and persistence across sessions — checkpointers | AGT-48, AGT-49 |
-| 177 | Multi-agent systems — supervisor and workers, and the shared-state contract | AGT-50, AGT-51 |
-| 178 | Streaming and observability out of a running graph | AGT-52 |
-| 179 | LangGraph Platform; orchestrating several MCP servers from one graph | AGT-53, AGT-54 |
+| 144 | The threat model — what an AI system adds to an attack surface that already existed | SEC-03 |
+| 145 | Prompt injection, direct and indirect — the document that is also an instruction | SEC-04, SEC-05 |
+| 146 | Data exfiltration through a helpful assistant, and jailbreaks a longer system prompt does not stop | SEC-06, SEC-07 |
+| 147 | PII — detection before the model ever sees it, masking, tokenisation, and the redaction that has to be reversible for the adjuster | SEC-08, SEC-09 |
+| 148 | Guardrails as configuration — rails, provider-side filters, defence in depth, and an honest account of their limits with the latency cost measured | SEC-10, SEC-11 |
+| 149 | The red-team day — break your own system on purpose, then put every attempt into CI so it stays broken | SEC-12, SEC-13 |
 
-### Phase 19 — Production agents: A2A, AgentCore & observability (Days 180–192)
+### Phase 23 — Observability & the gateway (Days 150–154)
 
-*agent cards, runtime, memory, identity*
+*the trace that explains a bad answer*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 180 | Agent observability with LangSmith and Logfire | AGT-55, AGT-56 |
-| 181 | Why A2A exists — the multi-agent interoperability problem | AGT-57, AGT-58 |
-| 182 | Agent Cards — capability discovery and the well-known endpoint | AGT-59 |
-| 183 | The A2A task model — submitted, working, completed, failed, streaming | AGT-60 |
-| 184 | A2A transport — HTTP, SSE and the JSON-RPC message structure | AGT-61 |
-| 185 | Building an A2A-compliant agent server | AGT-62, AGT-63 |
-| 186 | Building an A2A client; A2A vs MCP and how they compose | AGT-64, AGT-65 |
-| 187 | Bedrock AgentCore and the agentic stack; Runtime, microVM isolation and session windows | AGT-66, AGT-67 |
-| 188 | Strands Agents; framework-agnostic deployment of a LangGraph agent to AgentCore | AGT-68, AGT-69 |
-| 189 | AgentCore Memory — short-term, long-term and cross-session persistence | AGT-70, AGT-71 |
-| 190 | AgentCore Gateway — exposing APIs, Lambda functions and MCP servers as tools | AGT-72, AGT-73 |
-| 191 | AgentCore Identity — IAM roles per agent, OAuth, user-delegated access and secrets | AGT-74, SEC-07, SEC-08 |
-| 192 | AgentCore Browser and Code Interpreter; deploying with the CLI, CodeBuild, ECR and an ARM64 runtime | AGT-75, AGT-76, AGT-77 |
+| 150 | Tracing an LLM system — spans, and the trace tree that finally explains a bad answer | OPS-01, OPS-02 |
+| 151 | Structured logs and correlation IDs across a multi-step agent run | OPS-03 |
+| 152 | Token accounting — attributing cost to a user, a tenant and a feature — and latency budgets that find where the time actually goes | OPS-04, OPS-05 |
+| 153 | The LLM gateway — routing, fallbacks, and provider abstraction that survives an outage | OPS-06, OPS-07 |
+| 154 | Rate limits, retries and backoff that is honest about failing; and online evals that catch the regression that shipped anyway | OPS-08, OPS-09 |
 
-### Phase 20 — Agent supervision, policy & guardrails (Days 193–197)
+### Phase 24 — LLMOps — harness, evals & CI gating (Days 155–160)
 
-*supervisor patterns, Cedar, sandboxes*
+*the eval that blocks a merge*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 193 | Multi-agent orchestration at scale — supervisor patterns that survive contact | AGT-78, AGT-79 |
-| 194 | AgentCore Observability — CloudWatch, X-Ray, OTEL and third-party monitoring | AGT-80, AGT-81 |
-| 195 | Cedar policies and real-time tool-call interception | SEC-09, SEC-10 |
-| 196 | Agent threat modelling — blast radius before capability | SEC-11 |
-| 197 | Sandboxed tool execution — E2B, Modal, Docker | SEC-12, AGT-82 |
+| 155 | Why ad-hoc testing fails — evaluation harness fundamentals, and benchmarking with a standard harness | OPS-10, OPS-11 |
+| 156 | Agent-native evaluation — task, solver and scorer, and evaluating a trajectory rather than a string | OPS-12, OPS-13 |
+| 157 | LLM-as-judge pipelines at scale — model-graded scoring, calibration, and the biases a judge brings | OPS-14, OPS-15 |
+| 158 | Prompt regression and snapshot testing; golden datasets — building them, versioning them, and keeping them honest | OPS-16, OPS-17, OPS-18 |
+| 159 | Trace-based testing and flaky-test detection; harness patterns — iteration guards, fallbacks and token budgets | OPS-19, OPS-20 |
+| 160 | Agent CI/CD — eval gating on a pull request, with cost and latency regression guards and the delta commented | OPS-21, OPS-22, OPS-23 |
 
-### Phase 21 — Project 04 · AutoOps (Days 198–205)
+### Phase 25 — `yantra-platform` — the retrieval platform, delivered (Days 161–167)
 
-*the DevOps multi-agent system, shipped*
-
-| Day | Title | IDs closed |
-| --- | --- | --- |
-| 198 | Project 04 kickoff — the supervisor graph, the sub-agents and the shared state | PRJ-25 |
-| 199 | The GitHub agent as a FastMCP server | PRJ-26 |
-| 200 | The CloudWatch agent as a FastMCP server | PRJ-27 |
-| 201 | The Code Review and Monitoring agents | PRJ-28 |
-| 202 | A2A peer delegation between the sub-agents | PRJ-29 |
-| 203 | HITL interrupts and exact checkpoint resume from SQLite | PRJ-30 |
-| 204 | Deploying to the cloud agent runtime — gateway, memory, identity | PRJ-31 |
-| 205 | Cedar policies, observability, and the incident-to-issue demo | PRJ-32 |
-
-### Phase 22 — Harness engineering, evals & agent CI/CD (Days 206–216)
-
-*Inspect AI, PromptFoo, eval gating*
+*hybrid, graph, visual, secured, deployed*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 206 | Why ad-hoc testing fails — evaluation harness fundamentals | OPS-01, OPS-02 |
-| 207 | LLM benchmarking with lm-evaluation-harness — MMLU, GSM8K, TruthfulQA | OPS-03, OPS-04 |
-| 208 | Agent-native evaluation with Inspect AI — Task, Solver, Scorer | OPS-05, OPS-06 |
-| 209 | LLM-as-Judge pipelines — model-graded scoring, calibration and bias | OPS-07, OPS-08 |
-| 210 | Prompt regression and snapshot testing with PromptFoo | OPS-09, OPS-10 |
-| 211 | Golden datasets — building them, versioning them, and keeping them honest | OPS-11 |
-| 212 | Trace-based testing and flaky-test detection | OPS-12, OPS-13 |
-| 213 | Agent state, checkpointing and ReAct harness patterns — iteration guards, fallbacks, token budgets | OPS-14, OPS-15 |
-| 214 | Multi-agent execution harnesses — the supervisor–worker contract as a test | OPS-16 |
-| 215 | Agent CI/CD — GitHub Actions and eval gating on pull requests | OPS-17, OPS-18 |
-| 216 | Cost and latency regression guards | OPS-19, OPS-20 |
+| 161 | Kickoff — the engagement brief, the data classification, the architecture diagram a CIO signs and a security team does not reject, and what is out of scope | PRJ-08, FDE-09 |
+| 162 | Hybrid retrieval over the client corpus, wired end to end for the first time | PRJ-09 |
+| 163 | The graph and the page-image index — the relational question and the scanned bundle, both answered | PRJ-10 |
+| 164 | The adaptive router across all three retrievers, with cross-encoder reranking on the fused candidates | PRJ-11, PRJ-12 |
+| 165 | Secure text-to-SQL against the claims database, and OAuth with RBAC across the whole surface rather than just the front door | PRJ-13, PRJ-14 |
+| 166 | PII masking and rails placed in the request path, with the latency cost measured and stated | PRJ-15 |
+| 167 | Deployed to a private endpoint behind a scanned image; the faithfulness gate on golden QA pairs; and the evaluation report the client will actually read | PRJ-16, PRJ-17, FDE-10 |
 
-### Phase 23 — Project 05 · ShipLLM (Days 217–224)
+### Phase 26 — `yantra-agents` — the multi-agent system, delivered (Days 168–173)
 
-*the LLMOps shell over all four services*
+*supervisor, boundaries, approval, cost*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 217 | Project 05 kickoff — the monorepo, the golden test suite and the gate contract | PRJ-33 |
-| 218 | Stages 1–2 — lint, unit tests, and prompt regression against the golden baseline | PRJ-34 |
-| 219 | Stage 3 — the per-service evaluation score gate | PRJ-35 |
-| 220 | Stage 4 — cost and performance regression guard, and the score delta posted on the PR | PRJ-36 |
-| 221 | Stage 5 — multi-stage container builds and the registry push | PRJ-37 |
-| 222 | Stage 6 — smoke tests on staging with golden cases | PRJ-38 |
-| 223 | Blue/green deployment with gradual traffic shifting | PRJ-39, OPS-21 |
-| 224 | Auto-rollback on an error-rate breach, and the LLM metrics dashboard | PRJ-40, OPS-22 |
+| 168 | Kickoff — the compliance process mapped before a single agent is drawn, and the supervisor topology with the argument against having one | PRJ-18, FDE-11 |
+| 169 | The specialist agents behind MCP servers, scoped to exactly what the audit needs and nothing more | PRJ-19, PRJ-20 |
+| 170 | Trust boundaries and policy — deciding what each agent may touch, and proving it cannot touch the rest | PRJ-21, SEC-14 |
+| 171 | Human approval on every write, and exact checkpoint resume after the process is killed mid-run | PRJ-22, PRJ-23 |
+| 172 | Parallel audit execution with a join that must not silently lose a finding, and sandboxed tool execution for the step that runs code | PRJ-24, SEC-15 |
+| 173 | The traceability dashboard — every finding back to its evidence — the per-audit unit economics, and the pilot gate reported honestly | PRJ-25, PRJ-26 |
 
-### Phase 24 — Capstone (Days 225–228)
+### Phase 27 — `yantra-ship` — the LLMOps shell and the deploy (Days 174–177)
 
-*the whole system, defended*
+*the gate contract, and the rollback you trigger*
 
 | Day | Title | IDs closed |
 | --- | --- | --- |
-| 225 | One request, traced through every service in the system | PRJ-41 |
-| 226 | The cost model — what the whole system costs per thousand requests | PRJ-42 |
-| 227 | The public repository audit, and the README a stranger reads | PRJ-43 |
-| 228 | The defence — the demo, and the answers to the questions it invites | PRJ-44 |
+| 174 | The monorepo, the golden suite and the gate contract — lint, unit tests, and prompt regression against the baseline built on Day 38 | PRJ-27, PRJ-28 |
+| 175 | The per-service evaluation score gate, and the score delta posted on the pull request | PRJ-29, PRJ-30 |
+| 176 | Multi-stage container builds, the registry push, and smoke tests on staging with golden cases | PRJ-31, PRJ-32 |
+| 177 | Blue/green deployment with gradual traffic shifting, and an auto-rollback on an error-rate breach that you trigger on purpose | PRJ-33, OPS-24, OPS-25 |
 
+### Phase 28 — Handover, ROI & the defence (Days 178–181)
+
+*the day you stop being on call*
+
+| Day | Title | IDs closed |
+| --- | --- | --- |
+| 178 | Change management for the users who never asked for any of this, and training and runbooks that survive your exit from the account | FDE-12, FDE-13 |
+| 179 | The handoff to the client's own team, and the ROI presentation — model metrics translated into money a CFO recognises, against the Day 3 baseline | FDE-14, FDE-15 |
+| 180 | One request traced through every service in the system, and the cost model per thousand requests | PRJ-34, PRJ-35 |
+| 181 | The defence — the public repository a stranger can clone and run, the case-study write-up, and the interview loop: system design, the client case, and the coding round | PRJ-36, FDE-16, FDE-17 |
 <!-- granth:day-map:end -->
 
 ---
-
 ## 18 · 🚦 Phase gates & the freshness check
 
 ### 18.1 A phase is green only when
@@ -1069,7 +1119,7 @@ days/day-NNN-<day-slug>/
 `parts/` is mandatory. **A day with no `parts/` directory is, by definition, not written.**
 
 **Every folder name carries its subject.** `days/day-137/` and `parts/02/` are addresses, not
-answers, and 229 days of them are indistinguishable in a file tree, a `git log` or an editor's tab
+answers, and 182 days of them are indistinguishable in a file tree, a `git log` or an editor's tab
 bar. So the number is followed by a short kebab-case slug naming what is inside.
 
 | Folder | Shape | Slug from | Length |
@@ -1113,7 +1163,7 @@ unconditional.
 | 2 | **One-line answer** | The subtopic's claim in a single sentence, before anything else. A reader who reads only this line has learned something true. |
 | 3 | **The story** | A concrete scene before any abstraction: a person, a machine, a failure, a decision. It comes **first**, in plain words, with **no jargon at all**. Four rules: **(a)** a scene the reader has plausibly lived in — a parcel and a courier, a repair-shop job card, a used car checked by a mechanic. Not a nautical chart or a theatre programme. If the reader must first be told what the setting *is*, the analogy is carrying the explanation instead of hooking it. **(b)** simple words, short sentences. **(c)** load-bearing — the scene holds the actual failure the part teaches, and every later section reaching back for it must still fit. **(d)** one metaphor family per day. |
 | 4 | **The idea in plain language** | The concept itself, assuming the reader has never met it. Every term defined the first time it appears — **including terms from earlier days**, with a link to the part that introduced them, never an assumption of recall. No code. |
-| 5 | **Why Yantra needs it** | The concrete later day that breaks without this. *"You meet this again on Day 149, where ColPali writes patch vectors into a multi-vector index"* is the shape. Never "this is important". |
+| 5 | **Why Yantra needs it** | The concrete later day that breaks without this. *"You meet this again on Day 115, where late interaction writes patch vectors into a multi-vector index"* is the shape. Never "this is important". |
 | 6 | **The source behind it** | **Conditional — present exactly when the idea has a public, citable origin a reader could go and read**: a paper, a numbered spec revision, a formal technical report. It is **an address, not an explanation** — the explanation is a source part of its own. Three things: the citation block (exact title · identifier · year · URL — **no author names**), one sentence on what it claimed, and a link to the source part that teaches it. A part whose subject is a tool, a command or an SDK surface has no source and does not carry this section. |
 | 7 | **The mechanism** | How it actually works: the runnable code, the protocol exchange written out, or the diagram. Nothing skipped as "obvious". Mermaid whenever the concept is spatial, sequential, or a state machine. |
 | 8 | **Line by line** | Every non-obvious token of every code block explained — and *why it is that line and not another*. Written as a `**Line by line:**` list **immediately after each code block**, so the reader never scrolls to find the explanation of what they are looking at. Blocks showing error output, a bare check command, or a diagram are exempt. **An unexplained line is a bug in the document.** **Conditional:** a part carrying no code needing a walkthrough does not carry this section. |
@@ -1126,7 +1176,7 @@ Three further rules with no section of their own:
 
 - **The one-idea test.** If a part needs "also" to introduce its second half, split it.
 - **The standalone test.** A part must be readable cold. If it depends on an earlier idea, **name
-  that part and link it** — never assume the reader remembers Day 20 on Day 190.
+  that part and link it** — never assume the reader remembers Day 20 on Day 170.
 - **The no-shortcut test.** "For now, just accept that" is banned unless it links forward to the
   part that explains it. **A deferred explanation must have an address.**
 
@@ -1174,7 +1224,7 @@ one demo* — is **required**, and it is the section easiest to get wrong, so it
 3. **An ablation switch.** One flag that turns the contribution off, with **both runs' output**.
 4. **Costed.** The demo states what it costs to run — free tier, local, or rented, with the number.
 
-**A source is taught once in the whole curriculum.** 229 days will cite the same handful of
+**A source is taught once in the whole curriculum.** 182 days will cite the same handful of
 documents repeatedly. The day that **first** needs a source carries its part; every later day cites
 it in section 6 and links to that part.
 
@@ -1332,63 +1382,93 @@ is completed by one run and is obvious to everyone; a fabricated one is undetect
 
 ---
 
-## 22 · 🔀 Deviations from the source roadmap
+## 22 · 🔀 The merge — what was joined, what was cut, and why
 
-The source roadmap is a syllabus: twenty-four modules and five projects, sequenced for delivery.
-This plan is a build order. Four things changed, and each is a decision that can be reversed.
+This plan replaces two. Everything below is a decision someone can disagree with, which is why it
+is written here rather than left as an absence in the day map.
+[`ADR-0006`](adr/ADR-0006-the-merge.md) carries the structural record.
 
-### 22.1 Prompt and context engineering moved earlier
+### 22.1 The arithmetic
 
-**Roadmap:** modules 22–23, after the agent modules. **Plan:** Phase 12, Days 108–114, before
-retrieval and agents.
+| | Days | IDs |
+| --- | --- | --- |
+| Yantra v1.1.0 | 229 | 400 |
+| Setu v1.0.0 | 180 | 181 |
+| Run separately | **409** | 581 |
+| **This plan** | **182** | **373** |
 
-Every RAG day and every agent day needs prompt structure and context-window vocabulary. Taught
-afterwards, those days gesture at ideas they have not introduced. Recorded in `ADR-0002`. Reverse
-it by moving Phase 12 to sit between Phases 22 and 23 — it touches no other phase's IDs, which is
-why this was the safe reordering to make.
+The 227 days saved come from three places, in descending order of honesty:
 
-### 22.2 Security distributed into the phases that create the exposure
+1. **Deduplication — about 85 days, and nothing is lost.** Both plans taught embeddings, chunking,
+   BM25, hybrid retrieval, reranking, RAG evaluation, graph retrieval, page-image retrieval,
+   function calling, the hand-rolled agent loop, MCP, LangGraph, checkpointing, human-in-the-loop,
+   PII masking, guardrails, prompt injection, tracing, token accounting and eval-gated CI. Where
+   both taught a subject, the deeper treatment won and the shallower one was deleted.
+2. **Density — about 90 days.** The merged plan closes 2.05 IDs per day against Yantra's 1.75 and
+   Setu's 1.0. Two adjacent ideas that each held a day now share one — WordPiece and SentencePiece
+   with tokenizer pathologies, MQA with GQA and MLA, OIDC with SAML, the graph schema with entity
+   resolution. **This is a real cost:** those days are heavier, and a heavy day gets another part
+   rather than a shorter explanation (Principle 15).
+3. **Cuts and parks — about 50 days.** Listed in §22.3, individually, with the reason.
 
-**Roadmap:** guardrails, PII and policy appear inside the RAG and agent modules. **Plan:** twelve
-`SEC` IDs placed at the exact days where a new exposure is created (§14), never in a security
-chapter.
+### 22.2 The ordering decision that shapes everything
 
-Recorded in `ADR-0003`. This is Principle 13 as a plan structure and is the one deviation not
-recommended for reversal.
+**The model is met as a dependency before it is taken apart.** Phase 5 (Days 30–38) uses it as a
+black box; Phase 8 (Day 53) opens it.
 
-### 22.3 The five projects are one system
+Setu's order was foundation → API → cloud → containers → the model. Yantra's was the model → the
+training → everything else. Neither works merged: Setu never opens the box, and Yantra writes
+training code on Day 15 for a reader who has not yet met a lockfile, a type hint or a released
+connection.
 
-**Roadmap:** five projects, the fifth of which wraps the other four. **Plan:** the same, made
-structural — `yantra-ship` is the repository, and the four services live inside it from the day
-each is born rather than being retrofitted in Phase 23.
+The merged order is: **the client, the language, the service, the model as a dependency, the
+cloud, the pipeline, then the model taken apart.** Every question Phase 5 raises — *why does it
+cost that? why did that number move? why did the JSON come back truncated?* — is answered by a
+mechanism in Phase 8 or 9. Curiosity precedes the explanation, rather than the explanation
+arriving before anyone has felt the need for it.
 
-The consequence is that Phase 8 already writes a Dockerfile and a smoke test, because Phase 23 will
-need them. Retrofitting CI across four services written without it is a week of work that teaches
-nothing.
+The cost of the move: Days 30–38 use tokenization, sampling and the context window before Phase 8
+explains them. Those days state that explicitly and link forward, which §20.4's no-shortcut test
+requires.
+
+### 22.3 What was cut, and what it costs
+
+| Cut or parked | From | Days saved | What it costs |
+| --- | --- | --- | --- |
+| **Speech, speech-to-text and Whisper fine-tuning** | Yantra `VIS-19..24` | 2 | Nothing in this system. It fed no service in either plan, and v1.1.0 already named it the first thing to cut. **If the client's next process is call-centre transcription, this is the first thing to add back.** |
+| **A managed agent runtime as a taught product** | Yantra `AGT-66..77` | 6 | The most vendor-specific material in either plan, and the fastest to date. Its four real subjects — runtime isolation, agent memory, a tool gateway, agent identity — survive as mechanisms: containers and sandboxes (Days 47–52, 172), memory (Day 129), MCP as the gateway (Days 122–124), and OAuth with per-agent scoping (Days 140–142). What is lost is the console walkthrough. |
+| **Agent-to-agent protocol as a six-day block** | Yantra `AGT-57..65` | 5 | Compressed into Day 131, alongside supervisors and handoffs, where the question it answers — *what if the other agent is not yours?* — actually arises. You will be able to explain the model and read a spec; you will not have built a compliant server. |
+| **Five separate shipped services** | Yantra `PRJ`, Setu Phases 18–19 | ~20 | Yantra shipped five services to nobody; Setu shipped two systems to one client. Merged: four things shipped to one client. A second medical-domain fine-tune taught nothing the first did not. |
+| **Vision internals as a twelve-day track** | Yantra `VIS-01..18` | 8 | Compressed to Days 113–114. You will build a patch embedding and explain a VLM's three components; you will not train one. Page-image retrieval (Day 115) is the load-bearing use, and it survives intact. |
+| **The MoE and scaling-law block** | Yantra Days 28–33 | 4 | Compressed to Days 66–67. The sizing argument survives because it is what you use before spending money on Day 76. Training a sparse model does not. |
+| **RLHF with PPO as a full day** | Yantra `FT-43..45` | 1 | Half of Day 80. You will be able to explain reward model, critic and KL penalty, and why DPO replaced it in practice. You will implement DPO, not PPO. |
+| **Full separate days for GraphQL, SAML, IaC** | Setu | 3 | Each folded into an adjacent day as its second subject. All three are things a client forces on you rather than things you choose. |
+| **Two separate discovery engagements** | Setu Phases 2, 18, 19 | 4 | One client, discovered once on Days 1–5, with a re-scoping day at the front of each project phase. Running two full discoveries teaches the second one nothing. |
+
+**What was deliberately *not* cut,** despite the pressure: tokenization (three days), loss masking
+(its own day, run broken), BM25 (a full day with a real baseline), the hand-rolled agent loop (two
+days before any framework), the attack-before-defence rule in every `SEC` day, and the whole `FDE`
+track. Each of those is the difference between someone who can use a thing and someone who can
+debug it, sell it, or defend it.
 
 ### 22.4 The calendar
 
-The roadmap estimates **7 months at 8 hours a week**. This plan is **229 days**, and a day is a
-unit of subject, not of time (Principle 15) — so the honest statement is: at four sittings a week
-this runs past a year; at six, closer to nine months.
+**182 days, one day at a time, is six months at seven days a week.** At six days a week it is seven
+months; at five, closer to eight and a half.
 
-That gap is real and it is not a mistake in either document. A roadmap week of video is not the
-same unit as a day that is written, built, broken on purpose, and defended. **If the calendar is a
-hard constraint, cut scope rather than depth** — cutting depth produces days that look finished,
-which is the exact failure the whole contract exists to prevent.
+There are no streaks and no counters in this repository, and missing a day costs nothing. What
+costs something is doing two days in one sitting — that is one day of building and one day of
+reading, and the reading one does not stick. The plan is sized so that the honest answer to "I am
+behind" is *the next day is still the next day*.
 
-**The three levers, in the order they cost least:**
+### 22.5 If it still has to be shorter
 
-| Lever | Days saved | What you lose |
+The levers, cheapest first. Anything beyond the first two is a genuine scope decision and needs an
+ADR **before Day 1**, not a quiet edit on Day 90.
+
+| Lever | Days saved | What it costs |
 | --- | --- | --- |
-| Park the speech IDs (`VIS-19..24`, Days 106–107) | 2 | Whisper fine-tuning. Nothing else in the plan depends on it (§9). |
-| Park MoE to awareness level (`TF-60..66`, Days 31–33) | 3 | The ability to reason about sparse-model serving. Read-only treatment keeps the vocabulary. |
-| Merge the vision track to encoder-only (`VIS-01..13`, drop `VIS-14..18`) | 2 | VLM architecture as a build; ColPali on Day 140 then arrives as a black box. Costly — take the first two levers first. |
-
-Anything beyond that is a genuine scope decision, not a trim, and it needs an ADR before Day 1
-rather than a quiet edit on Day 90.
-
----
-
-*End of plan. Amendments go in `docs/CHANGELOG_PLAN.md` with a version bump; structural decisions
-go in `docs/adr/`. Never edit a written day to match an amended plan without recording both.*
+| Compress Phases 2–4 to the ~22-day version — keep async, Pydantic, FastAPI, dependency injection and testing; drop memory internals, the process table, shell scripting and GraphQL | 17 | Assumes you already write Python that survives a long-running process. If you do not, this is the worst lever on the list, because every later day writes that Python. |
+| Drop the graph track (`RAG-34..40`, Days 109–111) | 3 | The relational question goes unanswered, and `yantra-platform` becomes a two-retriever router. A real loss, but a self-contained one. |
+| Drop the distillation phase (`FT-52..57`, Days 88–89) | 2 | The student–teacher mirror of fine-tuning goes. `yantra-model` still ships; it just never gets small. |
+| Merge Phases 20–21 into four days | 7 | Legacy integration and identity become awareness-level. This is the material that separates a demo from a delivery, so it is last on the list for a reason. |

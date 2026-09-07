@@ -10,11 +10,11 @@ questions a long curriculum makes expensive to answer by reading.
 
 | Identifier | Taught on | Document |
 | --- | --- | --- |
-| arXiv:2005.14165 | [day 1](day-01.md) | Language Models are Few-Shot Learners |
+| — | — | no source documents yet |
 
 ## Curriculum IDs
 
 | ID | Closed on |
 | --- | --- |
-| `TF-01` | [day 1](day-01.md) |
-| `TF-02` | [day 1](day-01.md) |
+| `FDE-01` | [day 1](day-01.md) |
+| `FDE-02` | [day 1](day-01.md) |
