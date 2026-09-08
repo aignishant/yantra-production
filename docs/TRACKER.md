@@ -10,7 +10,7 @@ only when it also has a ledger row. A thin day is visible from the parts column.
 | --- | --- | --- |
 | Days in the plan | **182** | 100% |
 | Days written | **2** | 1.1% |
-| Days complete | **1** | 0.5% |
+| Days complete | **2** | 1.1% |
 | Subtopic documents | **13** | — |
 | Source documents | **0** | — |
 
@@ -19,7 +19,7 @@ only when it also has a ledger row. A thin day is visible from the parts column.
 | Day | Phase | Title | Status | Parts | Sources | IDs |
 | --- | --- | --- | --- | --- | --- | --- |
 | 0 | 0 | [Toolchain and skeleton](../days/day-000-toolchain-skeleton/LESSON.md) | complete | 6 | 0 | — |
-| 1 | 1 | [What a forward deployed AI engineer actually owns](../days/day-001-what-an-fde-owns/LESSON.md) | written | 7 | 0 | `FDE-01`, `FDE-02` |
+| 1 | 1 | [What a forward deployed AI engineer actually owns](../days/day-001-what-an-fde-owns/LESSON.md) | complete | 7 | 0 | `FDE-01`, `FDE-02` |
 | 2 | 1 | The demo-to-production gap — why the vendor chatbot passed on sample do… | not started | 0 | 0 | `FDE-03` |
 | 3 | 1 | Discovery — shadowing the work, mapping the process as it is rather tha… | not started | 0 | 0 | `FDE-04`, `FDE-05` |
 | 4 | 1 | Auditing the data before promising anything — five hundred records, and… | not started | 0 | 0 | `FDE-06` |
@@ -206,7 +206,7 @@ only when it also has a ledger row. A thin day is visible from the parts column.
 | Phase | Days | Theme | Written | Complete | Gate |
 | --- | --- | --- | --- | --- | --- |
 | 0 | 0 | Foundry | 1/1 | 1/1 | `granth.py check` green; one commit; no secret in git |
-| 1 | 1–5 | The engagement — before any code | 1/5 | 0/5 | A scoped SOW for one real process, with a baselined KPI… |
+| 1 | 1–5 | The engagement — before any code | 1/5 | 1/5 | A scoped SOW for one real process, with a baselined KPI… |
 | 2 | 6–14 | Python for production | 0/9 | 0/9 | A packaged, typed, logging service module installs clea… |
 | 3 | 15–21 | Async, concurrency & Linux | 0/7 | 0/7 | A blocking third-party call runs inside the loop withou… |
 | 4 | 22–29 | Modern API development | 0/8 | 0/8 | The service streams, versions, and fails with a machine… |

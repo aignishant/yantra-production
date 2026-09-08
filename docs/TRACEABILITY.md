@@ -6,12 +6,12 @@ _Generated 2026-09-08 by `granth.py`._
 An ID counts as **closed** only when its day has a row in `docs/PROGRESS.md` *and* its hub's frontmatter claims the ID. **An open ID from a completed phase is a bug**, not a
 backlog item.
 
-**0 of 373 closed.**
+**2 of 373 closed.**
 
 | ID | Track | Phase | Planned day | Status |
 | --- | --- | --- | --- | --- |
-| `FDE-01` | FDE consulting craft | 1 | 1 | [~] written day 1, not in the ledger |
-| `FDE-02` | FDE consulting craft | 1 | 1 | [~] written day 1, not in the ledger |
+| `FDE-01` | FDE consulting craft | 1 | 1 | [x] closed day 1 |
+| `FDE-02` | FDE consulting craft | 1 | 1 | [x] closed day 1 |
 | `FDE-03` | FDE consulting craft | 1 | 2 | [ ] open |
 | `FDE-04` | FDE consulting craft | 1 | 3 | [ ] open |
 | `FDE-05` | FDE consulting craft | 1 | 3 | [ ] open |
