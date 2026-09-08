@@ -164,6 +164,7 @@ class Config:
     topic: str = "the subject"
     plan_version: str = "v1.0.0"
     driver: str = "python granth.py"
+    day_padding: int = 3
     plan: Path = field(default_factory=lambda: ROOT / "docs" / "00_MASTER_PLAN.md")
     docs: Path = field(default_factory=lambda: ROOT / "docs")
     days: Path = field(default_factory=lambda: ROOT / "days")
@@ -208,7 +209,7 @@ def load_config() -> Config:
         raw = tomllib.load(handle)
     p, paths = raw.get("project", {}), raw.get("paths", {})
     c, t = raw.get("contract", {}), raw.get("toolchain", {})
-    for key in ("name", "slug", "topic", "plan_version", "driver"):
+    for key in ("name", "slug", "topic", "plan_version", "driver", "day_padding"):
         setattr(cfg, key, p.get(key, getattr(cfg, key)))
     for key, default in (("plan", "docs/00_MASTER_PLAN.md"), ("docs", "docs"), ("days", "days")):
         value = Path(paths.get(key, default))
@@ -1561,7 +1562,7 @@ def cmd_done(cfg: Config, args: list[str]) -> int:
         return 1
     meta = frontmatter((folder / "LESSON.md").read_text(encoding="utf-8")) or {}
     ids = ids_in(meta.get("ids", ""))
-    message = f"day {day:02d}: {meta.get('title', folder.name)}"
+    message = f"day {day:0{cfg.day_padding}d}: {meta.get('title', folder.name)}"
     if ids:
         message += f" — closes {', '.join(ids)}"
     if subprocess.call(["git", "add", "-A"], cwd=ROOT) != 0:
