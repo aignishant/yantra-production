@@ -38,3 +38,9 @@ justification written after the fact, not a decision record.
 | # | Title | Date | Status |
 | --- | --- | --- | --- |
 | [0001](ADR-0001-the-plan-as-adopted.md) | The plan as adopted | 2026-09-06 | accepted |
+| [0002](ADR-0002-prompt-and-context-moved-early.md) | Prompt and context engineering are taught before retrieval and agents | TODO(me) | accepted |
+| [0003](ADR-0003-security-distributed-not-chaptered.md) | Security identifiers sit in the phases that create the exposure | TODO(me) | accepted |
+| [0004](ADR-0004-day-zero-does-not-build-the-toolchain.md) | Day 0 uses the toolchain rather than building it | TODO(me) | accepted |
+| [0005](ADR-0005-the-hardware-profile.md) | The curriculum runs laptop-first, behind one flag | 2026-09-07 | accepted |
+| [0006](ADR-0006-the-merge.md) | Yantra and Setu become one 182-day curriculum | 2026-09-07 | accepted |
+| [0007](ADR-0007-the-sitting-budget.md) | Four documents a day, the scene merged into the idea, signatures in the build brief | 2026-09-08 | accepted |

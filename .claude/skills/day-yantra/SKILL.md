@@ -4,21 +4,29 @@ description: Generate the hub, the parts/ sub-documents, any source parts, the l
 argument-hint: [day-number]
 ---
 
-# Generate Day $ARGUMENTS of the Yantra plan (v1.1.0 — hub + `parts/` + `sources/`)
+# Generate Day $ARGUMENTS of the Yantra plan (v2.1.0 — hub + `parts/` + `sources/`)
 
 > **Read `docs/00_MASTER_PLAN.md` §20 before writing a single line.** It is the depth contract this
 > skill implements. **This skill is the procedure; §20 is the standard.** Where they appear to
 > disagree, §20 wins and this skill is amended.
 
-## The three commitments (§20.1 — everything below follows from these)
+## The four commitments (§20.1 — everything below follows from these)
 
 1. **One idea per document.** If it needs "also" to introduce its second half, it is two documents.
 2. **No clocks.** Never write a time estimate, a duration, an "estimated hours" field, or a pace —
-   not in frontmatter, not in prose, not in the checklist. A reader may spend five sittings on one
-   part. **Never trim an explanation because the day is getting long — split it into another part.**
+   not in frontmatter, not in prose, not in the checklist. **Never trim an explanation because the
+   day is getting long.**
 3. **Zero to production, in one document.** Open where a reader who has never heard of the idea can
    stand. End where a professional stands: the real-system version, what breaks at scale or under
    concurrency, what a senior reviewer says, what an interviewer probes.
+4. **A day is finishable — three documents, four at the outside** (§20.10), `parts/` and `sources/`
+   counted together. This is the commitment that cuts, and it is the one this skill gets wrong most
+   easily, because the other three all pull toward writing more.
+
+**Commitments 2 and 4 together leave exactly one lever.** A day with more subtopics than budget
+**cuts a subtopic and says so in the hub's §2 map**, naming the later day that picks it up. It does
+not write six thin parts, and it does not write four that each carry an idea and a half. If the cut
+would be load-bearing, the day is too big for the plan: stop, and split it in §17 with an ADR.
 
 ---
 
@@ -70,16 +78,24 @@ Do this **before** any prose, because what you find can change the day.
    hub's §2 map, and an unexplained numbering is a bug.
 2. Decide the **parts** inside each section. Apply the one-idea test to each: can it be read alone,
    understood without scrolling past a different subtopic, and explained back out loud?
-3. Decide which part is **the deliberate failure** (§20.7). Every day has one. Name what will
+3. **Count the documents, and cut to four.** `parts/` and `sources/` together, three preferred
+   (§20.10). List every subtopic the idea boundaries gave you, then say out loud which ones do not
+   make it and why. The ones cut get a line in the hub's §2 map naming the later day that picks
+   them up. **Never merge two ideas into one part to fit** — that breaks the one-idea test the step
+   above just applied. **Never write a fourth part to fill the budget** — the ceiling is a limit,
+   not a target.
+4. Decide which part is **the deliberate failure** (§20.7). Every day has one. Name what will
    break and what error the reader will see.
-4. Decide the **`level` ladder**: the day should climb `foundation → working → production`. A day
-   that is all `foundation` is a tutorial; a day that opens at `production` has skipped the reader.
-5. Decide the **sources**, if any. One document per paper, in `sources/`, read after the parts.
-6. Pick **one metaphor family for the whole day** — check the day's other parts and the hub's §1
+5. Decide the **`level` ladder**: the day should climb `foundation → working → production`. With
+   three parts that is usually one rung each.
+6. Decide the **sources**, if any. One document per paper, in `sources/`, read after the parts —
+   **and it spends one of the four documents**, so a day with a source part gets three in `parts/`.
+7. Pick **one metaphor family for the whole day** — check the day's other parts and the hub's §1
    before choosing. Two parts reaching for the same setting read as one idea repeated.
 
-**Print this plan and stop.** The learner reads it before you write. If it looks thin, that
-conversation costs one message now and twenty documents later.
+**Print this plan and stop.** The learner reads it before you write — the document count, and the
+list of subtopics you are cutting. If it looks thin, or if the cuts look wrong, that conversation
+costs one message now and a rewritten day later.
 
 ---
 
@@ -88,18 +104,31 @@ conversation costs one message now and twenty documents later.
 Path: `days/day-NNN-<day-slug>/parts/<NN>-<section-slug>/<section>.<sub>-<slug>.md`, day number
 zero-padded to three digits.
 
-Each part carries all eleven sections **in order** (§20.4). Three are conditional: *The source
-behind it*, *Line by line*, *The source in one demo*.
+Each part carries all ten sections **in order** (§20.4). Three are conditional: *The source behind
+it*, *Line by line*, *The source in one demo*.
+
+**How every sentence is written (§21.6).** One idea per sentence, around twenty words. Grammatical,
+finished sentences — subject, verb, object, no note-form fragments. Everyday word first and the
+precise term second, in the same sentence. Second person, active voice, present tense. **And the
+worked example before the general statement, every time** — real input, real output, real numbers,
+then what is true in general. A paragraph describing the shape of a response teaches less than three
+lines of the actual JSON. Simple English, never a simple idea.
 
 **The sections that get written badly, and what good looks like:**
 
-- **The story** comes first, before any abstraction, with **no jargon at all**. It must be a scene
-  the reader has plausibly lived in — a courier who cannot find the flat number, a mechanic
-  checking the same six things on every car, a 3am page about a queue that will not drain. Not a
-  nautical chart, not a theatre programme. **Test: could the reader have been standing in this
-  scene?** If they must first be told what the setting *is*, the analogy is carrying the
-  explanation instead of hooking it. It must be **load-bearing** — the scene holds the actual
-  failure the part teaches, and every later section that reaches back for it must still fit.
+- **The idea in plain language** is **one section with one opening** — the old *story* heading was
+  merged into it by ADR-0007, because two headings meant the scene got told, abandoned, and the idea
+  restarted from cold underneath it. Three moves, no headings between them:
+  **(a) the scene, first**, before any abstraction and with **no jargon at all** — a courier who
+  cannot find the flat number, a mechanic checking the same six things on every car, a 3am page
+  about a queue that will not drain. Not a nautical chart, not a theatre programme. **Test: could
+  the reader have been standing in this scene?** If they must first be told what the setting *is*,
+  the analogy is carrying the explanation instead of hooking it. It must be **load-bearing** — the
+  scene holds the actual failure the part teaches, and every later section that reaches back for it
+  must still fit.
+  **(b) the idea, named inside that scene** rather than re-introduced under it. Every term defined
+  on first use, including terms from earlier days, with a link to the part that introduced them.
+  **(c) one worked example** — the smallest real case that is still true.
 - **Why Yantra needs it** names **the concrete later day that breaks without this**, with a link.
   Never "this is important".
 - **The mechanism** skips nothing as obvious. Mermaid whenever the concept is spatial, sequential,
@@ -135,7 +164,7 @@ and a tutorial.
 `days/day-NNN-<slug>/sources/NN-<source-slug>.md`, numbered from `01` in reading order, beside
 `parts/` and not inside it.
 
-A source part carries the same eleven sections. Section 6 never fires. Section 9 — **The source in
+A source part carries the same ten sections. Section 5 never fires. Section 8 — **The source in
 one demo** — is **required** and is the section easiest to get wrong:
 
 1. **Only the source's feature.** A small project whose *entire reason to exist* is the idea. The
@@ -148,7 +177,7 @@ one demo** — is **required** and is the section easiest to get wrong:
    A demo that cannot be switched off has proved that code ran, not that this idea did something.
 4. **Costed** — free tier, local, or rented, with the number.
 
-On a source part the sections mean: *the story* = the problem the field had **before this document
+On a source part the sections mean: *the scene* that opens the idea = the problem the field had **before this document
 existed**; *when it breaks* = where the claim **does not hold** (the assumptions, the benchmark, the
 scale it was never tried at); *in production* = **what survived and what did not**, and what
 replaced the dropped half. A source part with no limits section has taught a press release.
@@ -158,7 +187,15 @@ replaced the dropped half. A source part with no limits section has taught a pre
 ## Step 6 — write the hub (`LESSON.md`)
 
 The hub **orients and assembles; it never teaches.** No `Line by line:` walkthrough lives here. All
-thirteen elements of §20.5, in order — and note two that are specific to this plan:
+thirteen elements of §20.5, in order — and note three that are specific to this plan:
+
+- **§4 Build brief — spell the code out to the signature.** For every file the day asks for: the
+  exact path, then a code block carrying **every function and class the learner must write, with its
+  full type-hinted signature and a one-line docstring saying what it returns and what it raises** —
+  and a body that is nothing but `TODO(me): <what this must do>`. Then the one command that runs it.
+  The learner must be able to read this section alone and know exactly what to implement, without
+  going back through a part to reverse-engineer an interface the next day will call.
+  **Never write a body.** Naming the interface is not solving the exercise; writing the body is.
 
 - **§6 Budget** — model calls per provider in RPM/RPD, GPU hours, and money. `0` is an
   answer; state it. If the day rents a GPU, say which and roughly for what, and what the cheaper

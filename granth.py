@@ -38,11 +38,14 @@ for _s in (sys.stdout, sys.stderr):
 # Configuration
 # =============================================================================================
 
-# The eleven part sections. The order is the pedagogy — scene before definition, definition before
-# mechanism, mechanism before failure, failure before production. Changing it is a plan amendment.
+# The ten part sections. The order is the pedagogy — scene and idea together, then mechanism, then
+# failure, then production. Changing it is a plan amendment.
+#
+# "the story" is not a section of its own: ADR-0007 merged it into "the idea in plain language",
+# because two headings meant two openings to one subtopic and the idea got explained twice. The
+# scene still comes first — it is now the opening of that section rather than a heading above it.
 PART_SECTIONS = [
     "one-line answer",
-    "the story",
     "the idea in plain language",
     "why this project needs it",
     "the source behind it",
@@ -55,8 +58,7 @@ PART_SECTIONS = [
 ]
 SECTION_PATTERNS = {
     "one-line answer": r"one[- ]line answer",
-    "the story": r"the story",
-    "the idea in plain language": r"idea in plain language",
+    "the idea in plain language": r"idea in plain (language|words|english)",
     "why this project needs it": r"why .{0,40}needs? it",
     "the source behind it": r"the (source|paper|spec) behind it",
     "the mechanism": r"mechanism",
@@ -100,6 +102,16 @@ NO_WALKTHROUGH_LANGS = [
     "csv",
 ]
 EXEMPT_HEADINGS = r"when it breaks|check yourself|verify|budget|ledger|the map|setup"
+
+# The part budget (plan §20.10, ADR-0007). Parts and source parts count together, because a source
+# part is a document the reader has to read. The ceiling exists because a day that cannot be
+# finished is not a deep day, it is an abandoned one: the checklist never gets ticked, `done`
+# refuses, and the ledger stops without ever recording why.
+#
+# It is spent by CUTTING a subtopic, never by shortening an explanation. This check counts
+# documents; only a reader can tell a cut day from a thinned one.
+MAX_PARTS = 4
+MAX_PARTS_FROM_DAY = 2  # days 0 and 1 predate the budget and are grandfathered
 
 # A day is a unit of subject, not of time. A duration field silently authorises the worst edit in
 # technical writing: cutting an explanation because the day is running long.
@@ -165,6 +177,8 @@ class Config:
     exempt_headings: str = EXEMPT_HEADINGS
     require_failure_part: bool = True
     require_sources: bool = True
+    max_parts: int = MAX_PARTS
+    max_parts_from_day: int = MAX_PARTS_FROM_DAY
     lint: str = ""
     format_check: str = ""
     test: str = ""
@@ -209,6 +223,8 @@ def load_config() -> Config:
         "exempt_headings",
         "require_failure_part",
         "require_sources",
+        "max_parts",
+        "max_parts_from_day",
     ):
         setattr(cfg, key, c.get(key, getattr(cfg, key)))
     cfg.section_patterns = {**cfg.section_patterns, **c.get("section_patterns", {})}
@@ -434,15 +450,27 @@ def progress_days(cfg: Config) -> list[int]:
 class Report:
     day: int
     failures: list[str] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)
     parts: int = 0
     sources: int = 0
 
     def fail(self, where: str, message: str) -> None:
         self.failures.append(f"{where}: {message}")
 
+    def note(self, where: str, message: str) -> None:
+        """Something the reader should know that is not a contract breach — a day written against
+        an earlier plan version, for one. It prints; it does not fail the gate."""
+        self.notes.append(f"{where}: {message}")
+
     @property
     def ok(self) -> bool:
         return not self.failures
+
+
+def version_tuple(value: str) -> tuple[int, ...]:
+    """`v2.1.0` -> (2, 1, 0). An unparseable version sorts last, so it is never silently older."""
+    digits = re.findall(r"\d+", value or "")
+    return tuple(int(d) for d in digits) if digits else (9999,)
 
 
 def source_ids(value: str) -> list[str]:
@@ -697,11 +725,21 @@ def check_hub(cfg: Config, folder: Path, part_count: int, report: Report) -> Non
     for key in HUB_KEYS:
         if key not in meta:
             report.fail(where, f"frontmatter is missing '{key}'")
-    if meta.get("plan_version") and meta["plan_version"] != cfg.plan_version:
-        report.fail(
-            where,
-            f"plan_version {meta['plan_version']!r} but granth.toml says {cfg.plan_version!r}",
-        )
+    claimed_version = meta.get("plan_version", "")
+    if claimed_version and claimed_version != cfg.plan_version:
+        if version_tuple(claimed_version) < version_tuple(cfg.plan_version):
+            report.note(
+                where,
+                f"written against plan {claimed_version}; the plan is now {cfg.plan_version}. "
+                "Re-read it against the current contract before building on it, or record in an "
+                "ADR that it is grandfathered.",
+            )
+        else:
+            report.fail(
+                where,
+                f"plan_version {claimed_version!r} is ahead of granth.toml's "
+                f"{cfg.plan_version!r} — a day cannot conform to a plan that does not exist yet",
+            )
     if meta.get("parts", "").strip().isdigit() and int(meta["parts"]) != part_count:
         report.fail(where, f"frontmatter claims {meta['parts']} parts; {part_count} are on disk")
 
@@ -742,6 +780,26 @@ def check_numbering(numbers: list[tuple[int, int]], where: str, report: Report) 
         subs = sorted(sub for sec, sub in numbers if sec == section)
         if subs != list(range(1, len(subs) + 1)):
             report.fail(where, f"section {section} subtopics {subs} — must run 1..N with no gaps")
+
+
+def check_part_budget(cfg: Config, number: int, report: Report, where: str) -> None:
+    """At most cfg.max_parts documents in a day — parts and source parts together (plan §20.10).
+
+    A source part counts because it is a document the reader has to read. Days below
+    max_parts_from_day were written under the earlier contract and are grandfathered (ADR-0007).
+    """
+    if not cfg.max_parts or number < cfg.max_parts_from_day:
+        return
+    total = report.parts + report.sources
+    if total <= cfg.max_parts:
+        return
+    report.fail(
+        where,
+        f"{total} documents ({report.parts} in {cfg.parts_dir}/, {report.sources} in "
+        f"{cfg.sources_dir}/) — the budget is {cfg.max_parts} (plan §20.10). Cut a subtopic and "
+        "name the day that picks it up in the hub's §2 map, or split the day in §17 with an ADR. "
+        "Do not shorten an explanation to fit.",
+    )
 
 
 def check_day(cfg: Config, number: int) -> Report:
@@ -788,6 +846,8 @@ def check_day(cfg: Config, number: int) -> Report:
     if source_numbers and sorted(source_numbers) != list(range(1, len(source_numbers) + 1)):
         report.fail(where, f"source numbers {sorted(source_numbers)} — must run 01..NN, no gaps")
 
+    check_part_budget(cfg, number, report, where)
+
     if cfg.require_failure_part and not failure_declared:
         report.fail(
             where,
@@ -818,6 +878,10 @@ def cmd_depth(cfg: Config, args: list[str]) -> int:
             print(f"  {i:>2}. {t}")
         print(f"\nLevels: {', '.join(cfg.levels)}")
         print(f"Sources: {cfg.sources_dir}/   Parts: {cfg.parts_dir}/")
+        print(
+            f"Part budget: at most {cfg.max_parts} documents per day, {cfg.parts_dir}/ and "
+            f"{cfg.sources_dir}/ counted together, from day {cfg.max_parts_from_day} on."
+        )
         return 0
 
     targets = [int(a) for a in args if a.isdigit()] or sorted(
@@ -845,6 +909,8 @@ def cmd_depth(cfg: Config, args: list[str]) -> int:
             print(f"FAIL  {head}")
             for line in r.failures:
                 print(f"        {line}")
+        for line in r.notes:
+            print(f"NOTE  {line}")
     if cross:
         print("FAIL  curriculum")
         for line in cross:
@@ -1340,7 +1406,7 @@ def cmd_brief(cfg: Config, args: list[str]) -> int:
         "## Before you write a line",
         "",
         f"1. `{cfg.rel(cfg.plan)}` — the depth contract section, in full. It is the standard.",
-        "2. The style guide section of the same plan — the register and the story rules.",
+        "2. The style guide section of the same plan — the register, the scene, and plain English.",
         f"3. `{cfg.rel(cfg.docs / 'GLOSSARY.md')}` — so a term defined on day 3 is defined the "
         "same way today.",
         "4. Verify every fact live. A version, an interface, a citation: look it up today, or",

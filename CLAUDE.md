@@ -9,7 +9,7 @@ It is the merge of two earlier plans — Yantra v1.1.0 (the model) and Setu v1.0
 [`docs/adr/ADR-0006-the-merge.md`](docs/adr/ADR-0006-the-merge.md) is why, and plan §22 is what was
 cut. **Never reintroduce a cut day without amending §22 first.**
 
-The single source of truth is `docs/00_MASTER_PLAN.md` ("the plan"), currently **v2.0.0**.
+The single source of truth is `docs/00_MASTER_PLAN.md` ("the plan"), currently **v2.1.0**.
 Progress is `docs/PROGRESS.md` (**the last row is where we are**). Traceability and the tracker are
 generated. Amendments are logged in `docs/CHANGELOG_PLAN.md`.
 
@@ -66,7 +66,9 @@ Read a day's `parts/` when you need the teaching; read its wiki page when you ne
   provider that dropped its free tier → amend the plan + `CHANGELOG_PLAN.md`, *then* continue.
   Never silently adapt; stop and say so.
 - **Blast radius before capability** (P13). Every new power arrives with its containment story.
-- **Depth over density** (P14). A day is a hub plus one document per subtopic. Never one long page.
+- **Depth over density, inside a finishable day** (P14). A day is a hub plus one document per
+  subtopic — never one long page, and never more than **four documents** including source parts
+  (§20.10, ADR-0007).
 - **No clocks** (P15). See below — this is the rule most often broken by accident.
 - **Zero to production, in one document** (P16).
 
@@ -80,8 +82,13 @@ No duration, no "estimated hours", no "this should take about", no "a quick deto
 any document, in any frontmatter field, in any checklist item.
 
 A duration field looks harmless. What it actually does is authorise the worst edit in technical
-writing: cutting an explanation because the day is running long. **A day that is getting long gets
-another part, not a shorter explanation.** `granth.py depth` fails the day on any clock it finds.
+writing: cutting an explanation because the day is running long. `granth.py depth` fails the day on
+any clock it finds.
+
+**A day that is getting long drops a subtopic — it never shortens an explanation.** Since ADR-0007
+that is the only lever, because the part budget (§20.10) caps the day at four documents. Name the
+cut in the hub's §2 map, with the later day that picks it up. If the cut would be load-bearing, the
+day is too big: split it in §17 with an ADR, which is P12 doing its job.
 
 ### Never invent a citation
 
@@ -114,10 +121,21 @@ days/day-NNN-<slug>/
 └── lab/                              the learner's own work — gitignored
 ```
 
-Every part carries eleven sections in fixed order: **the one-line answer · the story · the idea in
-plain language · why Yantra needs it · *the source behind it* · the mechanism · *line by line* ·
-*the source in one demo* · when it breaks · in production · check yourself.** The three in italics
-are conditional (§20.4).
+Every part carries ten sections in fixed order: **the one-line answer · the idea in plain language ·
+why Yantra needs it · *the source behind it* · the mechanism · *line by line* · *the source in one
+demo* · when it breaks · in production · check yourself.** The three in italics are conditional
+(§20.4).
+
+**The scene is not a section of its own.** *The idea in plain language* opens with it, names the
+idea inside it, and lands a worked example — one opening per subtopic, not two (ADR-0007).
+
+**Three documents per day, four at the outside**, parts and source parts counted together (§20.10).
+`granth.py depth` fails a day above the ceiling from day 2 on; days 0 and 1 are grandfathered.
+Spend the budget by **cutting a subtopic, never by thinning one**.
+
+**The hub's §4 build brief names every signature** the learner must implement — exact path, full
+type-hinted signature, one-line docstring, and a body that is nothing but `TODO(me)`. The bodies
+stay unsolved. Naming the interface is not solving the exercise.
 
 **Day numbers are zero-padded to three digits.** This plan runs to 181.
 
@@ -221,7 +239,17 @@ recorded as a GPU number, which is the whole failure the profile exists to preve
 
 ## Style for generated teaching material (plan §21)
 
-- **Plain words first**, then the precise term. Short sentences.
+- **Plain words first**, then the precise term, in the same sentence. *"The model runs out of
+  memory — an OOM."*
+- **One idea per sentence.** Around twenty words is where a sentence stops being read and starts
+  being decoded. If it needs a comma to add a second clause, it is usually two sentences.
+- **Grammatical, finished sentences.** Subject, verb, object. No note-form fragments, no trailing
+  dashes standing in for a clause the reader has to complete.
+- **The example goes before the general statement** (§21.6). Show the smallest real case — actual
+  input, actual output, actual numbers — then say what is true in general. A reader who has seen
+  one worked case can generalise; a reader who has read the generalisation still cannot picture a
+  case. **An example is real or it is not an example** (P10).
+- **Second person, active voice, present tense.**
 - **Define jargon on first use, every time, including jargon from earlier days**, with a link back.
   `docs/GLOSSARY.md` is what makes this mechanical rather than heroic.
 - **Every code block gets a `**Line by line:**` walkthrough immediately after it.** An unexplained

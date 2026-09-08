@@ -1,6 +1,6 @@
 ---
 plan: yantra
-version: "v2.0.0"
+version: "v2.1.0"
 supersedes: "Yantra v1.1.0 (229 days) · Setu v1.0.0 (180 days)"
 source_roadmaps:
   - "Production LLM Engineering — RAG, Agents & Fine-Tuning V1.0"
@@ -13,7 +13,7 @@ doc_architecture: "hub + parts/ + sources/ (see §20)"
 generated: "2026-09-07"
 ---
 
-# 🔧 MASTER PLAN v2.0.0 — Project **Yantra**
+# 🔧 MASTER PLAN v2.1.0 — Project **Yantra**
 
 ## Production AI Engineering, delivered — **the model · the platform · the system · the handover**
 
@@ -43,8 +43,8 @@ generated: "2026-09-07"
 | 17 | 🗓️ The 182-day map |
 | 18 | 🚦 Phase gates & the freshness check |
 | 19 | 📒 Ledgers & traceability |
-| **20** | **📐 The depth contract — how a day is written** |
-| 21 | ✍️ The style guide |
+| **20** | **📐 The depth contract — how a day is written — §20.4 the ten part sections · §20.10 the part budget** |
+| 21 | ✍️ The style guide — **§21.6 plain English, example first** |
 | 22 | 🔀 The merge — what was joined, what was cut, and why |
 
 ---
@@ -125,12 +125,15 @@ Three things this plan is trying to prevent:
 13. **Blast radius before capability.** Every new power — code execution, a database write, a Jira
     transition, a payment — arrives together with its containment story. This is why `SEC` IDs sit
     inside the phases that create the exposure rather than in a chapter at the end.
-14. **Depth over density.** A day is a hub plus one document per subtopic (§20), never one long
-    page. A wall of text is not depth; it is depth's disguise.
+14. **Depth over density, inside a finishable day.** A day is a hub plus one document per
+    subtopic (§20), never one long page — and never more than four documents, source parts
+    included (§20.10). A wall of text is not depth; it is depth's disguise. Nor is a nine-part day
+    the reader abandons halfway.
 15. **A day is a unit of subject, not a unit of time.** No document carries a duration, an
     "estimated hours" field, or a suggested pace. A topic is finished when it is understood — in
-    one sitting or in five. **Nothing is ever trimmed to fit a clock**; a day that is running long
-    gets another part, not a shorter explanation.
+    one sitting or in five. **Nothing is ever trimmed to fit a clock.** A day that will not fit the
+    budget drops a subtopic and names the later day that picks it up, or is split into two days in
+    §17 with an ADR. **What it never does is shorten an explanation.**
 16. **Assume no prior knowledge, finish at production.** Every subtopic opens where a reader who
     has never met the idea can stand, defines its jargon on first use — including jargon from
     earlier days, with a link back — and ends where a professional stands: what breaks at scale,
@@ -1078,9 +1081,9 @@ in, and readers can tell.
 > This section states exactly what "covered properly" means, so that it can be reviewed by reading
 > and partly checked by a script. It is Principles 14, 15 and 16, made concrete.
 
-### 20.1 The three commitments
+### 20.1 The four commitments
 
-Everything below follows from three sentences.
+Everything below follows from four sentences.
 
 **One idea per document.** A subtopic that cannot be read alone, understood without scrolling past
 a different subtopic, and explained back out loud is not one subtopic — it is several, badly
@@ -1096,6 +1099,12 @@ idea can stand, and ends where a working professional stands: how the idea appea
 system, what a senior engineer does differently from the tutorial version, what fails at scale or
 under concurrency, and what a reviewer or an interviewer will probe. Strong fundamentals and
 advanced technique are not separate tracks — they are the beginning and the end of the same page.
+
+**A day is finishable.** Three documents, four at the outside, counting source parts (§20.10). This
+is the one commitment that cuts rather than adds, and it is here because the other three, left
+alone, produce a nine-part day that gets abandoned in the middle. **The budget is spent by dropping
+a subtopic, never by shortening an explanation** — that distinction is the whole of §20.10, and
+collapsing it undoes the three sentences above.
 
 ### 20.2 The folder shape
 
@@ -1153,24 +1162,23 @@ level (`../01-<slug>/1.5-<slug>.md`); the hub is `../../LESSON.md`.
 
 ### 20.4 What a part document must contain
 
-Every file in `parts/` carries all eleven of these, **in this order**. Three are **conditional** —
-*The source behind it*, *Line by line*, and *The source in one demo*. The other eight are
+Every file in `parts/` carries all ten of these, **in this order**. Three are **conditional** —
+*The source behind it*, *Line by line*, and *The source in one demo*. The other seven are
 unconditional.
 
 | # | Section | The rule |
 | --- | --- | --- |
 | 1 | **Frontmatter** | `day`, `part`, `title`, `ids`, `level`, `prerequisites`, `prev`, `next`, plus `sources` (identifiers this part cites) or, on a source part, `source` (the one it teaches). Machine-read. **No duration field of any kind.** |
 | 2 | **One-line answer** | The subtopic's claim in a single sentence, before anything else. A reader who reads only this line has learned something true. |
-| 3 | **The story** | A concrete scene before any abstraction: a person, a machine, a failure, a decision. It comes **first**, in plain words, with **no jargon at all**. Four rules: **(a)** a scene the reader has plausibly lived in — a parcel and a courier, a repair-shop job card, a used car checked by a mechanic. Not a nautical chart or a theatre programme. If the reader must first be told what the setting *is*, the analogy is carrying the explanation instead of hooking it. **(b)** simple words, short sentences. **(c)** load-bearing — the scene holds the actual failure the part teaches, and every later section reaching back for it must still fit. **(d)** one metaphor family per day. |
-| 4 | **The idea in plain language** | The concept itself, assuming the reader has never met it. Every term defined the first time it appears — **including terms from earlier days**, with a link to the part that introduced them, never an assumption of recall. No code. |
-| 5 | **Why Yantra needs it** | The concrete later day that breaks without this. *"You meet this again on Day 115, where late interaction writes patch vectors into a multi-vector index"* is the shape. Never "this is important". |
-| 6 | **The source behind it** | **Conditional — present exactly when the idea has a public, citable origin a reader could go and read**: a paper, a numbered spec revision, a formal technical report. It is **an address, not an explanation** — the explanation is a source part of its own. Three things: the citation block (exact title · identifier · year · URL — **no author names**), one sentence on what it claimed, and a link to the source part that teaches it. A part whose subject is a tool, a command or an SDK surface has no source and does not carry this section. |
-| 7 | **The mechanism** | How it actually works: the runnable code, the protocol exchange written out, or the diagram. Nothing skipped as "obvious". Mermaid whenever the concept is spatial, sequential, or a state machine. |
-| 8 | **Line by line** | Every non-obvious token of every code block explained — and *why it is that line and not another*. Written as a `**Line by line:**` list **immediately after each code block**, so the reader never scrolls to find the explanation of what they are looking at. Blocks showing error output, a bare check command, or a diagram are exempt. **An unexplained line is a bug in the document.** **Conditional:** a part carrying no code needing a walkthrough does not carry this section. |
-| 9 | **The source in one demo** | **Conditional — source parts only.** A small end-to-end project that implements the source's contribution **and nothing else**: the whole file tree, every file's contents, the one command that runs it, and the output it prints. It carries an **ablation switch** — one flag that turns the idea off — and shows **both runs' output**. A demo that cannot be switched off has proved that code ran, not that this idea did something. |
-| 10 | **When it breaks** | The **real** error text, reproduced verbatim — the traceback, the CUDA OOM, the HTTP status, the JSON-RPC error body. What it says, what it actually means, and the smallest fix. This is what the reader meets at 11pm; the happy path is not. **If you have not seen the error, cause it.** |
-| 11 | **In production** | Where this idea shows up in a real system and what changes there: the version a professional writes instead of the teaching version, what degrades at scale or under concurrency, the failure mode that only appears with real traffic, the review comment a senior engineer leaves, and the question an interviewer asks to find out whether you have actually used it. **This is the section that makes the document professional rather than introductory. It is not optional.** |
-| 12 | **Check yourself** | One command the reader can run right now, plus one question they must answer **out loud** without scrolling up. |
+| 3 | **The idea in plain language** | **One section, and it opens with the scene** (ADR-0007 merged the old *story* into it — two headings meant two openings to one subtopic, and the idea got explained twice). It runs in three moves, with no heading between them. **The scene, first**, before any abstraction and with **no jargon at all**: a person, a machine, a failure, a decision. Four rules on it — **(a)** a scene the reader has plausibly lived in: a parcel and a courier, a repair-shop job card, a used car checked by a mechanic. Not a nautical chart or a theatre programme. If the reader must first be told what the setting *is*, the analogy is carrying the explanation instead of hooking it. **(b)** simple words, short sentences. **(c)** load-bearing — the scene holds the actual failure the part teaches, and every later section reaching back for it must still fit. **(d)** one metaphor family per day. **Then the idea**, named inside that scene rather than restarted underneath it — assume the reader has never met it, define every term the first time it appears, **including terms from earlier days**, with a link to the part that introduced them and never an assumption of recall. **Then one worked example** — real input, real output, the smallest one that is still true (§21.6). No code beyond that example; the mechanism is section 5. |
+| 4 | **Why Yantra needs it** | The concrete later day that breaks without this. *"You meet this again on Day 115, where late interaction writes patch vectors into a multi-vector index"* is the shape. Never "this is important". |
+| 5 | **The source behind it** | **Conditional — present exactly when the idea has a public, citable origin a reader could go and read**: a paper, a numbered spec revision, a formal technical report. It is **an address, not an explanation** — the explanation is a source part of its own. Three things: the citation block (exact title · identifier · year · URL — **no author names**), one sentence on what it claimed, and a link to the source part that teaches it. A part whose subject is a tool, a command or an SDK surface has no source and does not carry this section. |
+| 6 | **The mechanism** | How it actually works: the runnable code, the protocol exchange written out, or the diagram. Nothing skipped as "obvious". Mermaid whenever the concept is spatial, sequential, or a state machine. |
+| 7 | **Line by line** | Every non-obvious token of every code block explained — and *why it is that line and not another*. Written as a `**Line by line:**` list **immediately after each code block**, so the reader never scrolls to find the explanation of what they are looking at. Blocks showing error output, a bare check command, or a diagram are exempt. **An unexplained line is a bug in the document.** **Conditional:** a part carrying no code needing a walkthrough does not carry this section. |
+| 8 | **The source in one demo** | **Conditional — source parts only.** A small end-to-end project that implements the source's contribution **and nothing else**: the whole file tree, every file's contents, the one command that runs it, and the output it prints. It carries an **ablation switch** — one flag that turns the idea off — and shows **both runs' output**. A demo that cannot be switched off has proved that code ran, not that this idea did something. |
+| 9 | **When it breaks** | The **real** error text, reproduced verbatim — the traceback, the CUDA OOM, the HTTP status, the JSON-RPC error body. What it says, what it actually means, and the smallest fix. This is what the reader meets at 11pm; the happy path is not. **If you have not seen the error, cause it.** |
+| 10 | **In production** | Where this idea shows up in a real system and what changes there: the version a professional writes instead of the teaching version, what degrades at scale or under concurrency, the failure mode that only appears with real traffic, the review comment a senior engineer leaves, and the question an interviewer asks to find out whether you have actually used it. **This is the section that makes the document professional rather than introductory. It is not optional.** |
+| 11 | **Check yourself** | One command the reader can run right now, plus one question they must answer **out loud** without scrolling up. |
 
 Three further rules with no section of their own:
 
@@ -1195,7 +1203,7 @@ Three further rules with no section of their own:
 
 #### 20.4.2 The source part — one document per primary source
 
-Section 6 gives the reader an address. **This is the document at it.**
+Section 5 — *The source behind it* — gives the reader an address. **This is the document at it.**
 
 A source is an idea, and §20.1 says one idea gets one document. Folding a paper into a section of
 the part that uses it breaks that rule twice over: the part now teaches two things, and the paper
@@ -1211,7 +1219,7 @@ proposal. A reader who has just written attention by hand can be told which half
 reinvented and which half the field dropped; a reader who meets the paper first has nothing to hang
 it on.
 
-A source part carries all eleven sections. Section 6 never fires on it. Section 9 — *The source in
+A source part carries all ten sections. Section 5 never fires on it. Section 8 — *The source in
 one demo* — is **required**, and it is the section easiest to get wrong, so it has four rules:
 
 1. **Only the source's feature.** Not a small app that happens to use the idea — a small project
@@ -1226,7 +1234,7 @@ one demo* — is **required**, and it is the section easiest to get wrong, so it
 
 **A source is taught once in the whole curriculum.** 182 days will cite the same handful of
 documents repeatedly. The day that **first** needs a source carries its part; every later day cites
-it in section 6 and links to that part.
+it in section 5 and links to that part.
 
 ### 20.5 What the hub (`LESSON.md`) must contain
 
@@ -1243,8 +1251,16 @@ walkthrough. Required, in this order:
    minutes column, ever.**
 5. **`## §3 Setup — run this`** — every command the day needs, with versions pinned and verified
    that day.
-6. **`## §4 Build brief`** — the files to create, with `TODO(me)` markers left **unsolved**. These
-   are the reader's; that is the difference between a curriculum and a tutorial.
+6. **`## §4 Build brief`** — **the code the day asks for, spelled out to the signature.** For every
+   file: the exact path, then a code block carrying **every function and class the reader must
+   write, with its full type-hinted signature and a one-line docstring saying what it returns and
+   what it raises** — and a body that is nothing but `TODO(me): <what this must do>`. Then the one
+   command that runs it. The reader must be able to open this section and know exactly what to
+   implement, without reading a part twice to reverse-engineer an interface the next day will call.
+
+   **The bodies stay unsolved.** Naming the interface is not solving the exercise — it is the
+   difference between an exercise and a guess. Writing a body is the difference between a
+   curriculum and a tutorial (ADR-0007).
 7. **`## §5 The check that must be able to fail`** — the eval or test that is RED before the TODOs
    are done (Principle 11).
 8. **`## §6 Budget`** — model calls per provider in RPM/RPD, GPU hours, and money.
@@ -1286,9 +1302,15 @@ fully explained — including its production face — and not before.
 | `gate` | one acceptance criterion per part |
 | **any day whose ideas came from papers** | **one source part per paper**, in `sources/` — added to whatever the row above gives you, never replacing it |
 
-There is deliberately **no target part count and no target length**. If a subject needs four parts
-it gets four; if it needs twenty-two it gets twenty-two, and the day simply spans more sittings.
-The only wrong answers are a part that carries two ideas and a part that stops before production.
+There is **no target length** for a part — it is finished when its one idea is fully explained,
+including its production face. There **is** a ceiling on how many documents a day may hold, and it
+is §20.10. Splitting by idea boundaries happens **inside** that ceiling: if the boundaries give you
+six parts and the ceiling is four, the answer is to cut two subtopics and say in the hub's §2 map
+which later day picks them up — never to write six thin ones, and never to write four that each
+carry one and a half ideas.
+
+The wrong answers are a part that carries two ideas, a part that stops before production, and a
+part that exists to fill the budget.
 
 **Every day carries at least one part whose subject is a deliberate failure** — the loss-masked run
 that trains fine and answers badly, the injection that gets through, the checkpoint that does not
@@ -1300,8 +1322,13 @@ the thing on purpose is the whole point of the document.
 The failure modes this contract exists to prevent, stated so they can be caught in review:
 
 - **Splitting without deepening.** Cutting one long page into six shorter pages changes nothing.
-  Each part must *gain* the story, the mechanism, the real failure text and the production face it
+  Each part must *gain* the scene, the mechanism, the real failure text and the production face it
   did not have.
+- **Splitting to fill the budget.** The opposite mistake, and the one §20.10 creates: a fourth part
+  written because four were allowed, restating the third in different words. Three parts that each
+  carry an idea beat four where one is padding. **The ceiling is a limit, not a target.**
+- **A scene that gets abandoned.** The part opens with the courier, then starts the idea over from
+  cold underneath it. One opening per subtopic: the idea is named *inside* the scene (§20.4, row 3).
 - **A mechanism section that is a code dump.** Code with no walkthrough is a listing.
 - **A *When it breaks* section with an invented error.** Reconstructed error text is worse than no
   error text, because it teaches the reader to expect a message they will never see.
@@ -1320,6 +1347,8 @@ Mechanically checked, per day, by `granth.py depth NNN`:
 - a declared `level` on every part, and a day that climbs;
 - citations well-formed and present in `SOURCES.md`, and no source taught twice;
 - at least one part declaring `failure: true`;
+- **the part budget** — at most four documents in the day, parts and source parts counted together
+  (§20.10);
 - **no clock, anywhere** — no duration field, no "should take", no pace;
 - a hub that assembles rather than teaches;
 - the hub's IDs matching §17 exactly.
@@ -1327,6 +1356,46 @@ Mechanically checked, per day, by `granth.py depth NNN`:
 **Never argue with a depth failure.** Every rule it checks exists because its absence produced a
 document nobody could learn from. The checker is a floor, not a standard — a day can pass `depth`
 and still read badly, which is what the audit pass is for.
+
+### 20.10 The part budget — three documents, four at the outside
+
+**Target three. Ceiling four. Parts and source parts counted together**, because a source part is a
+document the reader has to read. `granth.py depth` fails a day above the ceiling, and the ceiling
+binds from Day 2 — Days 0 and 1 were written under the earlier contract and are grandfathered
+(ADR-0007).
+
+This is the only place in this plan that sizes a day, and it is here rather than in `days/` for the
+reason Principle 15 exists. **A day never states how long it takes.** The plan states how many
+documents it may hold, once, before the writing starts — which sizes the split at the point where
+sizing is cheap, and leaves no number inside a day that could ever authorise cutting an explanation
+short.
+
+**Why there is a ceiling at all**, given that §20.1 says one idea gets one document: because a day
+that cannot be finished is not a deep day, it is an abandoned one. A seven-part day sits half-read,
+its checklist never gets ticked, `done` refuses — correctly — and `PROGRESS.md` stops moving. There
+is no ledger row that says *"this day was too big"*, so nothing in the repository ever learns it.
+**A day nobody finishes teaches less than a day that dropped a subtopic.**
+
+**What the ceiling does not license.** Not a shorter explanation, not a dropped *In production*, not
+a part carrying two ideas under one heading. The parts that survive carry every one of the ten
+sections in full. The budget is spent by **cutting subtopics, not by thinning them.**
+
+**A cut subtopic is named as cut.** When the idea boundaries give more parts than the budget allows,
+the ones that do not make it get a line in the hub's §2 map saying so and naming the later day that
+picks them up — or they do not exist and the day says nothing. **What is never written is a part
+that gestures at a subtopic it did not have room to teach.**
+
+**When four is genuinely not enough**, the day is too big and the answer is in the plan, not in the
+folder: split it into two days in §17, log the amendment, write the ADR. That is Principle 12 —
+the plan is amended first. Growing the folder to six parts instead is the silent adaptation the
+principle exists to forbid.
+
+| The day has | Do this |
+| --- | --- |
+| One ID, one mechanism | Three parts: the idea, the mechanism at work, the failure and its production face |
+| Two IDs | Two parts each, or two plus one synthesis part — the ceiling makes the synthesis the thing you cut, and it is usually the thing worth keeping |
+| A primary source | Three documents at most in `parts/`, because the source part is the fourth |
+| More boundaries than budget | Cut, name the cut in the hub's §2 map, and if the cut is load-bearing, amend §17 instead |
 
 ---
 
@@ -1350,8 +1419,9 @@ for someone who already knows it.
 
 ### 21.2 The scene format
 
-Every part opens with a scene the reader could have been standing in. Not an analogy that needs
-explaining before it explains — a situation. A courier who cannot find the flat number. A mechanic
+Every part opens with a scene the reader could have been standing in — **inside** *The idea in
+plain language*, not under a heading of its own (§20.4, row 3). Not an analogy that needs explaining
+before it explains — a situation. A courier who cannot find the flat number. A mechanic
 who checks the same six things on every car. A night shift that gets a page at 3am about a queue
 that will not drain. One metaphor family per day: two parts reaching for the same setting read as
 one idea repeated, so check the day's other parts and the hub's §1 before choosing.
@@ -1379,6 +1449,42 @@ detour". Principle 15.
 **A fabricated result.** No invented benchmark number, no reconstructed traceback, no transcript
 from a run that did not happen. Principle 10 outranks the shape of the document: a missing output
 is completed by one run and is obvious to everyone; a fabricated one is undetectable.
+
+### 21.6 Plain English, and the example before the explanation
+
+§21.1 sets the register. This section is how it is written, sentence by sentence. It is not a
+softening of the material — the ideas stay exactly as hard as they are. **What gets simpler is the
+English, never the idea.**
+
+**One idea per sentence.** If a sentence needs a comma to add a second clause, it is usually two
+sentences. Around twenty words is where a sentence stops being read and starts being decoded; over
+forty it is being re-read. Long sentences are not more precise, they are just longer.
+
+**Write grammatical, finished sentences.** Subject, verb, object. No note-form fragments, no
+trailing dashes standing in for a clause the reader has to complete. A document written in fragments
+reads as fast as it was written, which is the problem.
+
+**Everyday word first, precise term second, in the same sentence.** *"The model runs out of memory —
+an OOM."* Not the term alone, and not the everyday word alone: one leaves the reader behind, the
+other leaves them unable to read the error message or the documentation.
+
+**Second person, active voice, present tense.** "You call `resolve()` and it raises" beats "the
+`resolve()` function will be called, at which point an exception is raised".
+
+**The example goes before the general statement.** This is the rule that does the most work. Show
+the smallest real case — actual input, actual output, actual numbers — and then say what is true in
+general. A reader who has seen one worked case can generalise from it; a reader who has read the
+generalisation still cannot picture a case. Three lines of a real request and the JSON that came
+back teach more than a paragraph describing the shape of the response.
+
+**An example is real or it is not an example.** Real values, real output, run. A made-up transcript
+is §21.5's second banned thing wearing a teaching hat.
+
+**Prefer the concrete noun.** Two files, four hundred rows, HTTP 429, `KeyError: 'usage'`. Not "some
+data", "a large number", "an error condition".
+
+**Cut the throat-clearing.** "It is worth noting that", "as we will see", "in order to", "the fact
+that" — delete on sight, with the enthusiasm words in §21.1 rule 4.
 
 ---
 

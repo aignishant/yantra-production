@@ -8,7 +8,7 @@
 name          = "yantra"
 slug          = "yantra"
 plan          = "docs/00_MASTER_PLAN.md"
-plan_version  = "v2.0.0"
+plan_version  = "v2.1.0"
 day_skill     = "day-yantra"
 driver        = "python granth.py"
 day_padding   = 3          # this plan runs to 181
@@ -27,6 +27,8 @@ require_line_by_line   = true   # conditional per part, enforced where code appe
 forbid_clocks          = true   # Principle 15 — never set this false
 forbid_person_names    = true   # cite by title and identifier
 min_level_climb        = true   # a day must climb foundation -> working -> production
+max_parts              = 4      # plan §20.10 — parts + sources together; a day must be finishable
+max_parts_from_day     = 2      # days 0 and 1 predate the budget (ADR-0007)
 
 [toolchain]
 lint         = "uv run ruff check ."
